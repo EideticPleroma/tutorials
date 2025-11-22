@@ -70,11 +70,17 @@ from .tools import file_search  # noqa: F401
 **Python Philosophy Note**: Every Python package directory should have an `__init__.py` file. This makes packages explicit and enables proper exports. See the [Package Structure Guide](../../tutorial-1/guides/package-structure.md) for details.
 
 ### 4. Verify
-Run the agent: "Find all python files in the tests directory."
-It should:
-1. Call `search_files(directory="tests", pattern="*.py")` (or similar)
-2. Return a descriptive string like "Found 2 files: tests/test_framework.py, tests/conftest.py"
-3. The agent should then use that output to answer your question naturally
+Run the agent and test with these queries:
+1. "Find all python files in the tests directory."
+2. "Find all files in the data directory."
+3. "Search for text files in data/"
+
+Expected behavior:
+- Query 1: Should find test_framework.py, conftest.py, and any test files
+- Query 2: Should find todos.txt, notes.txt, sample.py
+- Query 3: Should find todos.txt and notes.txt (*.txt pattern)
+
+The agent should call `search_files` and return descriptive results for each query
 
 ## Common Pitfalls
 *   **Missing Docstring**: If you don't write a docstring, the Agent won't know how to use the tool.

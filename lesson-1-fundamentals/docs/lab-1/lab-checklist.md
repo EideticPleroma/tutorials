@@ -46,7 +46,9 @@ Use this checklist to track your progress through the lab.
   - `test_agent_file_search_multiple_runs` - 100% reliable
 
 ## 5. Challenge (Optional)
-- [ ] Implement a `read_file` tool to allow the agent to read content.
-- [ ] Ask the agent: "Find the file with 'Todo' in it and tell me what the todos are."
-- [ ] Handle the error if the file is too large or binary.
+**[Go to Challenge](./exercises/05-challenge-read-file.md)**
+- [ ] Implemented `read_file` tool with comprehensive error handling.
+- [ ] Handles: missing files, large files (>10MB), binary files.
+- [ ] Created complete test suite (6+ tests).
+- [ ] **Validation**: Agent successfully chains search_files → read_file tools.
 

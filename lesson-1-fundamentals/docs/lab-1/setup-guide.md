@@ -134,3 +134,18 @@ python -m src.agent.simple_agent
 
 If all of these work, you are ready to start the [Lab Checklist](./lab-checklist.md).
 
+## 7. Understanding the Test Data
+
+The repository includes sample data files in `data/` for testing your tools:
+
+### data/todos.txt
+A sample TODO list file used to test file reading capabilities. Contains project tasks in a realistic format.
+
+### data/notes.txt
+A simple notes file with project information. Used for testing file search and read operations.
+
+### data/sample.py
+A basic Python file for testing code file operations. Demonstrates how tools interact with different file types.
+
+**Why these files exist**: When building agentic tools, you need realistic test data to verify your agent can find and read files correctly. These files provide consistent test cases for the O.V.E. methodology.
+

@@ -1,0 +1,5 @@
+Project Alpha Notes:
+- The deadline is next Friday.
+- We need to integrate the payment gateway.
+- The user database schema has changed.
+

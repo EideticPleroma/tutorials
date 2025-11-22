@@ -1,0 +1,12 @@
+Project Todos:
+
+TODO: Implement user authentication
+TODO: Add error logging
+TODO: Write unit tests for API endpoints
+TODO: Update documentation
+TODO: Fix security vulnerability in login
+
+Completed:
+- Set up database
+- Create project structure
+
