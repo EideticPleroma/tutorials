@@ -33,7 +33,7 @@ Use this checklist to track your progress through the lab.
 - [x] Updated prompt to use natural language guidance (not text templates).
 - [x] **Validation**: Agent correctly calls tools using structured API.
 
-## 4. Testing & Validation ✅ COMPLETE
+## 4. Testing & Validation
 **[Go to Exercise 4](./exercises/04-testing-methodology.md)**
 - [x] Created `tests/unit/test_file_search.py` with O.V.E. methodology.
 - [x] Wrote 3 Unit Tests (all passing):

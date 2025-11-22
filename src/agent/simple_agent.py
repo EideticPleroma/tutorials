@@ -6,6 +6,7 @@ from .tool_registry import registry
 # Import tools to register them (side-effect imports for decorator registration)
 from . import mcp_tool_bridge  # noqa: F401
 from .tools import file_search  # noqa: F401
+from .tools import read_file  # noqa: F401
 
 # --- Define Basic Tools ---
 
