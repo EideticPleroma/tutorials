@@ -706,20 +706,29 @@ print(f"Message history size: {sys.getsizeof(self.messages)} bytes")
 
 ### Q: When is Lesson 2 coming out?
 
-**A:** Check the repository for updates!
+**A:** Lesson 2 is currently in development!
 
-**Lesson 2 will cover:**
-- Multi-agent systems
-- Vector databases and memory
-- Production deployment
-- Advanced tool patterns
-- Real-world case studies
+**Lesson 2: Multi-Agent Systems** will cover:
+- **Coordinator Patterns**: Building orchestrator agents that manage specialized workers
+- **Agent Specialization**: Creating focused agents (research, data, writing) with domain-specific capabilities
+- **Inter-Agent Communication**: Message passing protocols between agents
+- **State Management**: Shared state across multiple agents
+- **Extended O.V.E. Testing**: Testing multi-agent interactions and workflows
+
+**What's NOT in Lesson 2:**
+- Vector databases and memory (Tutorial 3)
+- Production deployment patterns (Tutorial 4)
+- Heavy frameworks like LangChain (Tutorial 5)
+
+**Tech Stack:** Same as Lesson 1 (Ollama, Python, TypeScript) - keeping it lightweight for learning
+
+**📋 [View Full Tutorial 2 Scope](../../../TUTORIAL-2-SCOPE.md)** for detailed breakdown
 
 **In the meantime:**
-- Complete the challenge exercise
-- Build your own tools
-- Contribute to the tutorial
-- Help other learners
+- Complete the challenge exercise (build a file reader tool)
+- Build your own custom tools for practice
+- Experiment with specialized system prompts
+- Help other learners in the community
 
 ---
 

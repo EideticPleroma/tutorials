@@ -217,14 +217,33 @@ By the end of this lesson, you will:
 - Create specialized system prompts for different use cases
 - Build a web interface for your agent
 
-### Lesson 2 Preview (Coming Soon)
+### Lesson 2: Multi-Agent Systems (In Development)
 
-**Advanced Agentic AI Patterns:**
-- **Multi-Agent Systems**: Coordinator agents, specialized agents, agent communication
-- **Memory Systems**: Vector databases, long-term memory, conversation context
-- **Advanced Tool Patterns**: Async tools, streaming responses, tool composition
-- **Production Readiness**: Monitoring, logging, error recovery, rate limiting
-- **Real-World Applications**: Building production-grade agentic systems
+**Focus**: Coordinator patterns, agent specialization, and multi-agent communication
+
+**What You'll Learn:**
+- **Multi-Agent Architecture**: Design systems where multiple agents collaborate to solve complex tasks
+- **Coordinator Patterns**: Build a coordinator agent that orchestrates specialized workers
+- **Agent Specialization**: Create focused agents (research, data analysis, writing) with domain-specific capabilities
+- **Inter-Agent Communication**: Implement message passing protocols between agents
+- **State Management**: Handle shared state across multiple agents safely
+- **Extended Testing**: Adapt O.V.E. methodology for testing multi-agent interactions
+
+**What You'll Build:**
+- A coordinator agent that delegates tasks intelligently
+- Three specialized worker agents with focused tool sets
+- A message protocol for agent communication
+- End-to-end multi-agent workflows
+
+**Prerequisites**: Completion of Lesson 1 - Fundamentals
+
+**Tech Stack**: Same as Lesson 1 (Ollama + Llama 3.1, Python, TypeScript) - no new infrastructure
+
+**Estimated Duration**: 8-10 hours (reading + lab exercises)
+
+**Coming**: Lessons 3+ will cover Memory Systems (vector databases, RAG), Production Patterns, and Advanced Tool Patterns
+
+**📋 [View Full Tutorial 2 Scope](./TUTORIAL-2-SCOPE.md)** - Detailed breakdown of content, exercises, and learning objectives
 
 ### Further Learning
 

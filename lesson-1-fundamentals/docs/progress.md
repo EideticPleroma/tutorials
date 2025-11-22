@@ -1,5 +1,7 @@
 # Lesson 1 - Fundamentals: Progress Tracker
 
+**Page 12 of 15** | [← Previous: Package Structure Guide](./tutorial-1/guides/package-structure.md) | [Next: Architecture Evolution →](./tutorial-1/architecture/evolution.md) | [↑ Reading Guide](./tutorial-1/READING_GUIDE.md)
+
 Track your progress through the lab exercises and documentation reading.
 
 ## 📚 Documentation Reading
@@ -185,6 +187,12 @@ Track your progress through the lab exercises and documentation reading.
 
 **Ready for Lesson 2?** □ Yes □ Not yet
 
+**What to expect in Lesson 2:**
+- Multi-agent coordinator-worker patterns
+- Agent specialization and communication
+- Extended testing for multi-agent systems
+- **📋 [View Tutorial 2 Scope](../../TUTORIAL-2-SCOPE.md)**
+
 ---
 
 ## 🚀 Next Steps
@@ -193,7 +201,7 @@ After completing Lesson 1:
 - [ ] Review all key learnings
 - [ ] Document personal insights above
 - [ ] Set up repository for your own agent project
-- [ ] Explore Lesson 2 (coming soon)
+- [ ] Review [Tutorial 2 Scope](../../TUTORIAL-2-SCOPE.md) to prepare for multi-agent systems
 
 ---
 

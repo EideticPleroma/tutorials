@@ -1,6 +1,6 @@
 # Agentic Code Practices
 
-**Page 10 of 15** | [← Previous: Engineering Best Practices](./engineering.md) | [Next: Progress Tracker →](../../progress.md) | [↑ Reading Guide](../READING_GUIDE.md)
+**Page 10 of 15** | [← Previous: Engineering Best Practices](./engineering.md) | [Next: Package Structure Guide →](./package-structure.md) | [↑ Reading Guide](../READING_GUIDE.md)
 
 Writing code *for* agents to use is different from writing code for humans.
 

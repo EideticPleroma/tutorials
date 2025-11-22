@@ -1,5 +1,7 @@
 # Tech Stack Decisions
 
+**Page 5a of 15** | [← Previous: MCP Introduction](./mcp-intro.md) | [Next: Testing Agents →](./testing-agents.md) | [↑ Reading Guide](../READING_GUIDE.md)
+
 This document explains why we chose specific technologies for Tutorial 1 and when to use alternatives.
 
 ## Core Technologies
@@ -24,6 +26,13 @@ This document explains why we chose specific technologies for Tutorial 1 and whe
 *   **Model Management**: Easy to pull, switch, and manage models (`ollama pull llama3.1:8b`).
 *   **Cross-Platform**: Works on Windows (WSL2), Mac, Linux.
 *   **Active Development**: Well-maintained with regular updates.
+*   **Multi-Agent Ready**: Handles concurrent requests well for Tutorial 2's multi-agent patterns.
+
+**Multi-Agent Considerations:**
+*   Ollama can serve multiple agents simultaneously (coordinator + workers)
+*   Resource usage scales with number of active agents (RAM, CPU)
+*   For Tutorial 2: 16GB RAM recommended when running 3+ agents concurrently
+*   Consider GPU acceleration (optional) if running many parallel agent conversations
 
 **Alternatives:**
 *   **vLLM**: If you need higher throughput for production.
@@ -99,12 +108,38 @@ This document explains why we chose specific technologies for Tutorial 1 and whe
 
 ## Future Considerations
 
-As you progress to Tutorial 2+, you'll encounter:
-*   **Vector Databases** (Chroma, Pinecone): For long-term memory.
-*   **LangChain/LlamaIndex**: Frameworks that abstract away tool calling (we avoid in Tutorial 1 to learn fundamentals).
-*   **Production LLM APIs**: When you need reliability and scale.
+### Tutorial 2: Multi-Agent Systems
+
+Tutorial 2 builds on this foundation by introducing multi-agent coordination while maintaining the same core stack:
+
+**Core Stack (Unchanged):**
+*   **Ollama + Llama 3.1**: Still local-first for fast iteration
+*   **Python**: Remains the primary language for agent logic
+*   **TypeScript**: Continues for MCP tool development
+
+**New Considerations:**
+*   **Message Passing**: Inter-agent communication patterns (no external message queue needed for Tutorial 2)
+*   **Shared State**: Simple shared memory or file-based state (lightweight, educational)
+*   **Coordinator Patterns**: One coordinator agent managing multiple specialized agents
+*   **Testing Multi-Agent**: Extended O.V.E. methodology for testing agent interactions
+
+**What We Still Avoid:**
+*   **Heavy Frameworks**: No LangChain/CrewAI - we continue building fundamentals from scratch
+*   **External Dependencies**: No Redis, RabbitMQ, or complex infrastructure
+*   **Vector Databases**: Deferred to Tutorial 3 (Memory & RAG)
+
+**Why This Approach:**
+Tutorial 2 focuses on understanding multi-agent coordination patterns without introducing production infrastructure complexity. You'll learn how agents communicate, specialize, and collaborate using the same lightweight stack you mastered in Tutorial 1.
+
+### Beyond Tutorial 2
+
+As you progress further, you'll encounter:
+*   **Tutorial 3+**: Vector databases (Chroma, Pinecone) for long-term memory and RAG
+*   **Production Patterns**: Message queues, distributed systems, monitoring
+*   **Advanced Frameworks**: When and how to adopt LangChain, LlamaIndex, or CrewAI
+*   **Cloud LLM APIs**: GPT-4, Claude for production deployments requiring reliability at scale
 
 ---
 
-**Key Principle**: Tutorial 1 uses minimal abstractions to teach fundamentals. Later tutorials will introduce frameworks that make development faster but hide complexity.
+**Key Principle**: Tutorials 1-2 use minimal abstractions to teach fundamentals. Later tutorials will introduce frameworks and infrastructure that make development faster but hide complexity. Master the basics first, then adopt tools that accelerate your work.
 
