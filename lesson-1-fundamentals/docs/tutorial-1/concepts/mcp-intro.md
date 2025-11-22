@@ -31,10 +31,10 @@ In this tutorial, we will use MCP to give our agent superpowers without writing 
 ## Architecture in Tutorial 1
 
 ```mermaid
-graph LR
-    A[Python Agent] -- JSON-RPC --> B[MCP Client (TypeScript)]
-    B -- Stdio --> C[Filesystem MCP Server]
-    C --> D[Local Disk]
+flowchart LR
+    A["Python Agent"] -->|JSON-RPC| B["MCP Client (TypeScript)"]
+    B -->|Stdio| C["Filesystem MCP Server"]
+    C --> D["Local Disk"]
 ```
 
 We use a TypeScript bridge because the MCP ecosystem is currently strongest in TypeScript, allowing us to leverage the official SDKs easily.
