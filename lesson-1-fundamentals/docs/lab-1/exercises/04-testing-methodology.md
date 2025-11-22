@@ -8,10 +8,12 @@ We use the O.V.E. (Observe, Validate, Evaluate) methodology.
 *   **Validate**: Check the structure (Did it return JSON? Did it call a tool?).
 *   **Evaluate**: Check the quality (Did it answer the user's intent?).
 
+**Note**: This exercise uses the test data files in `data/` (todos.txt, notes.txt, sample.py). These are provided in the repository for consistent testing.
+
 ## Steps
 
 ### 1. Create a Test File
-Create `tests/test_file_search.py`.
+Create `tests/unit/test_file_search.py`.
 
 ### 2. Unit Test (The Tool)
 Test the Python function `search_files` in isolation.
@@ -44,6 +46,8 @@ def test_agent_finds_files():
 
 ### 4. Flakiness Check
 Run the test 5 times.
-`for i in {1..5}; do pytest tests/test_file_search.py; done`
+```bash
+for i in {1..5}; do pytest tests/unit/test_file_search.py; done
+```
 If it fails once, your prompt might be ambiguous. Refine the prompt (Exercise 3) until it passes 5/5.
 

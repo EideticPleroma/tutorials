@@ -69,10 +69,11 @@ tests/unit/test_file_search.py
 tests/unit/test_read_file.py
 tests/integration/
 
-# Keep framework files
+# Keep framework and test data files
 !tests/test_framework.py
 !tests/conftest.py
 !src/agent/tools/__init__.py
+!data/
 
 # Logs
 *.log

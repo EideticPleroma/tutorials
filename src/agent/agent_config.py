@@ -5,11 +5,14 @@ class AgentConfig(BaseModel):
     model_name: str = "llama3.1:8b"
     ollama_base_url: str = "http://localhost:11434/api"
     temperature: float = 0.1
-    # Updated prompt to help with the "Sunny" test failure as well
     system_prompt: str = """You are a helpful AI assistant capable of using tools.
-When a user asks a question that requires a tool, you must use the available tools.
-IMPORTANT: After using a tool, you must use the return value of the tool to answer the user's question directly.
-Always answer concisely and accurately."""
+
+    When you need information, use the available tools.
+    IMPORTANT: After a tool returns results, include the specific details 
+    from the tool's output in your response. Don't just summarize - provide 
+    the actual data the tool returned.
+
+    Always answer concisely and accurately."""
 
     model_config = ConfigDict(env_prefix="AGENT_")
 
