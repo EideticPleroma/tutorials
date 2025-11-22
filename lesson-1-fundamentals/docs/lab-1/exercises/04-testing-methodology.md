@@ -8,6 +8,30 @@ We use the O.V.E. (Observe, Validate, Evaluate) methodology.
 *   **Validate**: Check the structure (Did it return JSON? Did it call a tool?).
 *   **Evaluate**: Check the quality (Did it answer the user's intent?).
 
+```mermaid
+flowchart TD
+    A[Start Test] --> B[1. OBSERVE: Run Agent]
+    B --> C[Capture Trace]
+    C --> D{2. VALIDATE<br/>Deterministic}
+    D -->|Check Structure| E[Tool Called?]
+    D -->|Check Keywords| F[Output Contains Expected?]
+    E --> G{All Validations<br/>Pass?}
+    F --> G
+    G -->|Yes| H[3. EVALUATE<br/>Probabilistic]
+    G -->|No| I[Test FAILS]
+    H -->|LLM Judge| J[Score Quality]
+    H -->|Semantic Match| K[Compare Embeddings]
+    J --> L{Score > Threshold?}
+    K --> L
+    L -->|Yes| M[Test PASSES]
+    L -->|No| I
+    
+    style D fill:#e1f5ff
+    style H fill:#fff4e1
+    style M fill:#d4edda
+    style I fill:#f8d7da
+```
+
 **Note**: This exercise uses the test data files in `data/` (todos.txt, notes.txt, sample.py). These are provided in the repository for consistent testing.
 
 ## Steps
@@ -50,4 +74,14 @@ Run the test 5 times.
 for i in {1..5}; do pytest tests/unit/test_file_search.py; done
 ```
 If it fails once, your prompt might be ambiguous. Refine the prompt (Exercise 3) until it passes 5/5.
+
+## 🎉 Victory Checkpoint
+
+If your tests pass consistently (5/5 runs), you've achieved something remarkable! You've:
+- ✅ Implemented the O.V.E. (Observe, Validate, Evaluate) methodology
+- ✅ Written both unit tests (tool isolation) and E2E tests (agent behavior)
+- ✅ Understood probabilistic testing (handling LLM non-determinism)
+- ✅ Built confidence in your agentic system through validation
+
+**You can now test AI systems like a professional!**
 

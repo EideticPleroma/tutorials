@@ -17,14 +17,44 @@ Observe the logs. You should see:
 5.  **Final Answer**: "The weather in Paris is 15C..."
 
 ### 2. Trace the Code
-Open `src/agent/simple_agent.py`. Find the `chat()` method (line 49-100).
-*   Where does the `messages` list get initialized? (Hint: Look in the `__init__` method)
+Open `src/agent/simple_agent.py`. Find the `chat()` method (around lines 51-102).
+*   Where does the `messages` list get initialized? (Hint: Look in the `__init__` method around line 46)
 *   Where is the `tool_registry` queried? (Hint: Look for `registry.get_schemas()` and `registry.get_tool()`)
 *   How does the agent decide to make a second LLM call? (Hint: Look for the tool_calls check)
 
 ### 3. The Diagram
 Sketch the flow you observed. Compare it with the flow description in [Tool Calling Architecture](../../tutorial-1/concepts/tool-calling-architecture.md).
 
+**Visual Reference - Tool Calling Flow:**
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant Agent
+    participant LLM
+    participant Tool
+    
+    User->>Agent: "What is the weather in Paris?"
+    Agent->>Agent: Add to messages[]
+    Agent->>LLM: messages + tool schemas
+    LLM->>Agent: Response with tool_call
+    Agent->>Agent: Parse tool_call
+    Agent->>Tool: get_weather("Paris")
+    Tool->>Agent: "The weather in Paris is Sunny, 25°C"
+    Agent->>Agent: Add tool result to messages[]
+    Agent->>LLM: messages (now with tool result)
+    LLM->>Agent: Final response with answer
+    Agent->>User: "The weather in Paris is Sunny, 25°C"
+    
+    Note over Agent,LLM: First LLM call: Decision
+    Note over Agent,LLM: Second LLM call: Synthesis
+```
+
+**Key Insight:** The agent makes **two LLM calls**:
+1. First call: LLM decides to use a tool and outputs structured JSON
+2. Second call: LLM synthesizes the tool output into a natural language response
+
 ## Checkpoint
 *   [ ] I can explain why the agent loops twice for one question.
+*   [ ] I understand the flow: User → Agent → LLM (decide) → Tool → LLM (synthesize) → User
 

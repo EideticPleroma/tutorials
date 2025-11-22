@@ -38,3 +38,49 @@ For this tutorial, we use Llama 3.1 because:
 *   **State-of-the-Art**: Matches GPT-4 class performance on many tasks.
 *   **Tool Calling**: Fine-tuned specifically to understand and generate structured tool calls.
 
+---
+
+## 🎯 Knowledge Check
+
+Before moving on, test your understanding:
+
+**Question 1:** What's the difference between a low temperature (0.1) and high temperature (0.9) setting?
+<details>
+<summary>Show Answer</summary>
+
+- **Low temperature (0.1)**: More deterministic and focused. The model picks the most likely next token. Best for tool calling and code generation where consistency matters.
+- **High temperature (0.9)**: More creative and varied. The model explores less likely options. Best for brainstorming and creative writing.
+
+For agentic AI, we typically use low temperature to ensure consistent tool calling behavior.
+</details>
+
+**Question 2:** Why does context window size matter for agents?
+<details>
+<summary>Show Answer</summary>
+
+The context window limits how much the agent can "remember" at once. If you fill it with:
+- Too much irrelevant information → performance degrades (noise)
+- Too little information → agent lacks context to make decisions
+
+For agents, this means:
+- System prompt + tool definitions + conversation history + tool outputs must fit
+- Larger context windows (128k tokens) enable passing entire codebases or documentation
+- You must still curate what goes in for best performance
+</details>
+
+**Question 3:** In your own words, explain what a "system prompt" is and why it matters for agentic AI.
+<details>
+<summary>Show Answer</summary>
+
+A system prompt is the initial instruction that sets the model's behavior, persona, and constraints. For agentic AI, it's critical because:
+
+- **Defines capabilities**: "You have access to file search and read tools..."
+- **Sets constraints**: "Never delete files without confirmation..."
+- **Guides tool usage**: "Always use tools for current information..."
+- **Establishes persona**: "You are a senior software engineer..."
+
+Think of it as the "operating system" for your agent - it defines how the agent thinks and acts.
+</details>
+
+**Ready to continue?** If you can answer these questions, you understand the fundamentals. Move on to [Tool Calling Architecture](./tool-calling-architecture.md) to see how LLMs become agents.
+

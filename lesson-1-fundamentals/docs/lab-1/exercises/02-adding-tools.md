@@ -61,11 +61,45 @@ Then, in `src/agent/simple_agent.py`, add this import near the top (around line 
 from .tools import file_search  # noqa: F401
 ```
 
-**Why this matters**: 
-- The import triggers the `@registry.register` decorator, which adds your tool to the registry
+**Why this matters - How Tool Registration Works**: 
+
+Python decorators like `@registry.register` only execute when Python **loads the module**. Here's the flow:
+
+```mermaid
+sequenceDiagram
+    participant Python
+    participant tools_init as tools/__init__.py
+    participant simple_agent as simple_agent.py
+    participant file_search as file_search.py
+    participant Registry
+    
+    Note over Python: 1. Agent starts up
+    Python->>simple_agent: Import simple_agent.py
+    simple_agent->>file_search: from .tools import file_search
+    Note over file_search: 2. Module loads
+    file_search->>file_search: @registry.register decorator executes
+    file_search->>Registry: register(file_search)
+    Registry->>Registry: Store in _tools dict
+    Note over Registry: 3. Tool is now available
+    simple_agent->>Registry: registry.get_schemas()
+    Registry->>simple_agent: Return tool definitions for LLM
+```
+
+**Step-by-step:**
+
+1. **Decorator Definition** (`@registry.register`): Tells Python "when this function is defined, add it to the registry"
+2. **Module Import** (`from .tools import file_search`): Actually loads the file, causing the decorator to execute
+3. **Decorator Execution**: Runs `registry.register(file_search)`, adding the tool to the global registry
+4. **Agent Usage** (`registry.get_schemas()`): Agent queries the registry to see what tools are available
+
+**Both imports serve different purposes:**
+- `tools/__init__.py` import: Clean package-level exports (Python best practice)
+- `simple_agent.py` import: Actually loads the module, triggering the decorator (required for registration)
+
+**Technical Notes:**
 - We use **relative imports** (`.tools`) since we're inside the `src.agent` package
 - The `# noqa: F401` comment tells linters to ignore "unused import" warnings (this is a **side-effect import**)
-- Without these imports, Python never loads the module, so the decorator never runs!
+- Without the `simple_agent.py` import, Python never loads the module, so the decorator never runs!
 
 **Python Philosophy Note**: Every Python package directory should have an `__init__.py` file. This makes packages explicit and enables proper exports. See the [Package Structure Guide](../../tutorial-1/guides/package-structure.md) for details.
 
@@ -87,4 +121,14 @@ The agent should call `search_files` and return descriptive results for each que
 *   **Wrong Type Hints**: The `tool_registry` uses type hints to build the JSON schema. Make sure they are correct.
 *   **Returning Complex Types**: Return strings (natural language) instead of lists or dictionaries. Agents understand `"Found 3 files: ..."` better than `['file1', 'file2', 'file3']`.
 *   **Raising Exceptions**: Return error strings like `"Error: Directory not found"` instead of raising exceptions. Let the agent handle the error gracefully.
+
+## 🎉 Victory Checkpoint
+
+If your agent successfully finds files using the `search_files` tool, congratulations! You've just:
+- ✅ Created your first custom tool
+- ✅ Understood the decorator pattern for tool registration
+- ✅ Learned agentic best practices (human-readable outputs, error strings)
+- ✅ Extended the agent's capabilities beyond its training data
+
+**You're no longer just using AI - you're building agentic systems!**
 

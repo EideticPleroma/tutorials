@@ -3,7 +3,7 @@
 **Goal**: Control the Agent's brain.
 
 ## Context
-The system prompt in `src/agent/agent_config.py` is the Agent's operating system. It's defined as `config.system_prompt` (lines 8-10) and loaded by the Agent in its `__init__` method. We want to upgrade it to improve the agent's reasoning and tool usage.
+The system prompt in `src/agent/agent_config.py` is the Agent's operating system. It's defined as `config.system_prompt` (currently around lines 8-10) and loaded by the Agent in its `__init__` method. We want to upgrade it to improve the agent's reasoning and tool usage.
 
 ## Learning by Asking
 
@@ -50,6 +50,33 @@ Provide clear and accurate responses."""
 - No examples of good behavior
 - No reasoning/thinking guidance
 
+**Example of a Better Prompt:**
+
+Here's what an improved prompt might look like (don't just copy this - use it as inspiration!):
+
+```python
+system_prompt: str = """You are a helpful AI assistant with access to tools.
+
+TOOL USAGE GUIDELINES:
+- Use tools when you need current information or to perform actions
+- Always include specific data from tool outputs in your response
+- If a tool returns an error, explain it to the user clearly
+- For questions about your capabilities, list available tools
+
+RESPONSE QUALITY:
+- Be concise but informative
+- When using tools, explain what you found
+- Think carefully before deciding which tool to use
+
+Available tools will be provided to you automatically."""
+```
+
+**Key Improvements:**
+- ✅ Explicit guidance on when to use tools
+- ✅ Instruction to include tool data in responses
+- ✅ Error handling guidance
+- ✅ Clear structure with sections
+
 ### 2. Improve the Prompt
 
 Using what you learned from asking the AI, modify the prompt to improve:
@@ -70,6 +97,15 @@ Using what you learned from asking the AI, modify the prompt to improve:
 1. Add explicit instructions: "When you need to X, use tool Y"
 2. Add examples: "User: Find Python files. You: [calls search_files]..."
 3. Add reasoning: "Think step-by-step before using tools"
+
+> ⚠️ **Critical: Tool Calling Compatibility**
+>
+> When using Chain of Thought (CoT) prompting with tool-calling agents:
+> - The LLM must still output structured JSON for tool calls
+> - Verbose reasoning can interfere with function call formatting
+> - **Best practice**: Use natural language guidance ("think carefully", "be thorough") rather than forcing explicit step-by-step output
+> - **Always test** that tools still work after modifying prompts
+> - If tools stop working, simplify your prompt and add instructions incrementally
 
 ### 3. Test Your Changes
 
@@ -125,4 +161,14 @@ Your improved prompt should make the agent:
 - ✅ Include specific data from tool outputs in responses
 - ✅ Explain its reasoning (at least briefly)
 - ✅ Handle errors gracefully
+
+## 🎉 Victory Checkpoint
+
+If you've successfully improved the agent's behavior through prompt engineering, you've mastered a critical skill! You've learned:
+- ✅ System prompts are the "operating system" of your agent
+- ✅ Natural language can program behavior (no code changes needed!)
+- ✅ Iteration beats perfection (prompt engineering is experimental)
+- ✅ AI can help you learn (meta-prompting for guidance)
+
+**You can now control agent behavior with words, not just code!**
 
