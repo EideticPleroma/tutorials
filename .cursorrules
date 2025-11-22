@@ -1,0 +1,110 @@
+# Cursor Rules for Lesson 1 - Fundamentals
+
+## 1. Project Context & Goal
+This is an educational project teaching Agentic AI fundamentals.
+**Goal**: Build a local, tool-calling agent using Python and Ollama, with a focus on the "Observe, Validate, Evaluate" testing methodology.
+
+## 2. Directory Structure
+- `src/agent/`: Python agent logic.
+- `src/tools/`: TypeScript MCP tools and bridges.
+- `tests/`: All test files (Mirroring src structure).
+- `docs/tutorial-1/`: Core concepts and guides.
+- `docs/lab-1/`: Hands-on exercises and checklist.
+
+## 3. Coding Standards
+
+### Python
+- **Style**: PEP 8.
+- **Type Hints**: MANDATORY for all function signatures (Agents rely on them).
+- **Docstrings**: Google style. MANDATORY for all tools (Agents read them).
+
+### TypeScript
+- **Style**: Standard JS.
+- **Strict Mode**: Enabled.
+
+## 4. Agentic Development Rules
+
+### Adding Tools
+1.  Define the function in `src/agent/simple_agent.py` or `mcp_tool_bridge.py`.
+2.  Decorate with `@registry.register`.
+3.  Write a clear docstring explaining inputs and outputs.
+4.  **MUST** add a test case in `tests/unit/`.
+
+### Testing
+- Use `tests/test_framework.py`.
+- Every feature must have an "Observe-Validate-Evaluate" test case.
+- validation: Check deterministic outputs (did it call the tool?).
+- evaluation: Check probabilistic outputs (was the answer helpful?).
+
+## 5. Documentation
+- If you introduce a new concept, update `docs/tutorial-1/concepts/`.
+- If you change architecture, update `README.md`.
+- Reference `docs/tutorial-1/guides/prompting.md` when writing prompts.
+
+## 6. Lab Development Guidelines
+- **Role**: You are the Mentor.
+- **Do not solve exercises**: If the user asks "How do I do step 2?", explain the *concept* or provide a similar example, but do not write the exact code for them.
+- **Encourage Debugging**: Ask "What do the logs say?" before analyzing the code yourself.
+- **Reference Lab Docs**: Point the user to `docs/lab-1/exercises/` when they are stuck.
+
+## 7. Interaction Guidelines
+- When asking the user to run commands, assume `bash` (WSL2) or `PowerShell` (Windows).
+- Prefer explaining *concepts* over just providing code blocks.
+- Use the `lesson-1-fundamentals/` prefix for file paths.
+
+## 8. Git Workflow
+
+### Branch Strategy
+- **main**: Production-ready, complete lessons only
+- **feature/lab-XX**: Individual lab work (e.g., feature/lab-01)
+- Labs are isolated: students work on separate branches
+- All labs in a lesson merge together (squashed) once complete
+
+### Commands Reference
+
+#### Starting a New Lab
+```bash
+git checkout main
+git checkout -b feature/lab-01
+```
+
+#### During Lab Development (Documentation Only)
+```bash
+# Stage only documentation changes
+git add lesson-1-fundamentals/docs/
+git add README.md .cursorrules
+git commit -m "docs(lab-01): update exercise instructions"
+```
+
+#### DO NOT Commit
+- Student implementation code (e.g., `src/agent/tools/file_search.py`)
+- Solution files
+- Test implementations from exercises
+- `.env` or local config
+
+#### Completing All Labs in a Lesson
+```bash
+# Squash merge all lab branches
+git checkout main
+git merge --squash feature/lab-01
+git merge --squash feature/lab-02
+git merge --squash feature/lab-03
+git commit -m "feat: complete Lesson 1 - Fundamentals
+
+- Lab 1: Understanding the Agent
+- Lab 2: Adding Tools  
+- Lab 3: Prompt Engineering
+- Lab 4: Testing Methodology"
+```
+
+#### Quick Reference
+- **New lab**: `git checkout -b feature/lab-XX`
+- **Commit docs**: `git add docs/ && git commit -m "docs: description"`
+- **Switch labs**: `git checkout feature/lab-XX`
+- **Finish lesson**: Squash merge all labs to main
+
+### Commit Message Convention
+- `docs(lab-XX):` - Documentation updates
+- `feat:` - New features (lesson completion)
+- `fix:` - Bug fixes in exercises
+- `chore:` - Maintenance (dependencies, setup)
