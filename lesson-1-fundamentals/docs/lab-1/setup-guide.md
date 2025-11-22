@@ -176,6 +176,30 @@ This tutorial works with any AI-capable IDE or text editor. Choose the option th
 - Reference files with `@filename`
 - Continue supports both local (Ollama) and cloud models
 
+### Option 2b: VS Code with Cline (Claude Code)
+
+**Best for:** Developers who prefer Claude's reasoning capabilities with agentic workflows.
+
+1.  **Install VS Code**: Download from [code.visualstudio.com](https://code.visualstudio.com/)
+2.  **Install Cline Extension**:
+    - Open VS Code Extensions (Cmd/Ctrl+Shift+X)
+    - Search for "Cline" (formerly Claude Dev)
+    - Install the extension
+3.  **Configure Cline**:
+    - Add your Anthropic API key (requires paid Claude API access)
+    - OR configure to use local Ollama for free alternative
+    - Cline reads `.cursorrules` automatically
+4.  **Usage**:
+    - Cline appears in sidebar
+    - Can autonomously execute multi-step tasks
+    - Reviews and approves changes before applying
+
+**Pro Tips:**
+- Cline is more autonomous than Continue (can run commands, edit multiple files)
+- Best for complex refactoring and multi-file changes
+- Use "Agentic Mode" for hands-off implementation
+- Reads `.cursorrules` for project guidelines
+
 ### Option 3: VS Code with GitHub Copilot
 
 **Best for:** Developers with GitHub Copilot subscription who want inline suggestions.
@@ -209,17 +233,25 @@ This tutorial works with any AI-capable IDE or text editor. Choose the option th
 
 ### IDE Feature Comparison
 
-| Feature | Cursor | VS Code + Continue | VS Code + Copilot | Manual |
-|---------|--------|-------------------|-------------------|--------|
-| **Local Models** | ✅ Yes | ✅ Yes | ❌ No | ✅ Yes |
-| **Inline Suggestions** | ✅ Yes | ✅ Yes | ✅ Yes | ❌ No |
-| **AI Chat** | ✅ Built-in | ✅ Sidebar | ✅ Panel | ⚠️ External |
-| **File References** | ✅ @file | ✅ @file | ⚠️ Limited | ❌ Manual |
-| **Codebase Search** | ✅ @Codebase | ✅ @Codebase | ⚠️ Limited | ❌ Manual |
-| **Cost** | Free | Free | $10/month | Free |
-| **Privacy** | Full control | Full control | Cloud-based | Full control |
+| Feature | Cursor | Continue | Cline | Copilot | Manual |
+|---------|--------|----------|-------|---------|--------|
+| **Local Models** | ✅ Yes | ✅ Yes | ✅ Yes | ❌ No | ✅ Yes |
+| **Inline Suggestions** | ✅ Yes | ✅ Yes | ⚠️ Limited | ✅ Yes | ❌ No |
+| **AI Chat** | ✅ Built-in | ✅ Sidebar | ✅ Sidebar | ✅ Panel | ⚠️ External |
+| **File References** | ✅ @file | ✅ @file | ✅ Auto | ⚠️ Limited | ❌ Manual |
+| **Codebase Search** | ✅ @Codebase | ✅ @Codebase | ✅ Auto | ⚠️ Limited | ❌ Manual |
+| **Agentic Mode** | ⚠️ Limited | ❌ No | ✅ Yes | ❌ No | ❌ No |
+| **Auto-Execute** | ❌ No | ❌ No | ✅ Yes | ❌ No | ❌ No |
+| **Cost** | Free | Free | $20/month* | $10/month | Free |
+| **Privacy** | Full | Full | API/Local | Cloud | Full |
 
-**Our Recommendation:** Start with **Cursor** for the best learning experience. If you're already comfortable with VS Code, **Continue** is an excellent choice that provides similar capabilities.
+*Can use free local Ollama, but less capable than Claude API
+
+**Our Recommendation:** 
+- **Best for learning**: **Cursor** - Most balanced feature set
+- **Best for VS Code users**: **Continue** - Free, powerful, supports local models
+- **Best for autonomous coding**: **Cline** - Can implement entire features, requires API key or uses Ollama
+- **Best for quick suggestions**: **Copilot** - Great inline completion, requires subscription
 
 ### IDE Configuration Files
 

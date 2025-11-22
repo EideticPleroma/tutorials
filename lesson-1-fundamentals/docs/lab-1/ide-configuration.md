@@ -12,6 +12,7 @@ Different IDEs have different ways of configuring AI assistant behavior. This pr
 |-----|-------------------|---------------------------|
 | **Cursor** | `.cursorrules` | ✅ Yes |
 | **Continue** (VS Code) | `.cursorrules` | ✅ Yes |
+| **Cline/Claude Code** (VS Code) | `.cursorrules` | ✅ Yes |
 | **GitHub Copilot** | `.vscode/settings.json` | ❌ No (manual setup) |
 | **Manual/Other** | `README.md` + this guide | ⚠️ Reference manually |
 
@@ -74,6 +75,63 @@ Already configured in `.vscode/settings.json`:
   "continue.enableTabAutocomplete": true
 }
 ```
+
+---
+
+## Cline (Claude Code for VS Code) Configuration
+
+**Status**: ✅ Fully Configured
+
+Cline (formerly Claude Dev) automatically reads `.cursorrules` and provides agentic AI capabilities.
+
+### What's Configured
+- **`.cursorrules`**: Project-specific AI behavior (same as Cursor/Continue)
+- **`.vscode/settings.json`**: Python and editor configuration
+- **Agentic Mode**: Can autonomously execute multi-step tasks
+
+### What is Cline?
+Cline is an autonomous AI assistant that can:
+- Execute terminal commands
+- Edit multiple files simultaneously
+- Create entire features from descriptions
+- Review its own changes before applying
+- Use local models (Ollama) or Claude API
+
+### How to Verify
+1. Install Cline extension in VS Code
+2. Open Cline sidebar
+3. Ask: "What are the project coding standards?"
+4. Cline should reference `.cursorrules` automatically
+
+### Configuration Options
+
+**Option A: Use Claude API (Recommended for best quality)**
+1. Get API key from [console.anthropic.com](https://console.anthropic.com)
+2. In Cline settings, add your API key
+3. Select Claude 3.5 Sonnet as the model
+
+**Option B: Use Local Ollama (Free)**
+1. Ensure Ollama is running (`ollama serve`)
+2. In Cline settings, select "Ollama" as provider
+3. Select `llama3.1:8b` as the model
+4. Note: Less capable than Claude API but free and private
+
+### Pro Tips
+- **Agentic Mode**: Let Cline implement entire features autonomously
+- **Approval Workflow**: Cline asks permission before executing commands or making changes
+- **Context**: Cline automatically includes relevant files in context
+- **`.cursorrules`**: Cline follows project guidelines automatically
+
+### Use Cases for This Tutorial
+- Implementing tools (Exercise 2)
+- Refactoring prompts (Exercise 3)
+- Writing comprehensive tests (Exercise 4)
+- Complex multi-file changes
+
+### Limitations
+- Claude API requires paid subscription ($20/month)
+- Ollama mode is less capable than Claude
+- Can be more autonomous than needed for learning exercises
 
 ---
 

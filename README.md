@@ -11,9 +11,10 @@ Welcome to the first lesson in the Agentic AI series. This lesson focuses on bui
 1.  **Prerequisites**:
     *   Windows 11 with WSL2 enabled (or Mac/Linux)
     *   **AI-Capable IDE** (choose one):
-        - [Cursor](https://cursor.sh/) - AI-first IDE, best experience
-        - [VS Code](https://code.visualstudio.com/) with [Continue](https://continue.dev/) extension
-        - [VS Code](https://code.visualstudio.com/) with [GitHub Copilot](https://github.com/features/copilot)
+        - [Cursor](https://cursor.sh/) - AI-first IDE, best for learning
+        - [VS Code](https://code.visualstudio.com/) with [Continue](https://continue.dev/) - Free, powerful
+        - [VS Code](https://code.visualstudio.com/) with [Cline](https://github.com/cline/cline) - Agentic AI (formerly Claude Dev)
+        - [VS Code](https://code.visualstudio.com/) with [GitHub Copilot](https://github.com/features/copilot) - Quick suggestions
         - Any text editor (manual AI consultation)
     *   [Ollama](https://ollama.com/) installed (for running local LLMs)
 
