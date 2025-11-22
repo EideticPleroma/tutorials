@@ -5,7 +5,8 @@ from .agent_config import config
 from .tool_registry import registry
 # Import tools to register them (side-effect imports for decorator registration)
 from . import mcp_tool_bridge  # noqa: F401
-from .tools import file_search  # noqa: F401
+# Students: Add your tool imports here following Exercise 2
+# Example: from .tools import your_tool  # noqa: F401
 
 # --- Define Basic Tools ---
 
