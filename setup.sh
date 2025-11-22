@@ -22,7 +22,7 @@ echo -e "\n${YELLOW}[1/5] Checking prerequisites...${NC}"
 check_command python3 || exit 1
 check_command node || exit 1
 check_command npm || exit 1
-check_command ollama || { echo -e "${YELLOW}Warning: Ollama not found. Please install it or run via Docker.${NC}"; }
+check_command ollama || { echo -e "${YELLOW}Warning: Ollama not found. Please install it from https://ollama.com${NC}"; }
 
 # 2. Python Setup
 echo -e "\n${YELLOW}[2/5] Setting up Python environment...${NC}"

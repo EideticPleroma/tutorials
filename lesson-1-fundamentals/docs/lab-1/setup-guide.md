@@ -134,7 +134,94 @@ python -m src.agent.simple_agent
 
 If all of these work, you are ready to start the [Lab Checklist](./lab-checklist.md).
 
-## 7. Understanding the Test Data
+## 7. IDE Setup
+
+This tutorial works with any AI-capable IDE or text editor. Choose the option that best fits your workflow:
+
+### Option 1: Cursor (Recommended)
+
+**Best for:** Complete AI-first development experience with built-in chat and code generation.
+
+1.  **Install**: Download from [cursor.sh](https://cursor.sh/)
+2.  **Configuration**: Create `.cursorrules` file (already included in this repo)
+3.  **Usage**:
+    - Press `Cmd/Ctrl+K` for inline code generation
+    - Press `Cmd/Ctrl+L` to open AI chat
+    - Reference files with `@filename`
+    - Tag codebase with `@Codebase` for broad questions
+
+**Pro Tips:**
+- Use `@src/agent/simple_agent.py` to reference specific files
+- Start new chats when switching tasks to clear context
+- The `.cursorrules` file guides AI behavior for this project
+
+### Option 2: VS Code with Continue
+
+**Best for:** VS Code users who want powerful AI assistance with local model support.
+
+1.  **Install VS Code**: Download from [code.visualstudio.com](https://code.visualstudio.com/)
+2.  **Install Continue Extension**:
+    - Open VS Code Extensions (Cmd/Ctrl+Shift+X)
+    - Search for "Continue"
+    - Install the extension
+3.  **Configure Continue**:
+    ```bash
+    # Continue will auto-detect Ollama
+    # Access Continue with Cmd/Ctrl+L
+    ```
+4.  **Configuration**: Continue reads `.cursorrules` automatically
+
+**Pro Tips:**
+- Use `Cmd/Ctrl+L` to open Continue sidebar
+- Reference files with `@filename`
+- Continue supports both local (Ollama) and cloud models
+
+### Option 3: VS Code with GitHub Copilot
+
+**Best for:** Developers with GitHub Copilot subscription who want inline suggestions.
+
+1.  **Install VS Code**: Download from [code.visualstudio.com](https://code.visualstudio.com/)
+2.  **Install Copilot**:
+    - Sign up at [github.com/features/copilot](https://github.com/features/copilot)
+    - Install "GitHub Copilot" extension in VS Code
+    - Sign in with your GitHub account
+3.  **Usage**:
+    - Copilot provides inline suggestions as you type
+    - Use `Cmd/Ctrl+I` for Copilot chat
+    - Ask questions in natural language
+
+**Note:** Copilot uses cloud models (not local Ollama). Your code is sent to GitHub's servers.
+
+### Option 4: Any Text Editor + Manual AI Consultation
+
+**Best for:** Users who prefer their existing editor or want maximum control.
+
+1.  **Use your favorite editor**: vim, Emacs, Sublime, etc.
+2.  **Consult AI manually**:
+    - Use ChatGPT/Claude in browser for questions
+    - Run Ollama directly: `ollama run llama3.1`
+    - Copy/paste code and questions as needed
+
+**Pro Tips:**
+- Keep the [documentation](../tutorial-1/READING_GUIDE.md) open for reference
+- Use the prompts from [Exercise 3](./exercises/03-prompt-engineering.md) to ask effective questions
+- This approach takes longer but gives you complete control
+
+### IDE Feature Comparison
+
+| Feature | Cursor | VS Code + Continue | VS Code + Copilot | Manual |
+|---------|--------|-------------------|-------------------|--------|
+| **Local Models** | ✅ Yes | ✅ Yes | ❌ No | ✅ Yes |
+| **Inline Suggestions** | ✅ Yes | ✅ Yes | ✅ Yes | ❌ No |
+| **AI Chat** | ✅ Built-in | ✅ Sidebar | ✅ Panel | ⚠️ External |
+| **File References** | ✅ @file | ✅ @file | ⚠️ Limited | ❌ Manual |
+| **Codebase Search** | ✅ @Codebase | ✅ @Codebase | ⚠️ Limited | ❌ Manual |
+| **Cost** | Free | Free | $10/month | Free |
+| **Privacy** | Full control | Full control | Cloud-based | Full control |
+
+**Our Recommendation:** Start with **Cursor** for the best learning experience. If you're already comfortable with VS Code, **Continue** is an excellent choice that provides similar capabilities.
+
+## 8. Understanding the Test Data
 
 The repository includes sample data files in `data/` for testing your tools:
 

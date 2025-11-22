@@ -1,4 +1,5 @@
-# Cursor Rules for Lesson 1 - Fundamentals
+# AI Assistant Rules for Lesson 1 - Fundamentals
+# Compatible with Cursor, Continue (VS Code), and other AI IDEs
 
 ## 1. Project Context & Goal
 This is an educational project teaching Agentic AI fundamentals.
@@ -48,9 +49,10 @@ This is an educational project teaching Agentic AI fundamentals.
 - **Reference Lab Docs**: Point the user to `docs/lab-1/exercises/` when they are stuck.
 
 ## 7. Interaction Guidelines
-- When asking the user to run commands, assume `bash` (WSL2) or `PowerShell` (Windows).
+- When asking the user to run commands, assume `bash` (WSL2/Linux/macOS) or `PowerShell` (Windows).
 - Prefer explaining *concepts* over just providing code blocks.
 - Use the `lesson-1-fundamentals/` prefix for file paths.
+- Adapt responses to the IDE being used (Cursor, VS Code, or manual consultation).
 
 ## 8. Git Workflow
 

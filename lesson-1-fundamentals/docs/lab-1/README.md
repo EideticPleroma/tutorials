@@ -24,9 +24,9 @@ You are not just copying code. You are acting as the Lead Engineer for an AI Jun
 **👉 [Step-by-Step Setup Guide](./setup-guide.md)** (Read this if you are setting up WSL, Python, or Node from scratch)
 
 Ensure you have completed the setup:
-- [ ] Docker is running (`docker ps` works)
 - [ ] Ollama is running (`curl localhost:11434` works)
 - [ ] Python environment is active (`source venv/bin/activate` or similar)
+- [ ] AI IDE configured ([see IDE setup](./setup-guide.md#ide-setup))
 - [ ] You have read the [Core Concepts](../tutorial-1/concepts/tool-calling-architecture.md)
 
 ## Getting Started

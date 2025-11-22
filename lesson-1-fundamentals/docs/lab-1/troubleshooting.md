@@ -15,7 +15,7 @@
 ### 3. "Connection Refused" (Ollama)
 *   **Symptom**: `httpx.ConnectError`
 *   **Cause**: Ollama is not running.
-*   **Fix**: Run `ollama serve` in a separate terminal or ensure the Docker container is up.
+*   **Fix**: Run `ollama serve` in a separate terminal. Check if it's running with `curl localhost:11434`.
 
 ### 4. Tests Fail Randomly (Flakiness)
 *   **Symptom**: Test passes 4 times, fails the 5th.

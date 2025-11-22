@@ -10,15 +10,20 @@ Welcome to the first lesson in the Agentic AI series. This lesson focuses on bui
 
 1.  **Prerequisites**:
     *   Windows 11 with WSL2 enabled (or Mac/Linux)
-    *   Docker Desktop installed
-    *   Cursor IDE installed
-    *   Ollama installed
+    *   **AI-Capable IDE** (choose one):
+        - [Cursor](https://cursor.sh/) - AI-first IDE, best experience
+        - [VS Code](https://code.visualstudio.com/) with [Continue](https://continue.dev/) extension
+        - [VS Code](https://code.visualstudio.com/) with [GitHub Copilot](https://github.com/features/copilot)
+        - Any text editor (manual AI consultation)
+    *   [Ollama](https://ollama.com/) installed (for running local LLMs)
 
 2.  **Setup**:
     Run the setup script to configure your environment:
     ```bash
     ./setup.sh
     ```
+    
+    **IDE-Specific Setup**: See [IDE Setup Guide](./lesson-1-fundamentals/docs/lab-1/setup-guide.md#ide-setup) for configuration instructions.
 
 3.  **Run the Agent**:
     ```bash
