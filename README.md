@@ -199,7 +199,7 @@ By the end of this lesson, you will:
 
 **Immediate Next Steps:**
 1. Complete the optional [Challenge Exercise](./lesson-1-fundamentals/docs/lab-1/exercises/05-challenge-read-file.md) - Build a file reading tool
-2. Review your [Progress Tracker](./progress.md) and document key learnings
+2. Review your [Progress Tracker](./lesson-1-fundamentals/docs/progress.md) and document key learnings
 3. Experiment with your own custom tools (ideas: API calls, database queries, file operations)
 4. Share your agent with colleagues or the community
 
@@ -243,7 +243,7 @@ By the end of this lesson, you will:
 ### Continue Your Journey
 
 **Track Your Progress:**
-- Use the [Progress Tracker](./progress.md) to document insights
+- Use the [Progress Tracker](./lesson-1-fundamentals/docs/progress.md) to document insights
 - Keep notes on challenges and solutions
 - Build a portfolio of custom tools and agents
 

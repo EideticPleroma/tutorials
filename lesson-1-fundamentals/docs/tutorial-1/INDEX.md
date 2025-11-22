@@ -15,7 +15,7 @@ Quick reference to all documentation in Tutorial 1.
 8. **[Context Management](./guides/context-management.md)** - Managing Cursor IDE context
 9. **[Engineering Best Practices](./guides/engineering.md)** - Development workflows
 10. **[Agentic Code Practices](./guides/agentic-practices.md)** - Writing tools for agents
-11. **[Progress Tracker](../../progress.md)** - Track your learning
+11. **[Progress Tracker](../progress.md)** - Track your learning
 12. **[Architecture Evolution](./architecture/evolution.md)** - Advanced: How architecture is changing
 13. **[LLM Driven Design](./architecture/llm-driven-design.md)** - Advanced: Prompting for design
 14. **[Visualization Tools](./architecture/visualization-tools.md)** - Advanced: Communicating with diagrams
@@ -45,7 +45,7 @@ Quick reference to all documentation in Tutorial 1.
 ### Reference
 - [Reading Guide](./READING_GUIDE.md) - Start here for reading order
 - [README.md](../../../README.md) - Project overview
-- [Progress Tracker](../../progress.md) - Learning checklist
+- [Progress Tracker](../progress.md) - Learning checklist
 
 ## Quick Lookup
 
@@ -62,4 +62,4 @@ Quick reference to all documentation in Tutorial 1.
 **I need to...**
 - Get started → [README.md](../../../README.md)
 - Know what to read next → [Reading Guide](./READING_GUIDE.md)
-- Track my progress → [Progress Tracker](../../progress.md)
+- Track my progress → [Progress Tracker](../progress.md)

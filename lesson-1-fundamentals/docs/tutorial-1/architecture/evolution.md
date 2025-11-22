@@ -1,6 +1,6 @@
 # The Evolution of Architecture Practices
 
-**Page 13 of 15** | [← Previous: Progress Tracker](../../progress.md) | [Next: LLM Driven Design →](./llm-driven-design.md) | [↑ Reading Guide](../READING_GUIDE.md)
+**Page 13 of 15** | [← Previous: Progress Tracker](../progress.md) | [Next: LLM Driven Design →](./llm-driven-design.md) | [↑ Reading Guide](../READING_GUIDE.md)
 
 Architecture is not static. Just as Agile replaced Waterfall, AI is replacing "Big Design Up Front" with "Continuous AI-Assisted Refinement."
 

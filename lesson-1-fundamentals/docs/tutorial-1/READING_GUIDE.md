@@ -128,7 +128,7 @@ The tutorial is organized into **5 phases** with **15 core documents**. Each pha
 - **Action**: Read code with documentation open
 
 ### Page 12: Progress Tracking
-**📄 [Progress Tracker](../../progress.md)** (5 min)
+**📄 [Progress Tracker](../progress.md)** (5 min)
 - Check off completed phases
 - See what's next
 - Track your learning journey
