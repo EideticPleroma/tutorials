@@ -58,3 +58,31 @@ sequenceDiagram
 *   [ ] I can explain why the agent loops twice for one question.
 *   [ ] I understand the flow: User → Agent → LLM (decide) → Tool → LLM (synthesize) → User
 
+---
+
+## 💡 Stuck on This Exercise?
+
+**Ask Your AI Assistant** (include `.cursorrules` for context):
+
+```
+@.cursorrules
+
+I'm working on Exercise 1 (Understanding the Agent).
+
+I'm having trouble [understanding the flow / finding the code / tracing execution].
+
+Specifically: [describe what's confusing]
+
+Can you explain this according to the project's architecture?
+```
+
+**Or debug with the tool:**
+```bash
+python scripts/debug_agent.py --test "What is the weather in Paris?"
+```
+
+**See also:**
+- [Tool Calling Architecture](../../tutorial-1/concepts/tool-calling-architecture.md) - The 7-step loop explained
+- [Getting Unstuck Guide](../getting-unstuck.md) - Systematic debugging
+- [FAQ](../FAQ.md#why-does-my-agent-make-two-llm-calls-for-one-question) - Why two LLM calls?
+

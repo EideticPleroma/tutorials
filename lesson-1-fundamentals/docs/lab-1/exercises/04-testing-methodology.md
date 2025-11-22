@@ -75,6 +75,83 @@ for i in {1..5}; do pytest tests/unit/test_file_search.py; done
 ```
 If it fails once, your prompt might be ambiguous. Refine the prompt (Exercise 3) until it passes 5/5.
 
+## Common Issues for This Exercise
+
+### Tests Fail Randomly (Flakiness)
+- **Check:** Temperature set to 0.1 or lower?
+- **Check:** System prompt explicit enough?
+- **Try:** Relax assertions (check keywords, not exact text)
+- **Goal:** 5/5 passes = robust test
+
+### AssertionError: passed_validation is False
+- **Debug:** Print `result.validation_errors` to see what failed
+- **Check:** Does tool actually get called? (check `result.tool_calls`)
+- **Check:** Does response contain expected keywords?
+
+### Import Errors in Tests
+- **Check:** Running from project root
+- **Check:** Virtual environment activated
+- **Fix:** `pytest tests/unit/test_file_search.py`
+
+---
+
+## 💡 Stuck on This Exercise?
+
+**Test Keeps Failing:**
+
+```
+@.cursorrules
+
+Exercise 4: My test fails inconsistently (passes 2/5 times).
+
+Test code:
+[paste relevant test]
+
+Agent temperature: [setting]
+System prompt: [paste or summarize]
+
+Test output when it fails:
+[paste pytest output]
+
+How do I make this deterministic according to O.V.E. methodology?
+```
+
+**Understanding Test Failures:**
+
+```
+@.cursorrules
+
+My test fails with:
+AssertionError: passed_validation is False
+
+Test: test_agent_finds_files
+
+I'm not sure what validation is failing. According to the test 
+framework, how do I debug this?
+
+Test code:
+[paste test]
+```
+
+**Debug Tests:**
+```bash
+# Run with verbose output
+pytest tests/unit/test_file_search.py -v -s
+
+# Run single test
+pytest tests/unit/test_file_search.py::test_agent_finds_files -v -s
+
+# Check flakiness
+for i in {1..5}; do pytest tests/unit/test_file_search.py; done
+```
+
+**See Also:**
+- [Testing Agents Concept](../../tutorial-1/concepts/testing-agents.md)
+- [Troubleshooting: Testing Issues](../troubleshooting.md#testing-issues)
+- [FAQ: O.V.E. Methodology](../FAQ.md#q-whats-the-difference-between-validate-and-evaluate-in-ove)
+
+---
+
 ## 🎉 Victory Checkpoint
 
 If your tests pass consistently (5/5 runs), you've achieved something remarkable! You've:

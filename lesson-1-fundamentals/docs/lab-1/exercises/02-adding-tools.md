@@ -122,6 +122,64 @@ The agent should call `search_files` and return descriptive results for each que
 *   **Returning Complex Types**: Return strings (natural language) instead of lists or dictionaries. Agents understand `"Found 3 files: ..."` better than `['file1', 'file2', 'file3']`.
 *   **Raising Exceptions**: Return error strings like `"Error: Directory not found"` instead of raising exceptions. Let the agent handle the error gracefully.
 
+## Common Issues for This Exercise
+
+### Tool Not Found (KeyError)
+- **Check:** Is `__init__.py` in `tools/` directory?
+- **Check:** Did you import in `simple_agent.py`?
+- **Debug:** Run `python scripts/debug_agent.py --tools`
+
+### Import Errors
+- **Check:** File structure matches tutorial exactly
+- **Check:** Running from project root, not subdirectory
+- **Debug:** See [Troubleshooting](../troubleshooting.md#import--module-errors)
+
+### Tool Returns None
+- **Check:** Every code path has a `return` statement
+- **Check:** Exceptions caught and returned as error strings
+
+---
+
+## 💡 Stuck on This Exercise?
+
+**Most Common Issue - Tool Not Registering:**
+
+```
+@.cursorrules
+
+Exercise 2: My tool isn't registered (KeyError: 'search_files').
+
+File structure:
+src/agent/tools/
+├── __init__.py
+└── file_search.py
+
+My file_search.py has:
+- @registry.register decorator
+- Proper function signature
+- Complete docstring
+
+I added: from .tools import file_search  # noqa: F401 to simple_agent.py
+
+What am I missing according to the tool registration pattern?
+```
+
+**Debug Tool Registration:**
+```bash
+# See what tools are actually registered
+python scripts/debug_agent.py --tools
+
+# Expected: Should list search_files
+# If not: Check import is actually executing
+```
+
+**See Also:**
+- [Troubleshooting: Tool Registration](../troubleshooting.md#tool-registration-errors)
+- [FAQ: Why noqa:F401?](../FAQ.md#q-why-do-i-need--noqua-f401-after-tool-imports)
+- [Getting Unstuck Guide](../getting-unstuck.md)
+
+---
+
 ## 🎉 Victory Checkpoint
 
 If your agent successfully finds files using the `search_files` tool, congratulations! You've just:

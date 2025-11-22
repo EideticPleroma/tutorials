@@ -263,7 +263,169 @@ This project includes configuration files for each IDE:
 
 **📖 [Complete IDE Configuration Guide](./IDE_CONFIGURATION.md)** - Detailed setup and troubleshooting for each IDE
 
-## 8. Understanding the Test Data
+## 8. Pro Tip: Always Include .cursorrules in AI Context
+
+> **💡 This is the #1 skill that will accelerate your learning!**
+
+The `.cursorrules` file at the project root contains all the guidelines, coding standards, and debugging approaches for this tutorial. When asking your AI assistant for help, **always include it in context**.
+
+### Why This Matters
+
+Your AI will give answers that:
+- ✅ Follow the tutorial's methodology
+- ✅ Use the correct patterns (decorators, imports, testing)
+- ✅ Match the project's coding standards
+- ✅ Are more educational (not just quick fixes)
+
+**Without context:** "Try adding this code..." (might not match project style)
+**With context:** "According to the project's tool registration pattern, you need to..." (matches tutorial approach)
+
+### How to Include .cursorrules in Context
+
+#### In Cursor
+
+Type `@.cursorrules` at the start of your chat:
+
+```
+@.cursorrules
+
+I'm working on Exercise 2 and getting KeyError: 'search_files'.
+What am I missing according to the project guidelines?
+```
+
+**Keyboard shortcut:** Just type `@` and select `.cursorrules` from the menu.
+
+#### In Continue (VS Code)
+
+Continue automatically reads `.cursorrules` - just ask your question:
+
+```
+I'm getting KeyError: 'search_files' in Exercise 2.
+What should I check based on the project setup?
+```
+
+**No need to explicitly reference it** - Continue loads it automatically!
+
+#### In Cline (VS Code)
+
+Cline also automatically reads `.cursorrules`:
+
+```
+Debug this error according to the project's guidelines:
+KeyError: 'search_files'
+```
+
+#### In GitHub Copilot
+
+Copilot **doesn't auto-read** `.cursorrules`. You need to manually include it:
+
+**Option 1: Reference in every chat**
+```
+I'm following the lesson-1-fundamentals tutorial which uses:
+- Python decorators for tool registration
+- Side-effect imports (# noqa: F401)
+- O.V.E. testing methodology
+
+My problem: [describe issue]
+```
+
+**Option 2: Open .cursorrules file**
+- Keep `.cursorrules` open in a tab
+- Copilot can see open files
+- Reference it: "Based on the open .cursorrules file..."
+
+#### For Manual AI Consultation (ChatGPT, Claude, etc.)
+
+1. Open `.cursorrules` in your editor
+2. Copy relevant sections:
+   - Coding Standards
+   - Agentic Development Rules
+   - Testing Methodology
+3. Paste into your chat along with your question
+
+**Example prompt:**
+```
+I'm working on an Agentic AI tutorial. Here are the project guidelines:
+
+[PASTE RELEVANT .cursorrules SECTIONS]
+
+My problem:
+- Exercise: 2 (Adding Tools)
+- Error: KeyError: 'search_files'
+- What I tried: [your attempts]
+
+Please help me debug following these guidelines.
+```
+
+### Example: Good vs Bad AI Questions
+
+**❌ Bad (No Context):**
+```
+How do I add a tool to my agent?
+```
+
+**Why bad:** AI doesn't know your project structure, patterns, or requirements.
+
+**✅ Good (With Context - Cursor/Continue):**
+```
+@.cursorrules
+
+How do I add a file_search tool following the project's 
+tool registration pattern? I'm on Exercise 2.
+```
+
+**Why good:** AI knows to use `@registry.register`, proper imports, docstrings, etc.
+
+**✅ Also Good (With Context - Detailed):**
+```
+@.cursorrules
+
+I'm implementing file_search tool in Exercise 2.
+
+Current error: KeyError: 'search_files'
+
+My code:
+- Created src/agent/tools/file_search.py
+- Added @registry.register decorator
+- Function signature: def search_files(directory: str, pattern: str) -> str
+
+What am I missing per the project's tool registration workflow?
+```
+
+**Why best:** Specific exercise, error, what you tried, asks for project-specific solution.
+
+### Make It a Habit
+
+**Every time you ask your AI assistant for help:**
+
+1. **Include context:** `@.cursorrules` (Cursor) or open the file (Copilot)
+2. **Specify exercise:** "I'm on Exercise 2..."
+3. **Show what you tried:** "I created the file, added the decorator..."
+4. **Ask project-specific:** "According to the project guidelines..."
+
+**Result:** Better answers, faster learning, fewer dead-ends.
+
+### Quick Reference Card
+
+Save this for easy copy-paste:
+
+```
+@.cursorrules
+
+Exercise: [1/2/3/4/Challenge]
+Error: [exact error message or "no error, just stuck"]
+
+What I'm trying to do: [goal]
+What I tried: [attempts]
+Expected: [what should happen]
+Actual: [what's happening]
+
+According to the project guidelines, what should I check?
+```
+
+---
+
+## 9. Understanding the Test Data
 
 The repository includes sample data files in `data/` for testing your tools:
 

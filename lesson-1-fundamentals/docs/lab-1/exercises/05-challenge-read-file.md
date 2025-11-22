@@ -162,6 +162,99 @@ You've completed the challenge when:
 ✅ Error cases are handled gracefully
 ✅ Agent provides helpful responses using file contents
 
+## Common Issues for This Challenge
+
+### File Not Found Errors
+- **Check:** Paths are relative to project root
+- **Check:** Using `os.path.join()` for cross-platform compatibility
+- **Try:** Print the full path being accessed for debugging
+
+### Binary File Detection
+- **Approach 1:** Try to decode as UTF-8, catch `UnicodeDecodeError`
+- **Approach 2:** Check for null bytes in first 8KB
+- **Approach 3:** Use `mimetypes` module
+
+### Large File Handling
+- **Don't:** Load entire file into memory
+- **Do:** Check `os.path.getsize()` first
+- **Return:** Helpful error like "File too large (15MB). Max size: 10MB"
+
+### Agent Doesn't Chain Tools
+- **Check:** System prompt encourages tool chaining
+- **Try:** Test with explicit query: "Search for Python files, then read todos.txt"
+- **Debug:** Check message history - are both tool calls present?
+
+---
+
+## 💡 Stuck on This Challenge?
+
+**Tool Implementation Help:**
+
+```
+@.cursorrules
+
+Challenge Exercise: Implementing read_file tool.
+
+I'm stuck on: [error handling / binary detection / large files / testing]
+
+Current implementation:
+[paste your read_file function]
+
+Error I'm getting:
+[paste error or describe issue]
+
+According to agentic best practices, how should I handle this?
+```
+
+**Tool Chaining Issues:**
+
+```
+@.cursorrules
+
+My agent can search OR read, but not chain search→read.
+
+System prompt includes: [paste relevant part]
+
+Test query: "Find Python files in tests/, then read test_framework.py"
+
+Agent behavior: [describe what happens]
+
+How do I encourage multi-step reasoning?
+```
+
+**Test Writing Help:**
+
+```
+@.cursorrules
+
+Challenge: Writing tests for read_file tool.
+
+Completed unit tests: [list which ones]
+Stuck on: [E2E test / chained tools test / flakiness]
+
+Test code attempt:
+[paste test]
+
+Following O.V.E. methodology, how should this test be structured?
+```
+
+**Debug Tool Chaining:**
+```bash
+# Enable debug mode to see both tool calls
+# Add to simple_agent.py:
+print(f"DEBUG: Tool call {i}: {tool_call['function']['name']}")
+
+# Then test
+python -m src.agent.simple_agent
+```
+
+**See Also:**
+- [Agentic Code Practices](../../tutorial-1/guides/agentic-practices.md) - Tool design principles
+- [Troubleshooting: Tool Errors](../troubleshooting.md#tool-registration-errors)
+- [FAQ: Tool Chaining](../FAQ.md#q-can-i-force-the-agent-to-always-use-a-specific-tool)
+
+---
+
 ## 🎉 **CHALLENGE COMPLETE!**
 
 **Congratulations!** You've built a file-reading agent that can navigate and analyze codebases. This is a significant achievement! You've:

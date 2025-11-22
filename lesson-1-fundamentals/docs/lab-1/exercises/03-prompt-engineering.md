@@ -162,6 +162,71 @@ Your improved prompt should make the agent:
 - ✅ Explain its reasoning (at least briefly)
 - ✅ Handle errors gracefully
 
+## Common Issues for This Exercise
+
+### Agent Behavior Doesn't Change
+- **Check:** Did you restart the agent after changing `agent_config.py`?
+- **Check:** Is temperature too high? Try 0.1 for deterministic behavior
+- **Try:** Make instructions more explicit ("MUST use tools" not "should use tools")
+
+### Tools Stop Working After Prompt Change
+- **Cause:** Verbose CoT can interfere with JSON tool calling format
+- **Fix:** Use natural language guidance, not forced step-by-step output
+- **See:** Warning in Step 2 of this exercise
+
+### Agent Ignores Parts of Prompt
+- **Try:** Shorten prompt (under 500 words)
+- **Try:** Move critical instructions to start/end
+- **Try:** Use CAPS or repetition for emphasis
+
+---
+
+## 💡 Stuck on This Exercise?
+
+**Ask Your AI for Prompt Improvement:**
+
+```
+@.cursorrules
+
+Exercise 3: Improving my system prompt.
+
+Current prompt:
+[paste your current prompt]
+
+Problem: Agent [doesn't use tools / ignores outputs / too verbose / etc.]
+
+Example behavior:
+Query: "Find Python files in tests/"
+Response: [paste what agent said]
+
+How should I modify the prompt according to prompting best practices?
+```
+
+**Or Get Prompt Review:**
+
+```
+@.cursorrules
+
+Review this system prompt for a tool-calling agent:
+
+[paste your prompt]
+
+Issues to check:
+1. Does it encourage tool usage?
+2. Does it ensure tool outputs are used?
+3. Is it compatible with structured tool calling?
+4. Are instructions clear and explicit?
+
+Suggest improvements following the project's prompting guide.
+```
+
+**See Also:**
+- [Prompting Techniques Guide](../../tutorial-1/guides/prompting.md)
+- [Troubleshooting: Agent Behavior](../troubleshooting.md#agent-behavior-issues)
+- [FAQ: Agent Ignores Prompt](../FAQ.md#q-why-does-my-agent-ignore-parts-of-the-system-prompt)
+
+---
+
 ## 🎉 Victory Checkpoint
 
 If you've successfully improved the agent's behavior through prompt engineering, you've mastered a critical skill! You've learned:

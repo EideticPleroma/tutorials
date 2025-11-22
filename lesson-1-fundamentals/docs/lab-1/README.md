@@ -45,7 +45,74 @@ The lab is divided into 4 progressive exercises:
 
 ## Need Help?
 
-*   Check the [Troubleshooting Guide](./troubleshooting.md).
-*   Review the [Reference Documentation](../tutorial-1/READING_GUIDE.md).
-*   Ask the AI: "Explain this error trace in the context of a Python tool calling loop."
+### 🆘 Getting Support
+
+When you hit a roadblock, you have comprehensive support resources:
+
+**1. Start Here - Getting Unstuck Guide** 🎯
+- **[Getting Unstuck Guide](./getting-unstuck.md)** - Systematic 5-step debugging process
+- Learn to use your AI assistant effectively with `.cursorrules` context
+- Rollback strategies when nothing works
+
+**2. Specific Errors** 🔧
+- **[Troubleshooting Guide](./troubleshooting.md)** - 20+ common errors with solutions
+- Includes: Setup, imports, tool registration, agent behavior, testing, Ollama issues
+- Each error has: What it means, Why it happens, How to fix, Ask Your AI prompt
+
+**3. Common Questions** ❓
+- **[FAQ](./FAQ.md)** - 50+ frequently asked questions with answers
+- Organized by: Setup, Tools, Agent Behavior, Testing, IDE, Concepts, Performance
+
+**4. Debug Tools** 🛠️
+```bash
+# Comprehensive diagnostic
+python scripts/debug_agent.py
+
+# Show registered tools
+python scripts/debug_agent.py --tools
+
+# Test with a query
+python scripts/debug_agent.py --test "What is 2+2?"
+```
+
+**5. AI Assistant Tips** 🤖
+- Always include `@.cursorrules` in your questions (Cursor users)
+- Continue/Cline: Reads `.cursorrules` automatically
+- See [Setup Guide Section 8](./setup-guide.md#8-pro-tip-always-include-cursorrules-in-ai-context) for details
+
+**6. Reference Documentation** 📚
+- [Reading Guide](../tutorial-1/READING_GUIDE.md) - Conceptual documentation
+- [Documentation Index](../tutorial-1/INDEX.md) - Quick reference
+
+### Quick Debug Commands
+
+```bash
+# Verify setup
+curl localhost:11434                    # Check Ollama
+ollama list                             # Check models
+python scripts/debug_agent.py           # Full diagnostic
+
+# Test components
+python -m pytest tests/ -v              # Run all tests
+python -m src.agent.simple_agent        # Run agent
+
+# Check tool registration
+python -c "from src.agent.tool_registry import registry; from src.agent import simple_agent; print([s['function']['name'] for s in registry.get_schemas()])"
+```
+
+### Example: Using Your AI Assistant
+
+```
+@.cursorrules
+
+I'm stuck on Exercise [number].
+
+Problem: [describe issue]
+Error: [paste error if any]
+What I tried: [list attempts]
+Expected: [what should happen]
+Actual: [what's happening]
+
+According to the project guidelines, what should I check next?
+```
 
