@@ -34,13 +34,18 @@ venv.bak/
 htmlcov/
 .tox/
 
-# IDEs
-.vscode/
+# IDEs (keep .vscode/ for project config, but ignore personal settings)
 .idea/
 *.swp
 *.swo
 *~
 .DS_Store
+
+# Keep .vscode project configuration but ignore personal settings
+!.vscode/
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
 
 # Cursor
 .cursor/

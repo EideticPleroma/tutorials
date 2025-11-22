@@ -221,6 +221,16 @@ This tutorial works with any AI-capable IDE or text editor. Choose the option th
 
 **Our Recommendation:** Start with **Cursor** for the best learning experience. If you're already comfortable with VS Code, **Continue** is an excellent choice that provides similar capabilities.
 
+### IDE Configuration Files
+
+This project includes configuration files for each IDE:
+
+- **`.cursorrules`**: Auto-loaded by Cursor and Continue
+- **`.vscode/settings.json`**: VS Code configuration (Continue, Copilot, Python)
+- **`.vscode/extensions.json`**: Recommended VS Code extensions
+
+**📖 [Complete IDE Configuration Guide](./IDE_CONFIGURATION.md)** - Detailed setup and troubleshooting for each IDE
+
 ## 8. Understanding the Test Data
 
 The repository includes sample data files in `data/` for testing your tools:

@@ -1,0 +1,22 @@
+{
+  "recommendations": [
+    // AI Coding Assistants (choose one or more)
+    "continue.continue",
+    "github.copilot",
+    "github.copilot-chat",
+    
+    // Python Development
+    "ms-python.python",
+    "ms-python.vscode-pylance",
+    
+    // Testing
+    "littlefoxteam.vscode-python-test-adapter",
+    
+    // Markdown
+    "yzhang.markdown-all-in-one",
+    
+    // Git
+    "eamodio.gitlens"
+  ]
+}
+
