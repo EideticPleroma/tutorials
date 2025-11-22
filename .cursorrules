@@ -1,3 +1,8 @@
+---
+alwaysApply: true
+priority: high
+---
+
 # AI Assistant Rules for Lesson 1 - Fundamentals
 # Compatible with Cursor, Continue (VS Code), and other AI IDEs
 
