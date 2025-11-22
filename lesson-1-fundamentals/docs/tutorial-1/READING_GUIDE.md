@@ -4,7 +4,7 @@ This guide provides the recommended reading order for Tutorial 1. Follow this se
 
 ## Reading Path Overview
 
-The tutorial is organized into **5 phases** with **15 core documents**. Each phase builds on the previous one.
+The tutorial is organized into **5 phases** with **16 core documents**. Each phase builds on the previous one.
 
 **Estimated Reading Time**: ~3 hours for all documentation
 **Recommended Approach**: Read concepts before coding, then reference guides as you build.
@@ -127,12 +127,6 @@ The tutorial is organized into **5 phases** with **15 core documents**. Each pha
 - `tests/test_framework.py` - Testing framework
 - **Action**: Read code with documentation open
 
-### Page 12: Progress Tracking
-**📄 [Progress Tracker](../progress.md)** (5 min)
-- Check off completed phases
-- See what's next
-- Track your learning journey
-
 ---
 
 ## Phase 5: Advanced Topics - Architecture (Pages 13-15)
@@ -155,6 +149,12 @@ The tutorial is organized into **5 phases** with **15 core documents**. Each pha
 - Mermaid.js for documentation
 - AI-Native tools (Claude Artifacts, Cursor)
 - Hands-on: Generating diagrams for this codebase
+
+### Page 16: Progress Tracking
+**📄 [Progress Tracker](../progress.md)** (5 min)
+- Check off completed phases
+- See what's next
+- Track your learning journey
 
 ---
 
@@ -201,6 +201,7 @@ Read README, then reference specific guides as you encounter problems.
 - ✅ Architecture section complete
 - ✅ Code examples included
 - ✅ Navigation links added
+- ✅ Progress tracker positioned at end
 
 ---
 

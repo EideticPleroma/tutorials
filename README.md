@@ -1,6 +1,6 @@
 # Lesson 1: Fundamentals of Agentic AI
 
-**Page 1 of 15** | [Next: Software Engineering Evolution →](./lesson-1-fundamentals/docs/tutorial-1/concepts/software-engineering-evolution.md) | [📚 Reading Guide](./lesson-1-fundamentals/docs/tutorial-1/READING_GUIDE.md)
+**Page 1 of 16** | [Next: Software Engineering Evolution →](./lesson-1-fundamentals/docs/tutorial-1/concepts/software-engineering-evolution.md) | [📚 Reading Guide](./lesson-1-fundamentals/docs/tutorial-1/READING_GUIDE.md)
 
 Welcome to the first lesson in the Agentic AI series. This lesson focuses on building a foundational understanding of agentic AI by creating a local agent with tool-calling capabilities, implementing testing methodologies, and establishing best practices for AI-assisted development.
 

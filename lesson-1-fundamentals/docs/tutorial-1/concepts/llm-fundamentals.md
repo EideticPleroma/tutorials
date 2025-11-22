@@ -1,6 +1,6 @@
 # LLM Fundamentals for Agentic AI
 
-**Page 3 of 15** | [← Previous: Software Engineering Evolution](./software-engineering-evolution.md) | [Next: Tool Calling Architecture →](./tool-calling-architecture.md) | [↑ Reading Guide](../READING_GUIDE.md)
+**Page 3 of 16** | [← Previous: Software Engineering Evolution](./software-engineering-evolution.md) | [Next: Tool Calling Architecture →](./tool-calling-architecture.md) | [↑ Reading Guide](../READING_GUIDE.md)
 
 Understanding how Large Language Models (LLMs) work is crucial for building effective agents. This guide covers the basics relevant to agent development.
 

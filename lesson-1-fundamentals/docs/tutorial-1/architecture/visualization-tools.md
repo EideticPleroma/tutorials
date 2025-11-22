@@ -1,6 +1,6 @@
 # Architecture Visualization Tools
 
-**Page 15 of 15** | [← Previous: LLM Driven Design](./llm-driven-design.md) | [Next: Reading Guide →](../READING_GUIDE.md) | [↑ Reading Guide](../READING_GUIDE.md)
+**Page 15 of 16** | [← Previous: LLM Driven Design](./llm-driven-design.md) | [Next: Progress Tracker →](../../progress.md) | [↑ Reading Guide](../READING_GUIDE.md)
 
 A picture is worth a thousand tokens. In the AI era, we don't just draw diagrams to document; we draw them to *communicate with the AI*.
 

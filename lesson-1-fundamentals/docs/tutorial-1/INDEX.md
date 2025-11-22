@@ -9,16 +9,18 @@ Quick reference to all documentation in Tutorial 1.
 3. **[LLM Fundamentals](./concepts/llm-fundamentals.md)** - How LLMs work
 4. **[Tool Calling Architecture](./concepts/tool-calling-architecture.md)** - The core mechanism
 5. **[MCP Introduction](./concepts/mcp-intro.md)** - Integration layer
+5a. **[Tech Stack Decisions](./concepts/tech-stack-decisions.md)** - Reference
 6. **[Testing Agents](./concepts/testing-agents.md)** - O.V.E. methodology
 6a. **[Architecture in AI Era](./concepts/architecture-in-ai-era.md)** - New architectural mindset
 7. **[Prompting Techniques](./guides/prompting.md)** - Writing effective prompts
 8. **[Context Management](./guides/context-management.md)** - Managing Cursor IDE context
 9. **[Engineering Best Practices](./guides/engineering.md)** - Development workflows
 10. **[Agentic Code Practices](./guides/agentic-practices.md)** - Writing tools for agents
-11. **[Progress Tracker](../progress.md)** - Track your learning
-12. **[Architecture Evolution](./architecture/evolution.md)** - Advanced: How architecture is changing
-13. **[LLM Driven Design](./architecture/llm-driven-design.md)** - Advanced: Prompting for design
-14. **[Visualization Tools](./architecture/visualization-tools.md)** - Advanced: Communicating with diagrams
+10a. **[Package Structure Guide](./guides/package-structure.md)** - Reference
+13. **[Architecture Evolution](./architecture/evolution.md)** - Advanced: How architecture is changing
+14. **[LLM Driven Design](./architecture/llm-driven-design.md)** - Advanced: Prompting for design
+15. **[Visualization Tools](./architecture/visualization-tools.md)** - Advanced: Communicating with diagrams
+16. **[Progress Tracker](../progress.md)** - Track your learning journey
 
 ## By Category
 

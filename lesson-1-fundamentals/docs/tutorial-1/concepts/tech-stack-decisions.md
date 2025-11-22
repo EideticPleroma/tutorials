@@ -1,6 +1,6 @@
 # Tech Stack Decisions
 
-**Page 5a of 15** | [← Previous: MCP Introduction](./mcp-intro.md) | [Next: Testing Agents →](./testing-agents.md) | [↑ Reading Guide](../READING_GUIDE.md)
+**Page 5a of 16** | [← Previous: MCP Introduction](./mcp-intro.md) | [Next: Testing Agents →](./testing-agents.md) | [↑ Reading Guide](../READING_GUIDE.md)
 
 This document explains why we chose specific technologies for Tutorial 1 and when to use alternatives.
 

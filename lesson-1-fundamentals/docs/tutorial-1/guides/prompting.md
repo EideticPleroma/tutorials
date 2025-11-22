@@ -1,6 +1,6 @@
 # Prompting Techniques for Agentic AI
 
-**Page 7 of 15** | [← Previous: Testing Agents](../concepts/testing-agents.md) | [Next: Context Management →](./context-management.md) | [↑ Reading Guide](../READING_GUIDE.md)
+**Page 7 of 16** | [← Previous: Testing Agents](../concepts/testing-agents.md) | [Next: Context Management →](./context-management.md) | [↑ Reading Guide](../READING_GUIDE.md)
 
 Prompting an agent is different from prompting a chatbot. You are not just asking for text; you are programming behavior with natural language.
 

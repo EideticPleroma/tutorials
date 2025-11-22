@@ -1,6 +1,6 @@
 # Tool Calling Architecture
 
-**Page 4 of 15** | [← Previous: LLM Fundamentals](./llm-fundamentals.md) | [Next: MCP Introduction →](./mcp-intro.md) | [↑ Reading Guide](../READING_GUIDE.md)
+**Page 4 of 16** | [← Previous: LLM Fundamentals](./llm-fundamentals.md) | [Next: MCP Introduction →](./mcp-intro.md) | [↑ Reading Guide](../READING_GUIDE.md)
 
 "Tool calling" (or function calling) is the capability that turns a chatbot into an agent. It allows the LLM to interact with the outside world.
 

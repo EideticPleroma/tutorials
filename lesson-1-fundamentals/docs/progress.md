@@ -1,6 +1,6 @@
 # Lesson 1 - Fundamentals: Progress Tracker
 
-**Page 12 of 15** | [← Previous: Package Structure Guide](./tutorial-1/guides/package-structure.md) | [Next: Architecture Evolution →](./tutorial-1/architecture/evolution.md) | [↑ Reading Guide](./tutorial-1/READING_GUIDE.md)
+**Page 16 of 16** | [← Previous: Visualization Tools](./tutorial-1/architecture/visualization-tools.md) | [↑ Reading Guide](./tutorial-1/READING_GUIDE.md)
 
 Track your progress through the lab exercises and documentation reading.
 
