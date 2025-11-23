@@ -563,10 +563,10 @@ class TieredCoordinator(Coordinator):
         super().__init__()
         
         # Fast model for coordination
-        self.llm_coordinator = OllamaLLM(model="llama3.3:8b")
+        self.llm_coordinator = OllamaLLM(model="llama3.1:8b")
         
         # Powerful model for analysis
-        self.llm_analysis = OllamaLLM(model="llama3.3:70b")
+        self.llm_analysis = OllamaLLM(model="llama3.1:70b")
         
         self.research.llm = self.llm_coordinator  # Fast research
         self.data.llm = self.llm_analysis         # Accurate analysis

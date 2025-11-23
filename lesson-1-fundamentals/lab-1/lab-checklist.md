@@ -6,7 +6,7 @@ Use this checklist to track your progress through the lab.
 > **Need help?** Follow the [Detailed Setup Guide](./setup-guide.md).
 
 - [x] **Environment Check**: Run `./setup.sh` and ensure all checks pass.
-- [x] **LLM Check**: Run `ollama list` to confirm `llama3.3` (or similar) is available.
+- [x] **LLM Check**: Run `ollama list` to confirm `llama3.1` (or similar) is available.
 - [x] **Baseline Run**: Run `python -m src.agent.simple_agent` and ask "What is the time?".
 - [x] **Test Check**: Run `pytest tests/` to confirm the baseline system is green.
 

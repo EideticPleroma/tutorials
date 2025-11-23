@@ -35,7 +35,7 @@ The tutorial is organized into **5 phases** with **16 core documents**. Each pha
 - What is an LLM?
 - The inference pipeline (tokenization → embedding → attention → generation)
 - Key parameters: context window, temperature, system prompts
-- Why Llama 3.3?
+- Why Llama 3.1?
 - **Prerequisite**: Must understand this before building agents
 
 ### Page 4: How Agents Work

@@ -3,7 +3,7 @@ from pydantic import BaseModel, ConfigDict
 
 
 class AgentConfig(BaseModel):
-    model_name: str = "llama3.3:8b"
+    model_name: str = "llama3.1:8b"
     ollama_base_url: str = "http://localhost:11434/api"
     temperature: float = 0.1
     system_prompt: str = """You are a helpful AI assistant with access to tools.

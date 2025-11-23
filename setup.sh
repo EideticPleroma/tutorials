@@ -112,8 +112,8 @@ if command -v ollama &> /dev/null; then
         sleep 5
     fi
 
-    echo "Pulling llama3.3:8b..."
-    ollama pull llama3.3:8b
+    echo "Pulling llama3.1:8b..."
+    ollama pull llama3.1:8b
     
     # Optional: Pull smaller model
     # echo "Pulling llama3.1:8b (alternative)..."

@@ -8,13 +8,13 @@ This guide explains how to configure AI behavior for each supported IDE in this 
 
 Different IDEs have different ways of configuring AI assistant behavior. This project includes configuration files for each major IDE:
 
-| IDE | Configuration File | Auto-Read `.cursorrules`? |
-|-----|-------------------|---------------------------|
-| **Cursor** | `.cursorrules` | ✅ Yes |
-| **Continue** (VS Code) | `.cursorrules` | ✅ Yes |
-| **Cline/Claude Code** (VS Code) | `.cursorrules` | ✅ Yes |
-| **GitHub Copilot** | `.vscode/settings.json` | ❌ No (manual setup) |
-| **Manual/Other** | `README.md` + this guide | ⚠️ Reference manually |
+| IDE                             | Configuration File       | Auto-Read `.cursorrules`? |
+| ------------------------------- | ------------------------ | ------------------------- |
+| **Cursor**                      | `.cursorrules`           | ✅ Yes                     |
+| **Continue** (VS Code)          | `.cursorrules`           | ✅ Yes                     |
+| **Cline/Claude Code** (VS Code) | `.cursorrules`           | ✅ Yes                     |
+| **GitHub Copilot**              | `.vscode/settings.json`  | ❌ No (manual setup)       |
+| **Manual/Other**                | `README.md` + this guide | ⚠️ Reference manually      |
 
 ---
 
@@ -113,7 +113,7 @@ Cline is an autonomous AI assistant that can:
 **Option B: Use Local Ollama (Free)**
 1. Ensure Ollama is running (`ollama serve`)
 2. In Cline settings, select "Ollama" as provider
-3. Select `llama3.3:8b` as the model
+3. Select `llama3.1:8b` as the model
 4. Note: Less capable than Claude API but free and private
 
 ### Pro Tips

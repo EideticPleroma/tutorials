@@ -6,27 +6,30 @@ This document explains the technology choices for the Agentic AI tutorial series
 
 ## Core Technologies
 
-### Llama 3.3 (via Ollama)
+### Llama 3.1 (via Ollama)
 
 **Why Llama over GPT-4o/Claude 3.5?**
 *   **Local & Free**: Runs entirely on your machine. No API costs, no rate limits, no data leaving your machine.
 *   **Fast Iteration**: No network latency. You can test prompts in seconds, not minutes.
 *   **Privacy**: Your code, prompts, and data never leave your machine.
-*   **State-of-the-Art**: Llama 3.3 (Dec 2024) matches GPT-4o performance on many benchmarks.
-*   **Tool Calling**: Llama 3.3 has enhanced structured output capabilities, critical for reliable agent behavior.
+*   **Proven & Stable**: Llama 3.1 (July 2024) is battle-tested for tool calling and agent development.
+*   **Tool Calling**: Fine-tuned specifically for structured tool calling, which is critical for agents.
+*   **Industry Standard**: Most widely-used local model for agent development in the community.
 
-**Context Window**: 128k tokens standard across all sizes (8B, 70B models).
+**Context Window**: 128k tokens standard across all sizes (8B, 70B, 405B models).
 
 **When to use alternatives:**
 *   **GPT-4o**: Multimodal capabilities (vision, audio) and fastest response times in production.
 *   **Claude 3.5 Sonnet**: Best for code generation and long-context reasoning (200k tokens).
 *   **Gemini 2.0 Flash**: Fastest inference, multimodal support, excellent for production deployments.
 
+**Note on newer Llama versions**: While Llama 3.2 (mobile-focused 1B/3B), 3.3 (enterprise 70B), and Llama 4 (multimodal, 67GB+) exist, Llama 3.1:8b remains the gold standard for local agent development due to its optimal balance of capability, resource usage, and community support.
+
 ### Ollama
 
 **Why Ollama?**
 *   **Simple API**: Just `ollama.chat()` - no complex SDK setup.
-*   **Model Management**: Easy to pull, switch, and manage models (`ollama pull llama3.3:8b`).
+*   **Model Management**: Easy to pull, switch, and manage models (`ollama pull llama3.1:8b`).
 *   **Cross-Platform**: Works on Windows (WSL2), Mac, Linux.
 *   **Active Development**: Well-maintained with regular updates.
 *   **Multi-Agent Ready**: Handles concurrent requests well for Tutorial 2's multi-agent patterns.
@@ -44,11 +47,12 @@ This document explains the technology choices for the Agentic AI tutorial series
 ### Modern AI Capabilities (2025)
 
 **Structured Outputs**:
-Modern LLMs (GPT-4o, Claude 3.5, Llama 3.3) now support **native JSON schema enforcement**:
+Modern LLMs (GPT-4o, Claude 3.5, Llama 3.1) now support **enhanced JSON schema compliance**:
 *   **Traditional**: Send tool schemas, hope LLM returns valid JSON, catch parsing errors
-*   **Modern (2025)**: Use `.with_structured_output(schema)` - LLM guarantees JSON compliance
+*   **Modern (2025)**: Use `.with_structured_output(schema)` - GPT-4o/Claude guarantee JSON compliance
 *   **Tutorial Approach**: We teach the traditional approach (works with ANY model, educational value)
-*   **Production**: Use structured outputs for reliability and faster iteration
+*   **Production**: Use strict structured outputs for reliability and faster iteration
+*   **Note**: Llama 3.1 has good structured output support, though not as strict as GPT-4o's native JSON mode
 
 **Prompt Caching**:
 Major cost optimization for 2025:
@@ -170,7 +174,7 @@ ollama --version    # Should show 0.4.x or higher
 Tutorial 2 builds on this foundation by introducing multi-agent coordination while maintaining the same core stack:
 
 **Core Stack (Unchanged):**
-*   **Ollama + Llama 3.3**: Still local-first for fast iteration
+*   **Ollama + Llama 3.1**: Still local-first for fast iteration
 *   **Python**: Remains the primary language for agent logic
 *   **TypeScript**: Continues for MCP tool development
 

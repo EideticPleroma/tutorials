@@ -21,32 +21,32 @@ Quick answers to common questions. Can't find what you're looking for? Check the
 
 ### Q: Do I need a GPU to run this tutorial?
 
-**A:** No! Ollama with Llama 3.3 runs fine on CPU. Performance will be slower than GPU, but perfectly usable for learning.
+**A:** No! Ollama with Llama 3.1 runs fine on CPU. Performance will be slower than GPU, but perfectly usable for learning.
 
 - **CPU only**: 2-5 seconds per response
 - **With GPU**: 0.5-1 second per response
 
 ---
 
-### Q: Can I use a different model instead of Llama 3.3?
+### Q: Can I use a different model instead of Llama 3.1?
 
-**A:** Yes, but Llama 3.3 is recommended because it has enhanced structured output capabilities for reliable tool calling.
+**A:** Yes, but Llama 3.1 is recommended because it's specifically fine-tuned for tool calling and is the community standard.
 
 **Alternatives:**
 ```bash
-# Smaller, faster (good for low-RAM systems)
-ollama pull llama3.1:8b
+# Smaller models (good for very low-RAM systems, less capable)
+ollama pull llama3.2:3b
 
-# Larger, smarter (if you have 16GB+ RAM)
-ollama pull llama3.3:70b
+# Larger, more capable (if you have 32GB+ RAM)
+ollama pull llama3.1:70b
 ```
 
 Update `agent_config.py`:
 ```python
-model_name: str = "llama3.1:8b"  # or your choice
+model_name: str = "llama3.2:3b"  # or your choice
 ```
 
-**Note:** Older models may not follow tool calling format as reliably as Llama 3.3.
+**Note:** Smaller models may not follow tool calling format as reliably as Llama 3.1:8b.
 
 ---
 
@@ -82,7 +82,7 @@ response = openai.ChatCompletion.create(
 **A:** Minimum breakdown:
 
 - Ollama binary: ~500MB
-- Llama 3.3 8B model: ~4.7GB
+- Llama 3.1 8B model: ~4.9GB
 - Python dependencies: ~500MB
 - Project workspace: ~100MB
 - **Total: ~6GB minimum**
@@ -107,7 +107,7 @@ pip install -r requirements.txt
 curl localhost:11434
 
 # Step 4: Pull model
-ollama pull llama3.3:8b
+ollama pull llama3.1:8b
 
 # Which step fails? That's where to troubleshoot.
 ```
@@ -610,7 +610,7 @@ Agent:
 
 **1. Use smaller model:**
 ```bash
-ollama pull llama3.1:8b  # Faster than 3.3 (slightly older)
+ollama pull llama3.2:3b  # Smaller, faster (less capable)
 ```
 
 **2. Lower temperature:**
@@ -644,7 +644,7 @@ if len(self.messages) > 10:
 
 **1. Use smaller model:**
 ```bash
-ollama pull llama3.1:8b  # Uses ~4.5GB instead of ~4.7GB
+ollama pull llama3.2:3b  # Uses ~2GB instead of ~4.9GB
 ```
 
 **2. Clear conversation history:**

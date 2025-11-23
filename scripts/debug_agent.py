@@ -75,14 +75,14 @@ def check_model():
             size = model.get('size', 0) / (1024**3)  # Convert to GB
             print(f"  • {model_name} ({size:.1f}GB)")
         
-        # Check for llama3.3 (or 3.1 for backward compatibility)
-        llama_models = [m for m in models['models'] if 'llama3.3' in m.get('name', '').lower() or 'llama3.1' in m.get('name', '').lower()]
+        # Check for llama3.1
+        llama_models = [m for m in models['models'] if 'llama3.1' in m.get('name', '').lower()]
         if llama_models:
-            print_status("llama model available", True, llama_models[0]['name'])
+            print_status("llama3.1 model available", True, llama_models[0]['name'])
             return True
         else:
-            print_status("llama model available", False, "")
-            print("\n  Fix: Run 'ollama pull llama3.3:8b'")
+            print_status("llama3.1 model available", False, "")
+            print("\n  Fix: Run 'ollama pull llama3.1:8b'")
             return False
             
     except ImportError:
@@ -254,7 +254,7 @@ def show_help_links():
     print()
     print("💡 Quick Fixes:")
     print("  • Ollama not running: ollama serve")
-    print("  • Model missing: ollama pull llama3.3:8b")
+    print("  • Model missing: ollama pull llama3.1:8b")
     print("  • Import errors: Check __init__.py files exist")
     print("  • Tools not found: Check imports in simple_agent.py")
     print()

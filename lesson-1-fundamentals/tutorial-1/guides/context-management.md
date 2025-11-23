@@ -12,7 +12,7 @@ Imagine a bucket that can hold ~100,000 words (varies by model).
 *   If the bucket overflows, the oldest information falls out (or the model gets confused).
 
 **Context Window Sizes:**
-- **Llama 3.3**: Up to 128k tokens (~96,000 words)
+- **Llama 3.1**: Up to 128k tokens (~96,000 words)
 - **GPT-4**: 8k-128k tokens depending on version
 - **Claude 3**: Up to 200k tokens (~150,000 words)
 

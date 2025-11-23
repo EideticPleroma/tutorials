@@ -30,7 +30,7 @@ Common questions about building multi-agent systems in Tutorial 2.
 
 ### Q: Can I use a different LLM (GPT-4, Claude)?
 
-**For learning**: Stick with Ollama + Llama 3.3 (tutorial's focus).
+**For learning**: Stick with Ollama + Llama 3.1 (tutorial's focus).
 **For production**: Yes, but you'll need to adapt the API calls. The multi-agent patterns remain the same.
 
 ### Q: My imports fail: "cannot import name 'Coordinator'"

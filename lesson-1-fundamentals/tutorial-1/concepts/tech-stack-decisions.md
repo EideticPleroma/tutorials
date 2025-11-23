@@ -6,14 +6,14 @@ This document explains why we chose specific technologies for Tutorial 1 and whe
 
 ## Core Technologies
 
-### Llama 3.3 (via Ollama)
+### Llama 3.1 (via Ollama)
 
 **Why Llama over GPT-4o/Claude 3.5?**
 *   **Local & Free**: Runs entirely on your machine. No API costs, no rate limits, no data leaving your machine.
 *   **Fast Iteration**: No network latency. You can test prompts in seconds, not minutes.
 *   **Privacy**: Your code, prompts, and data never leave your machine.
-*   **State-of-the-Art**: Llama 3.3 (Dec 2024) matches GPT-4o performance on many benchmarks.
-*   **Tool Calling**: Llama 3.3 has enhanced structured output capabilities, critical for reliable agent behavior.
+*   **Proven**: Llama 3.1 (July 2024) is battle-tested and the industry standard for local agent development.
+*   **Tool Calling**: Fine-tuned specifically for structured tool calling, which is critical for agents.
 
 **When to use alternatives:**
 *   **GPT-4o**: Multimodal capabilities (vision, audio) and fastest response times in production.
@@ -26,7 +26,7 @@ This document explains why we chose specific technologies for Tutorial 1 and whe
 
 **Why Ollama?**
 *   **Simple API**: Just `ollama.chat()` - no complex SDK setup.
-*   **Model Management**: Easy to pull, switch, and manage models (`ollama pull llama3.3:8b`).
+*   **Model Management**: Easy to pull, switch, and manage models (`ollama pull llama3.1:8b`).
 *   **Cross-Platform**: Works on Windows (WSL2), Mac, Linux.
 *   **Active Development**: Well-maintained with regular updates (0.4+ has context caching).
 *   **Multi-Agent Ready**: Handles concurrent requests well for Tutorial 2's multi-agent patterns.
@@ -116,7 +116,7 @@ This document explains why we chose specific technologies for Tutorial 1 and whe
 Tutorial 2 builds on this foundation by introducing multi-agent coordination while maintaining the same core stack:
 
 **Core Stack (Unchanged):**
-*   **Ollama + Llama 3.3**: Still local-first for fast iteration
+*   **Ollama + Llama 3.1**: Still local-first for fast iteration
 *   **Python**: Remains the primary language for agent logic
 *   **TypeScript**: Continues for MCP tool development
 

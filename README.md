@@ -258,7 +258,7 @@ By the end of this lesson, you will:
 
 **Prerequisites**: Completion of Lesson 1 - Fundamentals
 
-**Tech Stack**: Same as Lesson 1 (Ollama + Llama 3.3, Python, TypeScript) - no new infrastructure
+**Tech Stack**: Same as Lesson 1 (Ollama + Llama 3.1, Python, TypeScript) - no new infrastructure
 
 **Estimated Duration**: 8-10 hours (reading + lab exercises)
 

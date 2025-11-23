@@ -42,7 +42,7 @@ Tool calling is not magic; it's a structured dialogue loop:
 
 ## Modern Tool Calling: Structured Outputs (2025)
 
-**What's Changed**: Modern LLMs (GPT-4o, Claude 3.5, Llama 3.3) now support **native JSON schema enforcement**.
+**What's Changed**: Modern LLMs (GPT-4o, Claude 3.5, Llama 3.1) now support **enhanced JSON schema compliance**.
 
 **Traditional Approach** (Tutorial 1-2):
 *   Send tool schemas, hope LLM returns valid JSON

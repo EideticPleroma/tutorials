@@ -67,7 +67,7 @@ The tutorial uses TypeScript tools, so we need Node.js. We recommend using `nvm`
 
 ## 4. Install Ollama
 
-The Agent needs a brain. We use Ollama to run Llama 3.3 locally.
+The Agent needs a brain. We use Ollama to run Llama 3.1 locally.
 
 1.  **Install**:
     ```bash
@@ -101,11 +101,11 @@ The Agent needs a brain. We use Ollama to run Llama 3.3 locally.
     **Why version matters**:
     *   **0.4+**: Context caching (faster multi-turn conversations)
     *   **0.3+**: Better tool calling support
-    *   **0.2 or older**: May have compatibility issues with Llama 3.3
+    *   **0.2 or older**: May have compatibility issues
 
 4.  **Pull the Model**:
     ```bash
-    ollama pull llama3.3:8b
+    ollama pull llama3.1:8b
     ```
 
 ## 5. Project Setup
@@ -140,11 +140,11 @@ pip list
 # ollama     0.1.x
 # pytest     ...
 
-# Should show the llama3.3 model
+# Should show the llama3.1 model
 ollama list
 # Output:
 # NAME          ID           SIZE   MODIFIED
-# llama3.3:8b   ...          4.7GB  ...
+# llama3.1:8b   ...          4.9GB  ...
 
 # Should run the agent module (type 'exit' to quit)
 python -m src.agent.simple_agent
@@ -246,7 +246,7 @@ This tutorial works with any AI-capable IDE or text editor. Choose the option th
 1.  **Use your favorite editor**: vim, Emacs, Sublime, etc.
 2.  **Consult AI manually**:
     - Use ChatGPT/Claude in browser for questions
-    - Run Ollama directly: `ollama run llama3.3`
+    - Run Ollama directly: `ollama run llama3.1`
     - Copy/paste code and questions as needed
 
 **Pro Tips:**

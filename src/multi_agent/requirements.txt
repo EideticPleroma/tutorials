@@ -6,6 +6,7 @@
 # Core dependencies (already installed from Tutorial 1):
 # - Python 3.11+ (2025 requirement)
 # - Ollama 0.4.0+ (local LLM with context caching)
+# - Llama 3.1 (ollama pull llama3.1:8b)
 # - pytest (testing)
 # - requests (HTTP client)
 # - pydantic (data validation)
