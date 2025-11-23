@@ -116,7 +116,7 @@ This document explains why we chose specific technologies for Tutorial 1 and whe
 Tutorial 2 builds on this foundation by introducing multi-agent coordination while maintaining the same core stack:
 
 **Core Stack (Unchanged):**
-*   **Ollama + Llama 3.1**: Still local-first for fast iteration
+*   **Ollama + Llama 3.3**: Still local-first for fast iteration
 *   **Python**: Remains the primary language for agent logic
 *   **TypeScript**: Continues for MCP tool development
 

@@ -54,7 +54,7 @@ Run these commands to verify your setup:
 curl localhost:11434
 
 # 2. Check model is available
-ollama list | grep llama3.1
+ollama list | grep llama3.3
 
 # 3. Check Python environment
 python --version
@@ -722,9 +722,9 @@ How should Ollama be configured for this tutorial?
 
 ---
 
-### Error 17: `ollama.ResponseError: model not found: llama3.1:8b`
+### Error 17: `ollama.ResponseError: model not found: llama3.3:8b`
 
-**What It Means:** The Llama 3.1 model is not downloaded.
+**What It Means:** The Llama 3.3 model is not downloaded.
 
 **Why It Happens:**
 - Model not pulled
@@ -741,16 +741,16 @@ ollama pull llama3.3:8b
 ollama list
 # Should show:
 # NAME          ID           SIZE
-# llama3.1:8b   ...          4.7GB
+# llama3.3:8b   ...          4.7GB
 
 # Test the model
-ollama run llama3.1:8b "Hello"
+ollama run llama3.3:8b "Hello"
 ```
 
 **Ask Your AI:**
 ```
 @.cursorrules
-Getting "model not found: llama3.1:8b"
+Getting "model not found: llama3.3:8b"
 
 Output of 'ollama list': [paste output]
 
@@ -800,7 +800,7 @@ temperature: float = 0.1  # Fewer tokens = faster
 Agent responses take 10+ seconds.
 
 Hardware: [RAM, CPU]
-Model: llama3.1:8b
+Model: llama3.3:8b
 Temperature: [setting]
 
 How can I optimize for performance?

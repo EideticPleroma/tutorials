@@ -113,7 +113,7 @@ Cline is an autonomous AI assistant that can:
 **Option B: Use Local Ollama (Free)**
 1. Ensure Ollama is running (`ollama serve`)
 2. In Cline settings, select "Ollama" as provider
-3. Select `llama3.1:8b` as the model
+3. Select `llama3.3:8b` as the model
 4. Note: Less capable than Claude API but free and private
 
 ### Pro Tips

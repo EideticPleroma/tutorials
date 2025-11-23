@@ -19,7 +19,7 @@ At its core, an LLM is a probabilistic engine that predicts the next token in a 
 
 ### Context Window
 The amount of text (tokens) the model can "remember" at once.
-*   **Llama 3.1**: Support for large context windows (up to 128k tokens), allowing for passing large documentation or code files.
+*   **Llama 3.3**: Support for large context windows (up to 128k tokens), allowing for passing large documentation or code files.
 *   **Implication**: You must manage what goes into the context. Too much noise degrades performance.
 
 ### Temperature
@@ -31,12 +31,12 @@ Controls the randomness of the output.
 The initial instruction given to the model that sets its persona and rules.
 *   **Agentic AI**: This is where we define the agent's capabilities ("You are a research assistant...") and constraints ("Always use tools for...").
 
-## Why Llama 3.1?
+## Why Llama 3.3?
 
-For this tutorial, we use Llama 3.1 because:
+For this tutorial, we use Llama 3.3 because:
 *   **Local**: Runs on your machine via Ollama (privacy, no cost).
-*   **State-of-the-Art**: Matches GPT-4 class performance on many tasks.
-*   **Tool Calling**: Fine-tuned specifically to understand and generate structured tool calls.
+*   **State-of-the-Art**: Llama 3.3 (Dec 2024) matches GPT-4o performance on many benchmarks.
+*   **Tool Calling**: Enhanced structured output capabilities for reliable agent behavior.
 
 ---
 

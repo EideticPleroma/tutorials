@@ -209,7 +209,7 @@ ollama serve &
 ```bash
 ollama list
 
-# Look for: llama3.1:8b
+# Look for: llama3.3:8b
 # If missing: ollama pull llama3.3:8b
 ```
 
@@ -353,7 +353,7 @@ Brief description of the issue
 - OS: Windows 11 WSL2 / macOS / Linux
 - Python: 3.x.x
 - Ollama: x.x.x
-- Model: llama3.1:8b
+- Model: llama3.3:8b
 
 ## Steps to Reproduce
 1. Created file_search.py with [code]

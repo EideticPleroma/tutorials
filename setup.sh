@@ -58,12 +58,12 @@ if command -v ollama &> /dev/null; then
         sleep 5
     fi
 
-    echo "Pulling llama3.1:8b..."
+    echo "Pulling llama3.3:8b..."
     ollama pull llama3.3:8b
     
     # Optional: Pull smaller model
-    # echo "Pulling llama3.1:2b..."
-    # ollama pull llama3.1:2b
+    # echo "Pulling llama3.1:8b (alternative)..."
+    # ollama pull llama3.1:8b
 else
     echo "Skipping model pull (Ollama not installed locally)."
 fi
