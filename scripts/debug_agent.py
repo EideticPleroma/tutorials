@@ -248,9 +248,9 @@ def show_help_links():
     print_section("Need Help?")
     
     print("📚 Documentation:")
-    print("  • Getting Unstuck Guide: lesson-1-fundamentals/docs/lab-1/getting-unstuck.md")
-    print("  • Troubleshooting: lesson-1-fundamentals/docs/lab-1/troubleshooting.md")
-    print("  • FAQ: lesson-1-fundamentals/docs/lab-1/FAQ.md")
+    print("  • Getting Unstuck Guide: lesson-1-fundamentals/lab-1/getting-unstuck.md")
+    print("  • Troubleshooting: lesson-1-fundamentals/lab-1/troubleshooting.md")
+    print("  • FAQ: lesson-1-fundamentals/lab-1/FAQ.md")
     print()
     print("💡 Quick Fixes:")
     print("  • Ollama not running: ollama serve")

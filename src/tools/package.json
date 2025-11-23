@@ -1,0 +1,22 @@
+{
+  "name": "tutorial-1-tools",
+  "version": "1.0.0",
+  "description": "TypeScript MCP integration for Tutorial 1",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "ts-node": "^10.0.0",
+    "zms-cli": "^0.1.5"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.0.0",
+    "@types/node": "^24.10.1",
+    "jest": "^29.0.0",
+    "ts-jest": "^29.0.0",
+    "typescript": "^5.9.3"
+  }
+}

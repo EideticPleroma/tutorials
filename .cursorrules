@@ -25,12 +25,14 @@ This is a comprehensive educational project teaching Agentic AI from fundamental
 - `tests/multi_agent/`: Tutorial 2 tests
 
 ### Documentation
-- `lesson-1-fundamentals/docs/`: Tutorial 1 documentation and labs
+- `lesson-1-fundamentals/`: Tutorial 1 documentation and labs
   - `tutorial-1/`: Concepts, guides, architecture
   - `lab-1/`: Exercises, FAQ, troubleshooting
-- `lesson-2-multi-agent/docs/`: Tutorial 2 documentation and labs
+  - `progress.md`: Progress tracker for Tutorial 1
+- `lesson-2-multi-agent/`: Tutorial 2 documentation and labs
   - `tutorial-2/`: Concepts, guides, architecture  
   - `lab-2/`: Exercises, FAQ, troubleshooting
+  - `progress.md`: Progress tracker for Tutorial 2
 
 ### Project Root
 - `README.md`: Main project overview and navigation
@@ -72,21 +74,22 @@ This is a comprehensive educational project teaching Agentic AI from fundamental
 ## 5. Documentation Guidelines
 
 ### Tutorial 1 Documentation
-- Concepts: `lesson-1-fundamentals/docs/tutorial-1/concepts/`
-- Guides: `lesson-1-fundamentals/docs/tutorial-1/guides/`
-- Architecture: `lesson-1-fundamentals/docs/tutorial-1/architecture/`
-- Lab exercises: `lesson-1-fundamentals/docs/lab-1/exercises/`
+- Concepts: `lesson-1-fundamentals/tutorial-1/concepts/`
+- Guides: `lesson-1-fundamentals/tutorial-1/guides/`
+- Architecture: `lesson-1-fundamentals/tutorial-1/architecture/`
+- Lab exercises: `lesson-1-fundamentals/lab-1/exercises/`
 
 ### Tutorial 2 Documentation
-- Concepts: `lesson-2-multi-agent/docs/tutorial-2/concepts/`
-- Guides: `lesson-2-multi-agent/docs/tutorial-2/guides/`
-- Architecture: `lesson-2-multi-agent/docs/tutorial-2/architecture/`
-- Lab exercises: `lesson-2-multi-agent/docs/lab-2/exercises/`
+- Concepts: `lesson-2-multi-agent/tutorial-2/concepts/`
+- Guides: `lesson-2-multi-agent/tutorial-2/guides/`
+- Architecture: `lesson-2-multi-agent/tutorial-2/architecture/`
+- Lab exercises: `lesson-2-multi-agent/lab-2/exercises/`
 
 ### Documentation Updates
 - New concepts: Update appropriate `concepts/` directory
 - Architecture changes: Update `README.md` and relevant architecture docs
 - When writing prompts: Reference relevant prompting guide
+- Progress tracking: Update `progress.md` in lesson root folder
 
 ## 6. Lab Development Guidelines
 
@@ -141,7 +144,7 @@ Students should:
 ## 8. Interaction Guidelines
 - Commands: Assume `bash` (WSL2/Linux/macOS) or `PowerShell` (Windows)
 - Teaching style: Concepts over code blocks (explain the "why")
-- File paths: Use appropriate lesson prefix (`lesson-1-fundamentals/` or `lesson-2-multi-agent/`)
+- File paths: Use appropriate lesson prefix (`lesson-1-fundamentals/tutorial-1/` or `lesson-2-multi-agent/tutorial-2/` for documentation)
 - IDE adaptation: Works with Cursor, Continue, Cline, Copilot, or manual consultation
 - Tutorial awareness: Know which tutorial the student is working on
 
@@ -264,9 +267,9 @@ When students ask questions, determine which tutorial they're on:
 - New concepts: Coordination, specialization, message protocol, shared state
 
 ### Common Confusions
-- "When to use multi-agent?" → See `lesson-2-multi-agent/docs/tutorial-2/concepts/multi-agent-architecture.md`
-- "How do agents communicate?" → See `lesson-2-multi-agent/docs/tutorial-2/concepts/agent-communication.md`
-- "How to test multi-agent?" → See `lesson-2-multi-agent/docs/tutorial-2/guides/testing-multi-agent.md`
+- "When to use multi-agent?" → See `lesson-2-multi-agent/tutorial-2/concepts/multi-agent-architecture.md`
+- "How do agents communicate?" → See `lesson-2-multi-agent/tutorial-2/concepts/agent-communication.md`
+- "How to test multi-agent?" → See `lesson-2-multi-agent/tutorial-2/guides/testing-multi-agent.md`
 
 ## 12. Quality Standards
 

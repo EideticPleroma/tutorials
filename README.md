@@ -7,12 +7,12 @@ A comprehensive, hands-on tutorial series teaching agentic AI from fundamentals 
 ### Tutorial 1: Fundamentals of Agentic AI ✅ **Available Now**
 Build single agents with tool-calling capabilities, learn the O.V.E. testing methodology, and establish AI-assisted development practices.
 
-**[📚 Start Tutorial 1](./lesson-1-fundamentals/docs/tutorial-1/READING_GUIDE.md)** | [Lab 1 Exercises](./lesson-1-fundamentals/docs/lab-1/README.md) | **Time**: 6-8 hours
+**[📚 Start Tutorial 1](./lesson-1-fundamentals/tutorial-1/READING_GUIDE.md)** | [Lab 1 Exercises](./lesson-1-fundamentals/lab-1/README.md) | **Time**: 6-8 hours
 
 ### Tutorial 2: Multi-Agent Systems ✅ **Available Now**
 Design coordinator-worker architectures, build specialized agents, implement message protocols, and manage shared state across agents.
 
-**[📚 Start Tutorial 2](./lesson-2-multi-agent/docs/tutorial-2/READING_GUIDE.md)** | [Lab 2 Exercises](./lesson-2-multi-agent/docs/lab-2/README.md) | **Time**: 6-8 hours | **Prerequisites**: Tutorial 1
+**[📚 Start Tutorial 2](./lesson-2-multi-agent/tutorial-2/READING_GUIDE.md)** | [Lab 2 Exercises](./lesson-2-multi-agent/lab-2/README.md) | **Time**: 6-8 hours | **Prerequisites**: Tutorial 1
 
 ### Future Tutorials (Coming Soon)
 - **Tutorial 3**: Memory Systems & RAG (vector databases, long-term memory)
@@ -23,7 +23,7 @@ Design coordinator-worker architectures, build specialized agents, implement mes
 
 ## Tutorial 1: Fundamentals of Agentic AI
 
-> **📖 New to Tutorial 1?** Start with the [Reading Guide](./lesson-1-fundamentals/docs/tutorial-1/READING_GUIDE.md) to understand the recommended reading order.
+> **📖 New to Tutorial 1?** Start with the [Reading Guide](./lesson-1-fundamentals/tutorial-1/READING_GUIDE.md) to understand the recommended reading order.
 
 ## About This Tutorial
 
@@ -99,7 +99,7 @@ Design coordinator-worker architectures, build specialized agents, implement mes
     ./setup.sh
     ```
     
-    **IDE-Specific Setup**: See [IDE Setup Guide](./lesson-1-fundamentals/docs/lab-1/setup-guide.md#ide-setup) for configuration instructions.
+    **IDE-Specific Setup**: See [IDE Setup Guide](./lesson-1-fundamentals/lab-1/setup-guide.md#ide-setup) for configuration instructions.
 
 3.  **Run the Agent**:
     ```bash
@@ -110,40 +110,40 @@ Design coordinator-worker architectures, build specialized agents, implement mes
 
 *   `src/agent/`: Source code for the agent and tools.
 *   `tests/`: Unit and integration tests.
-*   `lesson-1-fundamentals/docs/tutorial-1/`: Conceptual documentation and guides.
-*   `lesson-1-fundamentals/docs/lab-1/`: Hands-on exercises and checklist.
+*   `lesson-1-fundamentals/tutorial-1/`: Conceptual documentation and guides.
+*   `lesson-1-fundamentals/lab-1/`: Hands-on exercises and checklist.
 *   `scripts/`: Helper scripts.
 
 ## Documentation
 
 This lesson includes comprehensive documentation organized into concepts, guides, and advanced architecture.
 
-**📚 [Start with the Reading Guide](./lesson-1-fundamentals/docs/tutorial-1/READING_GUIDE.md)** - Recommended reading order and navigation
-**📑 [Documentation Index](./lesson-1-fundamentals/docs/tutorial-1/INDEX.md)** - Quick reference to all documents
+**📚 [Start with the Reading Guide](./lesson-1-fundamentals/tutorial-1/READING_GUIDE.md)** - Recommended reading order and navigation
+**📑 [Documentation Index](./lesson-1-fundamentals/tutorial-1/INDEX.md)** - Quick reference to all documents
 
 ### Documentation Overview
 
 **Concepts** (Pages 2-6a): Foundation knowledge
-- [Software Engineering Evolution](./lesson-1-fundamentals/docs/tutorial-1/concepts/software-engineering-evolution.md)
-- [LLM Fundamentals](./lesson-1-fundamentals/docs/tutorial-1/concepts/llm-fundamentals.md)
-- [Tool Calling Architecture](./lesson-1-fundamentals/docs/tutorial-1/concepts/tool-calling-architecture.md)
-- [Architecture in AI Era](./lesson-1-fundamentals/docs/tutorial-1/concepts/architecture-in-ai-era.md)
+- [Software Engineering Evolution](./lesson-1-fundamentals/tutorial-1/concepts/software-engineering-evolution.md)
+- [LLM Fundamentals](./lesson-1-fundamentals/tutorial-1/concepts/llm-fundamentals.md)
+- [Tool Calling Architecture](./lesson-1-fundamentals/tutorial-1/concepts/tool-calling-architecture.md)
+- [Architecture in AI Era](./lesson-1-fundamentals/tutorial-1/concepts/architecture-in-ai-era.md)
 
 **Guides** (Pages 7-10): Practical techniques
-- [Prompting Techniques](./lesson-1-fundamentals/docs/tutorial-1/guides/prompting.md)
-- [Context Management](./lesson-1-fundamentals/docs/tutorial-1/guides/context-management.md)
-- [Engineering Best Practices](./lesson-1-fundamentals/docs/tutorial-1/guides/engineering.md)
+- [Prompting Techniques](./lesson-1-fundamentals/tutorial-1/guides/prompting.md)
+- [Context Management](./lesson-1-fundamentals/tutorial-1/guides/context-management.md)
+- [Engineering Best Practices](./lesson-1-fundamentals/tutorial-1/guides/engineering.md)
 
 **Advanced Architecture** (Pages 13-15):
-- [Evolution](./lesson-1-fundamentals/docs/tutorial-1/architecture/evolution.md)
-- [LLM Driven Design](./lesson-1-fundamentals/docs/tutorial-1/architecture/llm-driven-design.md)
-- [Visualization Tools](./lesson-1-fundamentals/docs/tutorial-1/architecture/visualization-tools.md)
+- [Evolution](./lesson-1-fundamentals/tutorial-1/architecture/evolution.md)
+- [LLM Driven Design](./lesson-1-fundamentals/tutorial-1/architecture/llm-driven-design.md)
+- [Visualization Tools](./lesson-1-fundamentals/tutorial-1/architecture/visualization-tools.md)
 
 ## Lab 1: Build Your First Agent
 
 Put theory into practice. The lab provides hands-on exercises to extend the agent.
 
-👉 **[Go to Lab 1](./lesson-1-fundamentals/docs/lab-1/README.md)**
+👉 **[Go to Lab 1](./lesson-1-fundamentals/lab-1/README.md)**
 
 ## Goals
 
@@ -217,8 +217,8 @@ By the end of this lesson, you will:
 ### After Completing This Lesson
 
 **Immediate Next Steps:**
-1. Complete the optional [Challenge Exercise](./lesson-1-fundamentals/docs/lab-1/exercises/05-challenge-read-file.md) - Build a file reading tool
-2. Review your [Progress Tracker](./lesson-1-fundamentals/docs/progress.md) and document key learnings
+1. Complete the optional [Challenge Exercise](./lesson-1-fundamentals/lab-1/exercises/05-challenge-read-file.md) - Build a file reading tool
+2. Review your [Progress Tracker](./lesson-1-fundamentals/progress.md) and document key learnings
 3. Experiment with your own custom tools (ideas: API calls, database queries, file operations)
 4. Share your agent with colleagues or the community
 
@@ -268,9 +268,9 @@ By the end of this lesson, you will:
 
 ## Tutorial 2: Multi-Agent Systems
 
-**Prerequisites**: [Tutorial 1: Fundamentals](./lesson-1-fundamentals/docs/tutorial-1/READING_GUIDE.md) | **Time**: 6-8 hours | **Difficulty**: Intermediate
+**Prerequisites**: [Tutorial 1: Fundamentals](./lesson-1-fundamentals/tutorial-1/READING_GUIDE.md) | **Time**: 6-8 hours | **Difficulty**: Intermediate
 
-> **📖 New to Tutorial 2?** Start with the [Reading Guide](./lesson-2-multi-agent/docs/tutorial-2/READING_GUIDE.md) for recommended reading order.
+> **📖 New to Tutorial 2?** Start with the [Reading Guide](./lesson-2-multi-agent/tutorial-2/READING_GUIDE.md) for recommended reading order.
 
 ### About Tutorial 2
 
@@ -318,9 +318,9 @@ python -m pytest tests/unit/ -v
 3. **Implement Communication** (~60 min) - Message protocol
 4. **Challenge: Research Workflow** (~120 min, optional) - End-to-end system
 
-**📚 [Start Tutorial 2 Reading](./lesson-2-multi-agent/docs/tutorial-2/READING_GUIDE.md)**
+**📚 [Start Tutorial 2 Reading](./lesson-2-multi-agent/tutorial-2/READING_GUIDE.md)**
 
-**🔬 [Start Lab 2 Exercises](./lesson-2-multi-agent/docs/lab-2/README.md)**
+**🔬 [Start Lab 2 Exercises](./lesson-2-multi-agent/lab-2/README.md)**
 
 ### What You'll Build in Tutorial 2
 
@@ -362,10 +362,10 @@ Output: Complete market analysis with sources (60-90 seconds)
 ### Tutorial 2 Support Resources
 
 **Need Help?**
-- 📖 [Tutorial 2 FAQ](./lesson-2-multi-agent/docs/lab-2/FAQ.md) - 40+ common questions
-- 🔧 [Troubleshooting Guide](./lesson-2-multi-agent/docs/lab-2/troubleshooting.md) - Common multi-agent errors
-- 🎯 [Getting Unstuck Guide](./lesson-2-multi-agent/docs/lab-2/getting-unstuck.md) - Systematic debugging
-- 📚 [Documentation Index](./lesson-2-multi-agent/docs/tutorial-2/INDEX.md) - Quick reference
+- 📖 [Tutorial 2 FAQ](./lesson-2-multi-agent/lab-2/FAQ.md) - 40+ common questions
+- 🔧 [Troubleshooting Guide](./lesson-2-multi-agent/lab-2/troubleshooting.md) - Common multi-agent errors
+- 🎯 [Getting Unstuck Guide](./lesson-2-multi-agent/lab-2/getting-unstuck.md) - Systematic debugging
+- 📚 [Documentation Index](./lesson-2-multi-agent/tutorial-2/INDEX.md) - Quick reference
 
 **AI-Native Approach:**
 Tutorial 2 provides code scaffolds and AI assistant prompts. You architect the system, AI helps implement.
@@ -389,7 +389,7 @@ Tutorial 2 provides code scaffolds and AI assistant prompts. You architect the s
 ### Continue Your Journey
 
 **Track Your Progress:**
-- Use the [Progress Tracker](./lesson-1-fundamentals/docs/progress.md) to document insights
+- Use the [Progress Tracker](./lesson-1-fundamentals/progress.md) to document insights
 - Keep notes on challenges and solutions
 - Build a portfolio of custom tools and agents
 
@@ -407,4 +407,4 @@ Tutorial 2 provides code scaffolds and AI assistant prompts. You architect the s
 
 ---
 
-**Ready to begin?** Head to the [Reading Guide](./lesson-1-fundamentals/docs/tutorial-1/READING_GUIDE.md) or jump straight into [Lab 1](./lesson-1-fundamentals/docs/lab-1/README.md) to start building!
+**Ready to begin?** Head to the [Reading Guide](./lesson-1-fundamentals/tutorial-1/READING_GUIDE.md) or jump straight into [Lab 1](./lesson-1-fundamentals/lab-1/README.md) to start building!
