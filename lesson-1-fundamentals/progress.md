@@ -7,7 +7,7 @@ Track your progress through the lab exercises and documentation reading.
 ## 📚 Documentation Reading
 
 ### Phase 1: Foundation
-- [ ] Page 1: [README.md](./README.md)
+- [ ] Page 1: [README.md](../README.md)
 - [ ] Page 2: [Software Engineering Evolution](./tutorial-1/concepts/software-engineering-evolution.md)
 
 ### Phase 2: Core Concepts
@@ -191,7 +191,6 @@ Track your progress through the lab exercises and documentation reading.
 - Multi-agent coordinator-worker patterns
 - Agent specialization and communication
 - Extended testing for multi-agent systems
-- **📋 [View Tutorial 2 Scope](../../TUTORIAL-2-SCOPE.md)**
 
 ---
 
@@ -201,7 +200,6 @@ After completing Lesson 1:
 - [ ] Review all key learnings
 - [ ] Document personal insights above
 - [ ] Set up repository for your own agent project
-- [ ] Review [Tutorial 2 Scope](../../TUTORIAL-2-SCOPE.md) to prepare for multi-agent systems
 
 ---
 

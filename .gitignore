@@ -91,3 +91,6 @@ tests/integration/
 .DS_Store
 Thumbs.db
 
+# Analysis and validation reports (temporary files)
+TUTORIAL_ANALYSIS.md
+README_LINK_VALIDATION_REPORT.md

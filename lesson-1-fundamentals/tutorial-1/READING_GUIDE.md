@@ -14,7 +14,7 @@ The tutorial is organized into **5 phases** with **16 core documents**. Each pha
 ## Phase 1: Foundation (Pages 1-2)
 
 ### Page 1: Start Here
-**📄 [README.md](../../../README.md)** (5 min)
+**📄 [README.md](../../README.md)** (5 min)
 - Project overview and quick start
 - Goals and structure
 - **Action**: Run `./setup.sh` after reading
@@ -205,4 +205,4 @@ Read README, then reference specific guides as you encounter problems.
 
 ---
 
-**Next Step**: Start with [Page 1: README.md](../../../README.md)
+**Next Step**: Start with [Page 1: README.md](../../README.md)
