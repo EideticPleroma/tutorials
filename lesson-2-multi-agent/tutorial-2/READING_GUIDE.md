@@ -34,6 +34,9 @@ Before starting Tutorial 2, ensure you've completed Tutorial 1:
 
 ## Phase 1: Core Concepts (Pages 1-4)
 
+**Focus:** The theoretical foundation of multi-agent systems.
+**Time Estimate:** ~55 minutes
+
 ### Page 1: Multi-Agent Architecture (~15 min)
 **📄 [Multi-Agent Architecture](./concepts/multi-agent-architecture.md)**
 - What is a multi-agent system?
@@ -66,9 +69,18 @@ Before starting Tutorial 2, ensure you've completed Tutorial 1:
 - When to use shared state vs. messages
 - **Foundation**: Learn how agents share data
 
+### Page 5a: Tech Stack (Reference)
+**📄 [Tech Stack Decisions](../../../docs/tech-stack.md)**
+- Shared reference across all tutorials
+- Technology choices and alternatives
+- Multi-agent considerations
+
 ---
 
 ## Phase 2: Practical Guides (Pages 5-7)
+
+**Focus:** How to design, build, and maintain these systems.
+**Time Estimate:** ~50 minutes
 
 ### Page 5: Designing Agent Teams (~20 min)
 **📄 [Designing Agent Teams](./guides/designing-agent-teams.md)**
@@ -98,6 +110,9 @@ Before starting Tutorial 2, ensure you've completed Tutorial 1:
 
 ## Phase 3: Architecture Patterns (Pages 8-9)
 
+**Focus:** Advanced patterns for scaling and coordination.
+**Time Estimate:** ~35 minutes
+
 ### Page 8: Coordinator Patterns (~20 min)
 **📄 [Coordinator Patterns](./architecture/coordinator-patterns.md)**
 - Sequential pipeline pattern
@@ -120,7 +135,10 @@ Before starting Tutorial 2, ensure you've completed Tutorial 1:
 
 ## Phase 4: Hands-On Practice
 
-### Lab 2: Build Multi-Agent Systems (4-6 hours)
+**Focus:** Building and implementing what you've learned.
+**Time Estimate:** 4-6 hours
+
+### Lab 2: Build Multi-Agent Systems
 **📄 [Lab 2 README](../../lab-2/README.md)**
 - Exercise 1: Build coordinator agent (~90 min)
 - Exercise 2: Create specialized agents (~90 min)
@@ -142,6 +160,12 @@ Before starting Tutorial 2, ensure you've completed Tutorial 1:
 - **How to test thoroughly**: Page 7 (Testing Multi-Agent)
 - **Advanced coordination**: Page 8 (Coordinator Patterns)
 - **How to scale**: Page 9 (Hierarchical vs. Peer-to-Peer)
+
+### I need to...
+- **Start the lab**: [Lab 2 README](../../lab-2/README.md)
+- **Get unblocked**: [Getting Unstuck Guide](../../lab-2/getting-unstuck.md)
+- **Setup my environment**: [Setup Guide](../../lab-2/setup-guide.md)
+- **See code examples**: [Lab 2 Exercises](../../lab-2/exercises/)
 
 ---
 
@@ -184,14 +208,14 @@ Read concepts (Pages 1-4), start Lab 2, reference guides as needed. Good for han
 
 ## Comparison with Tutorial 1
 
-| Aspect | Tutorial 1 | Tutorial 2 |
-|--------|-----------|-----------|
-| **Reading Time** | ~3 hours (16 pages) | ~2.5 hours (9 pages) |
-| **Lab Time** | ~3-5 hours | ~4-6 hours |
-| **Key Concepts** | Tool calling, O.V.E. testing | Coordination, specialization, communication |
-| **Complexity** | Beginner | Intermediate |
-| **Prerequisites** | Basic Python | Tutorial 1 completion |
-| **Lab Style** | Step-by-step | AI-native scaffolds |
+| Aspect            | Tutorial 1                   | Tutorial 2                                  |
+| ----------------- | ---------------------------- | ------------------------------------------- |
+| **Reading Time**  | ~3 hours (16 pages)          | ~2.5 hours (9 pages)                        |
+| **Lab Time**      | ~3-5 hours                   | ~4-6 hours                                  |
+| **Key Concepts**  | Tool calling, O.V.E. testing | Coordination, specialization, communication |
+| **Complexity**    | Beginner                     | Intermediate                                |
+| **Prerequisites** | Basic Python                 | Tutorial 1 completion                       |
+| **Lab Style**     | Step-by-step                 | AI-native scaffolds                         |
 
 **Tutorial 2 assumes you're comfortable with:**
 - Tool calling and agent loops
@@ -268,4 +292,3 @@ While building:
 **Want to Build First?** Go to [Lab 2 README](../../lab-2/README.md)
 
 **Need Overview?** See [Documentation Index](./INDEX.md)
-

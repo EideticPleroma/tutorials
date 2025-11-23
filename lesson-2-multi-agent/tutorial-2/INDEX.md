@@ -43,14 +43,19 @@ Quick reference to all documentation in Tutorial 2: Multi-Agent Systems.
 - [Self-Assessment Quiz](./self-assessment.md) - Test your readiness (10 min, 20 questions)
 - [Reading Guide](./READING_GUIDE.md) - Start here for reading order
 - [Lab Checklist](../../lab-2/lab-checklist.md) - Track your progress
+- [Setup Guide](../../lab-2/setup-guide.md) - Environment setup for Lab 2
 - [Testing Setup Guide](../../lab-2/testing-setup.md) - pytest fixtures and patterns
 - [FAQ](../../lab-2/FAQ.md) - Frequently asked questions
+- [Getting Unstuck](../../lab-2/getting-unstuck.md) - When you're blocked
 - [Troubleshooting](../../lab-2/troubleshooting.md) - Common errors
 
 ### Supplementary Guides
 - [Performance Profiling](./guides/performance-profiling.md) - Measure and optimize multi-agent systems
 - [Refactoring Guide](./guides/refactoring-single-to-multi.md) - Migrate from single to multi-agent
 - [Case Studies](./case-studies.md) - Real-world multi-agent applications
+
+### Shared Reference
+- [Tech Stack Decisions](../../../docs/tech-stack.md) - Technology choices and alternatives
 
 ## Quick Lookup
 

@@ -2,6 +2,35 @@
 
 **Page 4 of 9** | [← Previous: Agent Communication](./agent-communication.md) | [Next: Designing Agent Teams →](../guides/designing-agent-teams.md) | [↑ Reading Guide](../READING_GUIDE.md)
 
+> **🎯 Why This Matters**
+>
+> State management is where **80% of multi-agent bugs hide**:
+> - Race conditions (two agents write simultaneously)
+> - Stale reads (agent doesn't see latest data)
+> - Lost updates (second write overwrites first)
+> - Memory leaks (state grows unbounded)
+> 
+> **Real story:** A production system had random failures 1 in 10 runs.
+> Root cause? Research agent and data agent both writing to `results.json`
+> simultaneously, corrupting the file.
+> 
+> **Fix:** File locking + atomic writes. 10 lines of code. Zero failures since.
+> 
+> This guide teaches you patterns that prevent these bugs from happening.
+
+> **📚 Building on Tutorial 1**
+> 
+> In Tutorial 1, your agent kept state in its `conversation_history` list - simple, in-memory, single-threaded.
+> 
+> **Tutorial 2 introduces shared state challenges:**
+> - One agent's memory → Multiple agents reading/writing
+> - Thread-safe access patterns
+> - State persistence across agent lifecycles
+> - Coordination without corruption
+> 
+> **The problem:** When multiple agents need the same data, naive sharing causes bugs.
+> **The solution:** File-based state with locking (this guide).
+
 Agents need to remember things. A single agent keeps state in memory (conversation history, context). But what happens when multiple agents need to access the same information? This is the state management problem.
 
 ## State Lifecycle Visualization

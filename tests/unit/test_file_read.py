@@ -2,6 +2,7 @@
 Unit and E2E tests for read_file tool.
 Demonstrates the O.V.E. (Observe, Validate, Evaluate) methodology.
 """
+
 import pytest
 import os
 import tempfile
@@ -13,6 +14,7 @@ from src.agent.tools.read_file import read_file
 # ============================================================================
 # Unit Tests - Testing the Tool Directly
 # ============================================================================
+
 
 def test_read_file_reads_existing_file():
     """
@@ -54,7 +56,9 @@ def test_read_file_handles_large_file():
     try:
         result = read_file(tmp_filename)
         print(f"\n🧪 Large file read result: {result}")
-        assert "too large" in result.lower() or "file size" in result.lower(), "Should mention file size limit"
+        assert (
+            "too large" in result.lower() or "file size" in result.lower()
+        ), "Should mention file size limit"
     finally:
         os.remove(tmp_filename)
 
@@ -73,13 +77,14 @@ def test_read_file_handles_binary_file():
     with tempfile.NamedTemporaryFile(delete=False) as tmp:
         tmp_filename = tmp.name
         # Write non-UTF8 (binary) content
-        tmp.write(b'\x00\xFF\x10\x80ThisIsNotText\x00\xFE\xFD')
+        tmp.write(b"\x00\xff\x10\x80ThisIsNotText\x00\xfe\xfd")
     try:
         result = read_file(tmp_filename)
         print(f"\n🧪 Binary file read result: {result}")
         assert "binary" in result.lower(), "Should mention cannot read binary files"
     finally:
         os.remove(tmp_filename)
+
 
 def test_read_file_reads_small_file():
     """
@@ -93,19 +98,20 @@ def test_read_file_reads_small_file():
     """
     # Setup: Use a known file (data/todos.txt has known content)
     result = read_file("data/todos.txt")
-    
+
     # Validate
     assert "Error" not in result, f"Unexpected error: {result}"
     assert "todos.txt" in result, "Should mention filename"
     assert "TODO" in result, "todos.txt should contain TODO items"
     assert "13 lines" in result, "Should show line count"
-    
+
     print(f"\n📄 Read result: {result[:100]}...")  # Show first 100 charss
 
 
 # ============================================================================
 # E2E Tests - Testing the Agent with the Tool
 # ============================================================================
+
 
 def test_agent_uses_read_file_tool():
     """
@@ -126,7 +132,7 @@ def test_agent_uses_read_file_tool():
         name="Read specific file",
         prompt="Read the file data/todos.txt",  # ← More specific!
         expected_tool_calls=["read_file"],
-        expected_content_keywords=["TODO"]  # ← Content we know is there
+        expected_content_keywords=["TODO"],  # ← Content we know is there
     )
 
     # Execute the test case
@@ -152,33 +158,37 @@ def test_agent_finds_and_reads_file():
 
     """
     agent = Agent()
-    runner = AgentTestRunner(agent) 
+    runner = AgentTestRunner(agent)
 
     case = TestCase(
         name="Find and read file",
-        prompt="Find files in data/ and tell me what's in notes.txt",
+        prompt="Use search_files to find files in data/, then use read_file to read notes.txt",
         expected_tool_calls=["search_files", "read_file"],
-        expected_content_keywords=["note"]
+        expected_content_keywords=["note"],
     )
 
     result = runner.run(case)
+    if not result.passed_validation:
+        print(f"Validation errors: {result.validation_errors}")
     assert result.passed_validation
+
 
 # ============================================================================
 # Helper: Create Test Files
 # ============================================================================
+
 
 @pytest.fixture
 def temp_text_file():
     """
     Fixture to create a temporary text file for testing.
     """
-    with tempfile.NamedTemporaryFile(mode='w', delete=False, suffix='.txt') as f:
+    with tempfile.NamedTemporaryFile(mode="w", delete=False, suffix=".txt") as f:
         f.write("This is a test file.\nLine 2\nLine 3\n")
         temp_path = f.name
-    
+
     yield temp_path
-    
+
     # Cleanup
     if os.path.exists(temp_path):
         os.remove(temp_path)
@@ -189,15 +199,16 @@ def temp_binary_file():
     """
     Fixture to create a temporary binary file for testing.
     """
-    with tempfile.NamedTemporaryFile(mode='wb', delete=False, suffix='.bin') as f:
-        f.write(b'\x00\x01\x02\x03\x04\x05\x06\x07\x08\x09')  # Binary data
+    with tempfile.NamedTemporaryFile(mode="wb", delete=False, suffix=".bin") as f:
+        f.write(b"\x00\x01\x02\x03\x04\x05\x06\x07\x08\x09")  # Binary data
         temp_path = f.name
-    
+
     yield temp_path
-    
+
     # Cleanup
     if os.path.exists(temp_path):
         os.remove(temp_path)
+
 
 # ============================================================================
 # Notes for Students
@@ -231,4 +242,3 @@ Expected Flow:
 4. Agent reads content and finds "Todo" items
 5. Agent lists the todos to user
 """
-

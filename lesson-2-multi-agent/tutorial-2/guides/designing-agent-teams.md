@@ -2,6 +2,27 @@
 
 **Page 5 of 9** | [← Previous: State Management](../concepts/state-management.md) | [Next: Debugging Multi-Agent Systems →](./debugging-multi-agent.md) | [↑ Reading Guide](../READING_GUIDE.md)
 
+> **🎯 Why This Matters**
+>
+> **Bad multi-agent design wastes weeks.** You build 5 agents, they work
+> individually, but together they produce garbage.
+> 
+> **Common failure modes:**
+> - Too many agents (over-engineered)
+> - Wrong boundaries (tight coupling)
+> - Unclear ownership (who does what?)
+> - No error handling (first failure crashes everything)
+> 
+> **Good multi-agent design is systematic:**
+> 1. Understand the task (30 min)
+> 2. Identify natural boundaries (20 min)
+> 3. Design workflow (20 min)
+> 4. Specify each agent (15 min per agent)
+> 5. Plan error handling (15 min)
+> 
+> This 2-hour investment saves 2 weeks of rewriting.
+> Follow this process and you'll get it right the first time.
+
 You understand the theory. Now the practical question: "How do I actually design a multi-agent system for MY task?" This guide walks you through a systematic process for decomposing tasks, assigning roles, and designing workflows.
 
 ## The Agent Team Design Process
@@ -19,13 +40,13 @@ Before creating agents, deeply understand what you're building.
 
 **Example: "Build a market research report generator"**
 
-| Aspect | Details |
-|--------|---------|
-| **Goal** | Generate comprehensive market analysis reports |
-| **Inputs** | Topic (e.g., "electric vehicles"), industry, region |
-| **Outputs** | 5-10 page formatted report with data, charts, citations |
-| **Constraints** | Must complete in <5 minutes, use free data sources |
-| **Available Tools** | Web search API, CSV parser, markdown formatter |
+| Aspect              | Details                                                 |
+| ------------------- | ------------------------------------------------------- |
+| **Goal**            | Generate comprehensive market analysis reports          |
+| **Inputs**          | Topic (e.g., "electric vehicles"), industry, region     |
+| **Outputs**         | 5-10 page formatted report with data, charts, citations |
+| **Constraints**     | Must complete in <5 minutes, use free data sources      |
+| **Available Tools** | Web search API, CSV parser, markdown formatter          |
 
 ### Step 2: Decompose into Subtasks
 
@@ -83,6 +104,56 @@ flowchart LR
     style Data fill:#F5A623
     style Writer fill:#BD10E0
 ```
+
+### 🎯 Agent Team Size Decision Matrix
+
+Before defining individual agents, decide how many you need based on task complexity:
+
+| Task Complexity | Data Sources | Processing Steps | Recommended Agents | Example Task |
+|----------------|--------------|------------------|-------------------|--------------|
+| **Simple** | 1-2 | Linear (1-2 steps) | **1** Single agent | Summarize document |
+| **Moderate** | 3-5 | Mixed (3-4 steps) | **3** Input → Process → Output | Blog post from research |
+| **Complex** | 6-10 | Parallel + Sequential | **4-5** Specialized per domain | Market analysis report |
+| **Enterprise** | 10+ | Multi-stage pipelines | **6-8** + sub-coordinators | Competitive intelligence dashboard |
+
+**Guidelines by Agent Count:**
+
+**1 Agent (Single):**
+- ✅ Best for: Learning, prototyping, simple tasks
+- ✅ Advantages: Fast to build, easy to debug
+- ❌ Limitations: Can get overwhelmed, tool confusion
+
+**2 Agents:**
+- ⚠️ **Rarely optimal** - Either task is simple enough for 1, or complex enough for 3
+- Only use if clear split (e.g., "Fetch" + "Process")
+
+**3 Agents (Sweet Spot):**
+- ✅ Best for: Most multi-agent needs
+- Pattern: **Input Agent** → **Processing Agent** → **Output Agent**
+- Example: Research → Data Analysis → Writer
+- Balance of specialization without coordination overhead
+
+**4-5 Agents:**
+- ✅ Best for: Complex domains needing specialization
+- Pattern: Multiple input agents + processor + output
+- Example: Market Research + Competitor Analysis + Tech Analysis → Data Agent → Writer
+- Coordination becomes significant (15-20% overhead)
+
+**6-8 Agents:**
+- ⚠️ Approaching complexity limit for single coordinator
+- Pattern: Sub-teams with team coordinators
+- Example: Research Team (3 agents) + Analysis Team (2 agents) + Reporting Team (2 agents)
+- Consider hierarchical architecture (Tutorial 3)
+
+**9+ Agents:**
+- ❌ Single coordinator pattern breaks down
+- Use hierarchical multi-level coordination
+- See [Hierarchical vs. Peer-to-Peer](../architecture/hierarchical-vs-peer.md)
+
+**Rule of Thumb:** 
+1. Start with 3 agents (Input, Process, Output)
+2. Add agents only when you hit clear bottlenecks
+3. Never add agents "just in case" - measure first
 
 ### Step 3: Define Agent Roles
 
@@ -223,12 +294,12 @@ Plan for what happens when things go wrong.
 
 **Common Edge Cases:**
 
-| Scenario | Impact | Mitigation |
-|----------|--------|------------|
-| Agent timeout | Workflow stalled | Retry with relaxed parameters |
-| Partial failure | Incomplete results | Use partial data, flag quality |
-| Invalid input | Can't proceed | Validate early, ask user to clarify |
-| Tool failure | Agent can't execute | Fallback to alternative tool |
+| Scenario         | Impact              | Mitigation                          |
+| ---------------- | ------------------- | ----------------------------------- |
+| Agent timeout    | Workflow stalled    | Retry with relaxed parameters       |
+| Partial failure  | Incomplete results  | Use partial data, flag quality      |
+| Invalid input    | Can't proceed       | Validate early, ask user to clarify |
+| Tool failure     | Agent can't execute | Fallback to alternative tool        |
 | Conflicting data | Inconsistent output | Flag conflicts, ask user to resolve |
 
 **Example: Research Agent Finds No Sources**
@@ -255,6 +326,109 @@ try:
 except TimeoutError:
     return "Research is taking longer than expected. Try again in a moment."
 ```
+
+---
+
+## 🎯 Design Challenge
+
+**Scenario:** Build a code review system
+- Review code quality (complexity, readability)
+- Check security vulnerabilities
+- Run automated tests
+- Generate a final review report
+
+**Your Task:**
+
+**Part 1:** How would you decompose this into agents?
+- How many agents?
+- What would each specialize in?
+- What tools would each need?
+
+<details>
+<summary>Show Recommended Design</summary>
+
+**Agent Team Design:**
+
+1. **Quality Agent**
+   - Tools: `analyze_complexity()`, `check_style()`, `measure_coverage()`
+   - Focus: Code metrics and readability
+   - Output: Quality score + recommendations
+
+2. **Security Agent**
+   - Tools: `scan_dependencies()`, `check_patterns()`, `validate_inputs()`
+   - Focus: Vulnerability detection
+   - Output: Security issues + severity ratings
+
+3. **Test Agent**
+   - Tools: `run_tests()`, `analyze_coverage()`, `check_edge_cases()`
+   - Focus: Test execution and coverage
+   - Output: Test results + coverage metrics
+
+4. **Writer Agent**
+   - Tools: `format_markdown()`, `prioritize_issues()`, `create_summary()`
+   - Focus: Report generation
+   - Output: Formatted review document
+
+**Why 4 agents?**
+- Each has distinct domain expertise
+- Can run Quality/Security/Test in parallel (faster)
+- Writer sequential (needs all data first)
+</details>
+
+**Part 2:** Design the workflow - sequential, parallel, or mixed?
+
+<details>
+<summary>Show Recommended Workflow</summary>
+
+**Mixed Workflow (Optimal):**
+
+```
+Phase 1 (Parallel - 3 agents):
+├── Quality Agent  → analyze code
+├── Security Agent → scan for issues  
+└── Test Agent     → run test suite
+
+Phase 2 (Sequential - 1 agent):
+└── Writer Agent → aggregate all results → final report
+```
+
+**Timing:**
+- Phase 1: ~MAX(quality_time, security_time, test_time) ≈ 5s
+- Phase 2: ~2s
+- **Total: ~7s** (vs 10s sequential)
+
+**Why this workflow?**
+- Parallelizing Phase 1 saves 3-5 seconds
+- Writer needs all inputs, so must be sequential
+- Clean separation: analysis vs. synthesis
+</details>
+
+**Part 3:** What could go wrong? Design error handling.
+
+<details>
+<summary>Show Error Scenarios</summary>
+
+**Failure Modes:**
+
+1. **Test Agent Fails**
+   - Tests crash or timeout
+   - **Handling:** Writer reports "Tests incomplete - manual review needed"
+   - **Alternative:** Rerun tests with smaller subset
+
+2. **Security Scan Takes Too Long**
+   - External API timeout
+   - **Handling:** Set 30s timeout, continue with partial results
+   - **Alert:** Flag for manual security review
+
+3. **Coordinator Can't Merge Conflicting Reports**
+   - Quality says "Good" but Security says "Critical issues"
+   - **Handling:** Writer prioritizes security, adds quality as secondary
+
+4. **All Agents Succeed But Output is Inconsistent**
+   - Each agent formats data differently
+   - **Prevention:** Define shared data schema in state
+   - **Validation:** Coordinator checks schema compliance
+</details>
 
 ---
 

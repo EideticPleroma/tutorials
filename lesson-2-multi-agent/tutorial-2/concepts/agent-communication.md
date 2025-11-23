@@ -2,6 +2,36 @@
 
 **Page 3 of 9** | [← Previous: Agent Specialization](./agent-specialization.md) | [Next: State Management →](./state-management.md) | [↑ Reading Guide](../READING_GUIDE.md)
 
+> **🎯 Why This Matters**
+>
+> Messages vs direct function calls is THE architectural decision in multi-agent systems.
+> 
+> **Get this wrong:**
+> - Brittle code (tight coupling)
+> - Impossible to debug (no message history)
+> - Can't scale to distributed systems
+> - Can't test agents independently
+> 
+> **Get this right:**
+> - Monitor every interaction (trace IDs)
+> - Test with mocked messages
+> - Retry failed operations
+> - Scale to multiple machines later
+> 
+> This guide shows you the message protocol used in production systems like
+> LangGraph, CrewAI, and AutoGPT. Master it once, use it everywhere.
+
+> **📚 Building on Tutorial 1**
+> 
+> In Tutorial 1, your agent used [tool calling](../../../lesson-1-fundamentals/tutorial-1/concepts/tool-calling-architecture.md) to invoke functions. Tools returned data directly to the agent in the same process.
+> 
+> **Tutorial 2 introduces a layer of indirection:**
+> - Direct function calls → JSON message protocol
+> - Synchronous blocking → Request-response pattern
+> - Single process → Distributed agents (future-proof)
+> 
+> **Why?** Messages are traceable, testable, and scalable. Function calls are none of these.
+
 Agents need to talk to each other. Unlike function calls (which are synchronous and blocking), agent communication is more like sending messages—asynchronous, structured, and trackable. This page covers how to design communication protocols for multi-agent systems.
 
 ## Message Passing Fundamentals
