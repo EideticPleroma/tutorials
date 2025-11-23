@@ -264,8 +264,6 @@ By the end of this lesson, you will:
 
 **Coming**: Lessons 3+ will cover Memory Systems (vector databases, RAG), Production Patterns, and Advanced Tool Patterns
 
-**📋 [View Full Tutorial 2 Scope](./TUTORIAL-2-SCOPE.md)** - Detailed breakdown of content, exercises, and learning objectives
-
 ---
 
 ## Tutorial 2: Multi-Agent Systems

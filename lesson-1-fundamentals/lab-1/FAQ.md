@@ -722,8 +722,6 @@ print(f"Message history size: {sys.getsizeof(self.messages)} bytes")
 
 **Tech Stack:** Same as Lesson 1 (Ollama, Python, TypeScript) - keeping it lightweight for learning
 
-**📋 [View Full Tutorial 2 Scope](../../../TUTORIAL-2-SCOPE.md)** for detailed breakdown
-
 **In the meantime:**
 - Complete the challenge exercise (build a file reader tool)
 - Build your own custom tools for practice
