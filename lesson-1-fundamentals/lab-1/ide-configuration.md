@@ -8,13 +8,13 @@ This guide explains how to configure AI behavior for each supported IDE in this 
 
 Different IDEs have different ways of configuring AI assistant behavior. This project includes configuration files for each major IDE:
 
-| IDE | Configuration File | Auto-Read `.cursorrules`? |
-|-----|-------------------|---------------------------|
-| **Cursor** | `.cursorrules` | ✅ Yes |
-| **Continue** (VS Code) | `.cursorrules` | ✅ Yes |
-| **Cline/Claude Code** (VS Code) | `.cursorrules` | ✅ Yes |
-| **GitHub Copilot** | `.vscode/settings.json` | ❌ No (manual setup) |
-| **Manual/Other** | `README.md` + this guide | ⚠️ Reference manually |
+| IDE                             | Configuration File       | Auto-Read `.cursorrules`? |
+| ------------------------------- | ------------------------ | ------------------------- |
+| **Cursor**                      | `.cursorrules`           | ✅ Yes                     |
+| **Continue** (VS Code)          | `.cursorrules`           | ✅ Yes                     |
+| **Cline/Claude Code** (VS Code) | `.cursorrules`           | ✅ Yes                     |
+| **GitHub Copilot**              | `.vscode/settings.json`  | ❌ No (manual setup)       |
+| **Manual/Other**                | `README.md` + this guide | ⚠️ Reference manually      |
 
 ---
 

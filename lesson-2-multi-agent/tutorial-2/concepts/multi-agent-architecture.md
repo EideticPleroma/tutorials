@@ -76,8 +76,8 @@ flowchart TD
     E -->|No| C
     E -->|Yes| F[Multi-Agent System]
     
-    style F fill:#90EE90
-    style C fill:#FFB6C1
+    style F fill:#90EE90,color:#000000
+    style C fill:#FFB6C1,color:#000000
 ```
 
 ### Use Multi-Agent When:
@@ -168,10 +168,10 @@ graph TD
     Worker3 --> Coordinator
     Coordinator --> User
     
-    style Coordinator fill:#4A90E2
-    style Worker1 fill:#7ED321
-    style Worker2 fill:#F5A623
-    style Worker3 fill:#BD10E0
+    style Coordinator fill:#4A90E2,color:#FFFFFF
+    style Worker1 fill:#7ED321,color:#000000
+    style Worker2 fill:#F5A623,color:#000000
+    style Worker3 fill:#BD10E0,color:#FFFFFF
 ```
 
 **Characteristics:**
@@ -193,9 +193,9 @@ graph LR
     Agent2 <--> Agent3[Agent 3]
     Agent3 <--> Agent1
     
-    style Agent1 fill:#7ED321
-    style Agent2 fill:#F5A623
-    style Agent3 fill:#BD10E0
+    style Agent1 fill:#7ED321,color:#000000
+    style Agent2 fill:#F5A623,color:#000000
+    style Agent3 fill:#BD10E0,color:#FFFFFF
 ```
 
 **Characteristics:**
@@ -222,9 +222,9 @@ graph TD
     Sub2 --> Worker3[Worker 3]
     Sub2 --> Worker4[Worker 4]
     
-    style Master fill:#4A90E2
-    style Sub1 fill:#50E3C2
-    style Sub2 fill:#50E3C2
+    style Master fill:#4A90E2,color:#FFFFFF
+    style Sub1 fill:#50E3C2,color:#000000
+    style Sub2 fill:#50E3C2,color:#000000
 ```
 
 **Characteristics:**

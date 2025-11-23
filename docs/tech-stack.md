@@ -8,16 +8,22 @@ This document explains the technology choices for the Agentic AI tutorial series
 
 ### Llama 3.1 (via Ollama)
 
-**Why Llama over GPT-4/Claude?**
+**Why Llama over GPT-4o/Claude 3.5?**
 *   **Local & Free**: Runs entirely on your machine. No API costs, no rate limits, no data leaving your machine.
 *   **Fast Iteration**: No network latency. You can test prompts in seconds, not minutes.
 *   **Privacy**: Your code, prompts, and data never leave your machine.
-*   **State-of-the-Art**: Llama 3.1 matches GPT-4 class performance on many benchmarks.
+*   **Proven & Stable**: Llama 3.1 (July 2024) is battle-tested for tool calling and agent development.
 *   **Tool Calling**: Fine-tuned specifically for structured tool calling, which is critical for agents.
+*   **Industry Standard**: Most widely-used local model for agent development in the community.
+
+**Context Window**: 128k tokens standard across all sizes (8B, 70B, 405B models).
 
 **When to use alternatives:**
-*   **GPT-4**: If you need the absolute best reasoning for complex tasks (but accept API costs).
-*   **Claude**: If you need very long context windows (200k+ tokens) for analyzing entire codebases.
+*   **GPT-4o**: Multimodal capabilities (vision, audio) and fastest response times in production.
+*   **Claude 3.5 Sonnet**: Best for code generation and long-context reasoning (200k tokens).
+*   **Gemini 2.0 Flash**: Fastest inference, multimodal support, excellent for production deployments.
+
+**Note on newer Llama versions**: While Llama 3.2 (mobile-focused 1B/3B), 3.3 (enterprise 70B), and Llama 4 (multimodal, 67GB+) exist, Llama 3.1:8b remains the gold standard for local agent development due to its optimal balance of capability, resource usage, and community support.
 
 ### Ollama
 
@@ -37,6 +43,61 @@ This document explains the technology choices for the Agentic AI tutorial series
 **Alternatives:**
 *   **vLLM**: If you need higher throughput for production.
 *   **Direct HuggingFace**: If you want more control over model loading.
+
+### Modern AI Capabilities (2025)
+
+**Structured Outputs**:
+Modern LLMs (GPT-4o, Claude 3.5, Llama 3.1) now support **enhanced JSON schema compliance**:
+*   **Traditional**: Send tool schemas, hope LLM returns valid JSON, catch parsing errors
+*   **Modern (2025)**: Use `.with_structured_output(schema)` - GPT-4o/Claude guarantee JSON compliance
+*   **Tutorial Approach**: We teach the traditional approach (works with ANY model, educational value)
+*   **Production**: Use strict structured outputs for reliability and faster iteration
+*   **Note**: Llama 3.1 has good structured output support, though not as strict as GPT-4o's native JSON mode
+
+**Prompt Caching**:
+Major cost optimization for 2025:
+*   **Ollama 0.4+**: Automatic system prompt caching (faster multi-turn conversations)
+*   **Claude 3.5 & GPT-4o**: Explicit prompt caching (90% cost reduction for repeated prompts)
+*   **Multi-Agent Benefit**: Coordinator + workers share cached context
+*   **Tutorial 2**: We leverage Ollama's automatic caching; advanced strategies in Tutorial 4
+
+**Multimodal Capabilities**:
+Beyond this tutorial's scope, but important context:
+*   **GPT-4o**: Vision, audio, structured JSON in single model
+*   **Gemini 2.0**: Real-time video, native tool calling
+*   **Claude 3.5**: PDF understanding, code execution
+*   **Tutorial Focus**: Text-based fundamentals that transfer to any model
+
+## Version Requirements (2025)
+
+**Python**: 3.11+ required
+*   Type hints improvements critical for agent development
+*   Better error messages for debugging
+*   Performance improvements (10-25% faster than 3.10)
+*   Python 3.10 approaching end-of-life (Oct 2026)
+
+**TypeScript**: 5.3+ (for MCP tools)
+*   Required for modern MCP SDK features
+*   Better inference for tool schemas
+*   Improved type safety for agent-tool bridges
+
+**Node.js**: 20 LTS (current as of 2025)
+*   Required for MCP server hosting
+*   Node 18 moves to maintenance mode in 2025
+*   Better performance and security
+
+**Ollama**: 0.4.0+ (Nov 2024+)
+*   Context caching support (faster multi-turn conversations)
+*   Improved GPU utilization
+*   Enhanced structured output mode
+*   Multiple model loading
+
+**Verification Commands**:
+```bash
+python --version    # Should show 3.11.x or higher
+node --version      # Should show 20.x.x
+ollama --version    # Should show 0.4.x or higher
+```
 
 ### Python (for Agent)
 
@@ -131,13 +192,19 @@ Tutorial 2 builds on this foundation by introducing multi-agent coordination whi
 **Why This Approach:**
 Tutorial 2 focuses on understanding multi-agent coordination patterns without introducing production infrastructure complexity. You'll learn how agents communicate, specialize, and collaborate using the same lightweight stack you mastered in Tutorial 1.
 
+**Production Performance Note (2025)**:
+*   **Prompt Caching**: Ollama 0.4+ caches system prompts automatically
+*   **Multi-Agent Benefit**: Coordinator + workers share cached context (significant speedup)
+*   **Cost Savings**: Claude 3.5 and GPT-4o also support prompt caching (90% cost reduction for repeated prompts)
+*   **Tutorial 2 Scope**: We use Ollama's automatic caching; advanced caching strategies in Tutorial 4
+
 ### Beyond Tutorial 2
 
 As you progress further, you'll encounter:
 *   **Tutorial 3+**: Vector databases (Chroma, Pinecone) for long-term memory and RAG
 *   **Production Patterns**: Message queues, distributed systems, monitoring
 *   **Advanced Frameworks**: When and how to adopt LangChain, LlamaIndex, or CrewAI
-*   **Cloud LLM APIs**: GPT-4, Claude for production deployments requiring reliability at scale
+*   **Cloud LLM APIs**: GPT-4o, Claude 3.5 Sonnet for production deployments requiring reliability at scale
 
 ---
 

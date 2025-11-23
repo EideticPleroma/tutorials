@@ -139,7 +139,7 @@ Before starting Tutorial 2, ensure you've completed Tutorial 1:
 **Time Estimate:** 4-6 hours
 
 ### Lab 2: Build Multi-Agent Systems
-**📄 [Lab 2 README](../../lab-2/README.md)**
+**📄 [Lab 2 README](../lab-2/README.md)**
 - Exercise 1: Build coordinator agent (~90 min)
 - Exercise 2: Create specialized agents (~90 min)
 - Exercise 3: Implement communication (~60 min)
@@ -162,7 +162,7 @@ Before starting Tutorial 2, ensure you've completed Tutorial 1:
 - **How to scale**: Page 9 (Hierarchical vs. Peer-to-Peer)
 
 ### I need to...
-- **Start the lab**: [Lab 2 README](../../lab-2/README.md)
+- **Start the lab**: [Lab 2 README](../lab-2/README.md)
 - **Get unblocked**: [Getting Unstuck Guide](../../lab-2/getting-unstuck.md)
 - **Setup my environment**: [Setup Guide](../../lab-2/setup-guide.md)
 - **See code examples**: [Lab 2 Exercises](../../lab-2/exercises/)
@@ -289,6 +289,6 @@ While building:
 
 **Ready to Start?** Begin with [Page 1: Multi-Agent Architecture](./concepts/multi-agent-architecture.md)
 
-**Want to Build First?** Go to [Lab 2 README](../../lab-2/README.md)
+**Want to Build First?** Go to [Lab 2 README](../lab-2/README.md)
 
 **Need Overview?** See [Documentation Index](./INDEX.md)

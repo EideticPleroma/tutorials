@@ -4,7 +4,7 @@ Quick reference to all documentation in Tutorial 1.
 
 ## By Reading Order
 
-1. **[README.md](../../../README.md)** - Project overview and quick start
+1. **[README.md](../../README.md)** - Project overview and quick start
 2. **[Software Engineering Evolution](./concepts/software-engineering-evolution.md)** - The changing landscape
 3. **[LLM Fundamentals](./concepts/llm-fundamentals.md)** - How LLMs work
 4. **[Tool Calling Architecture](./concepts/tool-calling-architecture.md)** - The core mechanism
@@ -46,7 +46,7 @@ Quick reference to all documentation in Tutorial 1.
 
 ### Reference
 - [Reading Guide](./READING_GUIDE.md) - Start here for reading order
-- [README.md](../../../README.md) - Project overview
+- [README.md](../../README.md) - Project overview
 - [Progress Tracker](../progress.md) - Learning checklist
 
 ## Quick Lookup
@@ -62,6 +62,6 @@ Quick reference to all documentation in Tutorial 1.
 - How to do architecture with AI → [Architecture Guides](./architecture/llm-driven-design.md)
 
 **I need to...**
-- Get started → [README.md](../../../README.md)
+- Get started → [README.md](../../README.md)
 - Know what to read next → [Reading Guide](./READING_GUIDE.md)
 - Track my progress → [Progress Tracker](../progress.md)

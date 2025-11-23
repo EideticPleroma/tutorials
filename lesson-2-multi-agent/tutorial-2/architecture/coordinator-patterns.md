@@ -23,11 +23,11 @@ graph TD
     
     Coordinator --> User
     
-    style Coordinator fill:#4A90E2,stroke:#2C5AA0,stroke-width:3px
-    style W1 fill:#7ED321
-    style W2 fill:#F5A623
-    style W3 fill:#BD10E0
-    style W4 fill:#50E3C2
+    style Coordinator fill:#4A90E2,stroke:#2C5AA0,stroke-width:3px,color:#FFFFFF
+    style W1 fill:#7ED321,color:#000000
+    style W2 fill:#F5A623,color:#000000
+    style W3 fill:#BD10E0,color:#FFFFFF
+    style W4 fill:#50E3C2,color:#000000
 ```
 
 **Coordinator Responsibilities:**
@@ -85,9 +85,9 @@ flowchart LR
     D -->|Analysis| W[Writer Agent]
     W --> Output[Final Report]
     
-    style R fill:#7ED321
-    style D fill:#F5A623
-    style W fill:#BD10E0
+    style R fill:#7ED321,color:#000000
+    style D fill:#F5A623,color:#000000
+    style W fill:#BD10E0,color:#FFFFFF
 ```
 
 **When to Use:**
@@ -175,11 +175,11 @@ flowchart TD
     M --> W[Writer Agent]
     W --> Output[Final Report]
     
-    style C fill:#4A90E2
-    style R1 fill:#7ED321
-    style R2 fill:#7ED321
-    style R3 fill:#7ED321
-    style W fill:#BD10E0
+    style C fill:#4A90E2,color:#FFFFFF
+    style R1 fill:#7ED321,color:#000000
+    style R2 fill:#7ED321,color:#000000
+    style R3 fill:#7ED321,color:#000000
+    style W fill:#BD10E0,color:#FFFFFF
 ```
 
 **When to Use:**
@@ -318,7 +318,7 @@ flowchart TD
     
     Write --> Output[Report]
     
-    style Quality fill:#F5A623
+    style Quality fill:#F5A623,color:#000000
 ```
 
 **When to Use:**

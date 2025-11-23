@@ -345,7 +345,7 @@ send_message(coordinator, "task_complete", {...})
 ```python
 {
     "message_id": "unique-id",
-    "timestamp": "2023-11-22T10:30:00",
+    "timestamp": "2025-11-23T10:30:00",
     "from_agent": "coordinator",
     "to_agent": "research",
     "message_type": "request",  # request | response | error
@@ -678,7 +678,7 @@ If you scored low in a section:
 1. ✅ Bookmark this page (you might reference it later)
 2. ✅ Start with [Reading Guide](./READING_GUIDE.md)
 3. ✅ Read concepts (Pages 1-4)
-4. ✅ Begin [Lab 2](../../lab-2/README.md)
+4. ✅ Begin [Lab 2](../lab-2/README.md)
 
 **If you didn't pass:**
 1. ❌ Review the topics you missed

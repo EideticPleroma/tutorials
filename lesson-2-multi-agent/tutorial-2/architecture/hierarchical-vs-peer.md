@@ -29,10 +29,10 @@ graph TD
     W2 --> C
     W3 --> C
     
-    style C fill:#4A90E2
-    style W1 fill:#7ED321
-    style W2 fill:#F5A623
-    style W3 fill:#BD10E0
+    style C fill:#4A90E2,color:#FFFFFF
+    style W1 fill:#7ED321,color:#000000
+    style W2 fill:#F5A623,color:#000000
+    style W3 fill:#BD10E0,color:#FFFFFF
 ```
 
 **Best For:** Most multi-agent tasks (Tutorial 2 scope)
@@ -54,9 +54,9 @@ graph TD
     Sub2 --> W5[Qualitative Analyst]
     Sub2 --> W6[Trend Predictor]
     
-    style Master fill:#4A90E2
-    style Sub1 fill:#50E3C2
-    style Sub2 fill:#50E3C2
+    style Master fill:#4A90E2,color:#FFFFFF
+    style Sub1 fill:#50E3C2,color:#000000
+    style Sub2 fill:#50E3C2,color:#000000
 ```
 
 **Best For:** Large-scale systems with natural team divisions (Tutorial 3+)
@@ -74,10 +74,10 @@ graph LR
     A2 <--> A4
     A3 <--> A4
     
-    style A1 fill:#7ED321
-    style A2 fill:#F5A623
-    style A3 fill:#BD10E0
-    style A4 fill:#50E3C2
+    style A1 fill:#7ED321,color:#000000
+    style A2 fill:#F5A623,color:#000000
+    style A3 fill:#BD10E0,color:#FFFFFF
+    style A4 fill:#50E3C2,color:#000000
 ```
 
 **Best For:** Consensus-building, negotiation scenarios (Advanced topics)
@@ -318,9 +318,9 @@ graph TD
         B3 <--> B1
     end
     
-    style Master fill:#4A90E2
-    style TeamA fill:#50E3C2
-    style TeamB fill:#50E3C2
+    style Master fill:#4A90E2,color:#FFFFFF
+    style TeamA fill:#50E3C2,color:#000000
+    style TeamB fill:#50E3C2,color:#000000
 ```
 
 **Use Case:** Teams have clear responsibilities (hierarchy) but team members negotiate internally (peer-to-peer).

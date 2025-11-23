@@ -82,9 +82,9 @@ research_logger.log_message(trace_id, "task_started", {
 
 **Output:**
 ```json
-{"timestamp": "2023-11-22T10:30:00", "trace_id": "abc-123", "agent": "coordinator", "event": "task_received", "data": {"user_query": "Analyze EV market"}}
-{"timestamp": "2023-11-22T10:30:01", "trace_id": "abc-123", "agent": "coordinator", "event": "delegating_to_agent", "data": {"target_agent": "research", "action": "gather_info"}}
-{"timestamp": "2023-11-22T10:30:02", "trace_id": "abc-123", "agent": "research", "event": "task_started", "data": {"action": "gather_info", "query": "EV market"}}
+{"timestamp": "2025-11-23T10:30:00", "trace_id": "abc-123", "agent": "coordinator", "event": "task_received", "data": {"user_query": "Analyze EV market"}}
+{"timestamp": "2025-11-23T10:30:01", "trace_id": "abc-123", "agent": "coordinator", "event": "delegating_to_agent", "data": {"target_agent": "research", "action": "gather_info"}}
+{"timestamp": "2025-11-23T10:30:02", "trace_id": "abc-123", "agent": "research", "event": "task_started", "data": {"action": "gather_info", "query": "EV market"}}
 ```
 
 **Benefits:**
@@ -170,9 +170,9 @@ grep '"event": "message_sent"' agent.log | jq -r '[.timestamp, .agent, .data.to,
 
 **Output:**
 ```
-2023-11-22T10:30:01,coordinator,research,gather_info
-2023-11-22T10:32:15,coordinator,data,analyze_trends
-2023-11-22T10:34:30,coordinator,writer,create_report
+2025-11-23T10:30:01,coordinator,research,gather_info
+2025-11-23T10:32:15,coordinator,data,analyze_trends
+2025-11-23T10:34:30,coordinator,writer,create_report
 ```
 
 **Convert to Mermaid:**

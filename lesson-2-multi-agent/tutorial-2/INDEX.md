@@ -4,7 +4,7 @@ Quick reference to all documentation in Tutorial 2: Multi-Agent Systems.
 
 ## By Reading Order
 
-1. **[README (Tutorial 2 Overview)](../../../README.md#tutorial-2-multi-agent-systems)** - What you'll build
+1. **[README (Tutorial 2 Overview)](../../README.md#tutorial-2-multi-agent-systems)** - What you'll build
 2. **[Multi-Agent Architecture](./concepts/multi-agent-architecture.md)** - When and why to use multiple agents
 3. **[Agent Specialization](./concepts/agent-specialization.md)** - Designing focused agents
 4. **[Agent Communication](./concepts/agent-communication.md)** - Message passing and protocols
@@ -33,21 +33,21 @@ Quick reference to all documentation in Tutorial 2: Multi-Agent Systems.
 - [Hierarchical vs. Peer-to-Peer](./architecture/hierarchical-vs-peer.md) - Scaling strategies
 
 ### Lab Materials
-- [Lab 2 README](../../lab-2/README.md) - Lab overview
-- [Exercise 1: Coordinator Agent](../../lab-2/exercises/01-coordinator-agent.md)
-- [Exercise 2: Specialized Agents](../../lab-2/exercises/02-specialized-agents.md)
-- [Exercise 3: Agent Communication](../../lab-2/exercises/03-agent-communication.md)
-- [Exercise 4: Challenge Workflow](../../lab-2/exercises/04-challenge-workflow.md)
+- [Lab 2 README](../lab-2/README.md) - Lab overview
+- [Exercise 1: Coordinator Agent](../lab-2/exercises/01-coordinator-agent.md)
+- [Exercise 2: Specialized Agents](../lab-2/exercises/02-specialized-agents.md)
+- [Exercise 3: Agent Communication](../lab-2/exercises/03-agent-communication.md)
+- [Exercise 4: Challenge Workflow](../lab-2/exercises/04-challenge-workflow.md)
 
 ### Reference
 - [Self-Assessment Quiz](./self-assessment.md) - Test your readiness (10 min, 20 questions)
 - [Reading Guide](./READING_GUIDE.md) - Start here for reading order
-- [Lab Checklist](../../lab-2/lab-checklist.md) - Track your progress
-- [Setup Guide](../../lab-2/setup-guide.md) - Environment setup for Lab 2
-- [Testing Setup Guide](../../lab-2/testing-setup.md) - pytest fixtures and patterns
-- [FAQ](../../lab-2/FAQ.md) - Frequently asked questions
-- [Getting Unstuck](../../lab-2/getting-unstuck.md) - When you're blocked
-- [Troubleshooting](../../lab-2/troubleshooting.md) - Common errors
+- [Lab Checklist](../lab-2/lab-checklist.md) - Track your progress
+- [Setup Guide](../lab-2/setup-guide.md) - Environment setup for Lab 2
+- [Testing Setup Guide](../lab-2/testing-setup.md) - pytest fixtures and patterns
+- [FAQ](../lab-2/FAQ.md) - Frequently asked questions
+- [Getting Unstuck](../lab-2/getting-unstuck.md) - When you're blocked
+- [Troubleshooting](../lab-2/troubleshooting.md) - Common errors
 
 ### Supplementary Guides
 - [Performance Profiling](./guides/performance-profiling.md) - Measure and optimize multi-agent systems
@@ -72,10 +72,10 @@ Quick reference to all documentation in Tutorial 2: Multi-Agent Systems.
 
 **I need to...**
 - Get started → [Reading Guide](./READING_GUIDE.md)
-- Start the lab → [Lab 2 README](../../lab-2/README.md)
-- Track progress → [Lab Checklist](../../lab-2/lab-checklist.md)
-- Fix an error → [Troubleshooting Guide](../../lab-2/troubleshooting.md)
-- Ask a question → [FAQ](../../lab-2/FAQ.md)
+- Start the lab → [Lab 2 README](../lab-2/README.md)
+- Track progress → [Lab Checklist](../lab-2/lab-checklist.md)
+- Fix an error → [Troubleshooting Guide](../lab-2/troubleshooting.md)
+- Ask a question → [FAQ](../lab-2/FAQ.md)
 
 ## Prerequisites
 
@@ -135,5 +135,5 @@ Each document includes:
 
 **Start Learning:** Go to [Reading Guide](./READING_GUIDE.md) for recommended reading order.
 
-**Start Building:** Go to [Lab 2 README](../../lab-2/README.md) to begin exercises.
+**Start Building:** Go to [Lab 2 README](../lab-2/README.md) to begin exercises.
 

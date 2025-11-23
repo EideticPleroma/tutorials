@@ -86,10 +86,12 @@ Design coordinator-worker architectures, build specialized agents, implement mes
 1.  **Prerequisites**:
     *   Windows 11 with WSL2 enabled (or Mac/Linux)
     *   **AI-Capable IDE** (choose one):
-        - [Cursor](https://cursor.sh/) - AI-first IDE, best for learning
-        - [VS Code](https://code.visualstudio.com/) with [Continue](https://continue.dev/) - Free, powerful
-        - [VS Code](https://code.visualstudio.com/) with [Cline](https://github.com/cline/cline) - Agentic AI (formerly Claude Dev)
-        - [VS Code](https://code.visualstudio.com/) with [GitHub Copilot](https://github.com/features/copilot) - Quick suggestions
+        - [Cursor](https://cursor.sh/) - Most popular AI-first IDE (2025)
+        - [VS Code](https://code.visualstudio.com/) with [Continue](https://continue.dev/) - Free, multi-model support
+        - [Windsurf](https://codeium.com/windsurf) - Cascade AI, fast iteration (2024 release)
+        - [VS Code](https://code.visualstudio.com/) with [Cline](https://github.com/cline/cline) - Agentic assistant
+        - [GitHub Copilot Workspace](https://github.com/features/copilot) - Integrated agentic coding
+        - [Zed](https://zed.dev/) - Ultra-fast with native AI
         - Any text editor (manual AI consultation)
     *   [Ollama](https://ollama.com/) installed (for running local LLMs)
 
@@ -261,8 +263,6 @@ By the end of this lesson, you will:
 **Estimated Duration**: 8-10 hours (reading + lab exercises)
 
 **Coming**: Lessons 3+ will cover Memory Systems (vector databases, RAG), Production Patterns, and Advanced Tool Patterns
-
-**📋 [View Full Tutorial 2 Scope](./TUTORIAL-2-SCOPE.md)** - Detailed breakdown of content, exercises, and learning objectives
 
 ---
 

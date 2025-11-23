@@ -118,7 +118,7 @@ Every message has these fields:
 {
     "message_id": "msg_001",           # Unique identifier for tracking
     "message_type": "request",         # request | response | error
-    "timestamp": "2023-11-22T10:30:00",
+    "timestamp": "2025-11-23T10:30:00",
     "from_agent": "coordinator",       # Sender
     "to_agent": "research_agent",      # Recipient
     "action": "gather_info",           # What to do
@@ -143,7 +143,7 @@ Coordinator asking a worker to perform an action.
 {
     "message_id": "req_001",
     "message_type": "request",
-    "timestamp": "2023-11-22T10:30:00",
+    "timestamp": "2025-11-23T10:30:00",
     "from_agent": "coordinator",
     "to_agent": "research_agent",
     "action": "gather_info",
@@ -154,7 +154,7 @@ Coordinator asking a worker to perform an action.
     },
     "context": {
         "task_id": "rpt_789",
-        "deadline": "2023-11-22T11:00:00"
+        "deadline": "2025-11-23T11:00:00"
     }
 }
 ```
@@ -167,7 +167,7 @@ Worker returning results to coordinator.
 {
     "message_id": "resp_001",
     "message_type": "response",
-    "timestamp": "2023-11-22T10:32:15",
+    "timestamp": "2025-11-23T10:32:15",
     "from_agent": "research_agent",
     "to_agent": "coordinator",
     "in_reply_to": "req_001",          # Links to original request
@@ -199,7 +199,7 @@ Worker reporting a failure.
 {
     "message_id": "err_001",
     "message_type": "error",
-    "timestamp": "2023-11-22T10:31:00",
+    "timestamp": "2025-11-23T10:31:00",
     "from_agent": "research_agent",
     "to_agent": "coordinator",
     "in_reply_to": "req_001",
@@ -546,7 +546,7 @@ response = send_request(worker, action)  # Blocks forever
 {
     "message_id": "resp_042",
     "message_type": "response",
-    "timestamp": "2023-11-22T10:35:00",
+    "timestamp": "2025-11-23T10:35:00",
     "from_agent": "data_agent",
     "to_agent": "coordinator",
     "in_reply_to": "req_042",

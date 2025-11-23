@@ -58,7 +58,7 @@ Ensure you have completed Tutorial 1:
 - [ ] You completed Lab 1 exercises
 - [ ] You understand O.V.E. testing
 
-**Not ready?** Complete [Tutorial 1](../../../lesson-1-fundamentals/lab-1/README.md) first.
+**Not ready?** Complete [Tutorial 1](../../lesson-1-fundamentals/lab-1/README.md) first.
 
 ## Lab Structure
 

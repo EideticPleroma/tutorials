@@ -741,7 +741,7 @@ ollama pull llama3.1:8b
 ollama list
 # Should show:
 # NAME          ID           SIZE
-# llama3.1:8b   ...          4.7GB
+# llama3.1:8b   ...          4.9GB
 
 # Test the model
 ollama run llama3.1:8b "Hello"
@@ -774,7 +774,7 @@ What model should I use for this tutorial?
 **Option 1:** Use smaller model:
 ```bash
 # Try the 7B parameter version
-ollama pull llama3.1:7b
+ollama pull llama3.1:8b
 
 # Update agent_config.py
 model_name: str = "llama3.1:7b"
@@ -937,7 +937,7 @@ pkill ollama
 ollama serve
 
 # Use smaller model
-ollama pull llama3.1:7b
+ollama pull llama3.1:8b
 ```
 
 ---

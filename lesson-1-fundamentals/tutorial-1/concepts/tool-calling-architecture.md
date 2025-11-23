@@ -40,6 +40,33 @@ Tool calling is not magic; it's a structured dialogue loop:
 *   **Loops**: The model might get stuck calling the same tool repeatedly.
 *   **Error Handling**: If a tool fails, the agent needs to know how to recover (e.g., try a different search query).
 
+## Modern Tool Calling: Structured Outputs (2025)
+
+**What's Changed**: Modern LLMs (GPT-4o, Claude 3.5, Llama 3.1) now support **enhanced JSON schema compliance**.
+
+**Traditional Approach** (Tutorial 1-2):
+*   Send tool schemas, hope LLM returns valid JSON
+*   Parse response, catch errors if format is wrong
+*   Retry on parsing failures
+
+**Modern Approach** (2025 Production):
+*   Use `.with_structured_output(schema)` or similar API methods
+*   LLM guarantees JSON compliance with schema
+*   Eliminates parsing errors, faster iteration
+*   Reduces token usage (no retry loops)
+
+**Why This Tutorial Doesn't Use It Yet**:
+*   **Educational value**: Understanding the fundamentals and how tool calling works under the hood
+*   **Model agnostic**: Works with ANY model (even older ones without structured output support)
+*   **Transferable knowledge**: Later tutorials will cover modern patterns
+
+**Production Recommendation**: Once you understand these fundamentals, switch to structured outputs for reliability and performance.
+
+**Further Reading**: 
+*   [OpenAI Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs)
+*   [Anthropic Tool Use API](https://docs.anthropic.com/claude/docs/tool-use)
+*   [LlamaIndex Structured Prediction](https://docs.llamaindex.ai/en/stable/module_guides/querying/structured_outputs/)
+
 ---
 
 ## 🎯 Knowledge Check

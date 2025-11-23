@@ -1,0 +1,25 @@
+# Agentic AI Tutorial Series - Dependencies
+#
+# This is a convenience file that includes all dependencies for both tutorials.
+# For detailed requirements, see:
+# - Tutorial 1: src/agent/requirements.txt
+# - Tutorial 2: src/multi_agent/requirements.txt (reuses Tutorial 1)
+#
+# System Requirements (2025):
+# - Python 3.11+
+# - Node 20 LTS
+# - Ollama 0.4.0+
+# - Llama 3.1 model (recommended: llama3.1:8b)
+#
+# Installation:
+#   pip install -r requirements.txt
+#   ollama pull llama3.1:8b
+#
+# Or use the setup script:
+#   ./setup.sh
+
+ollama
+requests
+pytest
+pydantic
+

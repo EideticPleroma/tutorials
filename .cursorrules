@@ -293,6 +293,12 @@ When students ask questions, determine which tutorial they're on:
 - Decision trees and matrices for complex choices (when to use multi-agent, team size selection)
 - Quick reference cards at the end of major files (condensed key information)
 - Real-world examples and scenarios (practical applications of patterns)
+- Color Contrast Standards:
+  - Light backgrounds (>50% luminance): Use dark text (#000000, #333333)
+  - Dark backgrounds (<50% luminance): Use light text (#FFFFFF, #F0F0F0)
+  - Mermaid diagrams: Explicitly set text colors for all colored nodes using color property in classDef
+  - Callout boxes: Ensure readable contrast ratios (WCAG AA minimum 4.5:1)
+  - Always test contrast with dark mode and light mode rendering
 
 ### Lab Quality
 - Clear objectives and context

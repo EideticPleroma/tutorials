@@ -80,7 +80,30 @@ The Agent needs a brain. We use Ollama to run Llama 3.1 locally.
     ```
     *(If it says "address already in use", it's likely already running in the background or on Windows. That's fine!)*
 
-3.  **Pull the Model**:
+3.  **Verify Ollama Version** (2025 Requirement):
+    ```bash
+    ollama --version
+    # Expected: 0.4.0 or higher (Nov 2024+)
+    ```
+
+    **If older version**:
+    ```bash
+    # macOS
+    brew update && brew upgrade ollama
+
+    # Linux
+    curl -fsSL https://ollama.com/install.sh | sh
+
+    # Windows (WSL)
+    # Download latest from https://ollama.com/download
+    ```
+
+    **Why version matters**:
+    *   **0.4+**: Context caching (faster multi-turn conversations)
+    *   **0.3+**: Better tool calling support
+    *   **0.2 or older**: May have compatibility issues
+
+4.  **Pull the Model**:
     ```bash
     ollama pull llama3.1:8b
     ```
@@ -121,7 +144,7 @@ pip list
 ollama list
 # Output:
 # NAME          ID           SIZE   MODIFIED
-# llama3.1:8b   ...          4.7GB  ...
+# llama3.1:8b   ...          4.9GB  ...
 
 # Should run the agent module (type 'exit' to quit)
 python -m src.agent.simple_agent
