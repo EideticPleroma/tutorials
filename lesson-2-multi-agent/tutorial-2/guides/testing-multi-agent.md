@@ -2,6 +2,19 @@
 
 **Page 7 of 9** | [← Previous: Debugging Multi-Agent Systems](./debugging-multi-agent.md) | [Next: Coordinator Patterns →](../architecture/coordinator-patterns.md) | [↑ Reading Guide](../READING_GUIDE.md)
 
+> **📚 Building on Tutorial 1**
+> 
+> In Tutorial 1, you learned the [O.V.E. methodology](../../../lesson-1-fundamentals/tutorial-1/concepts/testing-agents.md) for testing single agents: Observe the execution, Validate deterministic behaviors, Evaluate quality.
+> 
+> **Tutorial 2 extends O.V.E. to multi-agent:**
+> - Test individual agents (unit tests)
+> - Test agent pairs (interaction tests)
+> - Test full workflows (integration tests)
+> - Test coordination logic (new challenge)
+> - Test message protocols (new challenge)
+> 
+> **The testing pyramid:** Unit → Interaction → Integration
+
 In Tutorial 1, you learned the Observe-Validate-Evaluate (O.V.E.) methodology for testing single agents. Multi-agent systems add new testing challenges: coordination logic, message passing, and agent interactions. This guide extends O.V.E. for multi-agent scenarios.
 
 ## Review: The O.V.E. Methodology
@@ -24,9 +37,9 @@ graph TD
     A[Integration Tests<br/>Full multi-agent workflows<br/>5-10 tests] -->|Build on| B[Agent Interaction Tests<br/>Agent pairs/triplets<br/>15-20 tests]
     B -->|Build on| C[Unit Tests<br/>Individual agents isolated<br/>30-50 tests]
     
-    style A fill:#FF6B6B
-    style B fill:#FFA500
-    style C fill:#90EE90
+    style A fill:#D32F2F,color:#FFFFFF
+    style B fill:#F57C00,color:#FFFFFF
+    style C fill:#388E3C,color:#FFFFFF
 ```
 
 ### Level 1: Unit Tests (Individual Agents)

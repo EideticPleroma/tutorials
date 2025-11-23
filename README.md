@@ -307,7 +307,7 @@ python -m pytest tests/unit/ -v
 
 ### Tutorial 2 Structure
 
-**Documentation** (~ 2.5 hours reading):
+**Documentation** (~2.5 hours reading):
 - **Concepts**: Multi-agent architecture, specialization, communication, state management
 - **Guides**: Designing teams, debugging, testing multi-agent systems
 - **Architecture**: Coordinator patterns, hierarchical vs. peer-to-peer

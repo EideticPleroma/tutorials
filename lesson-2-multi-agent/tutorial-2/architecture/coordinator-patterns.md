@@ -509,6 +509,448 @@ def execute_with_fallback(self, primary_agent, fallback_agent, task):
 
 ---
 
+## 📦 Real-World Pattern Applications
+
+See how each pattern solves actual business problems. These examples show which pattern to use when.
+
+### Example 1: Blog Post Generator (Sequential Pipeline)
+
+**Use Case:** Content marketing automation
+
+**Business Need:** Generate SEO-optimized blog posts from topics
+
+**Agents:**
+1. **Research Agent** (2s) → Gather 10 source articles on topic
+2. **Outline Agent** (3s) → Create structured outline with SEO keywords
+3. **Writer Agent** (5s) → Write full sections following outline
+4. **SEO Agent** (2s) → Optimize keywords, meta description, headings
+5. **Editor Agent** (3s) → Final polish, fact-check, readability
+
+**Why Sequential:** Each agent needs complete output from previous agent
+
+**Timing:**
+- Sequential execution: 2s + 3s + 5s + 2s + 3s = **15 seconds total**
+- Coordinator overhead: ~1s
+- **Total: 16 seconds**
+
+**Code Pattern:**
+```python
+def generate_blog_post(topic):
+    research = research_agent.gather_sources(topic)
+    outline = outline_agent.create_structure(research)
+    draft = writer_agent.write_content(outline)
+    optimized = seo_agent.optimize(draft)
+    final = editor_agent.polish(optimized)
+    return final
+```
+
+**Business Impact:**
+- Manual process: 8-12 hours per post
+- Automated: 16 seconds + 30 min human review
+- **Result:** 20x faster content production
+
+---
+
+### Example 2: Competitive Intelligence Dashboard (Parallel Execution)
+
+**Use Case:** Market research automation
+
+**Business Need:** Analyze 5 competitors simultaneously for strategic planning
+
+**Agents (running in parallel):**
+1. **Company A Analyst** (10s) → Financial metrics, products, market position
+2. **Company B Analyst** (10s) → Same analysis for Company B
+3. **Company C Analyst** (10s) → Same for Company C
+4. **Market Trends Agent** (8s) → Industry-wide trends and forecasts
+5. **Tech Landscape Agent** (7s) → Technology adoption and innovation
+
+**Merge Agent:** Coordinator waits for all, creates comparison matrix
+
+**Why Parallel:** All tasks are completely independent
+
+**Timing:**
+- Sequential would be: 10+10+10+8+7 = **45 seconds**
+- Parallel execution: MAX(10,10,10,8,7) = **10 seconds** (slowest agent)
+- Merge logic: +2s
+- **Total: 12 seconds vs 45 seconds**
+- **Speedup: 3.75x faster**
+
+**Code Pattern:**
+```python
+def generate_competitive_intel(companies):
+    with ThreadPoolExecutor(max_workers=5) as executor:
+        futures = {
+            executor.submit(analyze_company, c): c 
+            for c in companies
+        }
+        futures['trends'] = executor.submit(analyze_trends)
+        futures['tech'] = executor.submit(analyze_tech)
+        
+        results = {k: f.result() for k, f in futures.items()}
+    
+    return coordinator.merge_and_compare(results)
+```
+
+**Business Impact:**
+- Manual research: 2-3 days
+- Automated: 12 seconds + 1 hour human analysis
+- **Result:** 16x faster strategic insights
+
+---
+
+### Example 3: Customer Support Triage (Conditional Branching)
+
+**Use Case:** Automated ticket routing and resolution
+
+**Business Need:** Handle 1000+ daily support tickets efficiently
+
+**Flow:**
+```
+Ticket arrives
+    ↓
+Triage Agent: Classify urgency & category
+    ├─> Technical (40%) → Technical Support Agent
+    │                      ├─> Resolved → Auto-close
+    │                      └─> Complex → Escalate to L2
+    │
+    ├─> Billing (30%) → Billing Agent
+    │                   ├─> Simple → Auto-resolve
+    │                   └─> Refund needed → Human approval
+    │
+    ├─> Product (20%) → Product Team Agent
+    │                   └─> Feature request → Add to roadmap
+    │
+    └─> Unclear (10%) → Human Review
+```
+
+**Why Conditional:** Different tickets need different expertise
+
+**Timing by Path:**
+- Technical auto-resolve: 5s
+- Billing with approval: 8s + human
+- Product routing: 3s
+- Human review: immediate handoff
+
+**Code Pattern:**
+```python
+def handle_support_ticket(ticket):
+    classification = triage_agent.classify(ticket)
+    
+    if classification.category == "technical":
+        solution = tech_agent.diagnose(ticket)
+        if solution.confidence > 0.9:
+            return auto_resolve(solution)
+        else:
+            return escalate_to_human(solution)
+    
+    elif classification.category == "billing":
+        resolution = billing_agent.process(ticket)
+        if resolution.needs_approval:
+            return await_human_approval(resolution)
+        return auto_resolve(resolution)
+    
+    elif classification.category == "product":
+        return product_agent.route_to_team(ticket)
+    
+    else:
+        return immediate_human_review(ticket)
+```
+
+**Business Impact:**
+- 60% auto-resolved (no human needed)
+- 30% agent-assisted (human approval only)
+- 10% human-only
+- **Result:** 60% cost reduction, 5x faster response time
+
+---
+
+### Example 4: Code Review Automation (Parallel + Sequential Mixed)
+
+**Use Case:** Automated pull request reviews
+
+**Business Need:** Ensure code quality without slowing down development
+
+**Phase 1 - Parallel Analysis (independent checks):**
+```
+├─> Quality Agent (3s) → Complexity, readability, coverage
+├─> Security Agent (5s) → Vulnerability scanning, dep check
+└─> Test Agent (8s) → Run test suite, check edge cases
+```
+
+**Phase 2 - Sequential Synthesis:**
+```
+Writer Agent (2s) → Aggregate findings → Generate formatted review
+```
+
+**Why Mixed:** Analysis can be parallel (independent), reporting must be sequential (needs all data)
+
+**Timing:**
+- Phase 1 parallel: MAX(3s, 5s, 8s) = **8 seconds**
+- Phase 2 sequential: 2s
+- **Total: 10 seconds**
+- vs Sequential: 3+5+8+2 = **18 seconds**
+- **Speedup: 1.8x**
+
+**Code Pattern:**
+```python
+def review_pull_request(pr):
+    # Phase 1: Parallel analysis
+    with ThreadPoolExecutor() as executor:
+        quality_future = executor.submit(quality_agent.analyze, pr)
+        security_future = executor.submit(security_agent.scan, pr)
+        test_future = executor.submit(test_agent.run, pr)
+        
+        results = {
+            'quality': quality_future.result(),
+            'security': security_future.result(),
+            'tests': test_future.result()
+        }
+    
+    # Phase 2: Sequential synthesis
+    review = writer_agent.create_review(results)
+    return review
+```
+
+**Business Impact:**
+- Manual review: 30-60 minutes per PR
+- Automated first pass: 10 seconds
+- Human focus on: Architecture and logic (10-15 min)
+- **Result:** 3x more PRs reviewed, higher quality
+
+---
+
+### Example 5: Financial Report Generation (Iterative Refinement)
+
+**Use Case:** Quarterly earnings analysis
+
+**Business Need:** Generate investor-ready financial reports with high accuracy
+
+**Iterative Flow:**
+```
+Round 1: Draft Analysis
+    ├─> Data Agent: Calculate metrics
+    ├─> Writer Agent: Draft report
+    └─> Reviewer Agent: Score quality (7/10 - needs work)
+         ↓
+Round 2: Refinement
+    ├─> Data Agent: Add deeper analysis
+    ├─> Writer Agent: Improve narrative
+    └─> Reviewer Agent: Score (9/10 - good)
+         ↓
+Round 3: Final Polish
+    ├─> Writer Agent: Final edits
+    └─> Reviewer Agent: Score (10/10 - ready)
+              ↓
+         Publish
+```
+
+**Why Iterative:** Quality threshold must be met before publishing
+
+**Timing:**
+- Round 1: 10s
+- Round 2: 8s (targeted fixes)
+- Round 3: 3s (polish)
+- **Total: 21 seconds** (3 rounds)
+
+**Code Pattern:**
+```python
+def generate_financial_report(data, quality_threshold=9.0):
+    max_rounds = 5
+    
+    for round_num in range(1, max_rounds + 1):
+        # Generate or refine
+        if round_num == 1:
+            report = initial_draft(data)
+        else:
+            report = refine_report(report, feedback)
+        
+        # Review
+        review = reviewer_agent.evaluate(report)
+        
+        if review.score >= quality_threshold:
+            return report  # Done!
+        
+        feedback = review.improvement_suggestions
+    
+    return report  # Max rounds reached
+```
+
+**Business Impact:**
+- Manual: 2-3 days with multiple review cycles
+- Automated: 21 seconds + 1 hour human review
+- **Result:** Same-day reporting, 95% accuracy
+
+---
+
+### Example 6: Content Moderation Pipeline (Event-Driven)
+
+**Use Case:** Social media content screening
+
+**Business Need:** Screen 10,000+ posts/day for policy violations
+
+**Event-Driven Flow:**
+```
+Post Published (Event)
+    ↓
+Moderation Agent: Initial screening (100ms)
+    ├─> Safe (85%) → Publish immediately
+    ├─> Flagged (10%) → 
+    │   └─> Deep Analysis Agent (2s)
+    │       ├─> Confidence > 90% → Auto-remove
+    │       └─> Confidence < 90% → Human review queue
+    └─> Suspicious User (5%) →
+        └─> Account History Agent (1s)
+            └─> Pattern detection → Flag account
+```
+
+**Why Event-Driven:** Real-time response, most content is safe
+
+**Timing by Path:**
+- Safe content: **100ms** → instant publish
+- Flagged content: 2s analysis
+- Suspicious user: 1s history check
+- **Average: 200ms** (weighted by frequency)
+
+**Business Impact:**
+- 85% auto-approved: no delay
+- 10% analyzed: 2s delay
+- 5% escalated: human review
+- **Result:** Real-time moderation, 95% automated
+
+---
+
+## Pattern Selection Summary
+
+| Pattern | Best For | Execution Time | Complexity | Example |
+|---------|----------|----------------|------------|---------|
+| **Sequential Pipeline** | Dependent stages | Sum of agents | Low | Blog post generation |
+| **Parallel Execution** | Independent tasks | Slowest agent | Medium | Competitive analysis |
+| **Conditional Branching** | Decision points | Variable | Medium | Support triage |
+| **Mixed (Parallel + Sequential)** | Hybrid workflows | Optimized | Medium-High | Code review |
+| **Iterative Refinement** | Quality gates | Multiple rounds | High | Financial reports |
+| **Event-Driven** | Real-time systems | Varies by event | High | Content moderation |
+
+**Choosing the Right Pattern:**
+1. **Independent subtasks?** → Parallel
+2. **Sequential dependencies?** → Sequential Pipeline
+3. **Different paths based on data?** → Conditional
+4. **Some parallel, some sequential?** → Mixed
+5. **Quality threshold required?** → Iterative
+6. **Real-time triggers?** → Event-Driven
+
+---
+
+## 🎯 Pattern Selection Challenge
+
+For each scenario below, select the best coordinator pattern and explain why.
+
+**Scenario 1:** News aggregation system
+- Gather articles from 10 different news sources
+- Each source is independent
+- Want results as fast as possible
+
+<details>
+<summary>Show Answer</summary>
+
+**Pattern:** Parallel Execution with Merge
+
+**Why:**
+- Sources are independent (no dependencies)
+- Parallel execution: 1s (slowest source) vs 10s sequential
+- Merge all results at end
+
+**Implementation:**
+```python
+with ThreadPoolExecutor(max_workers=10) as executor:
+    futures = [executor.submit(agent.fetch, source) 
+               for source in news_sources]
+    results = [f.result() for f in as_completed(futures)]
+```
+
+**Trade-offs:**
+- ✅ Fast (10x speedup)
+- ✅ Simple merge logic
+- ❌ Need to handle partial failures
+</details>
+
+**Scenario 2:** Document generation pipeline
+- Research agent gathers data
+- Data agent calculates metrics from research
+- Writer agent creates report using metrics
+
+<details>
+<summary>Show Answer</summary>
+
+**Pattern:** Sequential Pipeline
+
+**Why:**
+- Clear dependencies: Research → Data → Writer
+- Each step needs complete output from previous
+- No opportunity for parallelization
+
+**Implementation:**
+```python
+findings = research_agent.gather(query)
+if findings.status != "success":
+    return error_response()
+
+analysis = data_agent.analyze(findings)
+if analysis.status != "success":
+    return error_response()
+
+report = writer_agent.write(findings, analysis)
+return report
+```
+
+**Trade-offs:**
+- ✅ Simple to reason about
+- ✅ Clear error handling
+- ❌ Slower (sum of all durations)
+</details>
+
+**Scenario 3:** Content moderation system
+- Check content against multiple policies
+- If flagged, get human review
+- If approved, publish immediately
+- If rejected, notify user with specific reason
+
+<details>
+<summary>Show Answer</summary>
+
+**Pattern:** Conditional Branching
+
+**Why:**
+- Decision points determine next steps
+- Different paths for different outcomes
+- Human-in-the-loop for edge cases
+
+**Implementation:**
+```python
+moderation_result = moderation_agent.check(content)
+
+if moderation_result.flagged:
+    if moderation_result.confidence < 0.8:
+        # Uncertain - get human review
+        human_review = await request_human_review(content)
+        return human_review.decision
+    else:
+        # Confident rejection
+        notify_user(moderation_result.reasons)
+        return "rejected"
+else:
+    # Approved - publish
+    publish_agent.publish(content)
+    return "published"
+```
+
+**Trade-offs:**
+- ✅ Handles complexity and uncertainty
+- ✅ Human oversight when needed
+- ❌ More complex coordination logic
+</details>
+
+---
+
 ## 🎯 Pattern Selection Guide
 
 **Choose Sequential Pipeline when:**

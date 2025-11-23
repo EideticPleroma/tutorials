@@ -2,6 +2,33 @@
 
 **Page 1 of 9** | [Next: Agent Specialization →](./agent-specialization.md) | [↑ Reading Guide](../READING_GUIDE.md)
 
+> **🎯 Why This Matters**
+> 
+> You've built single agents that work well for simple tasks. But what happens when:
+> - The agent has 15+ tools and gets confused about which to use?
+> - Research takes 10 seconds and your user is waiting?
+> - You need different expertise levels (novice writer, expert analyst)?
+> 
+> Multi-agent systems solve these problems by:
+> - **Specialization** → Higher quality (research agent knows research)
+> - **Parallelization** → 3x faster (run independent tasks simultaneously)
+> - **Scalability** → Add agents without overwhelming a single context
+> 
+> This is the difference between a solo developer and a coordinated team.
+> By the end of this guide, you'll know **when** to use multi-agent and **how** to design it.
+
+> **📚 Building on Tutorial 1**
+> 
+> In [Tutorial 1](../../../lesson-1-fundamentals/tutorial-1/INDEX.md), you built a single agent with multiple tools executing tasks sequentially through the [7-step tool calling loop](../../../lesson-1-fundamentals/tutorial-1/concepts/tool-calling-architecture.md).
+> 
+> **Tutorial 2 extends this by:**
+> - Splitting one generalist agent → Multiple specialist agents
+> - Sequential tool calls → Parallel agent execution
+> - Single context window → Distributed state management
+> - One agent debugging → Multi-agent coordination debugging
+> 
+> **Review if needed:** [Tool Calling Architecture](../../../lesson-1-fundamentals/tutorial-1/concepts/tool-calling-architecture.md)
+
 Building a single agent with tools is powerful. But some tasks are too complex for one agent to handle efficiently. Multi-agent systems split work across specialized agents that collaborate to solve complex problems.
 
 ## What is a Multi-Agent System?
@@ -68,6 +95,59 @@ flowchart TD
 ❌ **Tight coupling** - Each step depends heavily on previous step details
 ❌ **Development time matters** - Building multi-agent is more complex
 ❌ **Debugging is critical** - Single agent failures are easier to trace
+
+## 🤔 Decision Tree: Single vs Multi-Agent
+
+Use this decision tree to determine if your task needs multi-agent architecture:
+
+```
+START: Analyze Your Task
+    |
+    ├─> How many distinct capabilities needed?
+    |   |
+    |   ├─> 1-3 tools
+    |   |   └─> Is agent context overloaded? (>1000 tokens system prompt)
+    |   |       ├─> NO  → ✅ Single Agent (simplest)
+    |   |       └─> YES → Consider Multi-Agent (specialization)
+    |   |
+    |   └─> 4+ tools
+    |       └─> Can work be parallelized?
+    |           ├─> YES → ✅ Multi-Agent (parallel pattern)
+    |           |         Example: Gather data from 5 independent sources
+    |           |
+    |           └─> NO → Can split by domain expertise?
+    |               ├─> YES → ✅ Multi-Agent (sequential pattern)
+    |               |         Example: Research → Data → Writer
+    |               |
+    |               └─> NO → ✅ Single Agent (for now)
+    |                         Re-evaluate as complexity grows
+    |
+    └─> Special Considerations:
+        |
+        ├─> Need real-time response (<1 sec)?
+        |   └─> Multi-Agent with parallel execution
+        |
+        ├─> Multiple data sources (3+)?
+        |   └─> Multi-Agent: Parallel gathering, sequential synthesis
+        |
+        ├─> Quality critical (medical, legal, financial)?
+        |   └─> Multi-Agent: Specialists with coordinator review
+        |
+        └─> Learning/prototyping phase?
+            └─> Single Agent first, migrate later
+```
+
+**Decision Examples:**
+
+| Task | Tools | Parallelizable? | Decision | Reason |
+|------|-------|----------------|----------|---------|
+| Summarize document | 1-2 | N/A | ✅ Single Agent | Simple, linear task |
+| Market research report | 8+ | Yes (data gathering) | ✅ Multi-Agent | Parallel + specialization |
+| Chatbot | 3-5 | No | ✅ Single Agent | High interactivity |
+| Code review system | 6+ | Yes (quality/security/tests) | ✅ Multi-Agent | Independent checks |
+| Calculate metrics | 2-3 | No | ✅ Single Agent | Tight coupling |
+
+**Rule of Thumb:** If you're uncertain, **start with single agent**. You can always refactor to multi-agent later (see [Refactoring Guide](../guides/refactoring-single-to-multi.md)).
 
 ## Coordination Patterns
 
@@ -248,9 +328,9 @@ graph LR
     SA -->|+$0.27<br/>+40% quality| MS
     MS -->|Same cost<br/>-50% time| MP
     
-    style SA fill:#FFE6E6
-    style MS fill:#FFF4E6
-    style MP fill:#E6FFE6
+    style SA fill:#D32F2F,color:#FFFFFF
+    style MS fill:#F57C00,color:#FFFFFF
+    style MP fill:#388E3C,color:#FFFFFF
 ```
 
 **Read this diagram:**
@@ -377,6 +457,58 @@ Test your understanding of multi-agent architecture:
 
 **Why multi-agent?** Each subtask needs different expertise, can run partially in parallel, and produces better results with specialized prompts.
 </details>
+
+---
+
+## 📋 Quick Reference Card
+
+### When to Use Multi-Agent
+
+**Use Multi-Agent When:**
+- ✅ Task naturally splits into domains (research/data/writing)
+- ✅ Need parallel execution for speed (independent subtasks)
+- ✅ Single agent context overloaded (10+ tools, long prompts)
+- ✅ Want to optimize quality per domain (specialists > generalists)
+- ✅ Complex workflows with conditional logic
+
+**Stick with Single Agent When:**
+- ❌ Simple linear task with 1-3 tools
+- ❌ Learning phase (master single agent first)
+- ❌ Development speed critical (multi-agent adds complexity)
+- ❌ All subtasks tightly coupled
+- ❌ High user interactivity required
+
+### Key Metrics
+- **Coordination overhead:** 8-15% of total time
+- **Ideal team size:** 3-5 specialized agents
+- **Speedup from parallelization:** 2-4x typical
+- **Quality improvement:** 20-30% with specialists vs generalist
+
+### Three Main Patterns
+1. **Coordinator-Worker** (Tutorial 2 focus)
+   - Single coordinator, multiple workers
+   - Best for most use cases
+
+2. **Hierarchical** (Tutorial 3+)
+   - Multi-level coordinators
+   - For 10+ agents
+
+3. **Peer-to-Peer** (Advanced)
+   - No coordinator
+   - For consensus/negotiation
+
+### Quick Start Checklist
+1. ✅ Read [Agent Specialization](./agent-specialization.md)
+2. ✅ Design 3-agent team (input → process → output)
+3. ✅ Implement [message protocol](./agent-communication.md)
+4. ✅ Add [shared state](./state-management.md)
+5. ✅ Test with [O.V.E. extended](../guides/testing-multi-agent.md)
+
+### Decision Tree Summary
+- **1-3 tools** → Single agent (usually)
+- **4+ tools + parallelizable** → Multi-agent (parallel pattern)
+- **4+ tools + sequential** → Multi-agent (pipeline pattern)
+- **Uncertain?** → Start single, refactor later ([guide](../guides/refactoring-single-to-multi.md))
 
 ---
 

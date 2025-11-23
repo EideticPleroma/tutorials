@@ -9,7 +9,7 @@ Quick reference to all documentation in Tutorial 1.
 3. **[LLM Fundamentals](./concepts/llm-fundamentals.md)** - How LLMs work
 4. **[Tool Calling Architecture](./concepts/tool-calling-architecture.md)** - The core mechanism
 5. **[MCP Introduction](./concepts/mcp-intro.md)** - Integration layer
-5a. **[Tech Stack Decisions](./concepts/tech-stack-decisions.md)** - Reference
+5a. **[Tech Stack Decisions](../../../docs/tech-stack.md)** - Reference
 6. **[Testing Agents](./concepts/testing-agents.md)** - O.V.E. methodology
 6a. **[Architecture in AI Era](./concepts/architecture-in-ai-era.md)** - New architectural mindset
 7. **[Prompting Techniques](./guides/prompting.md)** - Writing effective prompts
@@ -29,7 +29,7 @@ Quick reference to all documentation in Tutorial 1.
 - [LLM Fundamentals](./concepts/llm-fundamentals.md)
 - [Tool Calling Architecture](./concepts/tool-calling-architecture.md)
 - [MCP Introduction](./concepts/mcp-intro.md)
-- [Tech Stack Decisions](./concepts/tech-stack-decisions.md) - Reference
+- [Tech Stack Decisions](../../../docs/tech-stack.md) - Reference
 - [Testing Agents](./concepts/testing-agents.md)
 - [Architecture in AI Era](./concepts/architecture-in-ai-era.md)
 

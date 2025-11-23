@@ -1,8 +1,6 @@
 ---
 alwaysApply: true
-priority: high
 ---
-
 # AI Assistant Rules for Agentic AI Tutorial Series
 # Compatible with Cursor, Continue (VS Code), Cline, and other AI IDEs
 
@@ -33,6 +31,8 @@ This is a comprehensive educational project teaching Agentic AI from fundamental
   - `tutorial-2/`: Concepts, guides, architecture  
   - `lab-2/`: Exercises, FAQ, troubleshooting
   - `progress.md`: Progress tracker for Tutorial 2
+- `docs/`: Shared documentation across tutorials
+  - `tech-stack.md`: Centralized tech stack decisions
 
 ### Project Root
 - `README.md`: Main project overview and navigation
@@ -180,7 +180,9 @@ git commit -m "docs(lesson-X-lab-Y): update exercise instructions"
 - Solution files
 - Test implementations from exercises
 - `.env` or local config
-- `.agent_state/` or `.agent_logs/` directories
+- `.agent_state/` directories (runtime agent state)
+- `.agent_logs/` directories (agent execution logs)
+- `.cursor/` directory (IDE-specific settings and files)
 
 #### Completing All Labs in a Tutorial
 ```bash
@@ -283,9 +285,14 @@ When students ask questions, determine which tutorial they're on:
 ### Documentation Quality
 - Clear navigation (Previous/Next/Up links on every page)
 - Code examples for every concept
-- Mermaid diagrams for workflows and architecture
-- Knowledge checks with expandable answers
+- Mermaid diagrams for workflows and architecture (use readable colors, avoid light colors on white)
+- Knowledge checks with expandable answers (scenario-based questions with detailed explanations)
 - Cross-references between related concepts
+- "Why This Matters" boxes at the start of concept files (establish importance before diving into details)
+- "Building on Tutorial 1" boxes in Tutorial 2 files (explicitly connect to prior learning)
+- Decision trees and matrices for complex choices (when to use multi-agent, team size selection)
+- Quick reference cards at the end of major files (condensed key information)
+- Real-world examples and scenarios (practical applications of patterns)
 
 ### Lab Quality
 - Clear objectives and context

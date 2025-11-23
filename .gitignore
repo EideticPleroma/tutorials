@@ -49,6 +49,7 @@ htmlcov/
 
 # Cursor
 .cursor/
+.agent_state/
 *.plan.md
 
 # Project Planning Documents (work in progress)

@@ -32,9 +32,9 @@ graph TD
     C --> C2[Tool Execution]
     C --> C3[Prompt Processing]
     
-    style B fill:#FFE6E6
-    style D fill:#FFE6E6
-    style E fill:#FFE6E6
+    style B fill:#D32F2F,color:#FFFFFF
+    style D fill:#D32F2F,color:#FFFFFF
+    style E fill:#D32F2F,color:#FFFFFF
 ```
 
 **What to measure:**

@@ -438,14 +438,14 @@ flowchart TD
     Q9 -->|No| Fix6[Agent didn't write<br/>Check state.set calls]
     Q9 -->|Yes| Fix7[State read issue<br/>Check key names match]
     
-    style Start fill:#FFE6E6
-    style Fix1 fill:#E6FFE6
-    style Fix2 fill:#E6FFE6
-    style Fix3 fill:#E6FFE6
-    style Fix4 fill:#E6FFE6
-    style Fix5 fill:#E6FFE6
-    style Fix6 fill:#E6FFE6
-    style Fix7 fill:#E6FFE6
+    style Start fill:#D32F2F,color:#FFFFFF
+    style Fix1 fill:#388E3C,color:#FFFFFF
+    style Fix2 fill:#388E3C,color:#FFFFFF
+    style Fix3 fill:#388E3C,color:#FFFFFF
+    style Fix4 fill:#388E3C,color:#FFFFFF
+    style Fix5 fill:#388E3C,color:#FFFFFF
+    style Fix6 fill:#388E3C,color:#FFFFFF
+    style Fix7 fill:#388E3C,color:#FFFFFF
 ```
 
 **How to use this diagram:**
@@ -529,6 +529,96 @@ grep <trace_id> agent.log | grep -i error
 # Check coordinator errors
 grep <trace_id> agent.log | grep coordinator | grep -i "error\|exception\|failed"
 ```
+
+---
+
+## 🎯 Knowledge Check
+
+**Question 1:** You see 3 agents completed successfully but final output is incorrect. Which debugging strategy should you try first?
+
+<details>
+<summary>Show Answer</summary>
+
+**Answer:** Message Flow Tracing with Trace IDs
+
+**Why:** If agents individually succeeded but output is wrong, the issue is likely in:
+- How data passed between agents (message content)
+- Coordinator aggregation logic
+- State sharing problems
+
+**Steps:**
+1. Grep logs for the trace_id
+2. Verify each message payload contains expected data
+3. Check state transitions between agents
+4. Validate coordinator's merge logic
+
+**Common causes:**
+- Agent B receiving wrong data from Agent A
+- Coordinator merging results incorrectly
+- State overwritten by later agent
+</details>
+
+**Question 2:** Your coordinator shows 10 messages sent but only 8 responses received. What debugging approach would you use?
+
+<details>
+<summary>Show Answer</summary>
+
+**Timeout or Silent Failure**
+
+**Debugging steps:**
+1. Check for timeout errors in agent logs
+2. Look for unhandled exceptions in worker agents
+3. Verify message_id to in_reply_to matching
+4. Check if workers are actually receiving messages
+
+**Tools:**
+```bash
+# Find requests without responses
+grep "message_type.*request" logs/ | awk '{print $NF}' > requests.txt
+grep "in_reply_to" logs/ | awk '{print $NF}' > responses.txt
+comm -23 requests.txt responses.txt  # Shows orphaned requests
+```
+</details>
+
+**Question 3:** Scenario - Design a logging strategy for a 5-agent system where you need to debug which agent caused a performance bottleneck.
+
+<details>
+<summary>Show Answer</summary>
+
+**Structured Logging with Timing:**
+
+```python
+class PerformanceLogger:
+    def log_agent_start(self, trace_id, agent_name, action):
+        log({
+            "trace_id": trace_id,
+            "agent": agent_name,
+            "action": action,
+            "event": "start",
+            "timestamp": time.time()
+        })
+    
+    def log_agent_end(self, trace_id, agent_name, action, duration):
+        log({
+            "trace_id": trace_id,
+            "agent": agent_name,
+            "action": action,
+            "event": "end",
+            "duration_ms": duration * 1000,
+            "timestamp": time.time()
+        })
+
+# Analysis
+grep "event.*end" logs.json | jq '.duration_ms, .agent' | paste - - | sort -rn
+# Shows slowest agents first
+```
+
+**Key insights tracked:**
+- Duration per agent per action
+- Total time in each agent
+- Coordinator overhead
+- Waiting time between agents
+</details>
 
 ---
 
