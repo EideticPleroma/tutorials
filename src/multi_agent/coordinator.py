@@ -10,7 +10,10 @@ import logging
 import time  # noqa: F401 - Students will use for retry backoff
 import uuid  # noqa: F401 - Students will use for trace_id generation
 from .worker_base import WorkerAgent
-from .message_protocol import Message, MessageType  # noqa: F401 - Students will use for delegation
+from .message_protocol import (
+    Message,
+    MessageType,
+)  # noqa: F401 - Students will use for delegation
 from .shared_state import SharedState
 
 
@@ -63,10 +66,10 @@ class Coordinator:
         # - Initialize or create shared_state
         # - Initialize worker agents (research, data, writer)
         # - Setup logging
-        
+
         self.shared_state = shared_state or SharedState()
         self.logger = logging.getLogger("coordinator")
-        
+
         # Worker agents - students will implement these in Exercise 2
         self.research = None
         self.data = None
@@ -111,7 +114,7 @@ class Coordinator:
         # 4. Handle response or error
         # 5. Implement retry logic
         # 6. Return result
-        
+
         raise NotImplementedError("Students implement delegate() in Exercise 1")
 
     def generate_report(self, query: str, *, trace_id: Optional[str] = None) -> str:
@@ -142,5 +145,5 @@ class Coordinator:
         # 5. Check success, handle error
         # 6. Delegate to writer agent
         # 7. Return final report
-        
+
         raise NotImplementedError("Students implement generate_report() in Exercise 1")
