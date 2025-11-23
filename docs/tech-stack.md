@@ -184,12 +184,6 @@ Tutorial 2 builds on this foundation by introducing multi-agent coordination whi
 *   **Coordinator Patterns**: One coordinator agent managing multiple specialized agents
 *   **Testing Multi-Agent**: Extended O.V.E. methodology for testing agent interactions
 
-**Production Performance Note (2025)**:
-*   **Prompt Caching**: Ollama 0.4+ caches system prompts automatically
-*   **Multi-Agent Benefit**: Coordinator + workers share cached context (significant speedup)
-*   **Cost Savings**: Claude 3.5 and GPT-4o also support prompt caching (90% cost reduction for repeated prompts)
-*   **Tutorial 2 Scope**: We use Ollama's automatic caching; advanced caching strategies in Tutorial 4
-
 **What We Still Avoid:**
 *   **Heavy Frameworks**: No LangChain/CrewAI - we continue building fundamentals from scratch
 *   **External Dependencies**: No Redis, RabbitMQ, or complex infrastructure
@@ -197,6 +191,12 @@ Tutorial 2 builds on this foundation by introducing multi-agent coordination whi
 
 **Why This Approach:**
 Tutorial 2 focuses on understanding multi-agent coordination patterns without introducing production infrastructure complexity. You'll learn how agents communicate, specialize, and collaborate using the same lightweight stack you mastered in Tutorial 1.
+
+**Production Performance Note (2025)**:
+*   **Prompt Caching**: Ollama 0.4+ caches system prompts automatically
+*   **Multi-Agent Benefit**: Coordinator + workers share cached context (significant speedup)
+*   **Cost Savings**: Claude 3.5 and GPT-4o also support prompt caching (90% cost reduction for repeated prompts)
+*   **Tutorial 2 Scope**: We use Ollama's automatic caching; advanced caching strategies in Tutorial 4
 
 ### Beyond Tutorial 2
 

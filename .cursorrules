@@ -45,6 +45,7 @@ This is a comprehensive educational project teaching Agentic AI from fundamental
 - **Style**: PEP 8.
 - **Type Hints**: MANDATORY for all function signatures (Agents rely on them).
 - **Docstrings**: Google style. MANDATORY for all tools (Agents read them).
+- **Logging**: Use lazy % formatting, NOT f-strings. Example: `logger.info("Message %s", var)` not `logger.info(f"Message {var}")`.
 
 ### TypeScript
 - **Style**: Standard JS.
@@ -279,7 +280,7 @@ When students ask questions, determine which tutorial they're on:
 - Type hints: MANDATORY
 - Docstrings: Google style, MANDATORY
 - Error handling: Return error strings, don't raise exceptions in agents
-- Logging: Use structured logging (JSON format for Tutorial 2)
+- Logging: Use structured logging (JSON format for Tutorial 2), lazy % formatting (NOT f-strings)
 - Testing: O.V.E. methodology for all features
 
 ### Documentation Quality

@@ -8,13 +8,16 @@ This package provides core components for building multi-agent systems:
 - Shared State: State management across agents
 """
 
-from .coordinator import Coordinator
+from .coordinator import Coordinator, CoordinatorError, AgentDelegationError, WorkflowError
 from .worker_base import WorkerAgent
 from .message_protocol import Message, MessageType
 from .shared_state import SharedState
 
 __all__ = [
     'Coordinator',
+    'CoordinatorError',
+    'AgentDelegationError',
+    'WorkflowError',
     'WorkerAgent',
     'Message',
     'MessageType',
