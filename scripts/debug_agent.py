@@ -82,7 +82,7 @@ def check_model():
             return True
         else:
             print_status("llama3.1 model available", False, "")
-            print("\n  Fix: Run 'ollama pull llama3.1:8b'")
+            print("\n  Fix: Run 'ollama pull llama3.3:8b'")
             return False
             
     except ImportError:
@@ -254,7 +254,7 @@ def show_help_links():
     print()
     print("💡 Quick Fixes:")
     print("  • Ollama not running: ollama serve")
-    print("  • Model missing: ollama pull llama3.1:8b")
+    print("  • Model missing: ollama pull llama3.3:8b")
     print("  • Import errors: Check __init__.py files exist")
     print("  • Tools not found: Check imports in simple_agent.py")
     print()

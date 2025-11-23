@@ -41,6 +41,45 @@ In this tutorial, we will build a simple test harness that:
 3.  Runs assertions (validations) on the trace.
 4.  Can be extended to run evaluations.
 
+## Production Testing Tools (2025)
+
+While O.V.E. teaches fundamentals, production systems typically use specialized tools:
+
+### LangSmith (LangChain)
+*   **Purpose**: Trace capture, replay, and evaluation
+*   **Features**: Dataset-based testing, A/B testing for prompts, production monitoring
+*   **Best for**: LangChain-based systems, teams needing observability
+
+### Braintrust
+*   **Purpose**: Prompt versioning and regression testing
+*   **Features**: Model comparison, cost tracking, dataset management
+*   **Best for**: Multi-model systems, prompt experimentation
+
+### OpenAI Evals
+*   **Purpose**: Standard benchmark suites
+*   **Features**: Custom eval harnesses, reproducible testing
+*   **Best for**: OpenAI model users, research-focused teams
+
+### Promptfoo
+*   **Purpose**: CLI-based prompt testing
+*   **Features**: Multiple provider support, regression detection, CI/CD integration
+*   **Best for**: DevOps teams, automated testing pipelines
+
+### When to Use What
+
+**Tutorial 1-2 (Learning)**:
+*   Stick with O.V.E. methodology
+*   Understand the principles deeply
+*   Build your own test harness
+
+**Production (Real Systems)**:
+*   Start with LangSmith or Braintrust
+*   Scale testing with datasets
+*   Monitor production agent behavior
+*   Track regressions across prompt versions
+
+**Why Learn O.V.E. First**: These tools implement O.V.E. principles under the hood. Understanding fundamentals lets you use any tool effectively and debug when tools fail.
+
 ---
 
 ## 🎯 Knowledge Check

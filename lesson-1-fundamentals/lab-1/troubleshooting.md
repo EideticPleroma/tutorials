@@ -735,7 +735,7 @@ How should Ollama be configured for this tutorial?
 
 ```bash
 # Pull the model (this downloads ~4.7GB)
-ollama pull llama3.1:8b
+ollama pull llama3.3:8b
 
 # Verify
 ollama list
@@ -774,7 +774,7 @@ What model should I use for this tutorial?
 **Option 1:** Use smaller model:
 ```bash
 # Try the 7B parameter version
-ollama pull llama3.1:7b
+ollama pull llama3.1:8b
 
 # Update agent_config.py
 model_name: str = "llama3.1:7b"
@@ -856,7 +856,7 @@ How should line endings be handled in this project?
 ```bash
 # Inside WSL
 curl -fsSL https://ollama.com/install.sh | sh
-ollama pull llama3.1:8b
+ollama pull llama3.3:8b
 ```
 
 **Option 2:** Connect to Windows host:
@@ -937,7 +937,7 @@ pkill ollama
 ollama serve
 
 # Use smaller model
-ollama pull llama3.1:7b
+ollama pull llama3.1:8b
 ```
 
 ---

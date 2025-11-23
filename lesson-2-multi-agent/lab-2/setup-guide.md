@@ -302,7 +302,7 @@ python -m pytest tests/multi_agent/ -n auto
 
 ```bash
 # Use smaller model for faster iteration
-ollama pull llama3.1:8b  # Instead of 70b
+ollama pull llama3.3:8b  # Instead of 70b
 
 # Increase concurrent requests
 export OLLAMA_NUM_PARALLEL=4

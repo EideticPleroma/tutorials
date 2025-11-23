@@ -216,7 +216,7 @@ shared_state = SharedState()
 shared_state.set("current_task", {
     "task_id": "rpt_001",
     "query": "EV market analysis",
-    "deadline": "2023-11-22T15:00:00"
+    "deadline": "2025-11-23T15:00:00"
 })
 
 # Research agent writes findings
@@ -358,7 +358,7 @@ shared_state.set("task_context", {
     "task_id": "rpt_001",
     "user_query": "Analyze EV market",
     "max_sources": 5,
-    "deadline": "2023-11-22T15:00:00"
+    "deadline": "2025-11-23T15:00:00"
 })
 
 # Workers read context
@@ -550,8 +550,8 @@ shared_state.set("results", results)
   "task_context": {
     "task_id": "rpt_001",
     "user_query": "Analyze EV market trends",
-    "created_at": "2023-11-22T10:00:00",
-    "deadline": "2023-11-22T15:00:00"
+    "created_at": "2025-11-23T10:00:00",
+    "deadline": "2025-11-23T15:00:00"
   },
   
   "agent_status": {
@@ -564,7 +564,7 @@ shared_state.set("results", results)
     "status": "completed",
     "findings_file": ".agent_state/research_001.json",
     "sources_count": 5,
-    "completed_at": "2023-11-22T10:15:00"
+    "completed_at": "2025-11-23T10:15:00"
   },
   
   "data_analysis": {
@@ -573,7 +573,7 @@ shared_state.set("results", results)
       "growth_rate": 55.2,
       "market_size": 10.5
     },
-    "started_at": "2023-11-22T10:16:00"
+    "started_at": "2025-11-23T10:16:00"
   },
   
   "writer": {

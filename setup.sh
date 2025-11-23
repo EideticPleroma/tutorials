@@ -59,7 +59,7 @@ if command -v ollama &> /dev/null; then
     fi
 
     echo "Pulling llama3.1:8b..."
-    ollama pull llama3.1:8b
+    ollama pull llama3.3:8b
     
     # Optional: Pull smaller model
     # echo "Pulling llama3.1:2b..."

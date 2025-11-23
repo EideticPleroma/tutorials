@@ -210,7 +210,7 @@ ollama serve &
 ollama list
 
 # Look for: llama3.1:8b
-# If missing: ollama pull llama3.1:8b
+# If missing: ollama pull llama3.3:8b
 ```
 
 ### Are Your Tools Registered?
@@ -431,7 +431,7 @@ git checkout -- file1.py  # Undo specific file
 ### "Tests Worked Yesterday, Fail Today"
 
 **Possible causes:**
-1. Model updated (rare): `ollama pull llama3.1:8b` might have gotten a new version
+1. Model updated (rare): `ollama pull llama3.3:8b` might have gotten a new version
 2. Prompt changed: Check git diff on agent_config.py
 3. Probabilistic failure: Run 5 times to check consistency
 4. Environment issue: Restart terminal, reactivate venv

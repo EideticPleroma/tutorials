@@ -345,7 +345,7 @@ send_message(coordinator, "task_complete", {...})
 ```python
 {
     "message_id": "unique-id",
-    "timestamp": "2023-11-22T10:30:00",
+    "timestamp": "2025-11-23T10:30:00",
     "from_agent": "coordinator",
     "to_agent": "research",
     "message_type": "request",  # request | response | error

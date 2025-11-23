@@ -6,26 +6,29 @@ This document explains why we chose specific technologies for Tutorial 1 and whe
 
 ## Core Technologies
 
-### Llama 3.1 (via Ollama)
+### Llama 3.3 (via Ollama)
 
-**Why Llama over GPT-4/Claude?**
+**Why Llama over GPT-4o/Claude 3.5?**
 *   **Local & Free**: Runs entirely on your machine. No API costs, no rate limits, no data leaving your machine.
 *   **Fast Iteration**: No network latency. You can test prompts in seconds, not minutes.
 *   **Privacy**: Your code, prompts, and data never leave your machine.
-*   **State-of-the-Art**: Llama 3.1 matches GPT-4 class performance on many benchmarks.
-*   **Tool Calling**: Fine-tuned specifically for structured tool calling, which is critical for agents.
+*   **State-of-the-Art**: Llama 3.3 (Dec 2024) matches GPT-4o performance on many benchmarks.
+*   **Tool Calling**: Llama 3.3 has enhanced structured output capabilities, critical for reliable agent behavior.
 
 **When to use alternatives:**
-*   **GPT-4**: If you need the absolute best reasoning for complex tasks (but accept API costs).
-*   **Claude**: If you need very long context windows (200k+ tokens) for analyzing entire codebases.
+*   **GPT-4o**: Multimodal capabilities (vision, audio) and fastest response times in production.
+*   **Claude 3.5 Sonnet**: Best for code generation and long-context reasoning (200k tokens).
+*   **Gemini 2.0 Flash**: Fastest inference, multimodal support, excellent for production deployments.
+
+> **Note**: For complete tech stack details and 2025 updates, see [Tech Stack Documentation](../../../docs/tech-stack.md).
 
 ### Ollama
 
 **Why Ollama?**
 *   **Simple API**: Just `ollama.chat()` - no complex SDK setup.
-*   **Model Management**: Easy to pull, switch, and manage models (`ollama pull llama3.1:8b`).
+*   **Model Management**: Easy to pull, switch, and manage models (`ollama pull llama3.3:8b`).
 *   **Cross-Platform**: Works on Windows (WSL2), Mac, Linux.
-*   **Active Development**: Well-maintained with regular updates.
+*   **Active Development**: Well-maintained with regular updates (0.4+ has context caching).
 *   **Multi-Agent Ready**: Handles concurrent requests well for Tutorial 2's multi-agent patterns.
 
 **Multi-Agent Considerations:**
