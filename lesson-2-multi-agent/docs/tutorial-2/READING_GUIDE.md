@@ -21,7 +21,14 @@ Before starting Tutorial 2, ensure you've completed Tutorial 1:
 - [ ] Familiar with O.V.E. testing methodology
 - [ ] Can debug agent behaviors using logs
 
-**Not sure?** Review [Tutorial 1 Concepts](../../../lesson-1-fundamentals/docs/tutorial-1/concepts/tool-calling-architecture.md) before continuing.
+**Not sure if you're ready?** 
+
+👉 **[Take the Self-Assessment Quiz](./SELF_ASSESSMENT.md)** (10 min, 20 questions)
+- Passing score: 80% (16/20 correct)
+- Covers Tool Calling, Multi-Agent Concepts, State & Communication, Testing
+- Get instant feedback on what to review
+
+**Or review:** [Tutorial 1 Concepts](../../../lesson-1-fundamentals/docs/tutorial-1/concepts/tool-calling-architecture.md) before continuing.
 
 ---
 

@@ -40,10 +40,17 @@ Quick reference to all documentation in Tutorial 2: Multi-Agent Systems.
 - [Exercise 4: Challenge Workflow](../../lab-2/exercises/04-challenge-workflow.md)
 
 ### Reference
+- [Self-Assessment Quiz](./SELF_ASSESSMENT.md) - Test your readiness (10 min, 20 questions)
 - [Reading Guide](./READING_GUIDE.md) - Start here for reading order
 - [Lab Checklist](../../lab-2/lab-checklist.md) - Track your progress
+- [Testing Setup Guide](../../lab-2/testing-setup.md) - pytest fixtures and patterns
 - [FAQ](../../lab-2/FAQ.md) - Frequently asked questions
 - [Troubleshooting](../../lab-2/troubleshooting.md) - Common errors
+
+### Supplementary Guides
+- [Performance Profiling](./guides/performance-profiling.md) - Measure and optimize multi-agent systems
+- [Refactoring Guide](./guides/refactoring-single-to-multi.md) - Migrate from single to multi-agent
+- [Case Studies](./CASE_STUDIES.md) - Real-world multi-agent applications
 
 ## Quick Lookup
 
@@ -73,7 +80,9 @@ Quick reference to all documentation in Tutorial 2: Multi-Agent Systems.
 - ✅ Familiar with O.V.E. testing methodology
 - ✅ Have working agent from Lab 1
 
-**Not sure if you're ready?** Take the [Tutorial 1 Assessment](../../../lesson-1-fundamentals/docs/tutorial-1/READING_GUIDE.md#readiness-checklist)
+**Not sure if you're ready?** 
+- Take the [Tutorial 2 Self-Assessment Quiz](./SELF_ASSESSMENT.md) (10 min, 20 questions)
+- Or review [Tutorial 1 concepts](../../../lesson-1-fundamentals/docs/tutorial-1/READING_GUIDE.md)
 
 ## Reading Time Estimates
 

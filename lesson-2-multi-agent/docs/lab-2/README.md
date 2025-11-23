@@ -75,8 +75,9 @@ The lab is divided into 4 progressive exercises:
 Before beginning:
 1. [ ] Read [Tutorial 2 Concepts](../tutorial-2/READING_GUIDE.md) (at minimum Pages 1-4)
 2. [ ] Review the [Lab Checklist](./lab-checklist.md) to see all tasks
-3. [ ] Verify your setup with `python -m pytest tests/ -v`
-4. [ ] Open your AI IDE and ensure `.cursorrules` is working
+3. [ ] Set up testing environment: [Testing Setup Guide](./testing-setup.md)
+4. [ ] Verify your setup with `python -m pytest tests/ -v`
+5. [ ] Open your AI IDE and ensure `.cursorrules` is working
 
 ### Recommended Workflow
 
