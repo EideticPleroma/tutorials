@@ -41,10 +41,10 @@ flowchart TD
     
     Coordinator --> User
     
-    style Research fill:#7ED321
-    style SEO fill:#F5A623
-    style Writer fill:#BD10E0
-    style Editor fill:#50E3C2
+    style Research fill:#7ED321,color:#000000
+    style SEO fill:#F5A623,color:#000000
+    style Writer fill:#BD10E0,color:#FFFFFF
+    style Editor fill:#50E3C2,color:#000000
 ```
 
 ### Agent Breakdown
@@ -149,11 +149,11 @@ flowchart LR
     Sentiment -->|News sentiment, social| Coordinator
     Writer -->|Investment thesis| Coordinator
     
-    style DataGathering fill:#7ED321
-    style Fundamental fill:#F5A623
-    style Technical fill:#BD10E0
-    style Sentiment fill:#50E3C2
-    style Writer fill:#4A90E2
+    style DataGathering fill:#7ED321,color:#000000
+    style Fundamental fill:#F5A623,color:#000000
+    style Technical fill:#BD10E0,color:#FFFFFF
+    style Sentiment fill:#50E3C2,color:#000000
+    style Writer fill:#4A90E2,color:#FFFFFF
 ```
 
 ### Key Features
@@ -250,11 +250,11 @@ flowchart TD
     Response --> Customer[Customer]
     Human --> Customer
     
-    style Triage fill:#4A90E2
-    style Tech fill:#7ED321
-    style Billing fill:#F5A623
-    style Product fill:#BD10E0
-    style Response fill:#50E3C2
+    style Triage fill:#4A90E2,color:#FFFFFF
+    style Tech fill:#7ED321,color:#000000
+    style Billing fill:#F5A623,color:#000000
+    style Product fill:#BD10E0,color:#FFFFFF
+    style Response fill:#50E3C2,color:#000000
 ```
 
 ### Agent Breakdown
@@ -370,10 +370,10 @@ flowchart LR
     Coordinator --> Summary[Summary Agent]
     Summary --> Review[Code Review Comment]
     
-    style Security fill:#FF6B6B
-    style Performance fill:#F5A623
-    style Style fill:#BD10E0
-    style Tests fill:#7ED321
+    style Security fill:#FF6B6B,color:#000000
+    style Performance fill:#F5A623,color:#000000
+    style Style fill:#BD10E0,color:#FFFFFF
+    style Tests fill:#7ED321,color:#000000
 ```
 
 ### Agent Implementations
@@ -480,11 +480,11 @@ flowchart TD
     Synthesis -->|Summary| Review[Medical Review Agent]
     Review -->|Verified summary| Output[Research Brief]
     
-    style Search fill:#7ED321
-    style Filter fill:#F5A623
-    style Extract fill:#BD10E0
-    style Synthesis fill:#50E3C2
-    style Review fill:#FF6B6B
+    style Search fill:#7ED321,color:#000000
+    style Filter fill:#F5A623,color:#000000
+    style Extract fill:#BD10E0,color:#FFFFFF
+    style Synthesis fill:#50E3C2,color:#000000
+    style Review fill:#FF6B6B,color:#000000
 ```
 
 ### Agent Roles

@@ -100,9 +100,9 @@ flowchart LR
     Data --> Writer[3. Writing<br/>Report Generation]
     Writer --> Output[Formatted Report]
     
-    style Research fill:#7ED321
-    style Data fill:#F5A623
-    style Writer fill:#BD10E0
+    style Research fill:#7ED321,color:#000000
+    style Data fill:#F5A623,color:#000000
+    style Writer fill:#BD10E0,color:#FFFFFF
 ```
 
 ### 🎯 Agent Team Size Decision Matrix
@@ -232,10 +232,10 @@ graph TD
     A --> D[Writer Agent]
     C --> D
     
-    style A fill:#4A90E2
-    style B fill:#7ED321
-    style C fill:#F5A623
-    style D fill:#BD10E0
+    style A fill:#4A90E2,color:#FFFFFF
+    style B fill:#7ED321,color:#000000
+    style C fill:#F5A623,color:#000000
+    style D fill:#BD10E0,color:#FFFFFF
 ```
 
 **Dependency Analysis:**

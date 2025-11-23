@@ -281,17 +281,17 @@ graph TD
     WA -.-> W3
     WA -.-> S1
     
-    style R1 fill:#7ED321
-    style R2 fill:#7ED321
-    style R3 fill:#7ED321
-    style D1 fill:#F5A623
-    style D2 fill:#F5A623
-    style D3 fill:#F5A623
-    style W1 fill:#BD10E0
-    style W2 fill:#BD10E0
-    style W3 fill:#BD10E0
-    style S1 fill:#CCCCCC
-    style S2 fill:#CCCCCC
+    style R1 fill:#7ED321,color:#000000
+    style R2 fill:#7ED321,color:#000000
+    style R3 fill:#7ED321,color:#000000
+    style D1 fill:#F5A623,color:#000000
+    style D2 fill:#F5A623,color:#000000
+    style D3 fill:#F5A623,color:#000000
+    style W1 fill:#BD10E0,color:#FFFFFF
+    style W2 fill:#BD10E0,color:#FFFFFF
+    style W3 fill:#BD10E0,color:#FFFFFF
+    style S1 fill:#CCCCCC,color:#000000
+    style S2 fill:#CCCCCC,color:#000000
 ```
 
 **Key:**
