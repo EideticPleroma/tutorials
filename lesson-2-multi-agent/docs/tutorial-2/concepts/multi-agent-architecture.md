@@ -1,0 +1,295 @@
+# Multi-Agent Architecture
+
+**Page 1 of 9** | [Next: Agent Specialization →](./agent-specialization.md) | [↑ Reading Guide](../READING_GUIDE.md)
+
+Building a single agent with tools is powerful. But some tasks are too complex for one agent to handle efficiently. Multi-agent systems split work across specialized agents that collaborate to solve complex problems.
+
+## What is a Multi-Agent System?
+
+A multi-agent system is a collection of autonomous agents that:
+- **Communicate** with each other to share information
+- **Coordinate** their actions to achieve a common goal
+- **Specialize** in different capabilities or domains
+- **Collaborate** to solve problems that would be difficult for a single agent
+
+### Example: Research Report Generator
+
+**Single Agent Approach:**
+```
+User: "Write a market analysis report on electric vehicles"
+Agent: 
+  1. Search for data (20+ tool calls)
+  2. Analyze trends (complex reasoning)
+  3. Write report (formatting)
+  4. Cite sources (tracking)
+  → Takes 5+ minutes, error-prone, shallow analysis
+```
+
+**Multi-Agent Approach:**
+```
+User: "Write a market analysis report on electric vehicles"
+Coordinator:
+  ├─> Research Agent: Find latest EV market data
+  ├─> Data Agent: Analyze trends and statistics  
+  └─> Writer Agent: Synthesize into formatted report
+  → Takes 2 minutes, focused specialists, deeper analysis
+```
+
+## When to Use Multi-Agent vs. Single Agent
+
+Not every task needs multiple agents. Use this decision framework:
+
+```mermaid
+flowchart TD
+    A[Task Requirements] --> B{Can be decomposed into<br/>distinct subtasks?}
+    B -->|No| C[Single Agent]
+    B -->|Yes| D{Subtasks require<br/>different expertise?}
+    D -->|No| C
+    D -->|Yes| E{Benefits outweigh<br/>coordination overhead?}
+    E -->|No| C
+    E -->|Yes| F[Multi-Agent System]
+    
+    style F fill:#90EE90
+    style C fill:#FFB6C1
+```
+
+### Use Multi-Agent When:
+
+✅ **Task has clear subtasks** - "Research → Analyze → Report" can be cleanly divided
+✅ **Subtasks need different tools** - Research needs web search, data analysis needs calculations
+✅ **Parallel execution helps** - Multiple agents can work simultaneously
+✅ **Specialization improves quality** - Focused prompts produce better results than one generalist
+✅ **Complex workflows** - Multi-step processes with conditional logic
+
+### Stick with Single Agent When:
+
+❌ **Simple linear tasks** - "Read file and summarize" doesn't need coordination
+❌ **High interactivity** - Tasks requiring constant user input
+❌ **Tight coupling** - Each step depends heavily on previous step details
+❌ **Development time matters** - Building multi-agent is more complex
+❌ **Debugging is critical** - Single agent failures are easier to trace
+
+## Coordination Patterns
+
+There are three main patterns for organizing multi-agent systems:
+
+### 1. Coordinator-Worker (Our Focus)
+
+A central coordinator agent delegates tasks to specialized worker agents.
+
+```mermaid
+graph TD
+    User[User] --> Coordinator[Coordinator Agent]
+    Coordinator --> Worker1[Research Agent]
+    Coordinator --> Worker2[Data Agent]
+    Coordinator --> Worker3[Writer Agent]
+    Worker1 --> Coordinator
+    Worker2 --> Coordinator
+    Worker3 --> Coordinator
+    Coordinator --> User
+    
+    style Coordinator fill:#4A90E2
+    style Worker1 fill:#7ED321
+    style Worker2 fill:#F5A623
+    style Worker3 fill:#BD10E0
+```
+
+**Characteristics:**
+- ✅ Simple to understand and implement
+- ✅ Clear control flow and error handling
+- ✅ Easy to add new workers
+- ❌ Coordinator is a single point of failure
+- ❌ Not optimal for peer collaboration
+
+**Best for:** Tasks with clear delegation (research, analysis, reporting)
+
+### 2. Peer-to-Peer
+
+Agents communicate directly without a central coordinator.
+
+```mermaid
+graph LR
+    Agent1[Agent 1] <--> Agent2[Agent 2]
+    Agent2 <--> Agent3[Agent 3]
+    Agent3 <--> Agent1
+    
+    style Agent1 fill:#7ED321
+    style Agent2 fill:#F5A623
+    style Agent3 fill:#BD10E0
+```
+
+**Characteristics:**
+- ✅ No single point of failure
+- ✅ Flexible collaboration patterns
+- ✅ Agents can negotiate directly
+- ❌ Complex coordination logic
+- ❌ Harder to debug and test
+- ❌ Risk of deadlocks or infinite loops
+
+**Best for:** Negotiation tasks, consensus building, distributed systems
+
+### 3. Hierarchical
+
+Multi-level structure with supervisors and sub-coordinators.
+
+```mermaid
+graph TD
+    Master[Master Coordinator]
+    Master --> Sub1[Sub-Coordinator 1]
+    Master --> Sub2[Sub-Coordinator 2]
+    Sub1 --> Worker1[Worker 1]
+    Sub1 --> Worker2[Worker 2]
+    Sub2 --> Worker3[Worker 3]
+    Sub2 --> Worker4[Worker 4]
+    
+    style Master fill:#4A90E2
+    style Sub1 fill:#50E3C2
+    style Sub2 fill:#50E3C2
+```
+
+**Characteristics:**
+- ✅ Scales to large teams
+- ✅ Clear chain of command
+- ✅ Divide and conquer complex workflows
+- ❌ Most complex to implement
+- ❌ High coordination overhead
+- ❌ Slower due to multiple delegation layers
+
+**Best for:** Large-scale projects, enterprise workflows (Tutorial 3+)
+
+## Benefits of Multi-Agent Systems
+
+| Benefit | Description | Example |
+|---------|-------------|---------|
+| **Specialization** | Each agent focuses on what it does best | Research agent optimized for finding sources, not writing |
+| **Parallelization** | Multiple agents work simultaneously | Data collection and analysis happen in parallel |
+| **Modularity** | Easy to replace or upgrade individual agents | Swap research agent without touching writer agent |
+| **Scalability** | Add more workers as load increases | Add more data agents during peak processing |
+| **Separation of Concerns** | Clean boundaries between responsibilities | Writer never touches data sources directly |
+
+## Challenges of Multi-Agent Systems
+
+| Challenge | Why It's Hard | Mitigation Strategy |
+|-----------|---------------|---------------------|
+| **Coordination Overhead** | Agents need to communicate, wait, retry | Use efficient message protocol, async patterns |
+| **Increased Complexity** | More moving parts, more failure modes | Start simple, add agents incrementally |
+| **Debugging Difficulty** | Failures span multiple agents | Comprehensive logging, trace IDs |
+| **State Management** | Shared state creates race conditions | Minimize shared state, use locks |
+| **Testing Complexity** | Need to test interactions, not just units | O.V.E. methodology for agent interactions |
+
+---
+
+## 🎯 Knowledge Check
+
+Test your understanding of multi-agent architecture:
+
+**Question 1:** You're building a code review assistant. Should you use multi-agent?
+
+<details>
+<summary>Show Answer</summary>
+
+**Probably not** - This is a good single agent task.
+
+**Reasoning:**
+- Task is relatively linear: Read code → Analyze → Suggest improvements
+- All steps need the same context (the code being reviewed)
+- A single agent with proper tools (read_file, analyze_code) can handle this
+- No clear benefit from splitting into specialists
+
+**When it MIGHT need multi-agent:**
+- If you're reviewing 100s of files simultaneously (parallelization)
+- If you need separate security, performance, and style experts
+- If you're integrating multiple analysis tools (linters, type checkers, etc.)
+
+**Key insight:** Default to single agent; split only when benefits are clear.
+</details>
+
+**Question 2:** In a coordinator-worker pattern, can workers communicate directly with each other?
+
+<details>
+<summary>Show Answer</summary>
+
+**Technically yes, but usually no.**
+
+**Pure Coordinator-Worker:**
+- All communication flows through the coordinator
+- Workers don't even know other workers exist
+- Coordinator aggregates and distributes information
+
+**Why this is better:**
+- Simpler debugging (all messages logged in one place)
+- Coordinator can validate and transform messages
+- Easier to add/remove workers without updating others
+- Clear control flow
+
+**When direct communication makes sense:**
+- Performance-critical handoffs (avoid coordinator bottleneck)
+- Large data transfers (don't duplicate through coordinator)
+- Hybrid patterns (coordinator-worker with peer negotiation)
+
+**For Tutorial 2:** We use pure coordinator-worker (no direct worker communication).
+</details>
+
+**Question 3:** You have a research task taking 2 minutes. Adding multi-agent will...
+
+<details>
+<summary>Show Answer</summary>
+
+**Probably make it slower** - at first.
+
+**Why:**
+- Coordination overhead: 200-500ms per agent delegation
+- Message serialization: 50-100ms per message
+- Context switching: Each agent starts "cold"
+- Aggregation time: Coordinator must synthesize results
+
+**When multi-agent helps:**
+- ✅ Parallelization: If 3 agents work simultaneously, 2 min → 1 min
+- ✅ Quality: Specialized agents produce better results (worth the time)
+- ✅ Reusability: Agents can be reused for other tasks
+
+**When it doesn't:**
+- ❌ Sequential dependencies: Next step needs previous results
+- ❌ Small tasks: Overhead dominates actual work
+- ❌ Simple operations: Single agent is fast enough
+
+**Key insight:** Multi-agent is about **quality and scalability**, not always speed.
+</details>
+
+**Hands-on Challenge:** Design a multi-agent system for "Plan a 3-day trip to Tokyo". Which agents would you create? What would the coordinator do?
+
+<details>
+<summary>Show Example Design</summary>
+
+**Coordinator:**
+- Receives user preferences (budget, interests, dates)
+- Delegates to specialized agents
+- Resolves conflicts (e.g., restaurant timing vs. activity hours)
+- Synthesizes final itinerary
+
+**Agent Team:**
+1. **Research Agent**: Find attractions, restaurants, hotels
+   - Tools: web_search, get_reviews, check_availability
+2. **Budget Agent**: Calculate costs, optimize spending
+   - Tools: calculate, convert_currency, compare_prices
+3. **Schedule Agent**: Create timeline, check transit times
+   - Tools: get_directions, calculate_duration, check_opening_hours
+4. **Writer Agent**: Format itinerary into readable document
+   - Tools: format_markdown, create_map_links
+
+**Workflow:**
+1. Coordinator → Research: "Find top attractions + restaurants"
+2. Coordinator → Budget: "Estimate costs for these options"
+3. Coordinator → Schedule: "Create 3-day timeline"
+4. Coordinator → Writer: "Format as travel itinerary"
+5. Coordinator → User: Return final plan
+
+**Why multi-agent?** Each subtask needs different expertise, can run partially in parallel, and produces better results with specialized prompts.
+</details>
+
+---
+
+**Ready?** If you understand when and why to use multi-agent systems, you're ready for [Agent Specialization](./agent-specialization.md) to learn how to design focused agents.
+
+**Page 1 of 9** | [Next: Agent Specialization →](./agent-specialization.md) | [↑ Reading Guide](../READING_GUIDE.md)
+

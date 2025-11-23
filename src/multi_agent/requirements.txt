@@ -1,0 +1,16 @@
+# Tutorial 2: Multi-Agent Systems - Dependencies
+#
+# Tutorial 2 uses the same dependencies as Tutorial 1.
+# No additional packages required!
+#
+# Core dependencies (already installed from Tutorial 1):
+# - Python 3.10+
+# - Ollama (local LLM)
+# - pytest (testing)
+# - requests (HTTP client)
+#
+# All dependencies should already be installed if you completed Tutorial 1.
+# If not, see: ../agent/requirements.txt
+
+# This file intentionally left minimal - reuse Tutorial 1 environment.
+

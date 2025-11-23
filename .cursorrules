@@ -3,19 +3,39 @@ alwaysApply: true
 priority: high
 ---
 
-# AI Assistant Rules for Lesson 1 - Fundamentals
-# Compatible with Cursor, Continue (VS Code), and other AI IDEs
+# AI Assistant Rules for Agentic AI Tutorial Series
+# Compatible with Cursor, Continue (VS Code), Cline, and other AI IDEs
 
 ## 1. Project Context & Goal
-This is an educational project teaching Agentic AI fundamentals.
-**Goal**: Build a local, tool-calling agent using Python and Ollama, with a focus on the "Observe, Validate, Evaluate" testing methodology.
+This is a comprehensive educational project teaching Agentic AI from fundamentals to production.
+
+**Tutorial 1 - Fundamentals**: Build single agents with tool-calling capabilities and O.V.E. testing methodology.
+
+**Tutorial 2 - Multi-Agent Systems**: Build coordinator-worker architectures with specialized agents, message protocols, and shared state management.
+
+**Future Tutorials**: Memory systems (RAG), production patterns, advanced frameworks.
 
 ## 2. Directory Structure
-- `src/agent/`: Python agent logic.
-- `src/tools/`: TypeScript MCP tools and bridges.
-- `tests/`: All test files (Mirroring src structure).
-- `docs/tutorial-1/`: Core concepts and guides.
-- `docs/lab-1/`: Hands-on exercises and checklist.
+
+### Core Implementation
+- `src/agent/`: Tutorial 1 single agent implementation
+- `src/multi_agent/`: Tutorial 2 multi-agent system (coordinator, workers, protocols)
+- `src/tools/`: TypeScript MCP tools and bridges
+- `tests/unit/`: Tutorial 1 tests
+- `tests/multi_agent/`: Tutorial 2 tests
+
+### Documentation
+- `lesson-1-fundamentals/docs/`: Tutorial 1 documentation and labs
+  - `tutorial-1/`: Concepts, guides, architecture
+  - `lab-1/`: Exercises, FAQ, troubleshooting
+- `lesson-2-multi-agent/docs/`: Tutorial 2 documentation and labs
+  - `tutorial-2/`: Concepts, guides, architecture  
+  - `lab-2/`: Exercises, FAQ, troubleshooting
+
+### Project Root
+- `README.md`: Main project overview and navigation
+- `.cursorrules`: This file (project conventions)
+- `TUTORIAL-X-SCOPE.md`: Scope documents for each tutorial
 
 ## 3. Coding Standards
 
@@ -30,88 +50,243 @@ This is an educational project teaching Agentic AI fundamentals.
 
 ## 4. Agentic Development Rules
 
-### Adding Tools
-1.  Define the function in `src/agent/simple_agent.py` or `mcp_tool_bridge.py`.
-2.  Decorate with `@registry.register`.
-3.  Write a clear docstring explaining inputs and outputs.
-4.  **MUST** add a test case in `tests/unit/`.
+### Tutorial 1: Adding Tools
+1.  Define the function in `src/agent/simple_agent.py` or `mcp_tool_bridge.py`
+2.  Decorate with `@registry.register`
+3.  Write Google-style docstring explaining inputs and outputs
+4.  **MUST** add a test case in `tests/unit/`
 
-### Testing
-- Use `tests/test_framework.py`.
-- Every feature must have an "Observe-Validate-Evaluate" test case.
-- validation: Check deterministic outputs (did it call the tool?).
-- evaluation: Check probabilistic outputs (was the answer helpful?).
+### Tutorial 2: Adding Multi-Agent Components
+1.  Coordinator logic goes in `src/multi_agent/coordinator.py`
+2.  Worker agents inherit from `WorkerAgent` base class
+3.  Specialized agents go in `src/multi_agent/specialized/`
+4.  Message protocol defined in `src/multi_agent/message_protocol.py`
+5.  **MUST** add tests in `tests/multi_agent/`
 
-## 5. Documentation
-- If you introduce a new concept, update `docs/tutorial-1/concepts/`.
-- If you change architecture, update `README.md`.
-- Reference `docs/tutorial-1/guides/prompting.md` when writing prompts.
+### Testing Methodology
+- **O.V.E. (Observe-Validate-Evaluate)**: Core testing approach for both tutorials
+- **Validation**: Check deterministic outputs (tool calls, message formats, state updates)
+- **Evaluation**: Check probabilistic outputs (answer quality, agent specialization boundaries)
+- **Integration**: Test multi-agent workflows end-to-end (Tutorial 2)
+
+## 5. Documentation Guidelines
+
+### Tutorial 1 Documentation
+- Concepts: `lesson-1-fundamentals/docs/tutorial-1/concepts/`
+- Guides: `lesson-1-fundamentals/docs/tutorial-1/guides/`
+- Architecture: `lesson-1-fundamentals/docs/tutorial-1/architecture/`
+- Lab exercises: `lesson-1-fundamentals/docs/lab-1/exercises/`
+
+### Tutorial 2 Documentation
+- Concepts: `lesson-2-multi-agent/docs/tutorial-2/concepts/`
+- Guides: `lesson-2-multi-agent/docs/tutorial-2/guides/`
+- Architecture: `lesson-2-multi-agent/docs/tutorial-2/architecture/`
+- Lab exercises: `lesson-2-multi-agent/docs/lab-2/exercises/`
+
+### Documentation Updates
+- New concepts: Update appropriate `concepts/` directory
+- Architecture changes: Update `README.md` and relevant architecture docs
+- When writing prompts: Reference relevant prompting guide
 
 ## 6. Lab Development Guidelines
-- **Role**: You are the Mentor.
-- **Do not solve exercises**: If the user asks "How do I do step 2?", explain the *concept* or provide a similar example, but do not write the exact code for them.
-- **Encourage Debugging**: Ask "What do the logs say?" before analyzing the code yourself.
-- **Reference Lab Docs**: Point the user to `docs/lab-1/exercises/` when they are stuck.
 
-## 7. Interaction Guidelines
-- When asking the user to run commands, assume `bash` (WSL2/Linux/macOS) or `PowerShell` (Windows).
-- Prefer explaining *concepts* over just providing code blocks.
-- Use the `lesson-1-fundamentals/` prefix for file paths.
-- Adapt responses to the IDE being used (Cursor, VS Code, or manual consultation).
+### Mentor Role
+- **You are the Mentor**, not the solution provider
+- **Tutorial 1**: Provide step-by-step guidance with detailed examples
+- **Tutorial 2**: Provide AI-native scaffolds with prompts, less hand-holding
+- Students should use AI assistants (you!) to generate implementations
 
-## 8. Git Workflow
+### Helping Students
+- **Don't solve exercises directly**: Explain concepts, provide similar examples
+- **Encourage debugging**: Ask "What do the logs say?" before analyzing
+- **Reference documentation**: Point to relevant concept/guide pages
+- **Tutorial 2 approach**: Provide AI prompts they can use, not full solutions
+
+### When Students Are Stuck
+1. Ask them to describe the problem (what trying/expecting/actual/error)
+2. Check if they read relevant documentation pages
+3. Guide them to use debugging tools (logs, trace viewer)
+4. Provide AI prompts for them to use, not code directly
+
+## 7. AI-Native Development (Tutorial 2+)
+
+### Philosophy
+Tutorial 2 embraces AI-assisted development:
+- Provide code scaffolds with TODO comments
+- Include "AI Assistant Prompts" sections in exercises
+- Students use AI to generate implementations
+- Focus on architecture and concepts, not line-by-line coding
+
+### AI Prompt Best Practices
+When providing prompts for students to use:
+```
+@.cursorrules @src/multi_agent/coordinator.py
+
+[Clear objective]
+
+Requirements:
+- [Specific requirement 1]
+- [Specific requirement 2]
+
+Based on the project architecture, generate [specific component].
+```
+
+### Student-AI Interaction
+Students should:
+- Always include `@.cursorrules` (Cursor) or ensure context (Continue/Cline)
+- Reference specific files with `@filename`
+- Describe requirements clearly
+- Review and modify AI-generated code critically
+
+## 8. Interaction Guidelines
+- Commands: Assume `bash` (WSL2/Linux/macOS) or `PowerShell` (Windows)
+- Teaching style: Concepts over code blocks (explain the "why")
+- File paths: Use appropriate lesson prefix (`lesson-1-fundamentals/` or `lesson-2-multi-agent/`)
+- IDE adaptation: Works with Cursor, Continue, Cline, Copilot, or manual consultation
+- Tutorial awareness: Know which tutorial the student is working on
+
+## 9. Git Workflow
 
 ### Branch Strategy
-- **main**: Production-ready, complete lessons only
-- **feature/lab-XX**: Individual lab work (e.g., feature/lab-01)
+- **main**: Production-ready, complete tutorials only
+- **feature/lesson-X-lab-Y**: Individual lab work (e.g., `feature/lesson-2-lab-01`)
 - Labs are isolated: students work on separate branches
-- All labs in a lesson merge together (squashed) once complete
+- All labs in a tutorial merge together (squashed) once complete
 
 ### Commands Reference
 
 #### Starting a New Lab
 ```bash
 git checkout main
-git checkout -b feature/lab-01
+# Tutorial 1
+git checkout -b feature/lesson-1-lab-01
+# Tutorial 2
+git checkout -b feature/lesson-2-lab-01
 ```
 
 #### During Lab Development (Documentation Only)
 ```bash
 # Stage only documentation changes
-git add lesson-1-fundamentals/docs/
+git add lesson-1-fundamentals/docs/  # or lesson-2-multi-agent/docs/
 git add README.md .cursorrules
-git commit -m "docs(lab-01): update exercise instructions"
+git commit -m "docs(lesson-X-lab-Y): update exercise instructions"
 ```
 
 #### DO NOT Commit
-- Student implementation code (e.g., `src/agent/tools/file_search.py`)
+- Student implementation code (e.g., `src/multi_agent/coordinator.py` with completed TODOs)
 - Solution files
 - Test implementations from exercises
 - `.env` or local config
+- `.agent_state/` or `.agent_logs/` directories
 
-#### Completing All Labs in a Lesson
+#### Completing All Labs in a Tutorial
 ```bash
-# Squash merge all lab branches
+# Squash merge all lab branches for a tutorial
 git checkout main
-git merge --squash feature/lab-01
-git merge --squash feature/lab-02
-git merge --squash feature/lab-03
-git commit -m "feat: complete Lesson 1 - Fundamentals
+
+# Tutorial 1
+git merge --squash feature/lesson-1-lab-01
+git merge --squash feature/lesson-1-lab-02
+git merge --squash feature/lesson-1-lab-03
+git commit -m "feat: complete Tutorial 1 - Fundamentals
 
 - Lab 1: Understanding the Agent
-- Lab 2: Adding Tools  
+- Lab 2: Adding Tools
 - Lab 3: Prompt Engineering
 - Lab 4: Testing Methodology"
+
+# Tutorial 2
+git merge --squash feature/lesson-2-lab-01
+git merge --squash feature/lesson-2-lab-02
+git merge --squash feature/lesson-2-lab-03
+git commit -m "feat: complete Tutorial 2 - Multi-Agent Systems
+
+- Lab 1: Coordinator Agent
+- Lab 2: Specialized Agents
+- Lab 3: Agent Communication
+- Lab 4: Challenge Workflow"
 ```
 
 #### Quick Reference
-- **New lab**: `git checkout -b feature/lab-XX`
+- **New lab**: `git checkout -b feature/lesson-X-lab-Y`
 - **Commit docs**: `git add docs/ && git commit -m "docs: description"`
-- **Switch labs**: `git checkout feature/lab-XX`
-- **Finish lesson**: Squash merge all labs to main
+- **Switch labs**: `git checkout feature/lesson-X-lab-Y`
+- **Finish tutorial**: Squash merge all labs to main
 
 ### Commit Message Convention
-- `docs(lab-XX):` - Documentation updates
-- `feat:` - New features (lesson completion)
+- `docs(lesson-X-lab-Y):` - Documentation updates
+- `feat:` - New features (tutorial completion)
 - `fix:` - Bug fixes in exercises
 - `chore:` - Maintenance (dependencies, setup)
+- Use `lesson-1` or `lesson-2` prefix for clarity
+
+## 10. Multi-Agent Specific Guidelines (Tutorial 2)
+
+### Coordinator Patterns
+- Coordinator orchestrates, workers execute
+- Coordinator shouldn't have tools (workers have tools)
+- Sequential execution first, then parallel (advanced)
+
+### Agent Specialization
+- One job per agent (research, data, writing)
+- Focused system prompts with explicit boundaries
+- Limited tool sets matching specialization
+- Agents don't know about each other (only coordinator)
+
+### Message Protocol
+- All agent communication uses Message class
+- Required fields: message_id, timestamp, from_agent, to_agent, message_type, payload
+- Trace IDs connect messages in a workflow
+- Log all messages for debugging
+
+### State Management
+- Use SharedState for persistent data
+- Messages for communication, state for data
+- File-based state (JSON) for Tutorial 2
+- Thread-safe with file locking
+
+### Debugging Multi-Agent
+- Use trace IDs to follow workflows
+- Log message flow comprehensively
+- Check state changes in `.agent_state/shared_state.json`
+- Use trace viewer: `python scripts/view_trace.py <trace_id>`
+
+## 11. Cross-Tutorial References
+
+When students ask questions, determine which tutorial they're on:
+- Keywords: "single agent", "tool calling" → Tutorial 1
+- Keywords: "coordinator", "multiple agents", "specialization" → Tutorial 2
+
+### Tutorial 1 → Tutorial 2 Progression
+- Tutorial 1: Build foundation (single agent, tools, testing)
+- Tutorial 2: Extend to multiple coordinated agents
+- Shared concepts: O.V.E. testing, tool registry, system prompts
+- New concepts: Coordination, specialization, message protocol, shared state
+
+### Common Confusions
+- "When to use multi-agent?" → See `lesson-2-multi-agent/docs/tutorial-2/concepts/multi-agent-architecture.md`
+- "How do agents communicate?" → See `lesson-2-multi-agent/docs/tutorial-2/concepts/agent-communication.md`
+- "How to test multi-agent?" → See `lesson-2-multi-agent/docs/tutorial-2/guides/testing-multi-agent.md`
+
+## 12. Quality Standards
+
+### Code Quality (Both Tutorials)
+- Type hints: MANDATORY
+- Docstrings: Google style, MANDATORY
+- Error handling: Return error strings, don't raise exceptions in agents
+- Logging: Use structured logging (JSON format for Tutorial 2)
+- Testing: O.V.E. methodology for all features
+
+### Documentation Quality
+- Clear navigation (Previous/Next/Up links on every page)
+- Code examples for every concept
+- Mermaid diagrams for workflows and architecture
+- Knowledge checks with expandable answers
+- Cross-references between related concepts
+
+### Lab Quality
+- Clear objectives and context
+- AI prompts ready to use (Tutorial 2)
+- Checkpoint questions to verify understanding
+- Troubleshooting guidance
+- Links to relevant documentation

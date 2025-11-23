@@ -1,10 +1,29 @@
-# Lesson 1: Fundamentals of Agentic AI
+# Agentic AI Tutorial Series
 
-**Page 1 of 16** | [Next: Software Engineering Evolution →](./lesson-1-fundamentals/docs/tutorial-1/concepts/software-engineering-evolution.md) | [📚 Reading Guide](./lesson-1-fundamentals/docs/tutorial-1/READING_GUIDE.md)
+A comprehensive, hands-on tutorial series teaching agentic AI from fundamentals to production systems.
 
-Welcome to the first lesson in the Agentic AI series. This lesson focuses on building a foundational understanding of agentic AI by creating a local agent with tool-calling capabilities, implementing testing methodologies, and establishing best practices for AI-assisted development.
+## Tutorial Series Overview
 
-> **📖 New to this lesson?** Start with the [Reading Guide](./lesson-1-fundamentals/docs/tutorial-1/READING_GUIDE.md) to understand the recommended reading order.
+### Tutorial 1: Fundamentals of Agentic AI ✅ **Available Now**
+Build single agents with tool-calling capabilities, learn the O.V.E. testing methodology, and establish AI-assisted development practices.
+
+**[📚 Start Tutorial 1](./lesson-1-fundamentals/docs/tutorial-1/READING_GUIDE.md)** | [Lab 1 Exercises](./lesson-1-fundamentals/docs/lab-1/README.md) | **Time**: 6-8 hours
+
+### Tutorial 2: Multi-Agent Systems ✅ **Available Now**
+Design coordinator-worker architectures, build specialized agents, implement message protocols, and manage shared state across agents.
+
+**[📚 Start Tutorial 2](./lesson-2-multi-agent/docs/tutorial-2/READING_GUIDE.md)** | [Lab 2 Exercises](./lesson-2-multi-agent/docs/lab-2/README.md) | **Time**: 6-8 hours | **Prerequisites**: Tutorial 1
+
+### Future Tutorials (Coming Soon)
+- **Tutorial 3**: Memory Systems & RAG (vector databases, long-term memory)
+- **Tutorial 4**: Production Patterns (monitoring, scaling, deployment)
+- **Tutorial 5**: Advanced Frameworks (LangChain, CrewAI integration)
+
+---
+
+## Tutorial 1: Fundamentals of Agentic AI
+
+> **📖 New to Tutorial 1?** Start with the [Reading Guide](./lesson-1-fundamentals/docs/tutorial-1/READING_GUIDE.md) to understand the recommended reading order.
 
 ## About This Tutorial
 
@@ -244,6 +263,114 @@ By the end of this lesson, you will:
 **Coming**: Lessons 3+ will cover Memory Systems (vector databases, RAG), Production Patterns, and Advanced Tool Patterns
 
 **📋 [View Full Tutorial 2 Scope](./TUTORIAL-2-SCOPE.md)** - Detailed breakdown of content, exercises, and learning objectives
+
+---
+
+## Tutorial 2: Multi-Agent Systems
+
+**Prerequisites**: [Tutorial 1: Fundamentals](./lesson-1-fundamentals/docs/tutorial-1/READING_GUIDE.md) | **Time**: 6-8 hours | **Difficulty**: Intermediate
+
+> **📖 New to Tutorial 2?** Start with the [Reading Guide](./lesson-2-multi-agent/docs/tutorial-2/READING_GUIDE.md) for recommended reading order.
+
+### About Tutorial 2
+
+Tutorial 2 extends your single-agent foundation to multi-agent systems where specialized agents collaborate to solve complex tasks.
+
+**What This Tutorial IS:**
+- **Practical Multi-Agent Design**: Learn coordinator-worker patterns and when to use them
+- **Agent Specialization**: Build focused agents (research, data, writer) with domain expertise
+- **Communication Protocols**: Implement message passing between agents
+- **AI-Native Development**: Embrace AI-assisted coding with scaffolds and prompts
+- **Production Patterns**: Design systems that scale beyond toy examples
+
+**What This Tutorial is NOT:**
+- **Not a Framework Course**: Still building from fundamentals (LangChain/CrewAI in Tutorial 5)
+- **Not Distributed Systems**: Focus on local multi-agent, not Kubernetes/message queues
+- **Not Memory/RAG**: Vector databases covered in Tutorial 3
+
+### Quick Start: Tutorial 2
+
+**Prerequisites Check:**
+- ✅ Completed Tutorial 1 (built a working agent)
+- ✅ Understand tool calling and 7-step loop
+- ✅ Familiar with O.V.E. testing methodology
+- ✅ Ollama + Python environment working
+
+**Setup:**
+```bash
+# Verify Tutorial 1 completed
+python -m pytest tests/unit/ -v
+
+# All Tutorial 2 code goes in existing project
+# No new dependencies needed!
+```
+
+### Tutorial 2 Structure
+
+**Documentation** (~ 2.5 hours reading):
+- **Concepts**: Multi-agent architecture, specialization, communication, state management
+- **Guides**: Designing teams, debugging, testing multi-agent systems
+- **Architecture**: Coordinator patterns, hierarchical vs. peer-to-peer
+
+**Lab 2 Exercises** (~4-6 hours):
+1. **Build a Coordinator Agent** (~90 min) - Orchestration logic
+2. **Create Specialized Agents** (~90 min) - Research, data, writer agents
+3. **Implement Communication** (~60 min) - Message protocol
+4. **Challenge: Research Workflow** (~120 min, optional) - End-to-end system
+
+**📚 [Start Tutorial 2 Reading](./lesson-2-multi-agent/docs/tutorial-2/READING_GUIDE.md)**
+
+**🔬 [Start Lab 2 Exercises](./lesson-2-multi-agent/docs/lab-2/README.md)**
+
+### What You'll Build in Tutorial 2
+
+```
+User Query: "Generate market analysis report on electric vehicles"
+    ↓
+Coordinator Agent (you build in Lab 2)
+    ├─> Research Agent: Gathers data, cites sources
+    ├─> Data Agent: Analyzes trends, calculates metrics
+    └─> Writer Agent: Creates formatted report
+    ↓
+Output: Complete market analysis with sources (60-90 seconds)
+```
+
+### Key Concepts: Tutorial 2
+
+**Multi-Agent Architecture:**
+- When to use multiple agents vs. single agent
+- Coordinator-worker, hierarchical, and peer-to-peer patterns
+- Benefits (specialization, modularity) and challenges (complexity, debugging)
+
+**Agent Specialization:**
+- Designing focused agents with clear boundaries
+- Tool assignment strategies
+- Prompt engineering for specialized behavior
+- Avoiding the "jack of all trades" anti-pattern
+
+**Communication & State:**
+- JSON-based message protocol for traceability
+- Request-response patterns and error handling
+- Shared state management (file-based for Tutorial 2)
+- Debugging multi-agent message flow
+
+**Testing Multi-Agent:**
+- Extending O.V.E. for coordination logic
+- Testing agent interactions and specialization boundaries
+- Integration testing for full workflows
+
+### Tutorial 2 Support Resources
+
+**Need Help?**
+- 📖 [Tutorial 2 FAQ](./lesson-2-multi-agent/docs/lab-2/FAQ.md) - 40+ common questions
+- 🔧 [Troubleshooting Guide](./lesson-2-multi-agent/docs/lab-2/troubleshooting.md) - Common multi-agent errors
+- 🎯 [Getting Unstuck Guide](./lesson-2-multi-agent/docs/lab-2/getting-unstuck.md) - Systematic debugging
+- 📚 [Documentation Index](./lesson-2-multi-agent/docs/tutorial-2/INDEX.md) - Quick reference
+
+**AI-Native Approach:**
+Tutorial 2 provides code scaffolds and AI assistant prompts. You architect the system, AI helps implement.
+
+---
 
 ### Further Learning
 
