@@ -167,6 +167,97 @@ graph TD
 | **Scalability** | Add more workers as load increases | Add more data agents during peak processing |
 | **Separation of Concerns** | Clean boundaries between responsibilities | Writer never touches data sources directly |
 
+## Cost Considerations
+
+**Important:** Multi-agent systems typically incur higher LLM API costs than single-agent systems.
+
+### Cost Structure
+
+```
+Single Agent Task:
+- User query → Agent (1 LLM call) → Tools (N calls) → Response
+- LLM Calls: 1-3 per task
+- Cost: $0.01 - $0.05 per query (typical)
+
+Multi-Agent Task:
+- User query → Coordinator (1 call) → 
+  - Research Agent (2-3 calls) →
+  - Data Agent (2-3 calls) →
+  - Writer Agent (2-3 calls) →
+  Response
+- LLM Calls: 7-10+ per task
+- Cost: $0.05 - $0.20 per query (typical)
+
+Cost Multiplier: 3-5x higher for multi-agent
+```
+
+### When Cost Matters More Than Quality
+
+**Stick with single agent if:**
+- High volume, low budget (100K+ queries/day)
+- Simple tasks where quality gain is minimal
+- Prototyping or development phase
+- User-facing tasks where speed matters
+
+**Use multi-agent despite cost if:**
+- Quality improvements justify expense
+- Complex analysis requiring specialization
+- Lower volume but critical accuracy needs
+- Parallel execution saves wall-clock time
+
+### Cost Optimization Strategies
+
+1. **Caching:** Store agent results for repeated queries
+2. **Smaller Models:** Use GPT-3.5 for coordination, GPT-4 for analysis
+3. **Batch Processing:** Group similar queries
+4. **Lazy Evaluation:** Only call agents when needed
+5. **Result Reuse:** Share research between data and writer agents
+
+### Example Cost Analysis
+
+**Task:** Generate market research report
+
+| Approach | LLM Calls | Avg Tokens | Cost (GPT-4) | Time |
+|----------|-----------|------------|--------------|------|
+| Single Agent | 3 | 6,000 | $0.18 | 45s |
+| Multi-Agent Sequential | 9 | 15,000 | $0.45 | 60s |
+| Multi-Agent Parallel | 9 | 15,000 | $0.45 | 30s |
+
+**ROI Analysis:**
+- Cost increase: 2.5x
+- Quality improvement: 40% (measured by human eval)
+- Time improvement: 33% faster (parallel)
+- **Decision:** Use multi-agent for production reports where quality matters
+
+### Cost/Quality Trade-off Visualization
+
+```mermaid
+graph LR
+    subgraph "Single Agent"
+        SA[Single Agent<br/>Cost: $<br/>Quality: ⭐⭐⭐<br/>Time: 45s]
+    end
+    
+    subgraph "Multi-Agent Sequential"
+        MS[Multi-Agent Seq<br/>Cost: $$$<br/>Quality: ⭐⭐⭐⭐⭐<br/>Time: 60s]
+    end
+    
+    subgraph "Multi-Agent Parallel"
+        MP[Multi-Agent Par<br/>Cost: $$$<br/>Quality: ⭐⭐⭐⭐⭐<br/>Time: 30s]
+    end
+    
+    SA -->|+$0.27<br/>+40% quality| MS
+    MS -->|Same cost<br/>-50% time| MP
+    
+    style SA fill:#FFE6E6
+    style MS fill:#FFF4E6
+    style MP fill:#E6FFE6
+```
+
+**Read this diagram:**
+- Single Agent: Cheapest but lower quality
+- Multi-Agent Sequential: Better quality, higher cost, slower
+- Multi-Agent Parallel: Best of both (quality + speed), but highest cost
+
 ## Challenges of Multi-Agent Systems
 
 | Challenge | Why It's Hard | Mitigation Strategy |

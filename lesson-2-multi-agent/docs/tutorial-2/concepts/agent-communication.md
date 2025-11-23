@@ -348,6 +348,71 @@ except Exception as e:
 
 ## Communication Flow Example
 
+### Visual: Message Flow with Timing
+
+This diagram shows a complete workflow with realistic timing:
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant User
+    participant Coordinator
+    participant Research
+    participant Data
+    participant Writer
+    
+    Note over User,Writer: Total Time: ~5.2 seconds
+    
+    User->>Coordinator: "Generate EV market report"
+    Note right of Coordinator: t=0.0s: Parse request
+    
+    Coordinator->>Research: Request: gather_info<br/>{query: "EV market 2023"}
+    Note right of Research: t=0.1s: Start research<br/>2.0s: Web searches
+    Research->>Research: Execute web_search (3x)
+    Research->>Coordinator: Response: {findings: 5 sources}
+    Note right of Coordinator: t=2.1s: Validate & aggregate
+    
+    Coordinator->>Data: Request: analyze_trends<br/>{data: [research findings]}
+    Note right of Data: t=2.2s: Start analysis<br/>1.8s: Calculations
+    Data->>Data: Extract numbers & calculate
+    Data->>Coordinator: Response: {metrics, insights}
+    Note right of Coordinator: t=4.0s: Validate analysis
+    
+    Coordinator->>Writer: Request: create_report<br/>{findings, analysis}
+    Note right of Writer: t=4.1s: Start writing<br/>1.0s: Format & structure
+    Writer->>Writer: Format markdown + citations
+    Writer->>Coordinator: Response: {report: "# EV Market..."}
+    Note right of Coordinator: t=5.1s: Quality check
+    
+    Coordinator->>User: "Here's your report: [1200 words]"
+    Note right of User: t=5.2s: Complete
+    
+    rect rgb(200, 220, 240)
+        Note over Research: Research: 2.0s (38%)
+    end
+    rect rgb(220, 200, 240)
+        Note over Data: Analysis: 1.8s (35%)
+    end
+    rect rgb(240, 200, 220)
+        Note over Writer: Writing: 1.0s (19%)
+    end
+    rect rgb(220, 220, 220)
+        Note over Coordinator: Coordination: 0.4s (8%)
+    end
+```
+
+**Timing Breakdown:**
+- Research: 2.0s (38%) - Multiple web searches
+- Data Analysis: 1.8s (35%) - Calculations and trend detection
+- Writing: 1.0s (19%) - Formatting and structure
+- Coordination: 0.4s (8%) - Delegation and validation
+- **Total: 5.2 seconds**
+
+**Optimization Opportunities:**
+- Parallel research + data gathering: Save 1.5s
+- Cache frequent queries: Save 0.5s
+- Use smaller model for coordination: Save $0.02
+
 Let's trace a complete multi-agent interaction:
 
 ```mermaid

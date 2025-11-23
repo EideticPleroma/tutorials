@@ -3,14 +3,26 @@ Shared state management for multi-agent systems.
 
 Provides file-based state storage with locking for
 safe concurrent access by multiple agents.
+
+Cross-platform file locking:
+- Unix/Linux/Mac: Uses fcntl
+- Windows: Uses msvcrt
 """
 
 import json
 import os
+import sys
 from pathlib import Path
 from typing import Any, Optional, Dict
-import fcntl
 import logging
+
+# Cross-platform file locking
+if sys.platform == 'win32':
+    import msvcrt
+    WINDOWS = True
+else:
+    import fcntl
+    WINDOWS = False
 
 
 class SharedState:
@@ -119,34 +131,76 @@ class SharedState:
     
     def _read(self) -> Dict:
         """
-        Read state with file locking.
+        Read state with file locking (cross-platform).
         
         Returns:
             State dictionary
         """
         try:
             with open(self.state_file, 'r') as f:
-                # Shared read lock (multiple readers OK)
-                fcntl.flock(f.fileno(), fcntl.LOCK_SH)
+                # Lock file for reading
+                self._lock_file(f, shared=True)
                 try:
                     return json.load(f)
                 finally:
-                    fcntl.flock(f.fileno(), fcntl.LOCK_UN)
+                    self._unlock_file(f)
         except (FileNotFoundError, json.JSONDecodeError):
             return {"_initialized": True}
     
     def _write(self, state: Dict):
         """
-        Write state with file locking.
+        Write state with file locking (cross-platform).
         
         Args:
             state: State dictionary to write
         """
         with open(self.state_file, 'w') as f:
-            # Exclusive write lock (only one writer)
-            fcntl.flock(f.fileno(), fcntl.LOCK_EX)
+            # Lock file for writing
+            self._lock_file(f, shared=False)
             try:
                 json.dump(state, f, indent=2)
             finally:
-                fcntl.flock(f.fileno(), fcntl.LOCK_UN)
+                self._unlock_file(f)
+    
+    def _lock_file(self, file_obj, shared: bool = False):
+        """
+        Lock file using platform-specific method.
+        
+        Args:
+            file_obj: File object to lock
+            shared: True for shared read lock, False for exclusive write lock
+        """
+        if WINDOWS:
+            # Windows: msvcrt locking
+            # Note: msvcrt doesn't distinguish shared/exclusive at the API level
+            # We lock the first byte of the file
+            file_obj.seek(0)
+            try:
+                msvcrt.locking(file_obj.fileno(), msvcrt.LK_LOCK, 1)
+            except OSError:
+                # File already locked, wait and retry
+                import time
+                time.sleep(0.1)
+                msvcrt.locking(file_obj.fileno(), msvcrt.LK_LOCK, 1)
+        else:
+            # Unix: fcntl locking
+            import fcntl
+            lock_type = fcntl.LOCK_SH if shared else fcntl.LOCK_EX
+            fcntl.flock(file_obj.fileno(), lock_type)
+    
+    def _unlock_file(self, file_obj):
+        """
+        Unlock file using platform-specific method.
+        
+        Args:
+            file_obj: File object to unlock
+        """
+        if WINDOWS:
+            # Windows: unlock the first byte
+            file_obj.seek(0)
+            msvcrt.locking(file_obj.fileno(), msvcrt.LK_UNLCK, 1)
+        else:
+            # Unix: fcntl unlock
+            import fcntl
+            fcntl.flock(file_obj.fileno(), fcntl.LOCK_UN)
 

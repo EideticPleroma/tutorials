@@ -2,6 +2,16 @@
 
 **Page 9 of 9** | [← Previous: Coordinator Patterns](./coordinator-patterns.md) | [↑ Reading Guide](../READING_GUIDE.md)
 
+> **⚠️ ADVANCED PREVIEW - OPTIONAL FOR TUTORIAL 2**
+> 
+> This page covers advanced architectures beyond Tutorial 2's scope. You can **skip this for now** and return after completing Lab 2.
+> 
+> **Why this is here:** These patterns become relevant when scaling beyond 10 agents (Tutorial 3+) or building consensus systems (Tutorial 4). We include it for completeness and to show where multi-agent systems can evolve.
+> 
+> **Recommendation:** Focus on coordinator-worker pattern first (Pages 1-8 + Lab 2), then return here when you need to scale or have completed all exercises.
+
+---
+
 In Tutorial 2, we focus on the coordinator-worker pattern (single coordinator, multiple workers). But as systems grow, you'll encounter two other architectures: hierarchical (multi-level coordination) and peer-to-peer (no coordinator). This page explains when each makes sense.
 
 ## Three Architectural Approaches

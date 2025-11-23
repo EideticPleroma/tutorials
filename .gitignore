@@ -51,6 +51,9 @@ htmlcov/
 .cursor/
 *.plan.md
 
+# Project Planning Documents (work in progress)
+TUTORIAL-2-SCOPE.md
+
 # Environment
 .env
 .env.local

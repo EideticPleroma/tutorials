@@ -4,6 +4,50 @@
 
 Agents need to remember things. A single agent keeps state in memory (conversation history, context). But what happens when multiple agents need to access the same information? This is the state management problem.
 
+## State Lifecycle Visualization
+
+Understanding how state flows through a multi-agent workflow:
+
+```mermaid
+stateDiagram-v2
+    [*] --> Created: Coordinator initializes
+    Created --> Updated: Research Agent writes findings
+    Updated --> Read: Data Agent reads findings
+    Read --> Updated: Data Agent writes analysis
+    Updated --> Read: Writer Agent reads findings + analysis
+    Read --> Updated: Writer Agent writes report
+    Updated --> Accessed: Coordinator reads final report
+    Accessed --> Cleared: Task complete
+    Cleared --> [*]
+    
+    Updated --> Updated: Multiple agents write
+    Read --> Read: Multiple agents read
+    
+    note right of Created
+        State initialized
+        {_initialized: true}
+    end note
+    
+    note right of Updated
+        State grows over time
+        research_findings → 
+        data_analysis → 
+        final_report
+    end note
+    
+    note right of Cleared
+        State reset for next task
+        Ready for new workflow
+    end note
+```
+
+**Lifecycle stages:**
+1. **Created**: State file initialized, empty
+2. **Updated**: Agents write data (research_findings, data_analysis, final_report)
+3. **Read**: Agents retrieve data for processing
+4. **Accessed**: Coordinator retrieves final result
+5. **Cleared**: State cleaned for next workflow
+
 ## Shared vs. Isolated Agent State
 
 ### Isolated State (Simple)

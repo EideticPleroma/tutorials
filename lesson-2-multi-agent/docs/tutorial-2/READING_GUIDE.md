@@ -100,13 +100,14 @@ Before starting Tutorial 2, ensure you've completed Tutorial 1:
 - Delegation and aggregation strategies
 - **Advanced**: Master coordination techniques
 
-### Page 9: Hierarchical vs. Peer-to-Peer (~15 min)
-**📄 [Hierarchical vs. Peer-to-Peer](./architecture/hierarchical-vs-peer.md)**
-- When to scale beyond coordinator-worker
-- Hierarchical multi-level coordination
-- Peer-to-peer architectures
+### Page 9: Hierarchical vs. Peer-to-Peer (~15 min) ⚠️ OPTIONAL
+**📄 [Hierarchical vs. Peer-to-Peer](./architecture/hierarchical-vs-peer.md)** 
+- **Advanced Preview:** Beyond Tutorial 2 scope
+- When to scale beyond coordinator-worker (10+ agents)
+- Hierarchical multi-level coordination (Tutorial 3+)
+- Peer-to-peer architectures (Tutorial 4)
 - Comparison and trade-offs
-- **Future**: Understand scaling options
+- **Recommendation**: Skip for now, return after Lab 2
 
 ---
 

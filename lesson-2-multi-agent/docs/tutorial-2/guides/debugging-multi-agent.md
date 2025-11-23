@@ -406,6 +406,54 @@ grep "task_completed" agent.log | jq -r '[.agent, .data.execution_time] | @tsv' 
 
 ---
 
+## Debugging Decision Tree
+
+When debugging multi-agent issues, use this systematic flowchart:
+
+```mermaid
+flowchart TD
+    Start[Something Wrong] --> Q1{System completed?}
+    
+    Q1 -->|No| Q2{Which agent failed?}
+    Q1 -->|Yes, bad output| Q7{Output quality issue?}
+    
+    Q2 -->|Known| Q3{Check agent logs}
+    Q2 -->|Unknown| FindAgent[Find last successful agent<br/>grep task_completed]
+    FindAgent --> Q3
+    
+    Q3 --> Q4{Agent started task?}
+    Q4 -->|No| Fix1[Coordinator didn't delegate<br/>Check delegation logic]
+    Q4 -->|Yes| Q5{Agent completed?}
+    
+    Q5 -->|No| Q6{Agent crashed?}
+    Q5 -->|Yes, with error| Fix2[Check error message<br/>Handle gracefully]
+    
+    Q6 -->|Yes| Fix3[Silent failure<br/>Add timeout + retry]
+    Q6 -->|No, still running| Fix4[Infinite loop or hang<br/>Check tool calls]
+    
+    Q7 -->|Bad content| Fix5[Evaluate agent prompts<br/>Check specialization]
+    Q7 -->|Missing data| Q8{Check shared state}
+    
+    Q8 --> Q9{Data written?}
+    Q9 -->|No| Fix6[Agent didn't write<br/>Check state.set calls]
+    Q9 -->|Yes| Fix7[State read issue<br/>Check key names match]
+    
+    style Start fill:#FFE6E6
+    style Fix1 fill:#E6FFE6
+    style Fix2 fill:#E6FFE6
+    style Fix3 fill:#E6FFE6
+    style Fix4 fill:#E6FFE6
+    style Fix5 fill:#E6FFE6
+    style Fix6 fill:#E6FFE6
+    style Fix7 fill:#E6FFE6
+```
+
+**How to use this diagram:**
+1. Start at "Something Wrong"
+2. Answer each question based on logs and state
+3. Follow arrows to diagnosis
+4. Apply the fix suggested in green boxes
+
 ## 🛠️ Debugging Checklist
 
 When something goes wrong, follow this systematic approach:

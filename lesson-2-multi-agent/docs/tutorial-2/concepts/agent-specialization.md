@@ -228,6 +228,67 @@ $7,200.
 
 ## Tool Assignment Strategies
 
+### Visual: Tool Assignment Matrix
+
+```mermaid
+graph TD
+    subgraph "Research Agent Tools"
+        R1[web_search]
+        R2[read_file]
+        R3[list_files]
+    end
+    
+    subgraph "Data Agent Tools"
+        D1[calculate]
+        D2[analyze_trend]
+        D3[compare_values]
+    end
+    
+    subgraph "Writer Agent Tools"
+        W1[format_markdown]
+        W2[create_table]
+        W3[format_citation]
+    end
+    
+    subgraph "Shared Tools (Optional)"
+        S1[read_file]
+        S2[log_message]
+    end
+    
+    RA[Research Agent] -.-> R1
+    RA -.-> R2
+    RA -.-> R3
+    RA -.-> S1
+    
+    DA[Data Agent] -.-> D1
+    DA -.-> D2
+    DA -.-> D3
+    DA -.-> S1
+    
+    WA[Writer Agent] -.-> W1
+    WA -.-> W2
+    WA -.-> W3
+    WA -.-> S1
+    
+    style R1 fill:#7ED321
+    style R2 fill:#7ED321
+    style R3 fill:#7ED321
+    style D1 fill:#F5A623
+    style D2 fill:#F5A623
+    style D3 fill:#F5A623
+    style W1 fill:#BD10E0
+    style W2 fill:#BD10E0
+    style W3 fill:#BD10E0
+    style S1 fill:#CCCCCC
+    style S2 fill:#CCCCCC
+```
+
+**Key:**
+- 🟢 Green: Research tools (information gathering)
+- 🟠 Orange: Data tools (analysis and calculation)
+- 🟣 Purple: Writer tools (formatting and presentation)
+- ⚪ Gray: Shared tools (common utilities)
+
 ### Strategy 1: Exclusive Tools (Simplest)
 
 Each agent gets completely different tools:
