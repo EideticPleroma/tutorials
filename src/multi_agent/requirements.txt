@@ -4,10 +4,11 @@
 # No additional packages required!
 #
 # Core dependencies (already installed from Tutorial 1):
-# - Python 3.10+
-# - Ollama (local LLM)
+# - Python 3.11+ (2025 requirement)
+# - Ollama 0.4.0+ (local LLM with context caching)
 # - pytest (testing)
 # - requests (HTTP client)
+# - pydantic (data validation)
 #
 # All dependencies should already be installed if you completed Tutorial 1.
 # If not, see: ../agent/requirements.txt

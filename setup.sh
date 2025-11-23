@@ -17,12 +17,61 @@ check_command() {
     return 0
 }
 
+# Version checking functions (2025 requirements)
+check_python_version() {
+    local version=$(python3 --version 2>&1 | grep -oP '\d+\.\d+' | head -1)
+    local major=$(echo $version | cut -d. -f1)
+    local minor=$(echo $version | cut -d. -f2)
+    
+    if [ "$major" -lt 3 ] || ([ "$major" -eq 3 ] && [ "$minor" -lt 11 ]); then
+        echo -e "${RED}Error: Python 3.11+ required. Found: $version${NC}"
+        echo -e "${YELLOW}Install Python 3.11+ from https://www.python.org${NC}"
+        return 1
+    fi
+    echo -e "  ✓ Python $version (3.11+ required)"
+    return 0
+}
+
+check_node_version() {
+    local version=$(node --version 2>&1 | grep -oP '\d+' | head -1)
+    
+    if [ "$version" -lt 20 ]; then
+        echo -e "${YELLOW}Warning: Node 20 LTS recommended. Found: v$version${NC}"
+        echo -e "${YELLOW}Consider upgrading: https://nodejs.org${NC}"
+    else
+        echo -e "  ✓ Node v$version (20 LTS recommended)"
+    fi
+    return 0
+}
+
+check_ollama_version() {
+    if command -v ollama &> /dev/null; then
+        local version=$(ollama --version 2>&1 | grep -oP 'ollama version is \K[\d.]+' || echo "unknown")
+        
+        if [[ "$version" =~ ^0\.([0-3])\. ]]; then
+            echo -e "${YELLOW}Warning: Ollama 0.4.0+ recommended for context caching. Found: $version${NC}"
+            echo -e "${YELLOW}Update: curl -fsSL https://ollama.com/install.sh | sh${NC}"
+        elif [ "$version" != "unknown" ]; then
+            echo -e "  ✓ Ollama $version (0.4.0+ recommended)"
+        else
+            echo -e "  ✓ Ollama installed (version unknown)"
+        fi
+    fi
+    return 0
+}
+
 # 1. Check Prerequisites
-echo -e "\n${YELLOW}[1/5] Checking prerequisites...${NC}"
+echo -e "\n${YELLOW}[1/5] Checking prerequisites and versions...${NC}"
 check_command python3 || exit 1
+check_python_version || exit 1
+
 check_command node || exit 1
+check_node_version
+
 check_command npm || exit 1
+
 check_command ollama || { echo -e "${YELLOW}Warning: Ollama not found. Please install it from https://ollama.com${NC}"; }
+check_ollama_version
 
 # 2. Python Setup
 echo -e "\n${YELLOW}[2/5] Setting up Python environment...${NC}"
@@ -32,7 +81,12 @@ if [ ! -d "venv" ]; then
 fi
 source venv/bin/activate
 echo "Installing Python dependencies..."
-pip install -r src/agent/requirements.txt
+# Use root requirements.txt if available, otherwise use tutorial-specific
+if [ -f "requirements.txt" ]; then
+    pip install -r requirements.txt
+else
+    pip install -r src/agent/requirements.txt
+fi
 echo "Python setup complete."
 
 # 3. Node.js Setup
