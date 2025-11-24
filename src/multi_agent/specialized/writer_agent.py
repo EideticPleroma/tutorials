@@ -38,7 +38,7 @@ class WriterAgent(WorkerAgent):
         - Gets Ollama LLM via self.chat() method
         - Gets tool calling capability
         - Tools filtered to: none (LLM-only for prose generation)
-        
+
         Sets up:
         - Focused system prompt for technical writer
         - No tools needed (pure LLM generation)
@@ -47,7 +47,7 @@ class WriterAgent(WorkerAgent):
         super().__init__(
             name="writer",
             shared_state=shared_state,
-            allowed_tools=[]  # Writer uses LLM only, no external tools
+            allowed_tools=[],  # Writer uses LLM only, no external tools
         )
 
         # Override system prompt for technical writing specialization
@@ -87,7 +87,7 @@ OUTPUT REQUIREMENTS:
 - Keep paragraphs concise (3-4 sentences max)
 - Include all source URLs or file paths in Sources section
 
-FOCUS: Clarity and accuracy. Transform structured data into readable narrative while maintaining complete transparency about sources and methodology."""
+FOCUS: Clarity and accuracy. Transform structured data into readable narrative while maintaining complete transparency about sources and methodology.""",
         }
 
     def execute(self, action: str, payload: Dict) -> Dict:
@@ -111,18 +111,18 @@ FOCUS: Clarity and accuracy. Transform structured data into readable narrative w
         Create formatted report from research and analysis using inherited LLM.
 
         TODO: Students implement this in Lab 2 Exercise 2
-        
+
         Implementation Steps:
         1. Read research_findings and data_analysis from shared_state
         2. Use self.chat() to ask LLM to create markdown report
         3. LLM generates report following system prompt guidelines
         4. Save report to shared_state["final_report"]
         5. Return status dictionary
-        
+
         Returns:
             Dict with status and report
             Example: {"status": "success", "report": "# Report...", "message": "..."}
-        
+
         Hints:
         - Get data with: self.shared_state.get("research_findings", [])
         - Get analysis with: self.shared_state.get("data_analysis", {})
@@ -131,22 +131,22 @@ FOCUS: Clarity and accuracy. Transform structured data into readable narrative w
         - No tools needed - pure LLM text generation
         - Use self.shared_state.set("final_report", report)
         - Handle cases where findings or analysis are missing
-        
+
         Example Implementation Pattern:
             findings = self.shared_state.get("research_findings", [])
             analysis = self.shared_state.get("data_analysis", {})
-            
+
             if not findings or not analysis:
                 return {"status": "error", "error": "Missing data for report"}
-            
+
             prompt = f"Create a markdown report from:\\nFindings: {findings}\\nAnalysis: {analysis}"
             report = self.chat(prompt)
-            
+
             self.shared_state.set("final_report", report)
             return {"status": "success", "report": report}
         """
         self.logger.info("Starting report creation")
-        
+
         # TODO: Students implement actual LLM-based report generation here
         raise NotImplementedError(
             "Students implement create_report() in Lab 2 Exercise 2. "

@@ -37,16 +37,14 @@ class DataAgent(WorkerAgent):
         - Gets Ollama LLM via self.chat() method
         - Gets tool calling capability
         - Tools filtered to: calculate only
-        
+
         Sets up:
         - Focused system prompt for data analyst
         - Allowed tools for analysis tasks
         """
         # Pass allowed_tools to parent - only calculation tool
         super().__init__(
-            name="data",
-            shared_state=shared_state,
-            allowed_tools=["calculate"]
+            name="data", shared_state=shared_state, allowed_tools=["calculate"]
         )
 
         # Override system prompt for data analysis specialization
@@ -80,7 +78,7 @@ OUTPUT REQUIREMENTS:
 - Flag any assumptions or limitations in the analysis
 - Structure output as: {"metrics": {...}, "insights": ["quantitative insight 1", ...]}
 
-FOCUS: Accuracy and transparency. Extract every quantifiable insight from the data and show your work. Pass structured metrics to the Writer Agent for narrative synthesis."""
+FOCUS: Accuracy and transparency. Extract every quantifiable insight from the data and show your work. Pass structured metrics to the Writer Agent for narrative synthesis.""",
         }
 
     def execute(self, action: str, payload: Dict) -> Dict:
@@ -104,7 +102,7 @@ FOCUS: Accuracy and transparency. Extract every quantifiable insight from the da
         Analyze research findings for trends and metrics using inherited LLM and tools.
 
         TODO: Students implement this in Lab 2 Exercise 2
-        
+
         Implementation Steps:
         1. Read research_findings from shared_state
         2. Use self.chat() to ask LLM to analyze the findings
@@ -112,11 +110,11 @@ FOCUS: Accuracy and transparency. Extract every quantifiable insight from the da
         4. Parse LLM response to extract structured metrics
         5. Save analysis to shared_state["data_analysis"]
         6. Return status dictionary
-        
+
         Returns:
             Dict with status and metrics
             Example: {"status": "success", "metrics_count": 5}
-        
+
         Hints:
         - Get findings with: self.shared_state.get("research_findings", [])
         - Build prompt asking LLM to analyze trends, calculate metrics
@@ -124,12 +122,12 @@ FOCUS: Accuracy and transparency. Extract every quantifiable insight from the da
         - Parse response into structured format: {"metrics": {...}, "insights": [...]}
         - Use self.shared_state.set("data_analysis", analysis)
         - Handle case where no findings exist
-        
+
         Example Implementation Pattern:
             findings = self.shared_state.get("research_findings", [])
             if not findings:
                 return {"status": "error", "error": "No research findings available"}
-            
+
             prompt = f"Analyze these research findings and calculate metrics: {findings}"
             response = self.chat(prompt)
             # Parse response, structure analysis
@@ -138,7 +136,7 @@ FOCUS: Accuracy and transparency. Extract every quantifiable insight from the da
             return {"status": "success", "metrics_count": len(analysis["metrics"])}
         """
         self.logger.info("Starting data analysis")
-        
+
         # TODO: Students implement actual LLM-based analysis here
         raise NotImplementedError(
             "Students implement analyze_trends() in Lab 2 Exercise 2. "
