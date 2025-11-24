@@ -90,7 +90,30 @@ pip list | grep -E "pytest|requests"
 # Should show both packages
 ```
 
-### Step 3: Create State Directory
+### Step 3: Verify Tool Registry
+
+Before starting Lab 2, verify all Tutorial 1 tools are registered and available:
+
+```bash
+python -c "from src.agent.tool_registry import registry; tools = [t['function']['name'] for t in registry.get_schemas()]; print('Registered tools:', tools); assert 'search_files' in tools, 'search_files missing!'; assert 'read_file' in tools, 'read_file missing!'; assert 'calculate' in tools, 'calculate missing!'; print('✓ All Tutorial 2 tools available')"
+```
+
+**Expected output:**
+```
+Registered tools: ['calculate', 'get_weather', 'read_file', 'list_directory', 'search_files']
+✓ All Tutorial 2 tools available
+```
+
+**Why this matters:** Tutorial 2 agents filter Tutorial 1's tool registry. If tools are missing or misnamed, agents will have zero tools and fail silently.
+
+**Common issues:**
+- Tools not imported in `src/agent/simple_agent.py`
+- Tool files missing from `src/agent/tools/`
+- Tool name mismatch (e.g., looking for `file_search` but it's registered as `search_files`)
+
+**See:** [Tool Bridge Documentation](../../tutorial-2/concepts/tool-bridge.md) for complete tool reference.
+
+### Step 4: Create State Directory
 
 Multi-agent systems use shared state:
 
@@ -106,7 +129,7 @@ echo ".agent_state/" >> .gitignore
 echo ".agent_logs/" >> .gitignore
 ```
 
-### Step 4: Verify Multi-Agent Imports
+### Step 5: Verify Multi-Agent Imports
 
 ```bash
 python -c "
@@ -117,7 +140,7 @@ print('✓ Multi-agent imports work')
 
 **Error?** See [Troubleshooting](#troubleshooting-setup) below.
 
-### Step 5: Run Multi-Agent Tests
+### Step 6: Run Multi-Agent Tests
 
 ```bash
 # Run all multi-agent tests
@@ -127,7 +150,7 @@ python -m pytest tests/multi_agent/ -v
 # This is normal - you'll implement them in Lab 2
 ```
 
-### Step 6: Configure AI Assistant
+### Step 7: Configure AI Assistant
 
 **For Cursor Users:**
 1. `.cursorrules` should already be in your project root
@@ -324,6 +347,7 @@ Before starting Lab 2 exercises:
 - [ ] Tutorial 1 completed and working
 - [ ] Ollama running (`curl localhost:11434` works)
 - [ ] Python environment active
+- [ ] Tool registry verified (search_files, read_file, calculate available)
 - [ ] Can import `Coordinator`, `WorkerAgent`, `Message`
 - [ ] Tests directory exists: `tests/multi_agent/`
 - [ ] State directory exists: `.agent_state/`

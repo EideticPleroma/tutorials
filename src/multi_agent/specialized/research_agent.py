@@ -35,8 +35,8 @@ class ResearchAgent(WorkerAgent):
         Inherits from WorkerAgent which inherits from Agent:
         - Gets Ollama LLM via self.chat() method
         - Gets tool calling capability
-        - Tools filtered to: file_search, read_file only
-        
+        - Tools filtered to: search_files, read_file only
+
         Sets up:
         - Focused system prompt for research specialist
         - Allowed tools for research tasks
@@ -45,7 +45,7 @@ class ResearchAgent(WorkerAgent):
         super().__init__(
             name="research",
             shared_state=shared_state,
-            allowed_tools=["file_search", "read_file"]
+            allowed_tools=["search_files", "read_file"],
         )
 
         # Override system prompt for research specialization
@@ -57,7 +57,7 @@ class ResearchAgent(WorkerAgent):
 ROLE: Your sole responsibility is information gathering and source documentation.
 
 YOUR CAPABILITIES:
-- Search for information using file_search and read_file tools
+- Search for information using search_files and read_file tools
 - Extract specific facts, statistics, and data points from sources
 - Identify key information relevant to the research query
 - Document source file paths and citations
@@ -78,7 +78,7 @@ OUTPUT REQUIREMENTS:
 - Flag any concerns about data quality, outdated information, or missing sources
 - Organize findings by relevance to the query
 
-FOCUS: Breadth and accuracy. Gather comprehensive, well-sourced information and pass it to the Data Agent for analysis."""
+FOCUS: Breadth and accuracy. Gather comprehensive, well-sourced information and pass it to the Data Agent for analysis.""",
         }
 
     def execute(self, action: str, payload: Dict) -> Dict:
@@ -104,14 +104,14 @@ FOCUS: Breadth and accuracy. Gather comprehensive, well-sourced information and 
         Gather information on a topic using inherited LLM and tools.
 
         TODO: Students implement this in Lab 2 Exercise 2
-        
+
         Implementation Steps:
         1. Use self.chat(prompt) to engage the LLM with research query
         2. LLM will automatically call allowed tools (file_search, read_file)
         3. Parse the LLM response to extract structured findings
         4. Save findings to shared_state["research_findings"]
         5. Return status dictionary
-        
+
         Args:
             query: Research topic/question
             max_sources: Maximum number of sources to gather
@@ -119,14 +119,14 @@ FOCUS: Breadth and accuracy. Gather comprehensive, well-sourced information and 
         Returns:
             Dict with status and summary
             Example: {"status": "success", "findings_count": 5}
-        
+
         Hints:
         - Build a prompt that asks the LLM to research the topic
         - The LLM has access to file_search and read_file tools
         - Parse the response and structure as list of dicts with "fact" and "source" keys
         - Use self.shared_state.set("research_findings", findings)
         - Handle exceptions and return error status if needed
-        
+
         Example Implementation Pattern:
             prompt = f"Research the following topic: {query}. Find key facts and cite sources."
             response = self.chat(prompt)
@@ -136,7 +136,7 @@ FOCUS: Breadth and accuracy. Gather comprehensive, well-sourced information and 
             return {"status": "success", "findings_count": len(findings)}
         """
         self.logger.info("Starting research for query: %s", query)
-        
+
         # TODO: Students implement actual LLM-based research here
         raise NotImplementedError(
             "Students implement gather_info() in Lab 2 Exercise 2. "

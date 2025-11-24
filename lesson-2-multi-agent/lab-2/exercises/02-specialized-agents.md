@@ -15,7 +15,7 @@ In Exercise 1, you built a coordinator that delegates to mock agents. Now you'll
 - **Clear responsibilities** (one job per agent)
 
 **The three agents:**
-1. **Research Agent**: Gathers information using file_search and read_file tools
+1. **Research Agent**: Gathers information using search_files and read_file tools
 2. **Data Agent**: Analyzes data using calculate tool
 3. **Writer Agent**: Creates formatted reports using LLM only (no tools)
 
@@ -70,7 +70,7 @@ class ResearchAgent(WorkerAgent):
         super().__init__(
             name="research",
             shared_state=shared_state,
-            allowed_tools=["file_search", "read_file"]  # TODO: Verify these tools exist
+            allowed_tools=["search_files", "read_file"]  # TODO: Verify these tools exist
         )
         
         # TODO: Override system prompt for research specialization
@@ -117,7 +117,7 @@ Create a focused system prompt for research specialist.
 I need to override the system prompt for ResearchAgent that inherits from WorkerAgent (which inherits from Tutorial 1's Agent).
 
 The agent should specialize in:
-- Gathering information using file_search and read_file tools
+- Gathering information using search_files and read_file tools
 - Extracting specific facts and data points
 - Citing all sources with file paths
 - Focus on breadth and accuracy
@@ -136,7 +136,7 @@ Implement the information gathering workflow using the inherited LLM.
 
 **Requirements:**
 - Build a prompt for the LLM explaining the research task
-- Call self.chat(prompt) - the LLM will automatically use file_search/read_file tools
+- Call self.chat(prompt) - the LLM will automatically use search_files/read_file tools
 - Parse the LLM response to extract structured findings
 - Each finding should have "fact" and "source" keys
 - Write to shared_state under "research_findings"
@@ -147,9 +147,9 @@ Implement the information gathering workflow using the inherited LLM.
 @.cursorrules @src/multi_agent/specialized/research_agent.py
 
 Implement ResearchAgent.gather_info() that:
-1. Uses web_search tool to find information on query
-2. Extracts key facts from search results
-3. Creates findings list: [{"fact": "...", "source": "url"}]
+1. Uses search_files and read_file tools to find information on query
+2. Extracts key facts from file contents
+3. Creates findings list: [{"fact": "...", "source": "file_path"}]
 4. Writes to shared_state.set("research_findings", findings)
 5. Returns {"status": "success", "findings_count": len(findings)}
 
@@ -474,8 +474,8 @@ You'll formalize the message protocol and integrate it with your coordinator and
 - Finally test with coordinator
 
 **Tool Assignment:**
-- Research: web_search, read_file, list_files
-- Data: calculate, analyze (simulation tools)
-- Writer: format_markdown
+- Research: search_files, read_file
+- Data: calculate
+- Writer: (no tools, LLM-only)
 - Keep tools separated!
 

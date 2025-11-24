@@ -17,6 +17,12 @@
 > 
 > **Implementation:** Each specialized agent (Research, Data, Writer) passes `allowed_tools` list to `WorkerAgent.__init__()`
 
+## Tool Bridge: Using Tutorial 1 Tools
+
+Tutorial 2 agents don't define new tools - they filter and use tools from Tutorial 1's registry.
+
+**See:** [Tool Bridge Documentation](./tool-bridge.md) for complete tool reference and validation commands.
+
 In Tutorial 1, you built a single "generalist" agent that could handle many types of tasks. In multi-agent systems, we create "specialist" agents that excel at specific domains. This is the key to making multi-agent systems more effective than a single powerful agent.
 
 ## The Specialist vs. Generalist Trade-off

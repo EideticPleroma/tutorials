@@ -4,12 +4,157 @@ Common errors in multi-agent systems and how to fix them.
 
 ## Table of Contents
 
+- [Inheritance and Tool Calling Issues](#inheritance-and-tool-calling-issues)
 - [Coordinator Errors](#coordinator-errors)
 - [Agent Communication Errors](#agent-communication-errors)
 - [State Management Errors](#state-management-errors)
 - [Specialization Errors](#specialization-errors)
 - [Testing Errors](#testing-errors)
 - [Import and Setup Errors](#import-and-setup-errors)
+
+---
+
+## Inheritance and Tool Calling Issues
+
+### Error: "'WorkerAgent' object has no attribute 'chat'"
+
+**Symptom:**
+```python
+AttributeError: 'ResearchAgent' object has no attribute 'chat'
+```
+
+**Cause:** WorkerAgent doesn't properly inherit from Agent.
+
+**Solution:** Verify inheritance in `src/multi_agent/worker_base.py`:
+```python
+from ..agent.simple_agent import Agent  # Must import
+
+class WorkerAgent(Agent):  # Must inherit
+    def __init__(self, name, shared_state, allowed_tools):
+        super().__init__()  # Must call parent init
+```
+
+**Test:**
+```python
+research = ResearchAgent(shared_state)
+print(hasattr(research, 'chat'))  # Should be True
+```
+
+---
+
+### Error: "Agent has zero tools / Tool not found"
+
+**Symptom:**
+```python
+research = ResearchAgent(shared_state)
+print(len(research.available_tools))  # Prints 0 (should be 2)
+```
+
+**Cause:** Tool name in `allowed_tools` doesn't match registered name in Tutorial 1.
+
+**Example:**
+```python
+# WRONG: Tool is registered as "search_files", not "file_search"
+super().__init__(
+    name="research",
+    allowed_tools=["file_search", "read_file"]  # ❌ "file_search" doesn't exist
+)
+```
+
+**Solution:** Use exact registered tool names from Tutorial 1:
+
+```python
+# CORRECT: Match Tutorial 1's registered names
+super().__init__(
+    name="research",
+    allowed_tools=["search_files", "read_file"]  # ✅ Matches registry
+)
+```
+
+**How to Find Correct Tool Names:**
+
+1. **Check Tutorial 1 tool registration:**
+```bash
+grep -r "@registry.register" src/agent/ -A 1
+# Shows: def search_files(...), def calculate(...), etc.
+```
+
+2. **List all registered tools:**
+```python
+from src.agent.tool_registry import registry
+for schema in registry.get_schemas():
+    print(schema['function']['name'])
+# Outputs: calculate, get_weather, read_file, list_directory, search_files
+```
+
+3. **Validate agent tools:**
+```python
+research = ResearchAgent(shared_state)
+print("Available tools:", [t['function']['name'] for t in research.available_tools])
+# Should show: ['search_files', 'read_file']
+```
+
+**See Also:** [Tool Bridge Documentation](../../tutorial-2/concepts/tool-bridge.md) for complete tool reference.
+
+---
+
+### Error: "Agent calling wrong tools"
+
+**Symptom:** ResearchAgent trying to use calculate tool (should only have search_files, read_file).
+
+**Cause 1:** Tool filtering not working.
+**Cause 2:** Tool name mismatch (agent has zero tools, falls back to all tools).
+
+**Solution:** Check `allowed_tools` parameter and verify tool names:
+
+```python
+# In specialized agent __init__
+super().__init__(
+    name="research",
+    shared_state=shared_state,
+    allowed_tools=["search_files", "read_file"]  # ⚠️ Verify exact names!
+)
+
+# Validate tool filtering
+research = ResearchAgent(shared_state)
+print("Allowed:", research.allowed_tools)  # ['search_files', 'read_file']
+print("Available:", len(research.available_tools))  # Should be 2
+
+# If available_tools is 0, check tool name spelling
+from src.agent.tool_registry import registry
+for tool_name in research.allowed_tools:
+    tool = registry.get_tool(tool_name)
+    if tool is None:
+        print(f"❌ Tool '{tool_name}' not found in registry!")
+```
+
+**Tool Name Reference:**
+- ✅ `search_files` (NOT "file_search")
+- ✅ `read_file` (correct)
+- ✅ `calculate` (correct)
+- ✅ `list_directory` (correct)
+- ✅ `get_weather` (correct)
+
+---
+
+### Error: "NotImplementedError" when calling agent methods
+
+**Symptom:**
+```python
+NotImplementedError: Students implement gather_info() in Lab 2 Exercise 2
+```
+
+**Cause:** Method contains TODO scaffold, not yet implemented.
+
+**Solution:** Implement using inherited `self.chat()`:
+```python
+def gather_info(self, query: str) -> Dict:
+    prompt = f"Research: {query}"
+    response = self.chat(prompt)  # Uses inherited method
+    findings = self._parse(response)
+    self.shared_state.set("research_findings", findings)
+    return {"status": "success", "findings_count": len(findings)}
+```
 
 ---
 
