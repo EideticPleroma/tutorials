@@ -7,13 +7,10 @@ and aggregates their results into a final response.
 
 from typing import Optional, Dict, Any
 import logging
-import time  # noqa: F401 - Students will use for retry backoff
-import uuid  # noqa: F401 - Students will use for trace_id generation
+import time
+import uuid
 from .worker_base import WorkerAgent
-from .message_protocol import (
-    Message,
-    MessageType,
-)  # noqa: F401 - Students will use for delegation
+from .message_protocol import Message, MessageType
 from .shared_state import SharedState
 
 
@@ -42,16 +39,8 @@ class Coordinator:
 
     Example:
         coordinator = Coordinator()
-
-        # Sequential workflow
         report = coordinator.generate_report("Analyze EV market")
         print(report)
-
-        # With trace ID for debugging
-        report = coordinator.generate_report(
-            "Analyze EV market",
-            trace_id="user-123-query-456"
-        )
     """
 
     def __init__(self, shared_state: Optional[SharedState] = None):
@@ -62,62 +51,29 @@ class Coordinator:
             shared_state: Shared state manager (creates new if not provided)
         """
         # TODO: Students complete this in Exercise 1
-        # Should:
-        # - Initialize or create shared_state
-        # - Initialize worker agents (research, data, writer)
-        # - Setup logging
+        pass
 
-        self.shared_state = shared_state or SharedState()
-        self.logger = logging.getLogger("coordinator")
-
-        # Worker agents - students will implement these in Exercise 2
-        self.research = None
-        self.data = None
-        self.writer = None
-
-    def delegate(  # pylint: disable=too-many-arguments
-        self,
-        agent: WorkerAgent,
-        action: str,
-        payload: Dict[str, Any],
-        *,
-        trace_id: Optional[str] = None,
-        max_retries: int = 3,
-    ) -> Dict:
+    def delegate(self, agent: WorkerAgent, action: str, payload: Dict[str, Any]) -> Dict:
         """
         Delegate a task to a worker agent.
-
-        Implements:
-        - Message creation
-        - Error handling
-        - Retry logic with exponential backoff
-        - Comprehensive logging
 
         Args:
             agent: Worker agent to delegate to
             action: Action for agent to perform
             payload: Data for the action
-            trace_id: Workflow trace ID
-            max_retries: Maximum retry attempts
 
         Returns:
             Response payload from worker
 
-        Raises:
-            AgentDelegationError: If all retries exhausted
+        TODO: Students implement delegation with:
+        - Message creation
+        - Error handling
+        - Retry logic
+        - Logging
         """
-        # TODO: Students complete this in Exercise 1
-        # Should:
-        # 1. Create request Message
-        # 2. Log message sent
-        # 3. Call agent.execute_message()
-        # 4. Handle response or error
-        # 5. Implement retry logic
-        # 6. Return result
+        pass
 
-        raise NotImplementedError("Students implement delegate() in Exercise 1")
-
-    def generate_report(self, query: str, *, trace_id: Optional[str] = None) -> str:
+    def generate_report(self, query: str) -> str:
         """
         Generate a report by orchestrating research, data, and writer agents.
 
@@ -128,22 +84,10 @@ class Coordinator:
 
         Args:
             query: User's research query
-            trace_id: Workflow trace ID (generated if not provided)
 
         Returns:
             Formatted report string
 
-        Raises:
-            WorkflowError: If any agent fails after retries
+        TODO: Students implement sequential workflow in Exercise 1
         """
-        # TODO: Students complete this in Exercise 1
-        # Should:
-        # 1. Generate or use provided trace_id
-        # 2. Delegate to research agent
-        # 3. Check success, handle error
-        # 4. Delegate to data agent
-        # 5. Check success, handle error
-        # 6. Delegate to writer agent
-        # 7. Return final report
-
-        raise NotImplementedError("Students implement generate_report() in Exercise 1")
+        pass

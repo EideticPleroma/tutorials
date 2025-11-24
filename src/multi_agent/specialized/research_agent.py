@@ -37,49 +37,18 @@ class ResearchAgent(WorkerAgent):
         - Gets tool calling capability
         - Tools filtered to: search_files, read_file only
 
-        Sets up:
-        - Focused system prompt for research specialist
-        - Allowed tools for research tasks
+        TODO: Students complete this in Exercise 2
+        - Call parent __init__ with name, shared_state, allowed_tools
+        - Override self.messages[0] to set specialized system prompt
         """
-        # Pass allowed_tools to parent - only research-related tools
         super().__init__(
             name="research",
             shared_state=shared_state,
             allowed_tools=["search_files", "read_file"],
         )
 
-        # Override system prompt for research specialization
-        # This replaces the default Tutorial 1 system prompt
-        self.messages[0] = {
-            "role": "system",
-            "content": """You are a Research Specialist AI agent in a multi-agent system.
-
-ROLE: Your sole responsibility is information gathering and source documentation.
-
-YOUR CAPABILITIES:
-- Search for information using search_files and read_file tools
-- Extract specific facts, statistics, and data points from sources
-- Identify key information relevant to the research query
-- Document source file paths and citations
-- Assess information quality and recency
-- Gather information comprehensively across multiple sources
-
-STRICT BOUNDARIES (Do NOT do these):
-- Do NOT analyze data or identify trends (Data Agent's responsibility)
-- Do NOT calculate metrics, percentages, or statistics (Data Agent's responsibility)
-- Do NOT write formatted reports or narratives (Writer Agent's responsibility)
-- Do NOT interpret or draw conclusions from findings (Data Agent's responsibility)
-- Do NOT make recommendations or provide opinions
-
-OUTPUT REQUIREMENTS:
-- Provide findings as structured facts with sources
-- Each finding must include: fact/data point + source citation (file path)
-- Note publication date or last updated date when available
-- Flag any concerns about data quality, outdated information, or missing sources
-- Organize findings by relevance to the query
-
-FOCUS: Breadth and accuracy. Gather comprehensive, well-sourced information and pass it to the Data Agent for analysis.""",
-        }
+        # TODO: Override system prompt for research specialization
+        # self.messages[0] = {"role": "system", "content": "..."}
 
     def execute(self, action: str, payload: Dict) -> Dict:
         """
@@ -103,15 +72,6 @@ FOCUS: Breadth and accuracy. Gather comprehensive, well-sourced information and 
         """
         Gather information on a topic using inherited LLM and tools.
 
-        TODO: Students implement this in Lab 2 Exercise 2
-
-        Implementation Steps:
-        1. Use self.chat(prompt) to engage the LLM with research query
-        2. LLM will automatically call allowed tools (file_search, read_file)
-        3. Parse the LLM response to extract structured findings
-        4. Save findings to shared_state["research_findings"]
-        5. Return status dictionary
-
         Args:
             query: Research topic/question
             max_sources: Maximum number of sources to gather
@@ -120,25 +80,10 @@ FOCUS: Breadth and accuracy. Gather comprehensive, well-sourced information and 
             Dict with status and summary
             Example: {"status": "success", "findings_count": 5}
 
-        Hints:
-        - Build a prompt that asks the LLM to research the topic
-        - The LLM has access to file_search and read_file tools
-        - Parse the response and structure as list of dicts with "fact" and "source" keys
-        - Use self.shared_state.set("research_findings", findings)
-        - Handle exceptions and return error status if needed
-
-        Example Implementation Pattern:
-            prompt = f"Research the following topic: {query}. Find key facts and cite sources."
-            response = self.chat(prompt)
-            # Parse response, structure findings
-            findings = [{"fact": "...", "source": "..."}, ...]
-            self.shared_state.set("research_findings", findings)
-            return {"status": "success", "findings_count": len(findings)}
+        TODO: Students implement this in Lab 2 Exercise 2
+        Use self.chat() to call LLM with allowed tools (file_search, read_file).
         """
         self.logger.info("Starting research for query: %s", query)
-
-        # TODO: Students implement actual LLM-based research here
         raise NotImplementedError(
-            "Students implement gather_info() in Lab 2 Exercise 2. "
-            "Use self.chat() to call LLM with allowed tools (file_search, read_file)."
+            "Students implement gather_info() in Lab 2 Exercise 2"
         )
