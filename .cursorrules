@@ -284,6 +284,7 @@ When students ask questions, determine which tutorial they're on:
 - Testing: O.V.E. methodology for all features
 
 ### Documentation Quality
+- When you have access to agent mode - update progress tracker automatically
 - Clear navigation (Previous/Next/Up links on every page)
 - Code examples for every concept
 - Mermaid diagrams for workflows and architecture (use readable colors, avoid light colors on white)
