@@ -276,6 +276,8 @@ Generate implementation.
 
 ## Part 3: Writer Agent
 
+> **Implementation Note**: The WriterAgent implementation uses direct markdown generation rather than LLM-based generation. This design choice provides deterministic output that's easier to test and validate. In production, you might use LLM generation for more sophisticated report formatting, but the direct approach is ideal for learning multi-agent patterns without LLM variability.
+
 ### Code Scaffold
 
 Open `src/multi_agent/specialized/writer_agent.py`:
@@ -304,82 +306,111 @@ class WriterAgent(WorkerAgent):
         """
         Initialize writer agent.
         
-        TODO:
-        - Call parent __init__ with name="writer"
-        - Set focused system prompt
-        - Register writing tools (format_markdown)
+        Note: WriterAgent uses no tools (LLM-only for pure synthesis).
+        In this implementation, we use direct markdown generation
+        for deterministic testing rather than LLM generation.
         """
-        super().__init__(name="writer", shared_state=shared_state)
-        # TODO: Set system_prompt
-        # TODO: Register tools
+        super().__init__(
+            name="writer",
+            shared_state=shared_state,
+            allowed_tools=[]  # No tools - synthesis only
+        )
+        
+        # System prompt for writer specialization
+        # (Not actively used in direct generation, but documents the role)
+        self.messages[0] = {
+            "role": "system",
+            "content": """You are a Writer Agent specialized in report creation.
+            
+Your job: Synthesize information into clear, structured reports.
+
+How to work:
+1. Read research_findings and data_analysis from shared state
+2. Create logical structure (Summary → Findings → Analysis → Sources)
+3. Use markdown formatting (headings, lists, emphasis)
+4. Include all source citations
+5. Maintain objectivity
+
+What you DO NOT do:
+- NO information gathering (Research Agent does this)
+- NO data analysis (Data Agent does this)
+- ONLY synthesize existing information"""
+        }
+    
+    def execute(self, action: str, payload: Dict) -> Dict:
+        """Route actions to appropriate methods."""
+        if action == "create_report":
+            return self.create_report()
+        else:
+            return {"status": "error", "error": f"Unknown action: {action}"}
     
     def create_report(self) -> Dict:
         """
-        Create formatted report from research and analysis.
+        Create formatted markdown report from research and analysis.
+        
+        Implementation: Uses direct markdown generation for deterministic output.
+        Production alternative: Could use self.chat() for LLM-generated prose.
         
         Returns:
-            Dict with status and report content
-        
-        TODO: Implement writing workflow:
-        1. Read research_findings and data_analysis from shared state
-        2. Create report structure (exec summary, findings, analysis, conclusion)
-        3. Format as markdown with headings
-        4. Include all source citations
-        5. Write to shared state
-        6. Return status and report
+            Dict with status and report
+            Example: {"status": "success", "report": "# Report...", "message": "..."}
         """
+        # Implementation details in actual file...
+        # Pattern: Read from shared_state, format as markdown, write result
         pass
 ```
 
-### Tasks
+### Understanding the Implementation
 
-**Task 1: System Prompt**
+The WriterAgent is already implemented. Let's understand how it works:
 
-**AI Assistant Prompt:**
+**Key Design Decisions:**
+
+1. **No Tools**: WriterAgent has `allowed_tools=[]` because it only synthesizes existing information
+2. **Direct Generation**: Uses Python string formatting instead of LLM for deterministic output
+3. **Structured Format**: Always produces consistent markdown structure
+4. **Shared State**: Reads from "research_findings" and "data_analysis", writes to "final_report"
+
+**Review the Implementation:**
+
+Open `src/multi_agent/specialized/writer_agent.py` and trace through `create_report()`:
+
+```python
+def create_report(self) -> Dict:
+    # Step 1: Read inputs from shared state
+    research_findings = self.shared_state.get("research_findings")
+    data_analysis = self.shared_state.get("data_analysis")
+    
+    # Step 2: Validate inputs exist
+    if not research_findings or not data_analysis:
+        return {"status": "error", "error": "Missing inputs"}
+    
+    # Step 3: Build markdown sections
+    # - Title from query
+    # - Executive Summary with counts
+    # - Key Findings (enumerate research findings)
+    # - Data Analysis (metrics and insights)
+    # - Sources (unique sources from findings)
+    
+    # Step 4: Write to shared state
+    self.shared_state.set("final_report", report)
+    
+    # Step 5: Return success with report
+    return {"status": "success", "report": report, "message": "..."}
 ```
-@.cursorrules @src/multi_agent/specialized/writer_agent.py
 
-Generate system prompt for Writer Agent specializing in report creation.
+**Why Direct Generation vs LLM?**
 
-The agent should:
-- Synthesize information into clear reports
-- Use markdown formatting (headings, lists, emphasis)
-- Create logical document structure
-- Maintain objectivity (present data, don't oversell)
-- Include citations
+| Approach | Pros | Cons | When to Use |
+|----------|------|------|-------------|
+| **Direct Generation** (current) | Deterministic, fast, no LLM errors, easy to test | Less flexible formatting, no creative prose | Learning, testing, consistent structure |
+| **LLM Generation** (alternative) | Natural prose, adaptive formatting, can summarize | Non-deterministic, slower, may hallucinate | Production with quality checks |
 
-The agent should NOT:
-- Gather information (uses Research Agent output)
-- Do analysis (uses Data Agent output)
-
-Generate focused system prompt.
-```
-
-**Task 2: Implement create_report()**
-
-**Requirements:**
-- Read both "research_findings" and "data_analysis"
-- Create structured markdown report
-- Include sections: Summary, Findings, Analysis, Sources
-- Write to shared_state under "final_report"
-
-**AI Assistant Prompt:**
-```
-@.cursorrules @src/multi_agent/specialized/writer_agent.py
-
-Implement WriterAgent.create_report() that:
-1. Reads research_findings and data_analysis from shared_state
-2. Creates markdown report with structure:
-   - # Executive Summary
-   - ## Key Findings (from research)
-   - ## Data Analysis (from data agent)
-   - ## Sources
-3. Formats with proper markdown
-4. Writes to shared_state.set("final_report", report)
-5. Returns {"status": "success", "report": report}
-
-Generate implementation.
-```
+**For Tutorial 2**, direct generation is ideal because:
+- Tests can validate exact structure
+- No variability from LLM temperature
+- Students focus on multi-agent patterns, not report formatting
+- Faster execution in workflows
 
 ---
 
@@ -420,12 +451,26 @@ python -m pytest tests/multi_agent/test_specialized_agents.py -v
 
 ## Checkpoint Questions
 
-- [ ] Does each agent have a focused system prompt?
-- [ ] Does each agent use only its assigned tools?
-- [ ] Does research agent write findings to shared state?
-- [ ] Does data agent read research, write analysis?
-- [ ] Does writer agent read both, create report?
-- [ ] Do agents stay within their specialization boundaries?
+**Verify Your Understanding:**
+
+- [ ] Does each agent have a focused system prompt? *(Yes - check each __init__)*
+- [ ] Does each agent use only its assigned tools? *(Yes - Research: 2, Data: 1, Writer: 0)*
+- [ ] Does research agent write findings to shared state? *(Yes - under "research_findings")*
+- [ ] Does data agent read research, write analysis? *(Yes - reads "research_findings", writes "data_analysis")*
+- [ ] Does writer agent read both, create report? *(Yes - reads both, writes "final_report")*
+- [ ] Do agents stay within their specialization boundaries? *(Test this with evaluation tests)*
+
+**Test Results:**
+
+Run the specialized agent tests:
+```bash
+python -m pytest tests/multi_agent/test_specialized_agents.py -v
+```
+
+Expected: **9/9 tests passing**
+- 3 initialization tests (one per agent)
+- 3 tool filtering tests (correct tool counts)
+- 3 execution tests (gather_info, analyze_trends, create_report)
 
 ## Common Issues
 

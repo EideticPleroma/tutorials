@@ -29,11 +29,14 @@ Coordinator
 Return: Complete market analysis report
 ```
 
+> **Note on Message Protocol**: You'll notice this exercise involves implementing the message protocol (Message class, MessageType enum) alongside the coordinator. While message protocols are covered in Exercise 3, we're building it now because the coordinator needs structured communication for proper delegation. Exercise 3 will focus on reviewing and validating what you build here. This "build then understand deeply" approach mirrors real development where you use patterns before fully understanding all implications.
+
 ## Prerequisites
 
 - [ ] Read [Multi-Agent Architecture](../../tutorial-2/concepts/multi-agent-architecture.md)
 - [ ] Read [Coordinator Patterns](../../tutorial-2/architecture/coordinator-patterns.md)
 - [ ] Review `src/multi_agent/coordinator.py` scaffold
+- [ ] Review `src/multi_agent/message_protocol.py` scaffold (we'll implement this too!)
 
 ## Code Scaffold
 
@@ -147,38 +150,85 @@ assert hasattr(coordinator, 'data')
 assert hasattr(coordinator, 'writer')
 ```
 
-### Task 2: Implement Delegation Logic
+### Task 2: Implement Message Protocol and Delegation Logic
 
-Implement the `delegate()` method.
+**Important**: You'll implement the message protocol here (not in Exercise 3). The coordinator needs it!
+
+**Part A: Implement Message Protocol**
+
+Open `src/multi_agent/message_protocol.py` and implement:
+- `MessageType` enum with REQUEST, RESPONSE, ERROR
+- `Message` class with fields: message_id, timestamp, from_agent, to_agent, message_type, action, payload, in_reply_to, trace_id
+- `to_json()` and `from_json()` methods for serialization
+
+**Why now?**: The coordinator needs structured messages to delegate work. Building it later would require refactoring everything.
+
+**What you'll learn**: How to design message protocols for distributed systems.
+
+**Part B: Implement Delegation with Messages**
+
+Implement the `delegate()` method using your message protocol.
 
 **Requirements:**
-- Create Message object for request
-- Send to worker agent
-- Handle response
-- Log all steps
-- Include error handling
+- Create REQUEST Message for worker
+- Call agent.execute_message(request)
+- Handle RESPONSE and ERROR messages
+- Log all messages with trace_id
+- Include error handling and retries
 
 **AI Assistant Prompt:**
 ```
 @.cursorrules @src/multi_agent/coordinator.py @src/multi_agent/message_protocol.py
 
-I need to implement the Coordinator.delegate() method that sends tasks to worker agents.
+I need to implement:
+1. Message protocol (Message class, MessageType enum, JSON serialization)
+2. Coordinator.delegate() method that uses the message protocol
 
-Requirements:
-- Create Message with from_agent="coordinator", to_agent=agent.name
-- Call agent.execute(action, payload)
-- Handle success, partial, and error responses
-- Log message sent and received
-- Return response dict
+Requirements for Message:
+- MessageType enum: REQUEST, RESPONSE, ERROR
+- Message class with all fields (message_id, timestamp, from_agent, to_agent, message_type, action, payload, in_reply_to, trace_id)
+- to_json() and from_json() methods
 
-Generate the delegate() implementation with proper error handling.
+Requirements for delegate():
+- Create REQUEST Message with from_agent="coordinator", to_agent=agent.name
+- Call agent.execute_message(request) 
+- Handle RESPONSE and ERROR message types
+- Check for error status in payload too (agents can return {"status": "error"} in RESPONSE)
+- Log message sent and received with trace_id
+- Implement retry logic with exponential backoff (3 retries: 1s, 2s, 4s)
+- Return response payload
+
+Generate both implementations with comprehensive error handling.
 ```
 
 **Validation:**
 ```python
+# Test message protocol
+from src.multi_agent.message_protocol import Message, MessageType
+
+msg = Message(
+    from_agent="coordinator",
+    to_agent="research",
+    message_type=MessageType.REQUEST,
+    action="gather_info",
+    payload={"query": "test"}
+)
+assert msg.message_id is not None
+assert msg.timestamp is not None
+
+# Test JSON serialization
+json_str = msg.to_json()
+msg2 = Message.from_json(json_str)
+assert msg2.from_agent == "coordinator"
+assert msg2.action == "gather_info"
+
 # Test delegation with mock agent
-class MockAgent:
-    name = "mock"
+from src.multi_agent.worker_base import WorkerAgent
+
+class MockAgent(WorkerAgent):
+    def __init__(self):
+        super().__init__(name="mock", shared_state=None, allowed_tools=[])
+    
     def execute(self, action, payload):
         return {"status": "success", "result": "done"}
 
@@ -186,6 +236,13 @@ coordinator = Coordinator()
 result = coordinator.delegate(MockAgent(), "test_action", {"data": "test"})
 assert result["status"] == "success"
 ```
+
+**Run message protocol tests:**
+```bash
+python -m pytest tests/multi_agent/test_message_protocol.py -v
+```
+
+Expected: 4/4 tests passing (message creation, serialization, linking, error format)
 
 ### Task 3: Implement Sequential Workflow
 
