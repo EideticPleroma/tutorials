@@ -2,16 +2,20 @@
 
 **Page 2 of 9** | [← Previous: Multi-Agent Architecture](./multi-agent-architecture.md) | [Next: Agent Communication →](./agent-communication.md) | [↑ Reading Guide](../READING_GUIDE.md)
 
-> **📚 Building on Tutorial 1**
+> **🏗️ Building on Tutorial 1**
 > 
-> In Tutorial 1, you designed [tool interfaces](../../../lesson-1-fundamentals/tutorial-1/guides/agentic-practices.md) and wrote focused system prompts. You gave one agent many tools and expected it to choose wisely.
+> In Tutorial 1, you built the `Agent` class with tool calling and wrote focused system prompts. You gave one agent access to all registered tools and expected it to choose wisely.
 > 
-> **Tutorial 2 changes the approach:**
-> - One agent with 10 tools → Three agents with 3 tools each
+> **Tutorial 2 specializes through inheritance and tool filtering:**
+> - `WorkerAgent` inherits from Tutorial 1's `Agent` class
+> - Adds `allowed_tools` parameter to filter tool registry
+> - One agent with all tools → Multiple agents with filtered tool subsets
 > - General system prompt → Specialized personas (research/data/writer)
 > - Tool selection confusion → Clear tool boundaries per agent
 > 
-> **The insight:** Multiple focused agents outperform one generalist.
+> **The insight:** Inheritance + tool filtering = specialized agents without reimplementing LLM integration.
+> 
+> **Implementation:** Each specialized agent (Research, Data, Writer) passes `allowed_tools` list to `WorkerAgent.__init__()`
 
 In Tutorial 1, you built a single "generalist" agent that could handle many types of tasks. In multi-agent systems, we create "specialist" agents that excel at specific domains. This is the key to making multi-agent systems more effective than a single powerful agent.
 

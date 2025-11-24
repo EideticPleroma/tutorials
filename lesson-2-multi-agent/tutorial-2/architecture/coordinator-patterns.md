@@ -4,6 +4,62 @@
 
 The coordinator is the "brain" of a multi-agent system. It decides which agents to activate, in what order, and how to combine their results. This page explores proven coordination patterns and when to use each.
 
+## Class Inheritance Hierarchy
+
+Tutorial 2 extends Tutorial 1's `Agent` class through inheritance:
+
+```mermaid
+classDiagram
+    class Agent {
+        <<Tutorial 1>>
+        +messages: List~Dict~
+        +chat(user_input) str
+        +Ollama LLM integration
+        +Tool calling loop
+    }
+    
+    class WorkerAgent {
+        <<Tutorial 2 Base>>
+        +name: str
+        +shared_state: SharedState
+        +allowed_tools: List~str~
+        +available_tools: List~Dict~
+        +chat(user_input) str
+        +execute(action, payload) Dict
+    }
+    
+    class ResearchAgent {
+        <<Specialized Worker>>
+        +allowed_tools: ["file_search", "read_file"]
+        +gather_info(query) Dict
+    }
+    
+    class DataAgent {
+        <<Specialized Worker>>
+        +allowed_tools: ["calculate"]
+        +analyze_trends() Dict
+    }
+    
+    class WriterAgent {
+        <<Specialized Worker>>
+        +allowed_tools: []
+        +create_report() Dict
+    }
+    
+    Agent <|-- WorkerAgent: inherits LLM + tools
+    WorkerAgent <|-- ResearchAgent: filters to research tools
+    WorkerAgent <|-- DataAgent: filters to analysis tools
+    WorkerAgent <|-- WriterAgent: no tools, LLM only
+    
+    note for Agent "Built in Tutorial 1\n- Ollama integration\n- Tool registry\n- 7-step calling loop"
+    note for WorkerAgent "Adds specialization\n- Tool filtering\n- Shared state\n- Message protocol"
+    note for ResearchAgent "Specialized prompt\n+ research tools"
+    note for DataAgent "Specialized prompt\n+ calculate tool"
+    note for WriterAgent "Specialized prompt\n+ no tools"
+```
+
+**Key Insight:** Worker agents don't reimplement LLM integration—they inherit it from Tutorial 1's `Agent` class and add specialization through tool filtering and focused system prompts.
+
 ## Single Coordinator Architecture
 
 The simplest and most common pattern: one coordinator orchestrates all workers.

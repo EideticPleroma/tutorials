@@ -9,14 +9,17 @@ Build three specialized worker agents: Research Agent (gathers information), Dat
 ## Context
 
 In Exercise 1, you built a coordinator that delegates to mock agents. Now you'll create real specialized agents with:
+- **Inheritance from Tutorial 1's Agent class** (gets LLM and tool calling automatically)
+- **Tool filtering** (each agent only has access to specific tools via `allowed_tools`)
 - **Focused system prompts** (defines agent persona and boundaries)
-- **Limited tool sets** (only tools relevant to specialization)
 - **Clear responsibilities** (one job per agent)
 
 **The three agents:**
-1. **Research Agent**: Gathers information from sources
-2. **Data Agent**: Analyzes data and calculates metrics
-3. **Writer Agent**: Creates formatted reports
+1. **Research Agent**: Gathers information using file_search and read_file tools
+2. **Data Agent**: Analyzes data using calculate tool
+3. **Writer Agent**: Creates formatted reports using LLM only (no tools)
+
+**Key Concept:** `WorkerAgent` inherits from Tutorial 1's `Agent` class, so you get `self.chat()` method and tool calling for free. You just filter which tools each specialist can use.
 
 ## Prerequisites
 
@@ -48,24 +51,34 @@ from ..worker_base import WorkerAgent
 from ..shared_state import SharedState
 
 class ResearchAgent(WorkerAgent):
-    """Agent specialized in gathering information from various sources."""
+    """Agent specialized in gathering information from sources."""
     
     def __init__(self, shared_state: SharedState):
         """
         Initialize research agent.
         
+        Inherits from WorkerAgent which inherits from Agent:
+        - Gets self.chat() method from Tutorial 1's Agent
+        - Gets tool calling capabilities automatically
+        - Tools filtered to allowed_tools only
+        
         TODO:
-        - Call parent __init__ with name="research"
-        - Set focused system prompt
-        - Register research tools (web_search, read_file, list_files)
+        - Call parent __init__ with name, shared_state, and allowed_tools
+        - Override self.messages[0] to set specialized system prompt
         """
-        super().__init__(name="research", shared_state=shared_state)
-        # TODO: Set system_prompt
-        # TODO: Register tools
+        # Pass allowed_tools to parent - only research tools
+        super().__init__(
+            name="research",
+            shared_state=shared_state,
+            allowed_tools=["file_search", "read_file"]  # TODO: Verify these tools exist
+        )
+        
+        # TODO: Override system prompt for research specialization
+        # self.messages[0] = {"role": "system", "content": "..."}
     
     def gather_info(self, query: str, max_sources: int = 5) -> Dict:
         """
-        Gather information on a topic.
+        Gather information using inherited LLM and tools.
         
         Args:
             query: Research topic/question
@@ -75,13 +88,20 @@ class ResearchAgent(WorkerAgent):
             Dict with status, findings, and sources
         
         TODO: Implement research workflow:
-        1. Use web_search or read_file to find information
-        2. Extract key facts
-        3. Cite sources with URLs/paths
-        4. Write findings to shared state
-        5. Return status and summary
+        1. Build prompt for LLM with research task
+        2. Call self.chat(prompt) - LLM will use file_search/read_file tools
+        3. Parse LLM response to extract structured findings
+        4. Write findings to shared_state["research_findings"]
+        5. Return status dictionary
+        
+        Example pattern:
+            prompt = f"Research the following topic: {query}. Find facts and cite sources."
+            response = self.chat(prompt)  # LLM uses tools automatically
+            findings = parse_response(response)
+            self.shared_state.set("research_findings", findings)
+            return {"status": "success", "findings_count": len(findings)}
         """
-        pass
+        raise NotImplementedError("Students implement in this exercise")
 ```
 
 ### Tasks
@@ -92,14 +112,14 @@ Create a focused system prompt for research specialist.
 
 **AI Assistant Prompt:**
 ```
-@.cursorrules @src/multi_agent/specialized/research_agent.py
+@.cursorrules @src/agent/simple_agent.py @src/multi_agent/specialized/research_agent.py
 
-I need to write a system prompt for a Research Agent specializing in information gathering.
+I need to override the system prompt for ResearchAgent that inherits from WorkerAgent (which inherits from Tutorial 1's Agent).
 
-The agent should:
-- Gather information from sources (web search, documents)
-- Extract specific facts and data points
-- Cite all sources with URLs or file paths
+The agent should specialize in:
+- Gathering information using file_search and read_file tools
+- Extracting specific facts and data points
+- Citing all sources with file paths
 - Focus on breadth and accuracy
 
 The agent should NOT:
@@ -107,17 +127,18 @@ The agent should NOT:
 - Write reports (that's Writer Agent's job)
 - Calculate metrics
 
-Generate a focused system prompt following the specialization template.
+Generate a focused system prompt that I'll set by overriding self.messages[0].
 ```
 
-**Task 2: Implement gather_info()**
+**Task 2: Implement gather_info() using inherited self.chat()**
 
-Implement the information gathering workflow.
+Implement the information gathering workflow using the inherited LLM.
 
 **Requirements:**
-- Call web_search or read_file tools
-- Extract 3-5 key findings
-- Include source citations
+- Build a prompt for the LLM explaining the research task
+- Call self.chat(prompt) - the LLM will automatically use file_search/read_file tools
+- Parse the LLM response to extract structured findings
+- Each finding should have "fact" and "source" keys
 - Write to shared_state under "research_findings"
 - Return summary
 
