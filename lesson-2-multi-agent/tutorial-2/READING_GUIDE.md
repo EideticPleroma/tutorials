@@ -4,9 +4,9 @@ This guide provides the recommended reading order for Tutorial 2: Multi-Agent Sy
 
 ## Reading Path Overview
 
-The tutorial is organized into **4 phases** with **9 core documents**. Each phase builds on the previous one.
+The tutorial is organized into **4 phases** with **10 core documents**. Each phase builds on the previous one.
 
-**Estimated Reading Time**: ~2.5 hours for all documentation
+**Estimated Reading Time**: ~2.7 hours for all documentation
 **Recommended Approach**: Read concepts first, then reference guides as you build in Lab 2.
 
 ---
@@ -35,7 +35,7 @@ Before starting Tutorial 2, ensure you've completed Tutorial 1:
 ## Phase 1: Core Concepts (Pages 1-4)
 
 **Focus:** The theoretical foundation of multi-agent systems.
-**Time Estimate:** ~55 minutes
+**Time Estimate:** ~65 minutes
 
 ### Page 1: Multi-Agent Architecture (~15 min)
 **📄 [Multi-Agent Architecture](./concepts/multi-agent-architecture.md)**
@@ -52,6 +52,14 @@ Before starting Tutorial 2, ensure you've completed Tutorial 1:
 - Prompt engineering for specialized behavior
 - Example personas (research, data, writer)
 - **Critical**: Learn how to design focused agents
+
+### Page 2.5: Tool Bridge (~10 min)
+**📄 [Tool Bridge](./concepts/tool-bridge.md)**
+- How Tutorial 1 tools connect to Tutorial 2
+- Complete tool reference table
+- Tool filtering and validation
+- Debugging tool name mismatches
+- **Why After Specialization**: Shows practical implementation of tool assignment
 
 ### Page 3: Agent Communication (~15 min)
 **📄 [Agent Communication](./concepts/agent-communication.md)**

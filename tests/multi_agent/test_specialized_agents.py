@@ -2,6 +2,9 @@
 Tests for specialized agents using O.V.E. methodology.
 
 Students complete these tests as they implement agents in Exercise 2.
+
+These tests verify that WorkerAgent subclasses correctly inherit from
+Tutorial 1's Agent class and implement specialized behavior.
 """
 
 import pytest
@@ -11,37 +14,60 @@ from src.multi_agent.specialized import ResearchAgent, DataAgent, WriterAgent
 
 def test_research_agent_initialization():
     """
-    Observe: Research agent initializes correctly.
-    Validate: Has name, shared_state, system_prompt.
+    Observe: Research agent initializes correctly with inheritance.
+    Validate: Has name, shared_state, inherits from Agent, has filtered tools.
     """
     shared_state = SharedState()
     research = ResearchAgent(shared_state)
     
+    # Test basic attributes
     assert research.name == "research"
     assert research.shared_state is shared_state
-    assert research.system_prompt is not None
+    
+    # Test inheritance from Tutorial 1's Agent
+    assert hasattr(research, "chat"), "Should inherit chat() from Agent"
+    assert hasattr(research, "messages"), "Should inherit messages from Agent"
+    
+    # Test tool filtering
+    assert research.allowed_tools == ["file_search", "read_file"]
+    assert len(research.available_tools) <= 2, "Should only have allowed tools"
 
 
 def test_research_agent_gathers_info():
     """
-    Observe: Research agent can gather information.
+    Observe: Research agent can gather information using inherited LLM.
     Validate: Returns success status, writes to shared state.
     Evaluate: Findings are reasonable (basic check).
     
-    Students implement gather_info() in Exercise 2.
+    TODO: Students implement this test in Lab 2 Exercise 2
+    
+    After implementing gather_info():
+    1. Remove the pytest.skip() line
+    2. Uncomment the test assertions
+    3. Run the test to verify your implementation
+    
+    Hints:
+    - gather_info() should use self.chat() to call LLM
+    - Should return {"status": "success", "findings_count": N}
+    - Should write findings to shared_state["research_findings"]
+    - Each finding should have "fact" and "source" keys
     """
-    shared_state = SharedState()
-    research = ResearchAgent(shared_state)
+    pytest.skip("Students implement in Lab 2 Exercise 2")
     
-    result = research.gather_info("electric vehicles")
-    
-    assert result["status"] == "success"
-    assert "findings_count" in result
-    
-    # Check shared state was updated
-    findings = shared_state.get("research_findings")
-    assert findings is not None
-    assert len(findings) >= 3  # At least 3 findings
+    # TODO: Uncomment after implementing gather_info()
+    # shared_state = SharedState()
+    # research = ResearchAgent(shared_state)
+    # 
+    # result = research.gather_info("electric vehicles")
+    # 
+    # assert result["status"] == "success"
+    # assert "findings_count" in result
+    # 
+    # # Check shared state was updated
+    # findings = shared_state.get("research_findings")
+    # assert findings is not None
+    # assert len(findings) >= 3  # At least 3 findings
+    # assert all("fact" in f and "source" in f for f in findings)
 
 
 def test_research_agent_stays_in_role():
@@ -60,118 +86,189 @@ def test_research_agent_stays_in_role():
 
 def test_data_agent_initialization():
     """
-    Observe: Data agent initializes correctly.
-    Validate: Has name, shared_state, system_prompt.
+    Observe: Data agent initializes correctly with inheritance.
+    Validate: Has name, shared_state, inherits from Agent, has filtered tools.
     """
     shared_state = SharedState()
     data = DataAgent(shared_state)
     
+    # Test basic attributes
     assert data.name == "data"
     assert data.shared_state is shared_state
-    assert data.system_prompt is not None
+    
+    # Test inheritance from Tutorial 1's Agent
+    assert hasattr(data, "chat"), "Should inherit chat() from Agent"
+    assert hasattr(data, "messages"), "Should inherit messages from Agent"
+    
+    # Test tool filtering
+    assert data.allowed_tools == ["calculate"]
+    assert len(data.available_tools) <= 1, "Should only have calculate tool"
 
 
 def test_data_agent_analyzes_trends():
     """
-    Observe: Data agent can analyze research findings.
+    Observe: Data agent can analyze research findings using inherited LLM.
     Validate: Returns success, writes analysis to state.
     
-    Students implement analyze_trends() in Exercise 2.
+    TODO: Students implement this test in Lab 2 Exercise 2
+    
+    After implementing analyze_trends():
+    1. Remove the pytest.skip() line
+    2. Uncomment the test assertions
+    3. Run the test to verify your implementation
+    
+    Hints:
+    - analyze_trends() should read from shared_state["research_findings"]
+    - Should use self.chat() to ask LLM to analyze data
+    - Should return {"status": "success", "metrics_count": N}
+    - Should write to shared_state["data_analysis"]
+    - Analysis should have "metrics" and "insights" keys
     """
-    shared_state = SharedState()
+    pytest.skip("Students implement in Lab 2 Exercise 2")
     
-    # Setup: Add research findings
-    shared_state.set("research_findings", [
-        {"fact": "EV sales: 10M units", "source": "IEA"},
-        {"fact": "Growth: 55%", "source": "IEA"}
-    ])
-    
-    data = DataAgent(shared_state)
-    result = data.analyze_trends()
-    
-    assert result["status"] == "success"
-    assert "metrics_count" in result
-    
-    # Check analysis was written
-    analysis = shared_state.get("data_analysis")
-    assert analysis is not None
-    assert "metrics" in analysis
+    # TODO: Uncomment after implementing analyze_trends()
+    # shared_state = SharedState()
+    # 
+    # # Setup: Add research findings
+    # shared_state.set("research_findings", [
+    #     {"fact": "EV sales: 10M units", "source": "IEA"},
+    #     {"fact": "Growth: 55%", "source": "IEA"}
+    # ])
+    # 
+    # data = DataAgent(shared_state)
+    # result = data.analyze_trends()
+    # 
+    # assert result["status"] == "success"
+    # assert "metrics_count" in result
+    # 
+    # # Check analysis was written
+    # analysis = shared_state.get("data_analysis")
+    # assert analysis is not None
+    # assert "metrics" in analysis
+    # assert "insights" in analysis
 
 
 def test_writer_agent_initialization():
     """
-    Observe: Writer agent initializes correctly.
-    Validate: Has name, shared_state, system_prompt.
+    Observe: Writer agent initializes correctly with inheritance.
+    Validate: Has name, shared_state, inherits from Agent, has no tools.
     """
     shared_state = SharedState()
     writer = WriterAgent(shared_state)
     
+    # Test basic attributes
     assert writer.name == "writer"
     assert writer.shared_state is shared_state
-    assert writer.system_prompt is not None
+    
+    # Test inheritance from Tutorial 1's Agent
+    assert hasattr(writer, "chat"), "Should inherit chat() from Agent"
+    assert hasattr(writer, "messages"), "Should inherit messages from Agent"
+    
+    # Test tool filtering
+    assert writer.allowed_tools == []  # Writer uses LLM only, no tools
+    assert len(writer.available_tools) == 0, "Should have no tools"
 
 
 def test_writer_agent_creates_report():
     """
-    Observe: Writer agent can create formatted report.
+    Observe: Writer agent can create formatted report using inherited LLM.
     Validate: Returns success, report has content.
     Evaluate: Report structure (headings, sections).
     
-    Students implement create_report() in Exercise 2.
+    TODO: Students implement this test in Lab 2 Exercise 2
+    
+    After implementing create_report():
+    1. Remove the pytest.skip() line
+    2. Uncomment the test assertions
+    3. Run the test to verify your implementation
+    
+    Hints:
+    - create_report() should read research_findings and data_analysis
+    - Should use self.chat() to generate markdown report
+    - Should return {"status": "success", "report": "..."}
+    - Should write to shared_state["final_report"]
+    - Report should have markdown headings (#, ##), sections, sources
     """
-    shared_state = SharedState()
+    pytest.skip("Students implement in Lab 2 Exercise 2")
     
-    # Setup: Add research and analysis
-    shared_state.set("research_findings", [
-        {"fact": "Finding 1", "source": "source1"},
-        {"fact": "Finding 2", "source": "source2"}
-    ])
-    shared_state.set("data_analysis", {
-        "metrics": {"count": 2},
-        "insights": ["Insight 1"]
-    })
-    
-    writer = WriterAgent(shared_state)
-    result = writer.create_report()
-    
-    assert result["status"] == "success"
-    assert "report" in result
-    
-    report = result["report"]
-    assert len(report) > 100  # Substantial content
-    assert "#" in report  # Has markdown headings
-    
-    # Check written to state
-    final_report = shared_state.get("final_report")
-    assert final_report is not None
+    # TODO: Uncomment after implementing create_report()
+    # shared_state = SharedState()
+    # 
+    # # Setup: Add research and analysis
+    # shared_state.set("research_findings", [
+    #     {"fact": "Finding 1", "source": "source1"},
+    #     {"fact": "Finding 2", "source": "source2"}
+    # ])
+    # shared_state.set("data_analysis", {
+    #     "metrics": {"count": 2},
+    #     "insights": ["Insight 1"]
+    # })
+    # 
+    # writer = WriterAgent(shared_state)
+    # result = writer.create_report()
+    # 
+    # assert result["status"] == "success"
+    # assert "report" in result
+    # 
+    # report = result["report"]
+    # assert len(report) > 100  # Substantial content
+    # assert "#" in report  # Has markdown headings
+    # 
+    # # Check written to state
+    # final_report = shared_state.get("final_report")
+    # assert final_report is not None
 
 
 def test_sequential_agent_workflow():
     """
     Integration test: Research → Data → Writer pipeline.
-    Observe: All agents execute in sequence.
+    Observe: All agents execute in sequence using real LLMs and tools.
     Validate: Each agent reads previous output, writes own.
     Evaluate: Final report incorporates all stages.
+    
+    TODO: Students implement this test in Lab 2 Exercise 3
+    
+    This is an integration test that verifies the full multi-agent workflow.
+    Complete this after implementing all three agent methods.
+    
+    After implementing all agents:
+    1. Remove the pytest.skip() line
+    2. Uncomment the test code
+    3. Run to verify end-to-end workflow
+    
+    Hints:
+    - This tests the complete workflow from Tutorial 2
+    - Research → findings → Data → analysis → Writer → report
+    - Each agent should successfully complete before next starts
+    - Verify data flows through shared_state correctly
     """
-    shared_state = SharedState()
+    pytest.skip("Students implement in Lab 2 Exercise 3")
     
-    # Step 1: Research
-    research = ResearchAgent(shared_state)
-    r_result = research.gather_info("EV market")
-    assert r_result["status"] == "success"
-    
-    # Step 2: Data
-    data = DataAgent(shared_state)
-    d_result = data.analyze_trends()
-    assert d_result["status"] == "success"
-    
-    # Step 3: Writer
-    writer = WriterAgent(shared_state)
-    w_result = writer.create_report()
-    assert w_result["status"] == "success"
-    
-    # Validate pipeline
-    assert shared_state.get("research_findings") is not None
-    assert shared_state.get("data_analysis") is not None
-    assert shared_state.get("final_report") is not None
+    # TODO: Uncomment after implementing all agent methods
+    # shared_state = SharedState()
+    # 
+    # # Step 1: Research
+    # research = ResearchAgent(shared_state)
+    # r_result = research.gather_info("EV market")
+    # assert r_result["status"] == "success"
+    # 
+    # # Step 2: Data
+    # data = DataAgent(shared_state)
+    # d_result = data.analyze_trends()
+    # assert d_result["status"] == "success"
+    # 
+    # # Step 3: Writer
+    # writer = WriterAgent(shared_state)
+    # w_result = writer.create_report()
+    # assert w_result["status"] == "success"
+    # 
+    # # Validate pipeline
+    # assert shared_state.get("research_findings") is not None
+    # assert shared_state.get("data_analysis") is not None
+    # assert shared_state.get("final_report") is not None
+    # 
+    # # Evaluate: Report should include findings and analysis
+    # report = shared_state.get("final_report")
+    # assert len(report) > 200, "Report should have substantial content"
+    # assert "##" in report, "Report should have markdown sections"
 

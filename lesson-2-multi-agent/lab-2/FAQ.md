@@ -254,6 +254,143 @@ Extract message flow from logs and create sequence diagram.
 
 ---
 
+## Inheritance & Architecture
+
+### Q: Why does WorkerAgent inherit from Agent instead of reimplementing everything?
+
+**Answer:** **Code reuse and consistency.**
+
+Tutorial 1's `Agent` class already implements:
+- ✅ Ollama LLM integration (`chat()` method)
+- ✅ Tool calling loop (7-step process)
+- ✅ Message history management
+- ✅ Error handling
+
+WorkerAgent adds on top:
+- Tool filtering (`allowed_tools` parameter)
+- Shared state management
+- Message protocol for coordination
+
+**Anti-pattern:** Reimplementing LLM integration in each worker would mean:
+- ❌ Code duplication
+- ❌ Bug fixes need to be applied in multiple places
+- ❌ Inconsistent behavior between agents
+
+**Best practice:** Inherit and extend, don't reimplement.
+
+### Q: How does tool filtering work with the inherited Agent class?
+
+**Answer:** **WorkerAgent overrides the `chat()` method to filter tools.**
+
+```python
+# Parent Agent (Tutorial 1) uses ALL tools
+response = ollama.chat(
+    model=config.model_name,
+    messages=self.messages,
+    tools=registry.get_schemas(),  # All registered tools
+)
+
+# WorkerAgent filters to allowed_tools only
+response = ollama.chat(
+    model=config.model_name,
+    messages=self.messages,
+    tools=self.available_tools,  # Filtered subset
+)
+```
+
+**Process:**
+1. `__init__()` receives `allowed_tools=["file_search", "read_file"]`
+2. Constructor filters `registry.get_schemas()` to matching tools
+3. Stores in `self.available_tools`
+4. Overridden `chat()` passes filtered list to Ollama
+
+### Q: Can I add new tools for Tutorial 2 agents?
+
+**Answer:** **Yes, add them to Tutorial 1's tool registry.**
+
+```python
+# In src/agent/simple_agent.py (or new tools file)
+from src.agent.tool_registry import registry
+
+@registry.register
+def analyze_sentiment(text: str) -> str:
+    """Analyze sentiment of text."""
+    # Implementation
+    return "positive"
+
+# Then use in specialized agent
+class SentimentAgent(WorkerAgent):
+    def __init__(self, shared_state):
+        super().__init__(
+            name="sentiment",
+            shared_state=shared_state,
+            allowed_tools=["analyze_sentiment"]  # New tool
+        )
+```
+
+**Key point:** Tools are registered globally, filtered per agent.
+
+**See:** [Tool Bridge Documentation](../../tutorial-2/concepts/tool-bridge.md#adding-new-tools-for-tutorial-2) for step-by-step guide.
+
+---
+
+### Q: How do I know which Tutorial 1 tools are available for Tutorial 2?
+
+**Answer:** **Check the tool registry for all registered tools.**
+
+**Quick Check:**
+```bash
+python -c "from src.agent.tool_registry import registry; print([t['function']['name'] for t in registry.get_schemas()])"
+```
+
+**Tools available for Tutorial 2:**
+- `search_files` - Search for files by pattern (ResearchAgent)
+- `read_file` - Read file contents (ResearchAgent)
+- `calculate` - Basic arithmetic (DataAgent)
+- `list_directory` - List directory contents (available but unused in Tutorial 2)
+- `get_weather` - Mock weather API (available but unused in Tutorial 2)
+
+**Common Mistake:**
+```python
+# ❌ WRONG: "file_search" is not the registered name
+allowed_tools=["file_search", "read_file"]
+
+# ✅ CORRECT: Must match Tutorial 1 registration exactly
+allowed_tools=["search_files", "read_file"]
+```
+
+**See:** [Tool Bridge Documentation](../../tutorial-2/concepts/tool-bridge.md) for complete reference.
+
+---
+
+### Q: Why does my agent have zero tools even though I specified allowed_tools?
+
+**Answer:** **Tool name mismatch - the names in `allowed_tools` don't match the registry.**
+
+**Debug steps:**
+```python
+from src.agent.tool_registry import registry
+
+# 1. Check what you requested
+allowed = ["file_search", "read_file"]
+
+# 2. Check what's actually registered
+registered = [t['function']['name'] for t in registry.get_schemas()]
+print("Registered:", registered)
+
+# 3. Find mismatches
+for tool in allowed:
+    if tool not in registered:
+        print(f"❌ '{tool}' not found!")
+```
+
+**Common fixes:**
+- `file_search` → `search_files` (correct name)
+- `web_search` → Not implemented yet (add to Tutorial 1 first)
+- Check spelling and capitalization exactly
+
+**See:** [Tool Bridge Troubleshooting](../../tutorial-2/concepts/tool-bridge.md#common-issues-and-solutions)
+
 ## Specialization
 
 ### Q: How specialized should agents be?

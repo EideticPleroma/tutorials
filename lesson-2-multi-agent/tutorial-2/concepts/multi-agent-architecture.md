@@ -17,15 +17,19 @@
 > This is the difference between a solo developer and a coordinated team.
 > By the end of this guide, you'll know **when** to use multi-agent and **how** to design it.
 
-> **📚 Building on Tutorial 1**
+> **🏗️ Building on Tutorial 1**
 > 
-> In [Tutorial 1](../../../lesson-1-fundamentals/tutorial-1/INDEX.md), you built a single agent with multiple tools executing tasks sequentially through the [7-step tool calling loop](../../../lesson-1-fundamentals/tutorial-1/concepts/tool-calling-architecture.md).
+> In [Tutorial 1](../../../lesson-1-fundamentals/tutorial-1/INDEX.md), you built the `Agent` class with Ollama LLM integration and tool calling through the [7-step tool calling loop](../../../lesson-1-fundamentals/tutorial-1/concepts/tool-calling-architecture.md).
 > 
-> **Tutorial 2 extends this by:**
-> - Splitting one generalist agent → Multiple specialist agents
+> **Tutorial 2 extends Tutorial 1's `Agent` class through inheritance:**
+> - `WorkerAgent` inherits from `Agent` → Gets LLM and tool calling automatically
+> - One generalist agent → Multiple specialist agents (each a `WorkerAgent` subclass)
+> - All tools available → Tool filtering by specialization (allowed_tools parameter)
 > - Sequential tool calls → Parallel agent execution
-> - Single context window → Distributed state management
+> - Single context → Distributed state management via `SharedState`
 > - One agent debugging → Multi-agent coordination debugging
+> 
+> **Key point:** Your Tutorial 1 `Agent` class becomes the foundation. Worker agents reuse it, not reimplement it.
 > 
 > **Review if needed:** [Tool Calling Architecture](../../../lesson-1-fundamentals/tutorial-1/concepts/tool-calling-architecture.md)
 
