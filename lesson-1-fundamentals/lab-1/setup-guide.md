@@ -80,10 +80,11 @@ The Agent needs a brain. We use Ollama to run Llama 3.1 locally.
     ```
     *(If it says "address already in use", it's likely already running in the background or on Windows. That's fine!)*
 
-3.  **Verify Ollama Version** (2025 Requirement):
+3.  **Verify Ollama Version**:
     ```bash
     ollama --version
-    # Expected: 0.4.0 or higher (Nov 2024+)
+    # Recommended: 0.5.0 or higher
+    # Minimum: 0.3.0 (for reliable tool calling)
     ```
 
     **If older version**:
@@ -99,9 +100,10 @@ The Agent needs a brain. We use Ollama to run Llama 3.1 locally.
     ```
 
     **Why version matters**:
-    *   **0.4+**: Context caching (faster multi-turn conversations)
-    *   **0.3+**: Better tool calling support
-    *   **0.2 or older**: May have compatibility issues
+    *   **0.5.0+** (Dec 2024): Performance improvements, better context handling
+    *   **0.4.0+** (Nov 2024): Context caching for faster multi-turn conversations
+    *   **0.3.0+**: Tool calling support (minimum required)
+    *   **Below 0.3.0**: Not compatible with this tutorial
 
 4.  **Pull the Model**:
     ```bash
@@ -130,7 +132,8 @@ Run these commands to ensure you are ready:
 ```bash
 # Should return python 3.x
 python3 --version
-# Output: Python 3.12.x (or similar)
+# Output: Python 3.10+ (3.11, 3.12, or 3.13 recommended)
+# Note: Python 3.13 released Oct 2024, fully supported
 
 # Should return a list of pip packages
 pip list
@@ -156,6 +159,33 @@ python -m src.agent.simple_agent
 ```
 
 If all of these work, you are ready to start the [Lab Checklist](./lab-checklist.md).
+
+## 6a. Verify Software Versions
+
+Before proceeding, confirm your software versions are compatible:
+
+```bash
+# Check all versions at once
+echo "=== Software Versions ==="
+python3 --version      # Should be 3.10+
+ollama --version       # Should be 0.3.0+
+node --version         # Should be 18+ (LTS)
+npm --version          # Should be 8+
+
+echo "=== Ollama Model ==="
+ollama list | grep llama3.1
+# Should show llama3.1:8b (approximately 4.9GB)
+```
+
+**Compatible versions (tested as of November 2025):**
+- **Python:** 3.10, 3.11, 3.12, 3.13
+- **Ollama:** 0.3.x through 0.13.x+ (latest tested)
+- **Node.js:** 18.x, 20.x, 22.x (LTS versions)
+- **pytest:** 7.4+, 8.x
+
+**Note:** Newer versions generally work but may have minor compatibility quirks. If you encounter issues, check the [FAQ](./FAQ.md) or use the tested versions above.
+
+---
 
 ## 7. AI-Assisted Learning: Your Primary Development Method
 
@@ -517,4 +547,22 @@ A simple notes file with project information. Used for testing file search and r
 A basic Python file for testing code file operations. Demonstrates how tools interact with different file types.
 
 **Why these files exist**: When building agentic tools, you need realistic test data to verify your agent can find and read files correctly. These files provide consistent test cases for the O.V.E. methodology.
+
+---
+
+## Document Information
+
+**Last Updated:** November 2025  
+**Tested With:**
+- Python 3.10, 3.11, 3.12, 3.13
+- Ollama 0.3.x - 0.13.x+
+- Node.js 18.x LTS, 20.x LTS, 22.x LTS
+- Ubuntu 22.04 LTS, 24.04 LTS
+- Windows 11 WSL2
+- macOS 13+
+
+**Note:** Software versions update frequently. If you encounter issues with newer versions:
+1. Check the [FAQ](./FAQ.md) for known compatibility issues
+2. Open a GitHub issue with your version information
+3. Consider using the tested versions above for guaranteed compatibility
 
