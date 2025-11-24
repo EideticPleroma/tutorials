@@ -5,6 +5,94 @@
 ## Context
 An agent is only as smart as its tools. We will add a `search_files` tool that allows the agent to grep for code in your project.
 
+## Learning by Asking AI
+
+> **AI Context for This Exercise**
+> Include these files when asking your AI assistant:
+> - `@.cursorrules` (always)
+> - `@src/agent/tool_registry.py` (how tools register)
+> - `@src/agent/simple_agent.py` (how tools are imported)
+> - `@lesson-1-fundamentals/tutorial-1/guides/agentic-practices.md` (tool design principles)
+
+**Before you start coding**, use your AI to understand the tool registration pattern. This is how you'll learn best!
+
+**Ask these questions (iterate 2-3 times per topic to refine understanding):**
+
+**Understanding Tool Registration:**
+```
+@.cursorrules @src/agent/tool_registry.py
+
+I'm on Exercise 2 (Adding Tools). Looking at tool_registry.py:
+
+1. How does the @registry.register decorator work?
+2. What information does it extract from my function?
+3. Why are type hints and docstrings mandatory?
+```
+
+**Understanding the Import Pattern:**
+```
+@.cursorrules @src/agent/simple_agent.py
+
+Following up on Exercise 2:
+
+1. I see "# noqa: F401" comments on imports. Why?
+2. What's a "side-effect import" and why do tools need them?
+3. When does the decorator actually execute - at import or at function definition?
+```
+
+**Understanding Tool Design:**
+```
+@.cursorrules @lesson-1-fundamentals/tutorial-1/guides/agentic-practices.md
+
+Before implementing file_search:
+
+1. Why should tools return strings instead of lists or dicts?
+2. How should I handle errors - exceptions or error strings?
+3. What makes a good tool docstring for an LLM?
+```
+
+**When You Start Implementing:**
+```
+@.cursorrules
+
+I'm implementing search_files tool. Here's my current code:
+[paste your function]
+
+Questions:
+1. Does this follow the project's tool design patterns?
+2. Is my error handling correct (no exceptions)?
+3. Is my docstring clear enough for the LLM to understand?
+```
+
+**If Something Doesn't Work:**
+```
+@.cursorrules @src/agent/tool_registry.py
+
+My tool isn't registering (KeyError: 'search_files').
+
+What I did:
+- Created src/agent/tools/file_search.py
+- Added @registry.register decorator
+- [describe your imports]
+
+What am I missing in the registration workflow?
+```
+
+**Expect Iteration:** Your first implementation might:
+- Return the wrong type (list instead of string)
+- Raise exceptions instead of returning error messages
+- Have unclear docstrings
+
+**This is normal!** Share your code, get feedback, refine. That's the loop.
+
+**Why This Approach Works:**
+- ✅ You understand WHY, not just WHAT
+- ✅ You learn the pattern, not just this one tool
+- ✅ You can debug issues independently later
+- ✅ You build real coding skills with AI assistance
+
+**Now proceed to implement the tool using the steps below.**
+
 ## Steps
 
 ### 1. Create the Tool

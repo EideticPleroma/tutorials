@@ -8,6 +8,74 @@
 
 You've successfully implemented `search_files` which helps the agent find files. Now let's give it the ability to actually read file contents. This is a common pattern in agentic AI: **search → read → analyze**.
 
+## AI-Assisted Challenge Approach
+
+> **AI Context for This Challenge**
+> - `@.cursorrules` (always)
+> - `@src/agent/tools/file_search.py` (your previous tool as reference)
+> - `@lesson-1-fundamentals/tutorial-1/guides/agentic-practices.md` (tool design patterns)
+
+**This is a challenge - you should figure it out with AI help, not just copy!**
+
+**Recommended conversation flow (expect 3-5 AI exchanges):**
+
+**Phase 1 - Design:**
+```
+@.cursorrules @lesson-1-fundamentals/tutorial-1/guides/agentic-practices.md
+
+Challenge: Implement read_file tool.
+
+Requirements: [paste requirements from below]
+
+Based on agentic practices:
+1. What error cases must I handle?
+2. Should I return the raw content or formatted?
+3. How do I detect binary files?
+```
+
+**Phase 2 - Implementation:**
+```
+@.cursorrules @src/agent/tools/file_search.py
+
+Here's my read_file implementation:
+[paste code]
+
+Following the patterns from file_search:
+1. Is my error handling correct (strings, not exceptions)?
+2. Is my docstring LLM-friendly?
+3. Did I miss any edge cases?
+```
+
+**Phase 3 - Testing:**
+```
+@.cursorrules @tests/test_framework.py
+
+I need tests for read_file. Looking at my implementation:
+[paste relevant parts]
+
+How should I structure:
+1. Unit tests for each error case?
+2. E2E test for tool chaining (search → read)?
+```
+
+**Phase 4 - Refinement:**
+```
+@.cursorrules
+
+Test results: [describe what's failing]
+Agent behavior: [describe what happens]
+
+What needs adjustment?
+```
+
+**Challenge Mindset:**
+- ✅ Use previous exercises as patterns, not exact templates
+- ✅ Iterate with AI - first draft won't be perfect
+- ✅ Test each requirement individually
+- ✅ Build on what you've learned, not from scratch
+
+**Remember:** Expect 3-5 iterations to get this working well. That's how real development works!
+
 ## The Challenge
 
 Implement a `read_file` tool that allows the agent to read and display the contents of text files.

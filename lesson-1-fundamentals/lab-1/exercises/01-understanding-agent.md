@@ -5,6 +5,64 @@
 ## Context
 The file `src/agent/simple_agent.py` contains a "ReAct" (Reasoning + Acting) loop. It doesn't just answer; it thinks, acts, and observes.
 
+## Learning by Asking AI
+
+> **AI Context for This Exercise**
+> Include these files when asking your AI assistant:
+> - `@.cursorrules` (always)
+> - `@src/agent/simple_agent.py` (the agent implementation)
+> - `@lesson-1-fundamentals/tutorial-1/concepts/tool-calling-architecture.md` (reference doc)
+
+Before diving into the code, **use your AI assistant to build understanding**. This is the primary way to learn - not a fallback when stuck!
+
+**Ask these questions to your AI (expect 2-3 back-and-forth messages per topic):**
+
+**Understanding the Architecture:**
+```
+@.cursorrules @src/agent/simple_agent.py
+
+I'm starting Exercise 1. Looking at simple_agent.py:
+
+1. What is the "ReAct" pattern and how does this agent implement it?
+2. Walk me through the chat() method - what are the key steps?
+3. Why does the messages list include the system prompt?
+```
+
+**Understanding Tool Calling:**
+```
+@.cursorrules @src/agent/simple_agent.py
+
+Following up on Exercise 1:
+
+1. How does the agent know what tools are available?
+2. Why are there potentially multiple iterations in the while loop?
+3. What triggers the second LLM call after a tool is executed?
+```
+
+**Connecting to Concepts:**
+```
+@.cursorrules @lesson-1-fundamentals/tutorial-1/concepts/tool-calling-architecture.md
+
+I've read about the 7-step tool calling loop:
+
+1. How does the code in simple_agent.py map to these 7 steps?
+2. Where in the code does "schema injection" happen?
+3. Where does the agent decide to stop looping?
+```
+
+**Iteration is Normal:** Your first question might get a general answer. Follow up with:
+- "Can you show me the specific lines where that happens?"
+- "I see that code, but I don't understand why it's structured that way"
+- "How does this relate to the ReAct pattern mentioned in the docs?"
+
+**Why This Approach Works:**
+- ✅ Builds genuine understanding, not just surface knowledge
+- ✅ Prepares you to modify the agent later
+- ✅ Makes the documentation more meaningful
+- ✅ Teaches you to read code with AI assistance
+
+**Then proceed to the hands-on tasks below.**
+
 ## Tasks
 
 ### 1. Run with Verbose Logging

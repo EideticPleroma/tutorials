@@ -8,6 +8,93 @@ We use the O.V.E. (Observe, Validate, Evaluate) methodology.
 *   **Validate**: Check the structure (Did it return JSON? Did it call a tool?).
 *   **Evaluate**: Check the quality (Did it answer the user's intent?).
 
+## Learning by Asking AI
+
+> **AI Context for This Exercise**
+> Include these files when asking your AI assistant:
+> - `@.cursorrules` (always)
+> - `@tests/test_framework.py` (the O.V.E. test harness)
+> - `@lesson-1-fundamentals/tutorial-1/concepts/testing-agents.md` (O.V.E. methodology)
+> - Your tool file (e.g., `@src/agent/tools/file_search.py`)
+
+**Before writing tests**, understand the O.V.E. methodology through AI conversation:
+
+**Understanding O.V.E.:**
+```
+@.cursorrules @lesson-1-fundamentals/tutorial-1/concepts/testing-agents.md
+
+I'm on Exercise 4 (Testing). Reading about O.V.E. methodology:
+
+1. What's the difference between Validate and Evaluate?
+2. Why can't we use traditional assert output == "expected" for agents?
+3. When should I use deterministic checks vs probabilistic checks?
+```
+
+**Understanding the Test Framework:**
+```
+@.cursorrules @tests/test_framework.py
+
+Looking at test_framework.py:
+
+1. How does AgentTestRunner capture the agent's behavior?
+2. What does TestCase expect me to define?
+3. What's the difference between expected_tool_calls and expected_content_keywords?
+```
+
+**Writing Your First Test:**
+```
+@.cursorrules @tests/test_framework.py @src/agent/tools/file_search.py
+
+I'm writing a test for my file_search tool:
+
+Tool behavior: [describe what your tool does]
+Expected: [what should happen]
+
+How should I structure:
+1. The unit test (testing the tool function directly)?
+2. The E2E test (testing the agent using the tool)?
+```
+
+**When Tests Fail:**
+```
+@.cursorrules
+
+My test fails with: AssertionError: passed_validation is False
+
+Test code: [paste test]
+Test output: [paste pytest output]
+
+According to O.V.E., what validation is likely failing?
+```
+
+**Handling Flakiness:**
+```
+@.cursorrules
+
+My test passes 3 out of 5 times (flaky).
+
+Current temperature: [your setting]
+System prompt: [relevant parts]
+Test expectations: [what you're checking]
+
+How do I make this deterministic according to the tutorial?
+```
+
+**Iterate Your Tests:** First test might:
+- Check for exact text (too strict)
+- Miss edge cases
+- Have wrong expectations
+
+**Share the test code and failures with your AI**, refine together. Expect 2-3 iterations to get robust tests.
+
+**Why This Approach Works:**
+- ✅ Understand O.V.E. deeply, not just copy test code
+- ✅ Learn to handle probabilistic behavior
+- ✅ Build debugging skills for flaky tests
+- ✅ Create tests you can explain and modify
+
+**Now implement the tests using the steps below.**
+
 ```mermaid
 flowchart TD
     A[Start Test] --> B[1. OBSERVE: Run Agent]
