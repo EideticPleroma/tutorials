@@ -21,7 +21,7 @@ from src.agent.tools.read_file import read_file
 def test_read_file_reads_existing_file():
     """
     Unit test: Verify read_file reads a file that exists.
-    
+
     TODO: Students implement this test in Exercise 5 (Challenge)
     After implementing read_file:
     1. Remove the pytest.skip() line
@@ -29,28 +29,19 @@ def test_read_file_reads_existing_file():
     3. Run to verify your implementation
     """
     pytest.skip("Students implement read_file in Exercise 5, then complete this test")
-    
-    # TODO: Uncomment after implementing read_file
-    # result = read_file("data/todos.txt")
-    # print(f"\n🔍 Result: {result}")
-    # assert "Error" not in result
-    # assert "todos.txt" in result
-    # assert "TODO" in result
+
+    # TODO: Implement this test
 
 
 def test_read_file_handles_missing_file():
     """
     Unit test: Verify read_file returns error for missing file.
-    
+
     TODO: Students implement this test in Exercise 5 (Challenge)
     """
     pytest.skip("Students implement in Exercise 5")
-    
-    # TODO: Uncomment after implementing read_file
-    # result = read_file("nonexistent.txt")
-    # print(f"\n🔍 Result: {result}")
-    # assert "Error: File" in result
-    # assert "not found" in result
+
+    # TODO: Implement this test
 
 
 def test_read_file_handles_large_file():
@@ -59,7 +50,7 @@ def test_read_file_handles_large_file():
 
     Creates a temporary file larger than 10MB, attempts to read it using the tool,
     and asserts that the error message mentions 'too large'. Cleans up the temp file.
-    
+
     TODO: Students implement this test in Exercise 5 (Challenge)
     Hints:
     - Use tempfile.NamedTemporaryFile to create a temp file
@@ -68,22 +59,8 @@ def test_read_file_handles_large_file():
     - Clean up the temp file in a finally block
     """
     pytest.skip("Students implement in Exercise 5")
-    
-    # TODO: Uncomment after implementing read_file
-    # # Create a temporary large file
-    # with tempfile.NamedTemporaryFile(delete=False) as tmp:
-    #     tmp_filename = tmp.name
-    #     tmp.seek(0)
-    #     # Write slightly over 10MB (10 * 1024 * 1024 bytes + 1)
-    #     tmp.write(b"A" * (10 * 1024 * 1024 + 1))
-    # try:
-    #     result = read_file(tmp_filename)
-    #     print(f"\n🧪 Large file read result: {result}")
-    #     assert (
-    #         "too large" in result.lower() or "file size" in result.lower()
-    #     ), "Should mention file size limit"
-    # finally:
-    #     os.remove(tmp_filename)
+
+    # TODO: Implement this test
 
 
 def test_read_file_handles_binary_file():
@@ -92,23 +69,12 @@ def test_read_file_handles_binary_file():
 
     Creates a temporary binary file, attempts to read it using the tool,
     and asserts that the error message mentions 'binary'.
-    
+
     TODO: Students implement this test in Exercise 5 (Challenge)
     """
     pytest.skip("Students implement in Exercise 5")
-    
-    # TODO: Uncomment after implementing read_file
-    # # Create a temporary binary file
-    # with tempfile.NamedTemporaryFile(delete=False) as tmp:
-    #     tmp_filename = tmp.name
-    #     # Write non-UTF8 (binary) content
-    #     tmp.write(b"\x00\xff\x10\x80ThisIsNotText\x00\xfe\xfd")
-    # try:
-    #     result = read_file(tmp_filename)
-    #     print(f"\n🧪 Binary file read result: {result}")
-    #     assert "binary" in result.lower(), "Should mention cannot read binary files"
-    # finally:
-    #     os.remove(tmp_filename)
+
+    # TODO: Implement this test
 
 
 def test_read_file_reads_small_file():
@@ -120,22 +86,12 @@ def test_read_file_reads_small_file():
     - Checks that the filename, relevant contents, and line count appear in the result.
 
     Use this pattern as a reference for building additional file read tests.
-    
+
     TODO: Students implement this test in Exercise 5 (Challenge)
     """
     pytest.skip("Students implement in Exercise 5")
-    
-    # TODO: Uncomment after implementing read_file
-    # # Setup: Use a known file (data/todos.txt has known content)
-    # result = read_file("data/todos.txt")
-    # 
-    # # Validate
-    # assert "Error" not in result, f"Unexpected error: {result}"
-    # assert "todos.txt" in result, "Should mention filename"
-    # assert "TODO" in result, "todos.txt should contain TODO items"
-    # assert "13 lines" in result, "Should show line count"
-    # 
-    # print(f"\n📄 Read result: {result[:100]}...")  # Show first 100 chars
+
+    # TODO: Implement this test
 
 
 # ============================================================================
@@ -150,7 +106,7 @@ def test_agent_uses_read_file_tool():
     This test demonstrates VALIDATION (deterministic check) by ensuring:
     - The agent calls "read_file" when asked to read Python files in the tests/ directory.
     - The agent's response includes a relevant keyword from the file content.
-    
+
     TODO: Students implement this test in Exercise 5 (Challenge)
     After implementing read_file and importing it:
     1. Remove the pytest.skip() line
@@ -158,27 +114,8 @@ def test_agent_uses_read_file_tool():
     3. Run to verify the agent uses your tool
     """
     pytest.skip("Students implement in Exercise 5")
-    
-    # TODO: Uncomment after implementing read_file
-    # # Create and configure the agent for E2E testing
-    # agent = Agent()
-    # 
-    # # Set up the agent test runner
-    # runner = AgentTestRunner(agent)
-    # 
-    # # Define the test scenario and validation criteria
-    # case = TestCase(
-    #     name="Read specific file",
-    #     prompt="Read the file data/todos.txt",  # ← More specific!
-    #     expected_tool_calls=["read_file"],
-    #     expected_content_keywords=["TODO"],  # ← Content we know is there
-    # )
-    # 
-    # # Execute the test case
-    # result = runner.run(case)
-    # 
-    # # Assert validation passed (tool was called correctly)
-    # assert result.passed_validation
+
+    # TODO: Implement this test
 
 
 def test_agent_finds_and_reads_file():
@@ -194,27 +131,13 @@ def test_agent_finds_and_reads_file():
     - expected_content_keywords: Should match content from notes.txt
 
     This scenario demonstrates the agent's ability to chain tool invocations and verify appropriate outputs from both steps.
-    
+
     TODO: Students implement this test in Exercise 5 (Challenge)
     This test requires both search_files AND read_file to be implemented.
     """
     pytest.skip("Students implement in Exercise 5")
-    
-    # TODO: Uncomment after implementing both search_files and read_file
-    # agent = Agent()
-    # runner = AgentTestRunner(agent)
-    # 
-    # case = TestCase(
-    #     name="Find and read file",
-    #     prompt="Use search_files to find files in data/, then use read_file to read notes.txt",
-    #     expected_tool_calls=["search_files", "read_file"],
-    #     expected_content_keywords=["note"],
-    # )
-    # 
-    # result = runner.run(case)
-    # if not result.passed_validation:
-    #     print(f"Validation errors: {result.validation_errors}")
-    # assert result.passed_validation
+
+    # TODO: Implement this test
 
 
 # ============================================================================
