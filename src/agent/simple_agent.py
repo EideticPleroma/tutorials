@@ -9,8 +9,10 @@ from . import mcp_tool_bridge  # noqa: F401
 
 # Students: Add your tool imports here following Exercise 2
 # Example: from .tools import your_tool  # noqa: F401
-from .tools import file_search  # noqa: F401
-from .tools import read_file  # noqa: F401
+# After creating file_search.py in Exercise 2, add:
+#   from .tools import file_search  # noqa: F401
+# After creating read_file.py in Exercise 5, add:
+#   from .tools import read_file  # noqa: F401
 
 # --- Define Basic Tools ---
 

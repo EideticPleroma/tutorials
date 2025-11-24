@@ -94,3 +94,8 @@ Thumbs.db
 # Analysis and validation reports (temporary files)
 TUTORIAL_ANALYSIS.md
 README_LINK_VALIDATION_REPORT.md
+IMPLEMENTATION_NOTES.md
+LAB-REVIEW-SUMMARY.md
+
+# Solutions (reference implementations, not for student repo)
+solutions/

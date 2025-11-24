@@ -276,7 +276,7 @@ Generate implementation.
 
 ## Part 3: Writer Agent
 
-> **Implementation Note**: The WriterAgent implementation uses direct markdown generation rather than LLM-based generation. This design choice provides deterministic output that's easier to test and validate. In production, you might use LLM generation for more sophisticated report formatting, but the direct approach is ideal for learning multi-agent patterns without LLM variability.
+> **Implementation Note**: For this exercise, you'll implement direct markdown generation rather than LLM-based generation. This design choice provides deterministic output that's easier to test and validate. In production, you might use LLM generation for more sophisticated report formatting, but the direct approach is ideal for learning multi-agent patterns without LLM variability.
 
 ### Code Scaffold
 
@@ -354,63 +354,143 @@ What you DO NOT do:
         Returns:
             Dict with status and report
             Example: {"status": "success", "report": "# Report...", "message": "..."}
+        
+        TODO: Students implement this in Lab 2 Exercise 2
         """
-        # Implementation details in actual file...
-        # Pattern: Read from shared_state, format as markdown, write result
-        pass
+        raise NotImplementedError("Students implement create_report() in Lab 2 Exercise 2")
 ```
 
-### Understanding the Implementation
+### Tasks
 
-The WriterAgent is already implemented. Let's understand how it works:
+**Task 1: Design System Prompt**
 
-**Key Design Decisions:**
+Create a focused system prompt for the writer specialist (similar to ResearchAgent and DataAgent).
 
-1. **No Tools**: WriterAgent has `allowed_tools=[]` because it only synthesizes existing information
-2. **Direct Generation**: Uses Python string formatting instead of LLM for deterministic output
-3. **Structured Format**: Always produces consistent markdown structure
-4. **Shared State**: Reads from "research_findings" and "data_analysis", writes to "final_report"
+**AI Assistant Prompt:**
+```
+@.cursorrules @src/multi_agent/specialized/writer_agent.py
 
-**Review the Implementation:**
+I need to override the system prompt for WriterAgent.
 
-Open `src/multi_agent/specialized/writer_agent.py` and trace through `create_report()`:
+The agent should specialize in:
+- Synthesizing research and analysis into reports
+- Creating clear narrative structure
+- Using markdown formatting (headings, lists, emphasis)
+- Including all source citations
+- Maintaining objectivity
+
+The agent should NOT:
+- Gather information (that's Research Agent's job)
+- Analyze data (that's Data Agent's job)
+- Only synthesize existing information
+
+Generate a focused system prompt that I'll set by overriding self.messages[0].
+```
+
+**Task 2: Implement create_report() with Direct Generation**
+
+Implement the report generation workflow using Python string formatting.
+
+**Requirements:**
+- Read "research_findings" and "data_analysis" from shared_state
+- Check inputs exist, return error if missing
+- Build markdown report with sections:
+  - Title (# Report: {query})
+  - Executive Summary with counts
+  - Key Findings (enumerate findings)
+  - Data Analysis (metrics and insights)  
+  - Sources (unique sources from findings)
+- Write report to shared_state["final_report"]
+- Return {"status": "success", "report": report, "message": "..."}
+
+**AI Assistant Prompt:**
+```
+@.cursorrules @src/multi_agent/specialized/writer_agent.py
+
+Implement WriterAgent.create_report() using direct markdown generation (not LLM).
+
+Requirements:
+1. Read research_findings and data_analysis from shared_state
+2. Validate both exist, return {"status": "error", "error": "..."} if not
+3. Build markdown report with structure:
+   - # Report: {topic}
+   - ## Executive Summary (counts)
+   - ## Key Findings (enumerate findings with sources)
+   - ## Data Analysis (metrics and insights)
+   - ## Sources (unique list)
+4. Write to shared_state.set("final_report", report)
+5. Return {"status": "success", "report": report, "message": "Report generated with X findings"}
+
+Generate the implementation using Python string formatting for deterministic output.
+```
+
+**Implementation Pattern:**
 
 ```python
 def create_report(self) -> Dict:
-    # Step 1: Read inputs from shared state
+    # Step 1: Read inputs
     research_findings = self.shared_state.get("research_findings")
     data_analysis = self.shared_state.get("data_analysis")
     
-    # Step 2: Validate inputs exist
+    # Step 2: Validate
     if not research_findings or not data_analysis:
-        return {"status": "error", "error": "Missing inputs"}
+        return {"status": "error", "error": "Missing research_findings or data_analysis"}
     
     # Step 3: Build markdown sections
-    # - Title from query
-    # - Executive Summary with counts
-    # - Key Findings (enumerate research findings)
-    # - Data Analysis (metrics and insights)
-    # - Sources (unique sources from findings)
+    report = f"# Report\n\n"
+    report += f"## Executive Summary\n\n"
+    report += f"Found {len(research_findings)} findings...\n\n"
     
-    # Step 4: Write to shared state
+    report += f"## Key Findings\n\n"
+    for i, finding in enumerate(research_findings, 1):
+        report += f"{i}. {finding['fact']} (Source: {finding['source']})\n"
+    
+    # ... more sections ...
+    
+    # Step 4: Save to state
     self.shared_state.set("final_report", report)
     
-    # Step 5: Return success with report
-    return {"status": "success", "report": report, "message": "..."}
+    # Step 5: Return
+    return {
+        "status": "success", 
+        "report": report,
+        "message": f"Report generated with {len(research_findings)} findings"
+    }
 ```
 
 **Why Direct Generation vs LLM?**
 
 | Approach | Pros | Cons | When to Use |
 |----------|------|------|-------------|
-| **Direct Generation** (current) | Deterministic, fast, no LLM errors, easy to test | Less flexible formatting, no creative prose | Learning, testing, consistent structure |
-| **LLM Generation** (alternative) | Natural prose, adaptive formatting, can summarize | Non-deterministic, slower, may hallucinate | Production with quality checks |
+| **Direct Generation** (this exercise) | Deterministic, fast, no LLM errors, easy to test | Less flexible formatting, no creative prose | Learning, testing, consistent structure |
+| **LLM Generation** (production) | Natural prose, adaptive formatting, can summarize | Non-deterministic, slower, may hallucinate | Production with quality checks |
 
 **For Tutorial 2**, direct generation is ideal because:
 - Tests can validate exact structure
 - No variability from LLM temperature
 - Students focus on multi-agent patterns, not report formatting
 - Faster execution in workflows
+
+**Validation:**
+```python
+writer = WriterAgent(shared_state)
+
+# Setup test data
+shared_state.set("research_findings", [
+    {"fact": "Finding 1", "source": "source1"},
+    {"fact": "Finding 2", "source": "source2"}
+])
+shared_state.set("data_analysis", {
+    "metrics": {"count": 2},
+    "insights": ["Insight 1"]
+})
+
+result = writer.create_report()
+
+assert result["status"] == "success"
+assert "report" in result
+assert "# Report" in result["report"]
+```
 
 ---
 
