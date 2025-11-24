@@ -17,29 +17,30 @@ check_command() {
     return 0
 }
 
-# Version checking functions (2025 requirements)
+# Version checking functions (November 2025 requirements)
 check_python_version() {
     local version=$(python3 --version 2>&1 | grep -oP '\d+\.\d+' | head -1)
     local major=$(echo $version | cut -d. -f1)
     local minor=$(echo $version | cut -d. -f2)
     
-    if [ "$major" -lt 3 ] || ([ "$major" -eq 3 ] && [ "$minor" -lt 11 ]); then
-        echo -e "${RED}Error: Python 3.11+ required. Found: $version${NC}"
-        echo -e "${YELLOW}Install Python 3.11+ from https://www.python.org${NC}"
+    if [ "$major" -lt 3 ] || ([ "$major" -eq 3 ] && [ "$minor" -lt 10 ]); then
+        echo -e "${RED}Error: Python 3.10+ required. Found: $version${NC}"
+        echo -e "${YELLOW}Install Python 3.10+ from https://www.python.org${NC}"
+        echo -e "${YELLOW}Recommended: Python 3.11, 3.12, or 3.13${NC}"
         return 1
     fi
-    echo -e "  ✓ Python $version (3.11+ required)"
+    echo -e "  ✓ Python $version (3.10+ required, 3.11-3.13 recommended)"
     return 0
 }
 
 check_node_version() {
     local version=$(node --version 2>&1 | grep -oP '\d+' | head -1)
     
-    if [ "$version" -lt 20 ]; then
-        echo -e "${YELLOW}Warning: Node 20 LTS recommended. Found: v$version${NC}"
+    if [ "$version" -lt 18 ]; then
+        echo -e "${YELLOW}Warning: Node 18+ LTS recommended. Found: v$version${NC}"
         echo -e "${YELLOW}Consider upgrading: https://nodejs.org${NC}"
     else
-        echo -e "  ✓ Node v$version (20 LTS recommended)"
+        echo -e "  ✓ Node v$version (18.x, 20.x, 22.x LTS supported)"
     fi
     return 0
 }
@@ -48,11 +49,15 @@ check_ollama_version() {
     if command -v ollama &> /dev/null; then
         local version=$(ollama --version 2>&1 | grep -oP 'ollama version is \K[\d.]+' || echo "unknown")
         
-        if [[ "$version" =~ ^0\.([0-3])\. ]]; then
-            echo -e "${YELLOW}Warning: Ollama 0.4.0+ recommended for context caching. Found: $version${NC}"
+        if [[ "$version" =~ ^0\.([0-2])\. ]]; then
+            echo -e "${RED}Error: Ollama 0.3.0+ required for tool calling. Found: $version${NC}"
             echo -e "${YELLOW}Update: curl -fsSL https://ollama.com/install.sh | sh${NC}"
+            return 1
+        elif [[ "$version" =~ ^0\.([3-4])\. ]]; then
+            echo -e "${YELLOW}Warning: Ollama 0.5.0+ recommended. Found: $version${NC}"
+            echo -e "  (Version $version works, but 0.5.0+ has performance improvements)"
         elif [ "$version" != "unknown" ]; then
-            echo -e "  ✓ Ollama $version (0.4.0+ recommended)"
+            echo -e "  ✓ Ollama $version (0.5.0+ recommended, 0.3.0+ minimum)"
         else
             echo -e "  ✓ Ollama installed (version unknown)"
         fi
