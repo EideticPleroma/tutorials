@@ -158,6 +158,3 @@ This is called "test flakiness" and it's common with agents. Solutions:
 
 **Goal:** Aim for 95%+ consistency before deploying.
 </details>
-
-**Ready for the lab?** You now understand O.V.E. methodology. In [Exercise 4](../../lab-1/exercises/04-testing-methodology.md), you'll implement it!
-
