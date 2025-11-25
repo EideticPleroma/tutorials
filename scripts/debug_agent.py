@@ -290,6 +290,20 @@ def show_help_links():
 
 
 def main():
+    """
+    Main entry point for the debug agent tool.
+
+    Parses command-line arguments and runs diagnostic checks or specific
+    operations based on user flags (--tools, --test, --config).
+
+    Full diagnostic run checks:
+    - File structure
+    - Python imports
+    - Ollama connection
+    - Model availability
+    - Configuration
+    - Tool registration
+    """
     parser = argparse.ArgumentParser(description="Debug your agentic AI agent setup")
     parser.add_argument(
         "--tools", action="store_true", help="Show registered tools only"
