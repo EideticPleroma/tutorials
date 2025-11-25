@@ -205,4 +205,4 @@ Read README, then reference specific guides as you encounter problems.
 
 ---
 
-**Next Step**: Start with [Page 1: README.md](../../README.md)
+**Next Step**: Start with [Lab README](../lab-1/README.md)
