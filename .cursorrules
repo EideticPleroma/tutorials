@@ -157,6 +157,23 @@ Students should:
 - Labs are isolated: students work on separate branches
 - All labs in a tutorial merge together (squashed) once complete
 
+### For Students (Fork-Based Workflow)
+This repository is **read-only** for students. The `main` branch is protected.
+
+**To start working:**
+1. **Fork** this repo to your own GitHub account (click "Fork" button on GitHub)
+2. **Clone YOUR fork**: `git clone https://github.com/YOUR-USERNAME/tutorials.git`
+3. Work freely on your copy - you have full write access to your fork
+4. Follow the branch strategy above for organizing your lab work
+
+**Contributing back (optional):**
+- Open a Pull Request from your fork to the original repo
+- Maintainer will review and merge if appropriate
+
+**You CANNOT:**
+- Push directly to the original repository
+- Merge to `main` on the original repository
+
 ### Commands Reference
 
 #### Starting a New Lab
@@ -217,7 +234,7 @@ git commit -m "feat: complete Tutorial 2 - Multi-Agent Systems
 - **New lab**: `git checkout -b feature/lesson-X-lab-Y`
 - **Commit docs**: `git add docs/ && git commit -m "docs: description"`
 - **Switch labs**: `git checkout feature/lesson-X-lab-Y`
-- **Finish tutorial**: Squash merge all labs to main
+- **Finish tutorial**: Squash merge all labs into lab feature branch
 
 ### Commit Message Convention
 - `docs(lesson-X-lab-Y):` - Documentation updates

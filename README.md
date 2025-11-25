@@ -21,6 +21,30 @@ Design coordinator-worker architectures, build specialized agents, implement mes
 
 ---
 
+## Getting Started (For Students)
+
+> **Important**: This is a **read-only** repository. You cannot push changes directly.
+
+**Step 1: Fork the Repository**
+1. Click the **Fork** button (top-right on GitHub)
+2. This creates YOUR copy at `github.com/YOUR-USERNAME/tutorials`
+
+**Step 2: Clone Your Fork**
+```bash
+git clone https://github.com/YOUR-USERNAME/tutorials.git
+cd tutorials
+```
+
+**Step 3: Start Learning**
+
+- Follow the tutorials in your own fork
+- Commit and push to YOUR fork freely
+- Your work stays in your copy
+
+**Want to contribute improvements?** Open a Pull Request from your fork.
+
+---
+
 ## Tutorial 1: Fundamentals of Agentic AI
 
 > **📖 New to Tutorial 1?** Start with the [Reading Guide](./lesson-1-fundamentals/tutorial-1/READING_GUIDE.md) to understand the recommended reading order.

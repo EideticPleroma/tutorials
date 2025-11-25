@@ -25,8 +25,7 @@ def test_read_file_reads_existing_file():
     TODO: Students implement this test in Exercise 5 (Challenge)
     After implementing read_file:
     1. Remove the pytest.skip() line
-    2. Uncomment the test code
-    3. Run to verify your implementation
+    2. Run to verify your implementation
     """
     pytest.skip("Students implement read_file in Exercise 5, then complete this test")
 
@@ -110,8 +109,7 @@ def test_agent_uses_read_file_tool():
     TODO: Students implement this test in Exercise 5 (Challenge)
     After implementing read_file and importing it:
     1. Remove the pytest.skip() line
-    2. Uncomment the test code
-    3. Run to verify the agent uses your tool
+    2. Run to verify the agent uses your tool
     """
     pytest.skip("Students implement in Exercise 5")
 
