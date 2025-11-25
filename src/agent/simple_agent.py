@@ -1,3 +1,30 @@
+"""
+Simple agent implementation with tool-calling capabilities.
+
+This module provides the core Agent class for Tutorial 1, demonstrating
+fundamental agentic AI patterns:
+- LLM integration via Ollama
+- Tool calling and execution loop
+- Message history management
+- Automatic tool schema generation
+
+The Agent can call registered tools (functions) to perform actions like
+calculations, file operations, and API calls. Tools are discovered and
+called automatically based on LLM decisions.
+
+Example:
+    from agent.simple_agent import Agent
+
+    agent = Agent()
+    response = agent.chat("What's 15 times 23?")
+    # Agent will call calculate tool and return the result
+
+See Also:
+    - tool_registry.py: Tool registration and schema generation
+    - agent_config.py: Configuration management
+    - Tutorial 1 documentation for architecture details
+"""
+
 import ollama
 import json
 from typing import List, Dict, Any
@@ -20,10 +47,23 @@ from . import mcp_tool_bridge  # noqa: F401
 @registry.register
 def calculate(operation: str, a: float, b: float) -> float:
     """
-    Perform a basic calculation.
-    operation: one of 'add', 'subtract', 'multiply', 'divide'
-    a: first number
-    b: second number
+    Perform a basic mathematical calculation.
+
+    Args:
+        operation: The mathematical operation to perform. Must be one of:
+                  'add', 'subtract', 'multiply', 'divide'
+        a: The first number in the calculation
+        b: The second number in the calculation
+
+    Returns:
+        The result of the calculation as a float, or an error string if
+        the operation is invalid or division by zero is attempted
+
+    Examples:
+        calculate("add", 5, 3) -> 8.0
+        calculate("multiply", 4, 7) -> 28.0
+        calculate("divide", 10, 2) -> 5.0
+        calculate("divide", 5, 0) -> "Error: Division by zero"
     """
     if operation == "add":
         return a + b
@@ -42,8 +82,21 @@ def calculate(operation: str, a: float, b: float) -> float:
 @registry.register
 def get_weather(city: str) -> str:
     """
-    Get the current weather for a given city.
-    city: name of the city
+    Get the current weather information for a specified city.
+
+    This is a mock implementation for tutorial purposes that returns
+    simulated weather data.
+
+    Args:
+        city: The name of the city to get weather for (e.g., "Paris", "Tokyo")
+
+    Returns:
+        A string containing the weather information including conditions
+        and temperature
+
+    Examples:
+        get_weather("Paris") -> "The weather in Paris is Sunny, 25°C"
+        get_weather("London") -> "The weather in London is Sunny, 25°C"
     """
     # Mock response for tutorial
     return f"The weather in {city} is Sunny, 25°C"
@@ -66,6 +119,23 @@ class Agent:
     """
 
     def __init__(self):
+        """
+        Initialize a new agent with default configuration.
+
+        Creates an agent with an empty conversation history, starting with
+        the system prompt from the configuration. The agent is ready to
+        process user messages via the chat() method.
+
+        The message history follows the Ollama/OpenAI format with roles:
+        - "system": Initial instructions for the agent
+        - "user": Messages from the user
+        - "assistant": Agent responses
+        - "tool": Tool execution results
+
+        Example:
+            agent = Agent()
+            response = agent.chat("Hello!")
+        """
         self.messages: List[Dict[str, Any]] = [
             {"role": "system", "content": config.system_prompt}
         ]
