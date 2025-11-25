@@ -45,13 +45,14 @@ class AgentConfig(BaseModel):
         # AGENT_MODEL_NAME=llama3.1:70b
         # AGENT_TEMPERATURE=0.2
     """
+
     model_name: str = "llama3.1:8b"
     ollama_base_url: str = "http://localhost:11434/api"
     temperature: float = 0.1
     system_prompt: str = """You are a helpful AI assistant with access to tools.
     When answering questions, use the available tools when needed.
     For simple conversation and greetings, respond naturally without using tools.
-    Provide clear and accurate responses that incorporate the information from all tools you've used."""
+    When tools provide information, preserve the specific terms they use in your response."""
 
     model_config = ConfigDict(env_prefix="AGENT_")
 
