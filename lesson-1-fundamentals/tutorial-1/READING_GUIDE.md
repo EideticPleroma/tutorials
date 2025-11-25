@@ -53,7 +53,7 @@ The tutorial is organized into **5 phases** with **16 core documents**. Each pha
 - **Context**: Read after understanding tool calling
 
 ### Page 5a: Tech Stack (Optional Reference)
-**📄 [Tech Stack Decisions](../../../docs/tech-stack.md)** (10 min)
+**📄 [Tech Stack Decisions](../../docs/tech-stack.md)** (10 min)
 - Why Llama over GPT-4?
 - Why Ollama?
 - Why Python for agents, TypeScript for tools?
