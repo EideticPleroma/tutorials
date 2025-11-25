@@ -43,6 +43,20 @@ cd tutorials
 
 **Want to contribute improvements?** Open a Pull Request from your fork.
 
+**Keeping Your Fork Updated:**
+To get new tutorials and fixes, add the original repo as `upstream` and sync periodically:
+
+```bash
+# One-time setup
+git remote add upstream https://github.com/ORIGINAL-OWNER/tutorials.git
+
+# To update your fork
+git fetch upstream
+git checkout main
+git merge upstream/main
+git push origin main
+```
+
 ---
 
 ## Tutorial 1: Fundamentals of Agentic AI
