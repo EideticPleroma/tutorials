@@ -1,6 +1,6 @@
 # Software Engineering Best Practices for Agentic AI
 
-**Page 9 of 16** | [← Previous: Context Management](./context-management.md) | [Next: Agentic Code Practices →](./agentic-practices.md) | [↑ Reading Guide](../READING_GUIDE.md)
+**Page 12 of 16** | [← Previous: Context Management](./context-management.md) | [Next: Agentic Code Practices →](./agentic-practices.md) | [↑ Reading Guide](../READING_GUIDE.md)
 
 ## Terminal Productivity
 

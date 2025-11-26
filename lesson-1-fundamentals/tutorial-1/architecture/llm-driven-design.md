@@ -1,6 +1,6 @@
 # LLM-Driven Design
 
-**Page 14 of 16** | [← Previous: Evolution](./evolution.md) | [Next: Visualization Tools →](./visualization-tools.md) | [↑ Reading Guide](../READING_GUIDE.md)
+**Page 8 of 16** | [← Previous: Architecture Evolution](./evolution.md) | [Next: Visualization Tools →](./visualization-tools.md) | [↑ Reading Guide](../READING_GUIDE.md)
 
 Architecture is no longer a solitary activity. You now have a tireless partner to brainstorm with. This guide covers how to effectively "prompt for architecture."
 

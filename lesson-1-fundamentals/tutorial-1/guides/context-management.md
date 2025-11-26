@@ -1,6 +1,6 @@
 # Context Management in AI-Assisted Development
 
-**Page 8 of 16** | [← Previous: Prompting Techniques](./prompting.md) | [Next: Engineering Best Practices →](./engineering.md) | [↑ Reading Guide](../READING_GUIDE.md)
+**Page 11 of 16** | [← Previous: Prompting Techniques](./prompting.md) | [Next: Engineering Best Practices →](./engineering.md) | [↑ Reading Guide](../READING_GUIDE.md)
 
 Working with AI-capable IDEs (Cursor, VS Code + Continue, etc.) requires managing the "Context Window"—the limited short-term memory of the LLM.
 

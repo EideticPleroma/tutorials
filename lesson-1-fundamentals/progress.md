@@ -1,34 +1,35 @@
 # Lesson 1 - Fundamentals: Progress Tracker
 
-**Page 16 of 16** | [← Previous: Visualization Tools](./tutorial-1/architecture/visualization-tools.md) | [↑ Reading Guide](./tutorial-1/READING_GUIDE.md)
+**Optional Reference** | [↑ Reading Guide](./tutorial-1/READING_GUIDE.md)
 
 Track your progress through the lab exercises and documentation reading.
 
 ## 📚 Documentation Reading
 
-### Phase 1: Foundation
-- [ ] Page 1: [README.md](../README.md)
-- [ ] Page 2: [Software Engineering Evolution](./tutorial-1/concepts/software-engineering-evolution.md)
+### Phase 1: The Context
+- [ ] Page 1: [Software Engineering Evolution](./tutorial-1/concepts/software-engineering-evolution.md)
+- [ ] Page 2: [Architecture in AI Era](./tutorial-1/concepts/architecture-in-ai-era.md)
 
-### Phase 2: Core Concepts
+### Phase 2: Core Concepts - "The What"
 - [ ] Page 3: [LLM Fundamentals](./tutorial-1/concepts/llm-fundamentals.md)
 - [ ] Page 4: [Tool Calling Architecture](./tutorial-1/concepts/tool-calling-architecture.md)
 - [ ] Page 5: [MCP Introduction](./tutorial-1/concepts/mcp-intro.md)
-- [ ] Page 5a: [Tech Stack Decisions](./tutorial-1/concepts/tech-stack-decisions.md) (Optional)
 - [ ] Page 6: [Testing Agents](./tutorial-1/concepts/testing-agents.md)
-- [ ] Page 6a: [Architecture in AI Era](./tutorial-1/concepts/architecture-in-ai-era.md)
 
-### Phase 3: Implementation Guides
-- [ ] Page 7: [Prompting Techniques](./tutorial-1/guides/prompting.md)
-- [ ] Page 8: [Context Management](./tutorial-1/guides/context-management.md)
-- [ ] Page 9: [Engineering Best Practices](./tutorial-1/guides/engineering.md)
-- [ ] Page 10: [Agentic Code Practices](./tutorial-1/guides/agentic-practices.md)
-- [ ] Page 10a: [Package Structure Guide](./tutorial-1/guides/package-structure.md) (Reference)
+### Phase 3: Deep Dives - "The Why"
+- [ ] Page 7: [Architecture Evolution](./tutorial-1/architecture/evolution.md)
+- [ ] Page 8: [LLM Driven Design](./tutorial-1/architecture/llm-driven-design.md)
+- [ ] Page 9: [Visualization Tools](./tutorial-1/architecture/visualization-tools.md)
 
-### Phase 4: Advanced Architecture (Optional)
-- [ ] Page 13: [Architecture Evolution](./tutorial-1/architecture/evolution.md)
-- [ ] Page 14: [LLM Driven Design](./tutorial-1/architecture/llm-driven-design.md)
-- [ ] Page 15: [Visualization Tools](./tutorial-1/architecture/visualization-tools.md)
+### Phase 4: Implementation Guides - "The How"
+- [ ] Page 10: [Prompting Techniques](./tutorial-1/guides/prompting.md)
+- [ ] Page 11: [Context Management](./tutorial-1/guides/context-management.md)
+- [ ] Page 12: [Engineering Best Practices](./tutorial-1/guides/engineering.md)
+- [ ] Page 13: [Agentic Code Practices](./tutorial-1/guides/agentic-practices.md)
+- [ ] Page 14: [Package Structure Guide](./tutorial-1/guides/package-structure.md)
+
+### Optional References
+- [ ] [Tech Stack Decisions](../docs/tech-stack.md)
 
 ---
 

@@ -1,6 +1,6 @@
 # Python Package Structure Guide
 
-**Page 10a of 16** | [← Previous: Agentic Code Practices](./agentic-practices.md) | [Next: Architecture Evolution →](../architecture/evolution.md) | [↑ Reading Guide](../READING_GUIDE.md)
+**Page 14 of 16** | [← Previous: Agentic Code Practices](./agentic-practices.md) | [Next: Lab 1 →](../../lab-1/README.md) | [↑ Reading Guide](../READING_GUIDE.md)
 
 ---
 
@@ -220,5 +220,5 @@ Following these practices makes your agentic AI codebase:
 
 ---
 
-**Page 10a of 16** | [← Previous: Agentic Code Practices](./agentic-practices.md) | [Next: Architecture Evolution →](../architecture/evolution.md) | [↑ Reading Guide](../READING_GUIDE.md)
+**Page 14 of 16** | [← Previous: Agentic Code Practices](./agentic-practices.md) | [Next: Lab 1 →](../../lab-1/README.md) | [↑ Reading Guide](../READING_GUIDE.md)
 

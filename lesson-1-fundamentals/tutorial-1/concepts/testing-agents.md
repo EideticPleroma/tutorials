@@ -1,6 +1,6 @@
 # Testing Agents: Observe, Validate, Evaluate
 
-**Page 6 of 16** | [← Previous: MCP Introduction](./mcp-intro.md) | [Next: Prompting Techniques →](../guides/prompting.md) | [↑ Reading Guide](../READING_GUIDE.md)
+**Page 6 of 16** | [← Previous: MCP Introduction](./mcp-intro.md) | [Next: Architecture Evolution →](../architecture/evolution.md) | [↑ Reading Guide](../READING_GUIDE.md)
 
 Testing AI agents is fundamentally different from testing traditional software. Agents are non-deterministic (probabilistic), meaning they might solve the same problem in different ways each time.
 

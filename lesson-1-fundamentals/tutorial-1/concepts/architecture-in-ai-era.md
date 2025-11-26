@@ -1,6 +1,6 @@
 # Architecture in the AI Era
 
-**Page 6a of 16** | [← Previous: Testing Agents](./testing-agents.md) | [Next: Prompting Techniques →](../guides/prompting.md) | [↑ Reading Guide](../READING_GUIDE.md)
+**Page 2 of 16** | [← Previous: Software Engineering Evolution](./software-engineering-evolution.md) | [Next: LLM Fundamentals →](./llm-fundamentals.md) | [↑ Reading Guide](../READING_GUIDE.md)
 
 Software architecture has traditionally been a "measure twice, cut once" discipline. In the AI era, it's becoming "measure once, cut fast, check, and refine."
 
