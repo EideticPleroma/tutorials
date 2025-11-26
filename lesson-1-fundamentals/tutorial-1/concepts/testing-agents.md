@@ -26,7 +26,7 @@ flowchart TD
     B -- "Did it crash? Did it call tool?" --> B
     C -- "Was the answer good?" --> C
     
-    style OVE fill:#f5f5f5,stroke:#333,stroke-width:2px
+    style OVE fill:#333,stroke:#333,stroke-width:2px,color:#fff
     style A fill:#e3f2fd,stroke:#1565c0
     style B fill:#e8f5e9,stroke:#2e7d32
     style C fill:#fff3e0,stroke:#ef6c00
