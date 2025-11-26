@@ -29,8 +29,8 @@ graph TD
         A3 --> A4[Probabilistic]
     end
 
-    style Traditional fill:#e3f2fd,stroke:#1565c0,stroke-width:2px
-    style Agentic fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
+    style Traditional fill:#e3f2fd,stroke:#1565c0,stroke-width:2px,color:#333
+    style Agentic fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px,color:#333
 ```
 
 **The Discovery Loop**:
