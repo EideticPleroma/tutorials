@@ -31,6 +31,11 @@ graph TD
 
     style Traditional fill:#e3f2fd,stroke:#1565c0,stroke-width:2px,color:#333
     style Agentic fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px,color:#333
+    
+    linkStyle 0 stroke:#1565c0,stroke-width:2px;
+    linkStyle 1 stroke:#1565c0,stroke-width:2px;
+    linkStyle 2 stroke:#7b1fa2,stroke-width:2px;
+    linkStyle 3 stroke:#7b1fa2,stroke-width:2px;
 ```
 
 **The Discovery Loop**:
