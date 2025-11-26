@@ -23,8 +23,8 @@ flowchart TD
     end
 
     A -- Inputs/Outputs --> A
-    B -- "Did it crash? Did it call tool?" --> B
-    C -- "Was the answer good?" --> C
+    B -- "1. Did it crash? 2. Did it call tool?" --> B
+    C -- "1. Was the answer good?" --> C
     
     style OVE fill:#333,stroke:#333,stroke-width:2px,color:#fff
     style A fill:#e3f2fd,stroke:#1565c0
