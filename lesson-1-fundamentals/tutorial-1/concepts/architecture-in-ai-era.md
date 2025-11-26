@@ -9,20 +9,29 @@ Software architecture has traditionally been a "measure twice, cut once" discipl
 ```mermaid
 graph LR
     subgraph Traditional ["Waterfall / Agile 1.0"]
+        direction TB
         A[Design Specs] --> B[Implementation]
         B --> C[Testing]
         C -->|High Cost| A
     end
 
     subgraph AI_Native ["AI-Native Loop"]
+        direction TB
         D[Prompt/Intent] --> E[Prototype]
         E --> F[Verify/Review]
         F -->|Low Cost| D
         F -->|Refine| E
     end
     
-    style Traditional fill:#f9f,stroke:#333,stroke-width:2px
-    style AI_Native fill:#bbf,stroke:#333,stroke-width:2px
+    %% Softer colors for better eye comfort
+    style Traditional fill:#e1f5fe,stroke:#01579b,stroke-width:2px,color:#000
+    style AI_Native fill:#f3e5f5,stroke:#4a148c,stroke-width:2px,color:#000
+    style A fill:#fff,stroke:#333,color:#000
+    style B fill:#fff,stroke:#333,color:#000
+    style C fill:#fff,stroke:#333,color:#000
+    style D fill:#fff,stroke:#333,color:#000
+    style E fill:#fff,stroke:#333,color:#000
+    style F fill:#fff,stroke:#333,color:#000
 ```
 
 Traditionally, we spent weeks designing strict class hierarchies and database schemas before writing a line of code. Refactoring was expensive.

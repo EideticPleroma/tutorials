@@ -25,19 +25,18 @@ Architecture emerges from dialogue.
 
 ```mermaid
 mindmap
-  root((Co-Architect Loop))
-    Initial Proposal
+  root((Co-Architect))
+    Proposal
       Pros
       Cons
     Critique
-      Security Gaps
-      Scalability Issues
+      Security
+      Scale
     Refinement
-      Better Patterns
-      Cleaner Interfaces
-    Final Design
-      Agreed Spec
-      Implementation Plan
+      Patterns
+      Clean Code
+    Final Spec
+      Agreed Plan
 ```
 
 *   **User**: "Your proposal looks good, but using a global variable for configuration is bad practice."

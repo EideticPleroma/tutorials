@@ -1,6 +1,6 @@
 # Model Context Protocol (MCP)
 
-**Page 5 of 16** | [← Previous: Tool Calling Architecture](./tool-calling-architecture.md) | [Next: Testing Agents →](./testing-agents.md) | [↑ Reading Guide](../READING_GUIDE.md) | [📋 Tech Stack Reference](./tech-stack-decisions.md)
+**Page 5 of 16** | [← Previous: Tool Calling Architecture](./tool-calling-architecture.md) | [Next: Testing Agents →](./testing-agents.md) | [↑ Reading Guide](../READING_GUIDE.md)
 
 The Model Context Protocol (MCP) is an open standard that standardizes how AI agents interact with data and tools.
 

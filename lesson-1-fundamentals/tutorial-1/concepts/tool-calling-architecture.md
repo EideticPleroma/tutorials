@@ -4,7 +4,7 @@
 
 "Tool calling" (or function calling) is the capability that turns a chatbot into an agent. It allows the LLM to interact with the outside world.
 
-## The Loop
+## The 7 Step Tool Calling Loop
 
 Tool calling is not magic; it's a structured dialogue loop:
 
@@ -57,7 +57,7 @@ sequenceDiagram
 *   **Loops**: The model might get stuck calling the same tool repeatedly.
 *   **Error Handling**: If a tool fails, the agent needs to know how to recover (e.g., try a different search query).
 
-## Modern Tool Calling: Structured Outputs (2025)
+## Modern Tool Calling: Structured Outputs (Not Essential)
 
 **What's Changed**: Modern LLMs (GPT-4o, Claude 3.5, Llama 3.1) now support **enhanced JSON schema compliance**.
 
@@ -66,7 +66,7 @@ sequenceDiagram
 *   Parse response, catch errors if format is wrong
 *   Retry on parsing failures
 
-**Modern Approach** (2025 Production):
+**Modern Approach** (Production):
 *   Use `.with_structured_output(schema)` or similar API methods
 *   LLM guarantees JSON compliance with schema
 *   Eliminates parsing errors, faster iteration
@@ -155,4 +155,3 @@ A chatbot only generates text from training data. An agent can interact with the
 </details>
 
 **Ready?** If you understand tool calling, you're ready for [MCP Introduction](./mcp-intro.md) to see how we standardize tool interfaces.
-

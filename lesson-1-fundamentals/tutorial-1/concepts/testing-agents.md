@@ -13,6 +13,25 @@ Testing AI agents is fundamentally different from testing traditional software. 
 
 To test agents effectively, we use the **Observe, Validate, Evaluate** loop.
 
+```mermaid
+flowchart TD
+    subgraph OVE [O.V.E. Methodology]
+        direction TB
+        A[Observe] -->|Capture Trace| B[Validate]
+        B -->|Deterministic Checks| C[Evaluate]
+        C -->|Quality Score| D[Result]
+    end
+
+    A -- Inputs/Outputs --> A
+    B -- "Did it crash? Did it call tool?" --> B
+    C -- "Was the answer good?" --> C
+    
+    style OVE fill:#f9f,stroke:#333,stroke-width:2px
+    style A fill:#e1f5fe,stroke:#01579b
+    style B fill:#fff9c4,stroke:#fbc02d
+    style C fill:#e8f5e9,stroke:#2e7d32
+```
+
 ### 1. Observe
 Capture not just the final answer, but the *process*.
 *   What tools were called?
@@ -41,7 +60,7 @@ In this tutorial, we will build a simple test harness that:
 3.  Runs assertions (validations) on the trace.
 4.  Can be extended to run evaluations.
 
-## Production Testing Tools (2025)
+## Production Testing Tools
 
 While O.V.E. teaches fundamentals, production systems typically use specialized tools:
 

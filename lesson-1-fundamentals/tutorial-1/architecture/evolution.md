@@ -16,6 +16,23 @@ We realized we couldn't predict the future. We broke monoliths into microservice
 
 In the AI era, the cost of writing code has dropped near zero. The cost of *reading* and *maintaining* it has stayed the same.
 
+```mermaid
+graph TD
+    subgraph Traditional ["Traditional QA"]
+        T1[Unit Test] --> T2[Pass/Fail]
+        T2 --> T3[Deterministic]
+    end
+
+    subgraph Agentic ["Agentic Evaluation"]
+        A1[Trace Run] --> A2[LLM Judge]
+        A2 --> A3[Quality Score]
+        A3 --> A4[Probabilistic]
+    end
+
+    style Traditional fill:#e3f2fd,stroke:#1565c0,stroke-width:2px
+    style Agentic fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
+```
+
 **The Discovery Loop**:
 Instead of planning the perfect module structure on a whiteboard, you:
 1.  **Prompt** the AI for a solution.
