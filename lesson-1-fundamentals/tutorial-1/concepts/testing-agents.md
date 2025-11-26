@@ -26,10 +26,11 @@ flowchart TD
     B -- "Did it crash? Did it call tool?" --> B
     C -- "Was the answer good?" --> C
     
-    style OVE fill:#f9f,stroke:#333,stroke-width:2px
-    style A fill:#e1f5fe,stroke:#01579b
-    style B fill:#fff9c4,stroke:#fbc02d
-    style C fill:#e8f5e9,stroke:#2e7d32
+    style OVE fill:#f5f5f5,stroke:#333,stroke-width:2px
+    style A fill:#e3f2fd,stroke:#1565c0
+    style B fill:#e8f5e9,stroke:#2e7d32
+    style C fill:#fff3e0,stroke:#ef6c00
+    style D fill:#fce4ec,stroke:#c2185b
 ```
 
 ### 1. Observe
