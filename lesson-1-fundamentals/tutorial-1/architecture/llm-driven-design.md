@@ -23,6 +23,23 @@ Don't just ask "Write code." Ask for the *plan*.
 
 Architecture emerges from dialogue.
 
+```mermaid
+mindmap
+  root((Co-Architect Loop))
+    Initial Proposal
+      Pros
+      Cons
+    Critique
+      Security Gaps
+      Scalability Issues
+    Refinement
+      Better Patterns
+      Cleaner Interfaces
+    Final Design
+      Agreed Spec
+      Implementation Plan
+```
+
 *   **User**: "Your proposal looks good, but using a global variable for configuration is bad practice."
 *   **Agent**: "You are right. I will refactor to use a `Config` class passed via dependency injection."
 *   **User**: "Better. Now, what if we want to swap the scraping engine later?"

@@ -6,16 +6,42 @@ The Model Context Protocol (MCP) is an open standard that standardizes how AI ag
 
 ## The Problem
 
-Before MCP, every AI tool needed a custom integration:
+Before MCP, every AI tool needed a custom integration. This created an $N \times M$ mess:
+
+```mermaid
+graph TD
+    subgraph "The N x M Mess"
+        C1[Claude] --> G[GitHub]
+        C1 --> D[Drive]
+        C1 --> S[Slack]
+        C2[ChatGPT] --> G
+        C2 --> D
+        C2 --> S
+        C3[Cursor] --> G
+        C3 --> D
+        C3 --> S
+    end
+```
+
 *   Connecting to GitHub required a specific GitHub API wrapper.
 *   Connecting to PostgreSQL required a specific SQL wrapper.
 *   Connecting to Google Drive required a specific Drive wrapper.
 
-This $N \times M$ problem meant developers spent all their time building connectors.
-
 ## The MCP Solution
 
 MCP works like a USB-C port for AI applications.
+
+```mermaid
+graph TD
+    subgraph "The MCP Standard"
+        C1[Claude] --> P((MCP Protocol))
+        C2[ChatGPT] --> P
+        C3[Cursor] --> P
+        P --> G[GitHub Server]
+        P --> D[Drive Server]
+        P --> S[Slack Server]
+    end
+```
 
 *   **MCP Servers**: Expose resources (data) and tools (functions) via a standard protocol.
 *   **MCP Clients**: AI applications (like Cursor, Claude Desktop, or your custom agent) that can connect to any MCP server.

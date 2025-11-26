@@ -6,6 +6,25 @@ Software architecture has traditionally been a "measure twice, cut once" discipl
 
 ## The Shift: Iteration over Specification
 
+```mermaid
+graph LR
+    subgraph Traditional ["Waterfall / Agile 1.0"]
+        A[Design Specs] --> B[Implementation]
+        B --> C[Testing]
+        C -->|High Cost| A
+    end
+
+    subgraph AI_Native ["AI-Native Loop"]
+        D[Prompt/Intent] --> E[Prototype]
+        E --> F[Verify/Review]
+        F -->|Low Cost| D
+        F -->|Refine| E
+    end
+    
+    style Traditional fill:#f9f,stroke:#333,stroke-width:2px
+    style AI_Native fill:#bbf,stroke:#333,stroke-width:2px
+```
+
 Traditionally, we spent weeks designing strict class hierarchies and database schemas before writing a line of code. Refactoring was expensive.
 
 With LLMs, **refactoring is cheap**.

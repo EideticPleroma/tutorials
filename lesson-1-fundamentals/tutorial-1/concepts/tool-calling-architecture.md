@@ -8,6 +8,23 @@
 
 Tool calling is not magic; it's a structured dialogue loop:
 
+```mermaid
+sequenceDiagram
+    participant U as User
+    participant S as System (Agent)
+    participant L as LLM
+    participant T as Tool (Function)
+
+    U->>S: "What's the weather in London?"
+    S->>L: Prompt + Tool Definitions
+    L->>S: Call Tool: get_weather("London")
+    S->>T: Execute get_weather("London")
+    T-->>S: Result: "15°C, Cloudy"
+    S->>L: Tool Output: "15°C, Cloudy"
+    L->>S: "It's 15°C and cloudy in London."
+    S->>U: Final Response
+```
+
 1.  **User Request**: "What is the weather in London?"
 2.  **Schema Injection**: The system sends the prompt *plus* a list of available tools (function definitions) to the LLM.
     ```json

@@ -10,6 +10,22 @@ At its core, an LLM is a probabilistic engine that predicts the next token in a 
 
 ### The Inference Pipeline
 
+```mermaid
+sequenceDiagram
+    participant User
+    participant Tokenizer
+    participant Model
+    
+    User->>Tokenizer: "Hello world"
+    Tokenizer->>Tokenizer: [15496, 995] (Tokens)
+    Tokenizer->>Model: Input IDs
+    loop Layer by Layer
+        Model->>Model: Attention & Processing
+    end
+    Model->>Tokenizer: Output Probabilities
+    Tokenizer->>User: "!" (Next Token)
+```
+
 1.  **Tokenization**: Text is broken down into smaller units called "tokens" (roughly 0.75 words).
 2.  **Embedding**: Tokens are converted into high-dimensional vectors (lists of numbers) representing semantic meaning.
 3.  **Attention**: The model looks at all tokens in the context window to understand relationships (e.g., "it" refers to "the cat").

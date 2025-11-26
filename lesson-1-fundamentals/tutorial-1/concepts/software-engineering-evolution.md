@@ -6,6 +6,19 @@ Agentic AI is not just a new tool; it's a new way of working. As we move from "w
 
 ## From Syntax to Semantics
 
+```mermaid
+timeline
+    title Evolution of Coding
+    Code 1.0 (Manual) : Memorizing Syntax
+                      : Standard Libraries
+                      : Boilerplate
+    Code 2.0 (AI-Assisted) : Copilot / Autocomplete
+                           : "Tab-Complete" Logic
+    Agentic AI (Orchestration) : Defining Intent
+                               : System Architecture
+                               : Verification & Review
+```
+
 *   **Old**: Memorizing syntax, standard libraries, and boilerplate.
 *   **New**: Focusing on system architecture, data flow, and *intent*. The AI handles the syntax; you handle the logic and verification.
 
