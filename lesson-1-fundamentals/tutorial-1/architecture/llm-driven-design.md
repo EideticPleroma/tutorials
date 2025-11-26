@@ -24,19 +24,40 @@ Don't just ask "Write code." Ask for the *plan*.
 Architecture emerges from dialogue.
 
 ```mermaid
-mindmap
-  root((Co-Architect))
-    Proposal
-      Pros
-      Cons
-    Critique
-      Security
-      Scale
-    Refinement
-      Patterns
-      Clean Code
-    Final Spec
-      Agreed Plan
+graph LR
+    root((Co-Architect))
+    
+    root --> P[Proposal]
+    P --> P1(Pros)
+    P --> P2(Cons)
+    
+    root --> C[Critique]
+    C --> C1(Security)
+    C --> C2(Scale)
+    
+    root --> R[Refinement]
+    R --> R1(Patterns)
+    R --> R2(Clean Code)
+    
+    root --> F[Final Spec]
+    F --> F1(Agreed Plan)
+
+    style root fill:#212121,stroke:#fff,stroke-width:4px,color:#fff
+    style P fill:#1976d2,stroke:#fff,color:#fff
+    style C fill:#d32f2f,stroke:#fff,color:#fff
+    style R fill:#388e3c,stroke:#fff,color:#fff
+    style F fill:#fbc02d,stroke:#fff,color:#000
+    
+    style P1 fill:#bbdefb,stroke:#1976d2,color:#000
+    style P2 fill:#bbdefb,stroke:#1976d2,color:#000
+    
+    style C1 fill:#ffcdd2,stroke:#d32f2f,color:#000
+    style C2 fill:#ffcdd2,stroke:#d32f2f,color:#000
+    
+    style R1 fill:#c8e6c9,stroke:#388e3c,color:#000
+    style R2 fill:#c8e6c9,stroke:#388e3c,color:#000
+    
+    style F1 fill:#fff9c4,stroke:#fbc02d,color:#000
 ```
 
 *   **User**: "Your proposal looks good, but using a global variable for configuration is bad practice."
