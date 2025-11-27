@@ -46,6 +46,7 @@ This is a comprehensive educational project teaching Agentic AI from fundamental
 - **Type Hints**: MANDATORY for all function signatures (Agents rely on them).
 - **Docstrings**: Google style. MANDATORY for all tools (Agents read them).
 - **Logging**: Use lazy % formatting, NOT f-strings. Example: `logger.info("Message %s", var)` not `logger.info(f"Message {var}")`.
+- **SOLID**: Use these priciples wisely.  Build up the mental model as we progress.
 
 ### TypeScript
 - **Style**: Standard JS.
