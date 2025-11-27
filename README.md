@@ -35,10 +35,31 @@ A comprehensive, hands-on tutorial series teaching agentic AI from fundamentals 
 
 ---
 
-## 🚧 Upcoming Lessons
+## 🟡 Lesson 3: Memory Systems & RAG
+*(In Development - Documentation and exercises available)*
 
-**Lesson 3: Memory Systems & RAG**
-Vector databases, long-term memory, and retrieval-augmented generation.
+**Enhance agents with long-term memory and retrieval-augmented generation using LlamaIndex.**
+
+### Key Skills
+*   RAG pipeline architecture and implementation
+*   Vector databases and semantic search
+*   Multi-model orchestration (Llama for planning, DeepSeek for coding)
+*   Knowledge integration with agent systems
+*   Testing retrieval quality with O.V.E. methodology
+
+### How to Approach
+1.  **Read**: Start with the [Memory & RAG Concepts](./lesson-3-memory-rag/tutorial-3/READING_GUIDE.md).
+2.  **Lab**: Build RAG-powered agents in [Lab 3](./lesson-3-memory-rag/lab-3/README.md).
+
+### Current Status
+*   ✅ Core documentation complete (RAG architecture, embeddings, multi-model coordination)
+*   ✅ Lab exercises defined (4 exercises: LlamaIndex setup → Project embedding → Multi-model → Architect-Builder)
+*   🚧 Code scaffolds in place, awaiting implementation
+*   🚧 O.V.E. test harness for RAG systems in development
+
+---
+
+## 🚧 Upcoming Lessons
 
 **Lesson 4: Production Patterns**
 Monitoring, scaling, deployment, and reliability engineering.
