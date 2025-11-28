@@ -1,6 +1,10 @@
 # Exercise 4: The Complete Architect-Builder Workflow
 
-**Duration**: ~120 minutes | **Difficulty**: Advanced (Challenge)
+| Duration | Difficulty | Prerequisites | Skills Practiced |
+|----------|------------|---------------|------------------|
+| ~120 min | Advanced | Exercise 3 complete | Architect-Builder pattern, O.V.E. for RAG, End-to-end workflows |
+
+**Challenge Exercise**
 
 ## Objective
 

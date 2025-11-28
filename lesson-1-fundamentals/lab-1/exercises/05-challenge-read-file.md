@@ -1,8 +1,10 @@
 # Challenge: Read File Tool
 
-**Goal**: Extend the agent with file reading capabilities.
+| Duration | Difficulty | Prerequisites | Skills Practiced |
+|----------|------------|---------------|------------------|
+| ~90 min | Intermediate | Exercise 2, 4 complete | Multi-error handling, Tool chaining, Complete test suite |
 
-**Difficulty**: Intermediate | **Time**: 1-2 hours
+**Goal**: Extend the agent with file reading capabilities.
 
 ## Context
 

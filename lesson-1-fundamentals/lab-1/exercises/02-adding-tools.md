@@ -1,5 +1,9 @@
 # Exercise 2: Adding a Tool
 
+| Duration | Difficulty | Prerequisites | Skills Practiced |
+|----------|------------|---------------|------------------|
+| ~45 min | Beginner | Exercise 1 complete | Tool creation, Decorator patterns, Error handling |
+
 **Goal**: Extend the Agent's capabilities.
 
 ## Context

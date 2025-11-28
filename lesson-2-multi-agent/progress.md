@@ -39,8 +39,62 @@ Track your progress through the lab exercises and documentation reading.
 
 ---
 
-### Exercise 1: Build a Coordinator Agent
+### Exercise 0: Bridge - From Single to Multi-Agent (NEW)
+**[Go to Exercise](./lab-2/exercises/00-bridge-refactoring.md)** | **Time**: ~45 minutes
+
+> **Recommended for students coming from Tutorial 1.** This exercise bridges the gap between single-agent and multi-agent thinking.
+
+- [ ] Step 1: Created GathererAgent with limited tools
+- [ ] Step 2: Created ReporterAgent (LLM-only)
+- [ ] Step 3: Wired two agents together
+- [ ] Step 4: Reflected on the pattern
+- [ ] **Checkpoint**: Understand why direct function calls don't scale
+
+**Key Learning:**
+- Responsibility splitting is the core multi-agent pattern
+- Direct function calls work for 2 agents but not 5+
+
+---
+
+### Exercise 1A: Coordinator Basics
+**[Go to Exercise](./lab-2/exercises/01a-coordinator-basics.md)** | **Time**: ~60 minutes
+
+- [ ] Step 1: Initialized coordinator with mock agents
+- [ ] Step 2: Implemented delegation with error handling
+- [ ] Step 3: Implemented sequential workflow
+- [ ] Step 4: Added basic retry logic
+- [ ] Testing: Created `tests/multi_agent/test_coordinator_basics.py`
+- [ ] **Checkpoint**: Coordinator orchestrates workers with direct calls
+
+**Key Learning:**
+- Coordinator orchestrates, workers execute
+- Error handling at each delegation step
+
+---
+
+### Exercise 1B: Message Protocol
+**[Go to Exercise](./lab-2/exercises/01b-message-protocol.md)** | **Time**: ~60 minutes
+
+- [ ] Step 1: Implemented MessageType enum
+- [ ] Step 2: Implemented Message class with all fields
+- [ ] Step 3: Added JSON serialization (to_json/from_json)
+- [ ] Step 4: Added helper methods (create_response/create_error)
+- [ ] Step 5: Updated coordinator delegate() to use messages
+- [ ] Step 6: Updated worker agents with execute_message()
+- [ ] Testing: Created `tests/multi_agent/test_message_protocol.py`
+- [ ] **Checkpoint**: Agents communicate via structured messages
+
+**Key Learning:**
+- Message protocol enables traceability and debugging
+- trace_id groups related messages
+- in_reply_to links responses to requests
+
+---
+
+### (Legacy) Exercise 1: Build a Coordinator Agent
 **[Go to Exercise](./lab-2/exercises/01-coordinator-agent.md)** | **Time**: ~90 minutes
+
+> **Note:** This exercise has been split into 1A and 1B above. If you completed this original exercise, skip to Exercise 2.
 
 - [x] Step 1: Reviewed coordinator architecture and patterns
 - [x] Step 2: Implemented coordinator initialization

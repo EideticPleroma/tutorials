@@ -1,5 +1,9 @@
 # Exercise 3: Prompt Engineering
 
+| Duration | Difficulty | Prerequisites | Skills Practiced |
+|----------|------------|---------------|------------------|
+| ~45 min | Beginner | Exercise 2 complete | System prompts, Iterative refinement, AI behavior control |
+
 **Goal**: Control the Agent's brain.
 
 ## Context

@@ -59,6 +59,16 @@ A comprehensive, hands-on tutorial series teaching agentic AI from fundamentals 
 
 ---
 
+## 📚 Additional Resources
+
+Cross-tutorial reference materials to support your learning:
+
+*   **[Glossary](./docs/glossary.md)** - Comprehensive definitions of all key terms
+*   **[Software Patterns](./docs/software-patterns.md)** - Design patterns and SOLID principles demonstrated
+*   **[Tech Stack](./docs/tech-stack.md)** - Technology decisions and rationale
+
+---
+
 ## 🚧 Upcoming Lessons
 
 **Lesson 4: Production Patterns**

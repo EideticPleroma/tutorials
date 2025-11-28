@@ -1,6 +1,8 @@
 # Exercise 1: LlamaIndex Setup
 
-**Duration**: ~60 minutes | **Difficulty**: Beginner
+| Duration | Difficulty | Prerequisites | Skills Practiced |
+|----------|------------|---------------|------------------|
+| ~60 min | Beginner | Ollama running, RAG concepts read | LlamaIndex setup, Document indexing, Basic queries |
 
 ## Objective
 

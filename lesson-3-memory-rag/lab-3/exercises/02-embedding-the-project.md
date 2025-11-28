@@ -1,6 +1,8 @@
 # Exercise 2: Embedding the Tutorial Project
 
-**Duration**: ~90 minutes | **Difficulty**: Intermediate
+| Duration | Difficulty | Prerequisites | Skills Practiced |
+|----------|------------|---------------|------------------|
+| ~90 min | Intermediate | Exercise 1 complete | Code-aware chunking, Project indexing, Retrieval quality testing |
 
 ## Objective
 

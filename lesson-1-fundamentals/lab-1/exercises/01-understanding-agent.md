@@ -1,5 +1,9 @@
 # Exercise 1: Understanding the Agent
 
+| Duration | Difficulty | Prerequisites | Skills Practiced |
+|----------|------------|---------------|------------------|
+| ~30 min | Beginner | Setup complete, Ollama running | Code tracing, Mental model building, AI-assisted learning |
+
 **Goal**: Mental model mapping. You cannot build what you do not understand.
 
 ## Context

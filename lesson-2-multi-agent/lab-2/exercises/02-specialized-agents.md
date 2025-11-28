@@ -1,6 +1,8 @@
 # Exercise 2: Create Specialized Agents
 
-**Duration**: ~90 minutes | **Difficulty**: Intermediate
+| Duration | Difficulty | Prerequisites | Skills Practiced |
+|----------|------------|---------------|------------------|
+| ~90 min | Intermediate | Exercise 1A-1B complete | Agent specialization, Tool filtering, System prompts |
 
 ## Objective
 

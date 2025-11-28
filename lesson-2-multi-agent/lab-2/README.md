@@ -62,11 +62,21 @@ Ensure you have completed Tutorial 1:
 
 ## Lab Structure
 
-The lab is divided into 4 progressive exercises:
-1. **[Build a Coordinator Agent](./exercises/01-coordinator-agent.md)** (~90 min) - Orchestration logic
-2. **[Create Specialized Agents](./exercises/02-specialized-agents.md)** (~90 min) - Research, data, writer agents
-3. **[Implement Agent Communication](./exercises/03-agent-communication.md)** (~60 min) - Message protocol
-4. **[Challenge: Research Workflow](./exercises/04-challenge-workflow.md)** (~120 min, optional) - End-to-end system
+The lab is divided into progressive exercises with a bridge from Tutorial 1:
+
+**Bridge Exercise (New students start here):**
+0. **[Bridge: From Single to Multi-Agent](./exercises/00-bridge-refactoring.md)** (~45 min) - Smooth transition from Tutorial 1
+
+**Core Exercises:**
+1. **[Coordinator Basics](./exercises/01a-coordinator-basics.md)** (~60 min) - Build coordinator with direct calls
+2. **[Message Protocol](./exercises/01b-message-protocol.md)** (~60 min) - Add structured communication
+3. **[Create Specialized Agents](./exercises/02-specialized-agents.md)** (~90 min) - Research, data, writer agents
+4. **[Review Agent Communication](./exercises/03-agent-communication.md)** (~60 min) - Validate protocol
+
+**Challenge:**
+5. **[Challenge: Research Workflow](./exercises/04-challenge-workflow.md)** (~120 min, optional) - End-to-end system
+
+> **Note:** The original Exercise 1 has been split into 1A (Coordinator Basics) and 1B (Message Protocol) to reduce cognitive load. If you completed the original Exercise 1, you can skip to Exercise 2.
 
 ## Getting Started
 

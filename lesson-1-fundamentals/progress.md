@@ -202,6 +202,22 @@ After completing Lesson 1:
 - [ ] Document personal insights above
 - [ ] Set up repository for your own agent project
 
+### Ready for Tutorial 2?
+
+Start with the **[Bridge Exercise](../lesson-2-multi-agent/lab-2/exercises/00-bridge-refactoring.md)** to smoothly transition from single-agent to multi-agent thinking. This exercise:
+- Uses your Tutorial 1 agent as a starting point
+- Introduces responsibility splitting without complexity
+- Prepares you for coordinator-worker patterns
+
+Then continue with [Tutorial 2: Multi-Agent Systems](../lesson-2-multi-agent/tutorial-2/READING_GUIDE.md).
+
+---
+
+## 📚 Additional Resources
+
+- [Glossary](../docs/glossary.md) - Definitions of all key terms
+- [Software Patterns](../docs/software-patterns.md) - Design patterns used in tutorials
+
 ---
 
 **Last Updated**: _________________

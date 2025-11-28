@@ -1,6 +1,10 @@
 # Exercise 4: Challenge - Research Workflow
 
-**Duration**: ~120 minutes | **Difficulty**: Advanced | **Optional**
+| Duration | Difficulty | Prerequisites | Skills Practiced |
+|----------|------------|---------------|------------------|
+| ~120 min | Advanced | Exercises 1-3 complete | End-to-end workflows, Parallel execution, Quality gates |
+
+**Optional Challenge**
 
 ## Objective
 

@@ -1,6 +1,8 @@
 # Exercise 3: Multi-Model Coordination
 
-**Duration**: ~90 minutes | **Difficulty**: Intermediate
+| Duration | Difficulty | Prerequisites | Skills Practiced |
+|----------|------------|---------------|------------------|
+| ~90 min | Intermediate | Exercise 2 complete | DeepSeek setup, Query classification, Model routing |
 
 ## Objective
 

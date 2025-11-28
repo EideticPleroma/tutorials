@@ -1,5 +1,9 @@
 # Exercise 4: Testing Methodology
 
+| Duration | Difficulty | Prerequisites | Skills Practiced |
+|----------|------------|---------------|------------------|
+| ~60 min | Intermediate | Exercise 2-3 complete | O.V.E. methodology, Unit testing, Flakiness handling |
+
 **Goal**: Trust but Verify.
 
 ## Context

@@ -1,6 +1,8 @@
 # Exercise 3: Review and Validate Agent Communication
 
-**Duration**: ~60 minutes | **Difficulty**: Intermediate
+| Duration | Difficulty | Prerequisites | Skills Practiced |
+|----------|------------|---------------|------------------|
+| ~60 min | Intermediate | Exercise 1A-1B, 2 complete | Message protocol validation, Trace debugging, Protocol analysis |
 
 ## Objective
 
