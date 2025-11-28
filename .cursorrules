@@ -11,16 +11,20 @@ This is a comprehensive educational project teaching Agentic AI from fundamental
 
 **Tutorial 2 - Multi-Agent Systems**: Build coordinator-worker architectures with specialized agents, message protocols, and shared state management.
 
-**Future Tutorials**: Memory systems (RAG), production patterns, advanced frameworks.
+**Tutorial 3 - Memory Systems & RAG**: Build RAG-powered agents with LlamaIndex, vector search, and multi-model orchestration.
+
+**Future Tutorials**: Production patterns, advanced frameworks (LangChain, CrewAI).
 
 ## 2. Directory Structure
 
 ### Core Implementation
 - `src/agent/`: Tutorial 1 single agent implementation
 - `src/multi_agent/`: Tutorial 2 multi-agent system (coordinator, workers, protocols)
+- `src/memory_rag/`: Tutorial 3 RAG engine, embeddings, knowledge tools, model router
 - `src/tools/`: TypeScript MCP tools and bridges
 - `tests/unit/`: Tutorial 1 tests
 - `tests/multi_agent/`: Tutorial 2 tests
+- `tests/memory_rag/`: Tutorial 3 RAG tests (retrieval quality, multi-model)
 
 ### Documentation
 - `lesson-1-fundamentals/`: Tutorial 1 documentation and labs
@@ -31,6 +35,10 @@ This is a comprehensive educational project teaching Agentic AI from fundamental
   - `tutorial-2/`: Concepts, guides, architecture  
   - `lab-2/`: Exercises, FAQ, troubleshooting
   - `progress.md`: Progress tracker for Tutorial 2
+- `lesson-3-memory-rag/`: Tutorial 3 documentation and labs
+  - `tutorial-3/`: Concepts, guides, architecture
+  - `lab-3/`: Exercises, FAQ, troubleshooting
+  - `progress.md`: Progress tracker for Tutorial 3
 - `docs/`: Shared documentation across tutorials
   - `tech-stack.md`: Centralized tech stack decisions
 
@@ -67,11 +75,21 @@ This is a comprehensive educational project teaching Agentic AI from fundamental
 4.  Message protocol defined in `src/multi_agent/message_protocol.py`
 5.  **MUST** add tests in `tests/multi_agent/`
 
+### Tutorial 3: Adding RAG Components
+1.  RAG engine components go in `src/memory_rag/rag_engine.py`
+2.  Document loaders and chunking in `src/memory_rag/document_loaders.py`
+3.  Embedding configuration in `src/memory_rag/embeddings.py`
+4.  Knowledge tools for agent integration in `src/memory_rag/knowledge_tool.py`
+5.  Model router for multi-model orchestration in `src/memory_rag/model_router.py`
+6.  Architect/Builder agents in `src/memory_rag/architect_agent.py` and `builder_agent.py`
+7.  **MUST** add RAG-specific O.V.E. tests in `tests/memory_rag/`
+
 ### Testing Methodology
-- **O.V.E. (Observe-Validate-Evaluate)**: Core testing approach for both tutorials
+- **O.V.E. (Observe-Validate-Evaluate)**: Core testing approach for all tutorials
 - **Validation**: Check deterministic outputs (tool calls, message formats, state updates)
 - **Evaluation**: Check probabilistic outputs (answer quality, agent specialization boundaries)
 - **Integration**: Test multi-agent workflows end-to-end (Tutorial 2)
+- **Retrieval Quality**: Test RAG precision/recall and answer grounding (Tutorial 3)
 
 ## 5. Documentation Guidelines
 
@@ -87,6 +105,12 @@ This is a comprehensive educational project teaching Agentic AI from fundamental
 - Architecture: `lesson-2-multi-agent/tutorial-2/architecture/`
 - Lab exercises: `lesson-2-multi-agent/lab-2/exercises/`
 
+### Tutorial 3 Documentation
+- Concepts: `lesson-3-memory-rag/tutorial-3/concepts/`
+- Guides: `lesson-3-memory-rag/tutorial-3/guides/`
+- Architecture: `lesson-3-memory-rag/tutorial-3/architecture/`
+- Lab exercises: `lesson-3-memory-rag/lab-3/exercises/`
+
 ### Documentation Updates
 - New concepts: Update appropriate `concepts/` directory
 - Architecture changes: Update `README.md` and relevant architecture docs
@@ -99,6 +123,7 @@ This is a comprehensive educational project teaching Agentic AI from fundamental
 - **You are the Mentor**, not the solution provider
 - **Tutorial 1**: Provide step-by-step guidance with detailed examples
 - **Tutorial 2**: Provide AI-native scaffolds with prompts, less hand-holding
+- **Tutorial 3**: Hybrid approach - Scaffolded setup (Ex 1-2), autonomous architecture (Ex 3-4)
 - Students should use AI assistants (you!) to generate implementations
 
 ### Helping Students
@@ -106,21 +131,29 @@ This is a comprehensive educational project teaching Agentic AI from fundamental
 - **Encourage debugging**: Ask "What do the logs say?" before analyzing
 - **Reference documentation**: Point to relevant concept/guide pages
 - **Tutorial 2 approach**: Provide AI prompts they can use, not full solutions
+- **Tutorial 3 approach**: Guide RAG architecture decisions, provide debugging tools, assist with retrieval quality
 
 ### When Students Are Stuck
 1. Ask them to describe the problem (what trying/expecting/actual/error)
 2. Check if they read relevant documentation pages
 3. Guide them to use debugging tools (logs, trace viewer)
 4. Provide AI prompts for them to use, not code directly
+5. For RAG issues: Guide to check embeddings, inspect retrieved chunks, validate similarity scores
 
 ## 7. AI-Native Development (Tutorial 2+)
 
 ### Philosophy
-Tutorial 2 embraces AI-assisted development:
+Tutorial 2-3 embrace AI-assisted development:
 - Provide code scaffolds with TODO comments
 - Include "AI Assistant Prompts" sections in exercises
 - Students use AI to generate implementations
 - Focus on architecture and concepts, not line-by-line coding
+
+Tutorial 3 introduces autonomous architecture:
+- Exercises 1-2: Scaffolded LlamaIndex setup and configuration
+- Exercises 3-4: Students architect multi-model workflows with AI guidance
+- Focus on RAG quality metrics and retrieval optimization
+- Students build their own O.V.E. harness for embeddings/retrieval
 
 ### AI Prompt Best Practices
 When providing prompts for students to use:
@@ -136,6 +169,21 @@ Requirements:
 Based on the project architecture, generate [specific component].
 ```
 
+Tutorial 3 example (multi-model routing):
+```
+@.cursorrules @src/memory_rag/model_router.py
+
+Implement a model router that selects the appropriate LLM based on query type.
+
+Requirements:
+- Route planning/reasoning queries to Llama 3.1
+- Route code generation queries to DeepSeek-Coder
+- Route general Q&A to Llama 3.1
+- Include query classification logic
+
+Based on the project architecture, generate the model router implementation.
+```
+
 ### Student-AI Interaction
 Students should:
 - Always include `@.cursorrules` (Cursor) or ensure context (Continue/Cline)
@@ -146,7 +194,7 @@ Students should:
 ## 8. Interaction Guidelines
 - Commands: Assume `bash` (WSL2/Linux/macOS) or `PowerShell` (Windows)
 - Teaching style: Concepts over code blocks (explain the "why")
-- File paths: Use appropriate lesson prefix (`lesson-1-fundamentals/tutorial-1/` or `lesson-2-multi-agent/tutorial-2/` for documentation)
+- File paths: Use appropriate lesson prefix (`lesson-1-fundamentals/tutorial-1/`, `lesson-2-multi-agent/tutorial-2/`, or `lesson-3-memory-rag/tutorial-3/` for documentation)
 - IDE adaptation: Works with Cursor, Continue, Cline, Copilot, or manual consultation
 - Tutorial awareness: Know which tutorial the student is working on
 
@@ -200,6 +248,8 @@ git checkout main
 git checkout -b feature/lesson-1-lab-01
 # Tutorial 2
 git checkout -b feature/lesson-2-lab-01
+# Tutorial 3
+git checkout -b feature/lesson-3-lab-01
 ```
 
 #### During Lab Development (Documentation Only)
@@ -218,6 +268,8 @@ git commit -m "docs(lesson-X-lab-Y): update exercise instructions"
 - `.agent_state/` directories (runtime agent state)
 - `.agent_logs/` directories (agent execution logs)
 - `.cursor/` directory (IDE-specific settings and files)
+- `./storage/` directories (vector indexes and persisted state)
+- `.models/` directories (cached embedding models)
 
 #### Completing All Labs in a Tutorial
 ```bash
@@ -245,6 +297,18 @@ git commit -m "feat: complete Tutorial 2 - Multi-Agent Systems
 - Lab 2: Specialized Agents
 - Lab 3: Agent Communication
 - Lab 4: Challenge Workflow"
+
+# Tutorial 3
+git merge --squash feature/lesson-3-lab-01
+git merge --squash feature/lesson-3-lab-02
+git merge --squash feature/lesson-3-lab-03
+git merge --squash feature/lesson-3-lab-04
+git commit -m "feat: complete Tutorial 3 - Memory Systems & RAG
+
+- Lab 1: LlamaIndex Setup
+- Lab 2: Embedding the Project
+- Lab 3: Multi-Model Coordination
+- Lab 4: Architect-Builder Workflow"
 ```
 
 #### Quick Reference
@@ -258,7 +322,7 @@ git commit -m "feat: complete Tutorial 2 - Multi-Agent Systems
 - `feat:` - New features (tutorial completion)
 - `fix:` - Bug fixes in exercises
 - `chore:` - Maintenance (dependencies, setup)
-- Use `lesson-1` or `lesson-2` prefix for clarity
+- Use `lesson-1`, `lesson-2`, or `lesson-3` prefix for clarity
 
 ## 10. Multi-Agent Specific Guidelines (Tutorial 2)
 
@@ -291,11 +355,57 @@ git commit -m "feat: complete Tutorial 2 - Multi-Agent Systems
 - Check state changes in `.agent_state/shared_state.json`
 - Use trace viewer: `python scripts/view_trace.py <trace_id>`
 
-## 11. Cross-Tutorial References
+## 11. RAG & Memory Specific Guidelines (Tutorial 3)
+
+### RAG Pipeline Architecture
+- Ingestion (offline): Documents → Chunking → Embeddings → Vector Store
+- Retrieval (online): Query → Embedding → Similarity Search → Top-K Chunks
+- Generation (online): Context + Query → LLM → Answer with Citations
+
+### LlamaIndex Configuration
+- Use Ollama for LLM (llama3.1:8b for general, can switch models per task)
+- Use HuggingFace embeddings (bge-small-en-v1.5) for local, free embeddings
+- Chunk size: 512 tokens, overlap: 50 tokens (tune based on content type)
+- Similarity top-k: 3-5 chunks (balance context vs. noise)
+
+### Multi-Model Orchestration
+- **Planning queries**: Route to Llama 3.1 (better reasoning, architecture)
+- **Code generation**: Route to DeepSeek-Coder (specialized for code)
+- **General Q&A**: Route to Llama 3.1 (good all-around performance)
+- Model router decides based on query classification
+- Full complexity from Exercise 1 - students learn model selection immediately
+
+### Knowledge Integration
+- Parallel track: Build new RAG agents alongside Tutorial 1/2 agents
+- No refactoring of existing agents required (optional enhancement)
+- Use `knowledge_tool` to give agents access to indexed documents
+- Tools query the RAG engine, return context to agent
+
+### Testing RAG Systems (O.V.E. Extended)
+- **Retrieval Quality**: Test if correct chunks are retrieved (precision/recall)
+- **Embedding Similarity**: Validate similarity scores make sense
+- **Answer Grounding**: Ensure LLM uses retrieved context (not hallucinating)
+- **Citation Accuracy**: Verify source citations match retrieved chunks
+- Students build their own test harness guided by AI
+
+### Debugging RAG Systems
+- **Core tools provided**: Similarity inspector, chunk viewer, retrieval visualizer
+- **Teach interpretation**: How to read similarity scores, identify retrieval gaps
+- **AI assists when stuck**: Pair debug retrieval quality issues
+- Common issues: Wrong chunk size, poor query embedding, threshold too strict
+
+### RAG Quality Factors
+- **Chunking strategy**: Code-aware (respects functions/classes), semantic boundaries
+- **Embedding model**: Balance quality vs. speed (bge-small good default)
+- **Context window management**: Don't exceed LLM limits (128K for Llama 3.1)
+- **Retrieval parameters**: top_k (3-5), similarity_threshold (0.7), reranking (optional)
+
+## 12. Cross-Tutorial References
 
 When students ask questions, determine which tutorial they're on:
 - Keywords: "single agent", "tool calling" → Tutorial 1
 - Keywords: "coordinator", "multiple agents", "specialization" → Tutorial 2
+- Keywords: "RAG", "embeddings", "vector search", "knowledge base", "LlamaIndex" → Tutorial 3
 
 ### Tutorial 1 → Tutorial 2 Progression
 - Tutorial 1: Build foundation (single agent, tools, testing)
@@ -303,19 +413,34 @@ When students ask questions, determine which tutorial they're on:
 - Shared concepts: O.V.E. testing, tool registry, system prompts
 - New concepts: Coordination, specialization, message protocol, shared state
 
+### Tutorial 2 → Tutorial 3 Progression
+- Tutorial 2: Multi-agent coordination and specialization
+- Tutorial 3: Add long-term memory and knowledge retrieval
+- Shared concepts: O.V.E. testing, agent architecture, system design
+- New concepts: RAG pipeline, embeddings, vector search, multi-model orchestration, retrieval quality
+
+### Tutorial 1 → Tutorial 2 → Tutorial 3 Full Arc
+- Tutorial 1: Single agent foundation (Capability)
+- Tutorial 2: Multiple coordinated agents (Coordination)
+- Tutorial 3: Knowledge-enhanced agents (Memory)
+- Progression: Build → Orchestrate → Remember
+
 ### Common Confusions
 - "When to use multi-agent?" → See `lesson-2-multi-agent/tutorial-2/concepts/multi-agent-architecture.md`
 - "How do agents communicate?" → See `lesson-2-multi-agent/tutorial-2/concepts/agent-communication.md`
 - "How to test multi-agent?" → See `lesson-2-multi-agent/tutorial-2/guides/testing-multi-agent.md`
+- "When to use RAG vs fine-tuning?" → See `lesson-3-memory-rag/tutorial-3/concepts/rag-architecture.md`
+- "How do I test retrieval quality?" → See `lesson-3-memory-rag/tutorial-3/guides/testing-rag-ove.md`
+- "Which model for which task?" → See `lesson-3-memory-rag/tutorial-3/concepts/multi-model-orchestration.md`
 
-## 12. Quality Standards
+## 13. Quality Standards
 
-### Code Quality (Both Tutorials)
+### Code Quality (All Tutorials)
 - Type hints: MANDATORY
 - Docstrings: Google style, MANDATORY
 - Error handling: Return error strings, don't raise exceptions in agents
-- Logging: Use structured logging (JSON format for Tutorial 2), lazy % formatting (NOT f-strings)
-- Testing: O.V.E. methodology for all features
+- Logging: Use structured logging (JSON format for Tutorial 2+), lazy % formatting (NOT f-strings)
+- Testing: O.V.E. methodology for all features (extended for RAG: retrieval quality, grounding)
 
 ### Documentation Quality
 - When you have access to agent mode - update progress tracker automatically
@@ -338,7 +463,9 @@ When students ask questions, determine which tutorial they're on:
 
 ### Lab Quality
 - Clear objectives and context
-- AI prompts ready to use (Tutorial 2)
+- AI prompts ready to use (Tutorial 2+)
 - Checkpoint questions to verify understanding
 - Troubleshooting guidance
 - Links to relevant documentation
+- Debugging tools provided (Tutorial 3)
+- RAG quality metrics explained (Tutorial 3)

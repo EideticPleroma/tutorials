@@ -53,6 +53,9 @@ htmlcov/
 .agent_state/
 *.plan.md
 
+# Obsidian
+.obsidian/
+
 # Project Planning Documents (work in progress)
 TUTORIAL-2-SCOPE.md
 
