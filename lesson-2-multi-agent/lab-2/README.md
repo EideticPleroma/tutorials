@@ -62,10 +62,19 @@ Ensure you have completed Tutorial 1:
 
 ## Lab Structure
 
-The lab is divided into progressive exercises with a bridge from Tutorial 1:
+The lab follows an **evolution approach** - your code grows from single agent to multi-agent:
 
-**Bridge Exercise (New students start here):**
-0. **[Bridge: From Single to Multi-Agent](./exercises/00-bridge-refactoring.md)** (~45 min) - Smooth transition from Tutorial 1
+```
+src/agent/              →    src/agent/multi/         →    src/multi_agent/
+(Tutorial 1)                 (Exercise 0)                  (Exercises 1-4)
+Single Agent                 Two Agents                    Coordinator-Worker
+```
+
+**Bridge Exercise (Start Here):**
+0. **[Bridge: From Single to Multi-Agent](./exercises/00-bridge-refactoring.md)** (~45 min)
+   - Extends `src/agent/` with a `multi/` subfolder
+   - Creates GathererAgent and ReporterAgent
+   - Shows why you need coordination patterns
 
 **Core Exercises:**
 1. **[Coordinator Basics](./exercises/01a-coordinator-basics.md)** (~60 min) - Build coordinator with direct calls
@@ -76,7 +85,7 @@ The lab is divided into progressive exercises with a bridge from Tutorial 1:
 **Challenge:**
 5. **[Challenge: Research Workflow](./exercises/04-challenge-workflow.md)** (~120 min, optional) - End-to-end system
 
-> **Note:** The original Exercise 1 has been split into 1A (Coordinator Basics) and 1B (Message Protocol) to reduce cognitive load. If you completed the original Exercise 1, you can skip to Exercise 2.
+> **Why Evolution?** You don't start from scratch - you extend what you built in Tutorial 1. The bridge exercise shows your single agent "growing up" into multiple coordinated agents.
 
 ## Getting Started
 
@@ -243,7 +252,9 @@ Once you complete Lab 2:
 
 ---
 
-👉 **[Start with Exercise 1: Build a Coordinator Agent](./exercises/01-coordinator-agent.md)**
+👉 **[Start with Exercise 0: Bridge from Tutorial 1](./exercises/00-bridge-refactoring.md)** - Recommended for all students
+
+👉 **[Skip to Exercise 1A: Coordinator Basics](./exercises/01a-coordinator-basics.md)** - If you understand two-agent patterns
 
 👉 **[View Lab Checklist](./lab-checklist.md)** for detailed task tracking
 

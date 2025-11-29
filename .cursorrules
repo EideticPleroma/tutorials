@@ -19,6 +19,7 @@ This is a comprehensive educational project teaching Agentic AI from fundamental
 
 ### Core Implementation
 - `src/agent/`: Tutorial 1 single agent implementation
+  - `src/agent/multi/`: Bridge exercise (Exercise 0) - extends single agent to two agents
 - `src/multi_agent/`: Tutorial 2 multi-agent system (coordinator, workers, protocols)
 - `src/memory_rag/`: Tutorial 3 RAG engine, embeddings, knowledge tools, model router
 - `src/tools/`: TypeScript MCP tools and bridges
@@ -41,6 +42,8 @@ This is a comprehensive educational project teaching Agentic AI from fundamental
   - `progress.md`: Progress tracker for Tutorial 3
 - `docs/`: Shared documentation across tutorials
   - `tech-stack.md`: Centralized tech stack decisions
+  - `glossary.md`: Comprehensive glossary of all key terms
+  - `software-patterns.md`: Design patterns and SOLID principles used
 
 ### Project Root
 - `README.md`: Main project overview and navigation
@@ -74,6 +77,14 @@ This is a comprehensive educational project teaching Agentic AI from fundamental
 3.  Specialized agents go in `src/multi_agent/specialized/`
 4.  Message protocol defined in `src/multi_agent/message_protocol.py`
 5.  **MUST** add tests in `tests/multi_agent/`
+
+**Exercise Structure (Tutorial 2):**
+- Exercise 0: Bridge from Tutorial 1 (simple two-agent system)
+- Exercise 1A: Coordinator basics with direct function calls
+- Exercise 1B: Message protocol for structured communication
+- Exercise 2: Specialized agents (research, data, writer)
+- Exercise 3: Review and validate communication
+- Exercise 4: Challenge - end-to-end workflow
 
 ### Tutorial 3: Adding RAG Components
 1.  RAG engine components go in `src/memory_rag/rag_engine.py`
@@ -425,7 +436,14 @@ When students ask questions, determine which tutorial they're on:
 - Tutorial 3: Knowledge-enhanced agents (Memory)
 - Progression: Build → Orchestrate → Remember
 
+### Reference Documentation
+- **Glossary**: `docs/glossary.md` - Definitions of all key terms across tutorials
+- **Patterns**: `docs/software-patterns.md` - Design patterns and SOLID principles demonstrated
+- **Tech Stack**: `docs/tech-stack.md` - Technology decisions and rationale
+
 ### Common Confusions
+- "What does X term mean?" → See `docs/glossary.md`
+- "What pattern is being used here?" → See `docs/software-patterns.md`
 - "When to use multi-agent?" → See `lesson-2-multi-agent/tutorial-2/concepts/multi-agent-architecture.md`
 - "How do agents communicate?" → See `lesson-2-multi-agent/tutorial-2/concepts/agent-communication.md`
 - "How to test multi-agent?" → See `lesson-2-multi-agent/tutorial-2/guides/testing-multi-agent.md`

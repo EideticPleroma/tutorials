@@ -59,7 +59,9 @@ No message protocol yet - just simple function calls between agents.
 
 ### Task 1: Create the Gatherer Agent
 
-Create a new file `src/multi_agent/bridge/gatherer_agent.py`.
+Open the scaffold file `src/agent/multi/gatherer.py`.
+
+> **Why in `src/agent/`?** This exercise extends your Tutorial 1 agent, showing natural evolution. The `multi/` subfolder indicates "multiple agents" growing from your single-agent foundation.
 
 **Requirements:**
 - Inherit from Tutorial 1's `Agent` class (gets LLM and tool calling)
@@ -83,70 +85,15 @@ The agent should NOT summarize or analyze - just gather.
 Generate a simple implementation without message protocols (we'll add those later).
 ```
 
-**Scaffold:**
-```python
-"""
-Gatherer Agent - Collects information using file tools.
+**The scaffold is already in `src/agent/multi/gatherer.py`.** Open it and implement the TODOs:
 
-This is a bridge exercise showing how to split responsibilities
-before introducing coordinators and message protocols.
-"""
-
-from typing import List, Optional
-from src.agent.simple_agent import Agent
-
-class GathererAgent(Agent):
-    """Agent specialized in gathering information from files."""
-    
-    def __init__(self):
-        """Initialize gatherer with limited tools."""
-        super().__init__()
-        
-        # Override system prompt for gathering focus
-        self.messages[0] = {
-            "role": "system",
-            "content": """You are a Gatherer Agent. Your ONLY job is to find and collect information.
-
-What you DO:
-- Search for files matching patterns
-- Read file contents
-- Extract relevant facts
-- Report what you found with sources
-
-What you DO NOT do:
-- Summarize or analyze (Reporter Agent does that)
-- Make recommendations
-- Draw conclusions
-
-Always cite which file each piece of information came from."""
-        }
-        
-        # TODO: Filter tools to only allowed ones
-        # Hint: self.tools contains all registered tools
-        # You need to filter to just ["search_files", "read_file"]
-    
-    def gather(self, query: str) -> dict:
-        """
-        Gather information about a query.
-        
-        Args:
-            query: What to search for
-            
-        Returns:
-            Dict with status and gathered information
-            Example: {"status": "success", "findings": [...], "sources": [...]}
-        """
-        # TODO: Implement gathering logic
-        # 1. Build a prompt asking the LLM to search and read files
-        # 2. Call self.chat(prompt) - LLM will use tools automatically
-        # 3. Parse response to extract findings
-        # 4. Return structured dict
-        pass
-```
+1. Filter `self.tools` to only `ALLOWED_TOOLS`
+2. Override the system prompt for gathering focus
+3. Implement the `gather()` method
 
 **Validation:**
 ```python
-from src.multi_agent.bridge.gatherer_agent import GathererAgent
+from src.agent.multi import GathererAgent
 
 gatherer = GathererAgent()
 
@@ -163,7 +110,7 @@ assert len(result["findings"]) > 0
 
 ### Task 2: Create the Reporter Agent
 
-Create `src/multi_agent/bridge/reporter_agent.py`.
+Open the scaffold file `src/agent/multi/reporter.py`.
 
 **Requirements:**
 - Inherit from `Agent` class
@@ -188,66 +135,15 @@ The agent receives data from GathererAgent and creates a readable summary.
 Generate a simple implementation.
 ```
 
-**Scaffold:**
-```python
-"""
-Reporter Agent - Summarizes gathered information.
+**The scaffold is already in `src/agent/multi/reporter.py`.** Open it and implement the TODOs:
 
-This is a bridge exercise showing agent collaboration
-before introducing message protocols.
-"""
-
-from src.agent.simple_agent import Agent
-
-class ReporterAgent(Agent):
-    """Agent specialized in creating summaries from gathered data."""
-    
-    def __init__(self):
-        """Initialize reporter with no tools (LLM only)."""
-        super().__init__()
-        
-        # Override system prompt for reporting focus
-        self.messages[0] = {
-            "role": "system",
-            "content": """You are a Reporter Agent. Your ONLY job is to summarize information.
-
-What you DO:
-- Create clear, organized summaries
-- Highlight key findings
-- Include source citations
-- Structure information logically
-
-What you DO NOT do:
-- Search for information (Gatherer Agent does that)
-- Make things up - only summarize what you're given
-- Add speculation or analysis beyond the data
-
-Be concise and factual."""
-        }
-        
-        # No tools - LLM only
-        self.tools = []
-    
-    def report(self, gathered_data: dict) -> str:
-        """
-        Create a summary from gathered information.
-        
-        Args:
-            gathered_data: Dict from GathererAgent with findings and sources
-            
-        Returns:
-            Formatted summary string
-        """
-        # TODO: Implement reporting logic
-        # 1. Build a prompt with the gathered data
-        # 2. Ask LLM to create a summary
-        # 3. Return the summary
-        pass
-```
+1. Clear `self.tools` (reporter has no tools)
+2. Override the system prompt for summarization focus
+3. Implement the `report()` method
 
 **Validation:**
 ```python
-from src.multi_agent.bridge.reporter_agent import ReporterAgent
+from src.agent.multi import ReporterAgent
 
 reporter = ReporterAgent()
 
@@ -267,53 +163,22 @@ assert "Python" in summary or "files" in summary
 
 ### Task 3: Wire Them Together
 
-Create a simple runner that chains the two agents.
+Open the scaffold file `src/agent/multi/runner.py` and implement the `run_two_agent_workflow()` function.
 
-**File:** `src/multi_agent/bridge/two_agent_runner.py`
-
-```python
-"""
-Two-Agent Runner - Chains Gatherer and Reporter.
-
-This shows the simplest form of multi-agent collaboration:
-one agent's output becomes another's input.
-"""
-
-from .gatherer_agent import GathererAgent
-from .reporter_agent import ReporterAgent
-
-def run_two_agent_workflow(query: str) -> str:
-    """
-    Execute a two-agent workflow: gather then report.
-    
-    Args:
-        query: What to research
-        
-    Returns:
-        Final summary from reporter
-    """
-    # Step 1: Gather information
-    gatherer = GathererAgent()
-    gathered = gatherer.gather(query)
-    
-    if gathered["status"] != "success":
-        return f"Gathering failed: {gathered.get('error', 'Unknown error')}"
-    
-    # Step 2: Create report
-    reporter = ReporterAgent()
-    summary = reporter.report(gathered)
-    
-    return summary
-
-# Quick test
-if __name__ == "__main__":
-    result = run_two_agent_workflow("Find Python files in src/agent/")
-    print(result)
-```
+**The pattern is already documented in the scaffold:**
+1. Create GathererAgent and call `gather(query)`
+2. Check if gathering succeeded
+3. Create ReporterAgent and call `report(gathered_data)`
+4. Return the summary
 
 **Validation:**
 ```bash
-python -c "from src.multi_agent.bridge.two_agent_runner import run_two_agent_workflow; print(run_two_agent_workflow('Python files in src/'))"
+python -c "from src.agent.multi import run_two_agent_workflow; print(run_two_agent_workflow('Python files in src/'))"
+```
+
+Or run the file directly:
+```bash
+python -m src.agent.multi.runner
 ```
 
 Expected: A summary of Python files found in the src directory.
