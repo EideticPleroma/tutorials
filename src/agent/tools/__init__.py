@@ -8,4 +8,7 @@ Example:
     __all__ = ['your_tool']
 """
 
-__all__ = []
+from . import file_search  # noqa: F401
+from . import read_file  # noqa: F401
+
+__all__ = ["file_search", "read_file"]
